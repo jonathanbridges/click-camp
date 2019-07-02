@@ -20,7 +20,7 @@ class User < ApplicationRecord
 
 	after_initialize :ensure_session_token
 
-	has_many :posts
+	#add associations
 
 	def self.find_by_credentials(username, password)
 		user = User.find_by(username: username)
