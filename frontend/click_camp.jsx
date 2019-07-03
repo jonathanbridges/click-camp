@@ -2,17 +2,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //Components
-import Root from './components/root';
+// import Root from './components/root';
 import configureStore from './store/store';
-import { postUser, postSession, deleteSession } from './util/session'
+
+//Testing
+import { postUser, postSession, deleteSession } from './util/session_api_util'
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  //Testing
   window.postUser = postUser;
   window.postSession = postSession;
   window.deleteSession = deleteSession;
+  //End Testing
+ 
 
   const root = document.getElementById('root');
+  const store = configureStore();
+
+  //Testing
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
+  //End Testing
 
 
 
@@ -23,7 +34,6 @@ document.addEventListener('DOMContentLoaded', () => {
   //   };
   // }
   
-  // const store = configureStore(preloadedState);
   
   ReactDOM.render(<h1>Welcome to clickCamp</h1>, root);
 });
