@@ -8,10 +8,10 @@ const Greeting = ({ currentUser, logout, openModal }) => {
     </div>
   );
   const personalGreeting = () => (
-    <hgroup className="header-group">
+    <div className="current-user-logout">
       <h2 className="header-name">Hi, {currentUser.username}!</h2>
-      <button className="header-button" onClick={logout}>Log Out</button>
-    </hgroup>
+      <button className="logout-button" onClick={logout}>Log Out</button>
+    </div>
   );
 
   return currentUser ? personalGreeting() : sessionLinks();

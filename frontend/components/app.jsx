@@ -7,12 +7,12 @@ import GreetingContainer from './greeting/greeting_container';
 import Modal from './modal/modal';
 
 const App = () => (
-  <nav class="main-nav">
+  <nav className="main-nav">
     <Modal />
-    <div class="left">
+    <div className="left">
       <h1>clickCamp</h1>
     </div>
-    <div class="right">
+    <div className="right">
       <GreetingContainer />
     </div>
   </nav>

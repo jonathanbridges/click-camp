@@ -37,7 +37,7 @@ body {
   right: 0;
   left: 0;
 	z-index: 10;
-	background-color: grey;
+	background-color: rgba(255, 255, 255, 0.9);
 }
 
 .modal-content {
@@ -111,4 +111,9 @@ button {
 
 button:hover {
 	border-bottom: 1px solid black;
+}
+
+.current-user-logout {
+	display: flex;
+	flex-direction: row;
 }

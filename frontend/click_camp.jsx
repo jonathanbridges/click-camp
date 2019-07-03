@@ -24,15 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //Redux Testing
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
   //End Testing
 
 
   //Backend Testing
-  window.signup = signup;
-  window.login = login;
-  window.logout = logout;
+  // window.signup = signup;
+  // window.login = login;
+  // window.logout = logout;
   //End Testing
 
 
