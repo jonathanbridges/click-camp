@@ -2,30 +2,32 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 //Components
-// import Root from './components/root';
+import Root from './components/root';
 import configureStore from './store/store';
 
 //Testing
-import { postUser, postSession, deleteSession } from './util/session_api_util'
+import { signup, login, logout } from './actions/session_actions'
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  //Testing
-  window.postUser = postUser;
-  window.postSession = postSession;
-  window.deleteSession = deleteSession;
-  //End Testing
- 
-
-  const root = document.getElementById('root');
   const store = configureStore();
 
-  //Testing
+  //Redux Testing
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //End Testing
 
 
+  //Backend Testing
+  window.signup = signup;
+  window.login = login;
+  window.logout = logout;
+  //End Testing
+
+
+  const root = document.getElementById('root');
+  
+  ReactDOM.render(<Root store={store} />, root);
+});
 
   // let preloadedState = undefined;
   // if (window.currentUser) {
@@ -33,8 +35,3 @@ document.addEventListener('DOMContentLoaded', () => {
   //     session: { currentUser: window.currentUser }
   //   };
   // }
-  
-  
-  ReactDOM.render(<h1>Welcome to clickCamp</h1>, root);
-});
-

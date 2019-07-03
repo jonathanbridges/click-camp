@@ -1,10 +1,11 @@
-import React from 'React';
-// import NavBarContainer from './nav_bar/nav_bar_container';
-import { Route } from 'react-router-dom';
+import React from 'react';
+import GreetingContainer from './greeting/greeting_container';
 
-export default () => (
+const App = () => (
   <div>
-    <Route path="/signup" component={SignupContainer} />
-    {/* <NavBarContainer /> */}
+    <h1>clickCamp</h1>
+    <GreetingContainer />
   </div>
 );
+
+export default App;
