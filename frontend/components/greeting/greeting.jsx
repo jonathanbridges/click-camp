@@ -2,11 +2,10 @@ import React from 'react';
 
 const Greeting = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
-    <nav className="login-signup">
+    <div className="login-signup">
       <button onClick={() => openModal('login')}>Login</button>
-      &nbsp;or&nbsp;
       <button onClick={() => openModal('signup')}>Signup</button>
-    </nav>
+    </div>
   );
   const personalGreeting = () => (
     <hgroup className="header-group">

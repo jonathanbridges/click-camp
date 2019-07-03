@@ -7,7 +7,8 @@ import SessionForm from './session_form';
 const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.session,
-    formType: 'signup'
+    formType: 'Join clickCamp',
+    greetingSmall: 'Discover the best camping near me'
   };
 };
 

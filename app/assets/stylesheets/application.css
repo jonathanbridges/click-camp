@@ -13,20 +13,102 @@
  *= require_tree .
  *= require_self
  */
+* {
+	box-sizing: border-box;
+}
+	
+body {
+	display: flex;
+	flex-direction: column;
+	font-weight: 400;
+	min-height: 100vh;
+	height: 100%;
+	font-family: Helvetica;
+	-webkit-font-smoothing: antialiased;
+	font-size: 100%;
+	line-height: 1.42;
+	margin: 0 8px;
+}
 
- .modal-background {
+.modal-background {
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 10;
+	z-index: 10;
+	background-color: grey;
 }
 
-.modal-child {
+.modal-content {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	border: 1px solid #ebebeb;
+	box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+	width: 300px;
+	/* opacity: 0;
+	transition: opacity 0.15s linear; */
+}
+
+.modal-content:target {
+	/* opacity: 1; */
+}
+
+.modal-content:first-child {
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	background: white;
+	text-align: center;
+}
+
+.main-nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	height: 70px;
+	min-height: 70px;
+	width: 100%;
+	min-width: 800px;
+	background-color:white;
+}
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+}
+
+input.login-input {
+	height: 50px;
+	border: 1px solid black;
+	color: black;
+	font-size: 1rem;
+	padding: 15px;
+}
+
+input.session-submit {
+  background-color: #40d9ac;
+	color: white;
+	height: 50px;
+	font-size: 1rem;
+	font-weight: 700;
+}
+
+button {
+	font-size: 1.0rem;
+	border: none;
+	margin: 0 14px;
+	text-decoration: none;
+	border-bottom: 1px solid #ebebeb;
+	outline: none;
+	padding: 0;
+	cursor: pointer;
+	transition: all 0.25s ease 0s;
+}
+
+button:hover {
+	border-bottom: 1px solid black;
 }

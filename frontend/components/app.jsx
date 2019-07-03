@@ -1,22 +1,21 @@
 import React from 'react';
 import GreetingContainer from './greeting/greeting_container';
-import { Route } from 'react-router';
-import LoginFormContainer from '../components/session/session_form/login_form_container'
-import SignupFormContainer from '../components/session/session_form/signup_form_container'
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
+// import { Route } from 'react-router';
+// import LoginFormContainer from '../components/session/session_form/login_form_container'
+// import SignupFormContainer from '../components/session/session_form/signup_form_container'
+// import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal/modal';
 
-
 const App = () => (
-  <div>
-    <header>
-      <Modal />
+  <nav class="main-nav">
+    <Modal />
+    <div class="left">
       <h1>clickCamp</h1>
+    </div>
+    <div class="right">
       <GreetingContainer />
-    </header>
-    {/* <AuthRoute exact path="/login" component={LoginFormContainer} />
-    <AuthRoute exact path="/signup" component={SignupFormContainer} /> */}
-  </div>
+    </div>
+  </nav>
 );
 
 export default App;
