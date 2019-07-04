@@ -6,7 +6,7 @@ const Greeting = ({ currentUser, logout, openModal }) => {
       <button className="nav-btn" onClick={() => openModal('login')}>Login</button>
       <button className="nav-btn" onClick={() => openModal('signup')}>Signup</button>
       <div>
-        <button className="demo-btn">Demo Login</button>
+        <a className="demo-btn">Demo Login</a>
       </div>
     </div>
   );

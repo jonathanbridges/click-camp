@@ -37,8 +37,17 @@ html {
  */
 
 body {
-  margin: 0;
+	display: flex;
+	flex-direction: column;
+	font-weight: 400;
+	min-height: 100vh;
+	height: 100%;
+  font-family: 'Lato', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	font-size: 100%;
+	line-height: 1.42;
 }
+
 
 /**
  * Render the `main` element consistently in IE.

@@ -3,19 +3,6 @@
 	box-sizing: border-box;
 }
 	
-body {
-	display: flex;
-	flex-direction: column;
-	font-weight: 400;
-	min-height: 100vh;
-	height: 100%;
-	font-family: Helvetica;
-	-webkit-font-smoothing: antialiased;
-	font-size: 100%;
-	line-height: 1.42;
-	margin: 0 8px;
-}
-
 /* Modal Styles */
 
 .modal-background {
@@ -109,7 +96,7 @@ input.btn-main:hover {
 	font-size: 1rem;
 	cursor: pointer;
 	transition: all 0.25s ease 0s;
-	padding: 15px;
+  padding: 15px;
 }
 
 .btn-main:hover {
@@ -126,7 +113,10 @@ input.btn-main:hover {
 	color: #40d9ac;
 	font-size: 1rem;
 	transition: all 0.25s ease 0s;
-	border: 1px solid #40d9ac;
+  padding: 15px;
+  box-shadow: 0px 0px 0px 1px #40d9ac;
+	margin: .5em;
+	outline: solid 10px transparent;
 }
 
 .demo-btn:hover {
@@ -134,7 +124,9 @@ input.btn-main:hover {
 	color: white;
 	font-size: 1rem;
 	transition: all 0.25s ease 0s;
-	border: 1px solid white;
+  padding: 15px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 5px #40d9ac;
 }
 
 .nav-btn {
@@ -160,4 +152,11 @@ input.btn-main:hover {
 
 .logoutButton {
 	margin: auto;
+}
+
+a.nav-home {
+	margin-left: 1rem;
+	text-decoration: none;
+	color: black;
+	font-size: 1.75rem;
 }
