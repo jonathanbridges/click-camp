@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //Redux Testing
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
   //End Testing
 
 

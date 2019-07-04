@@ -5,5 +5,5 @@ import modalReducer from './modal_reducer';
 
 export default combineReducers({
   // filters,
-  modal: modalReducer
+  modal: modalReducer,
 });

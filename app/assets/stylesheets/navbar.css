@@ -160,3 +160,8 @@ a.nav-home {
 	color: black;
 	font-size: 1.75rem;
 }
+
+ul.errors {
+	list-style: none;
+	padding: 0px;
+}
