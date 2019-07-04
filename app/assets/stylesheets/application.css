@@ -53,12 +53,6 @@ body {
 	border: 1px solid #ebebeb;
 	box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 	width: 300px;
-	/* opacity: 0;
-	transition: opacity 0.15s linear; */
-}
-
-.modal-content:target {
-	/* opacity: 1; */
 }
 
 .modal-content:first-child {
@@ -74,15 +68,11 @@ body {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	/* height: 70px; */
+	height: 70px;
 	min-height: 70px;
 	width: 100%;
 	min-width: 800px;
 	background-color:white;
-}
-
-.left, .right {
-	/* height: 70px; */
 }
 
 /* Form Styles */
@@ -92,14 +82,22 @@ body {
 	flex-direction: column;
 }
 
-.login-form-box h2 {
-	margin: 0;
+.login-form-box {
+	display: flex;
+	flex-direction: column;
 }
 
-.login-form-box p {
+.login-form-box big {
+	margin-bottom: 10px;
+	font-weight: 700;
+	font-size: 1.5rem;
+}
+
+.login-form-box small {
 	color: #757575;
+	font-weight: 400;
+	font-size: 1rem;
 }
-
 
 input.login-input {
 	height: 50px;
@@ -109,15 +107,54 @@ input.login-input {
 	padding: 15px;
 }
 
-input.session-submit {
-  background-color: #40d9ac;
-	color: white;
+input.btn-main {
 	height: 50px;
 	font-size: 1rem;
+	padding: 15px;
 	font-weight: 700;
 }
 
-button {
+input.btn-main:hover {
+	height: 50px;
+	font-size: 1rem;
+	padding: 14px;
+}
+
+.btn-main {
+	background-color: #40d9ac;
+	color: white;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: all 0.25s ease 0s;
+	padding: 15px;
+}
+
+.btn-main:hover {
+	background-color:white;
+	color: #40d9ac;
+	transition: all 0.25s ease 0s;
+	border: 2px solid #40d9ac;
+	font-size: 1rem;
+	padding: 14px;
+}
+
+.demo-btn {
+	background-color: white;
+	color: #40d9ac;
+	font-size: 1rem;
+	transition: all 0.25s ease 0s;
+	border: 1px solid #40d9ac;
+}
+
+.demo-btn:hover {
+	background-color: #40d9ac;
+	color: white;
+	font-size: 1rem;
+	transition: all 0.25s ease 0s;
+	border: 1px solid white;
+}
+
+.nav-btn {
 	font-size: 1.0rem;
 	border: none;
 	margin: 0 14px;
@@ -129,7 +166,7 @@ button {
 	transition: all 0.25s ease 0s;
 }
 
-button:hover {
+.nav-btn:hover {
 	border-bottom: 1px solid black;
 }
 
@@ -139,6 +176,6 @@ button:hover {
 	/* height: 70px; */
 }
 
-.navButton {
+.logoutButton {
 	margin: auto;
 }

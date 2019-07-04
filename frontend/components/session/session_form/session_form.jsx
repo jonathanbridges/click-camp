@@ -42,8 +42,8 @@ class SessionForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="login-form-box">
           {/* <h2>Welcome to clickCamp!</h2> */}
           {/* <div class="modal-greeting"> */}
-            <h2>{this.props.formType}</h2>
-            <p>{this.props.greetingSmall}</p>
+          <big>{this.props.formType}</big>
+          <small>{this.props.greetingSmall}</small>
           {/* </div> */}
           {/* <small>Please {this.props.formType} or {this.props.otherForm}</small> */}
           {this.renderErrors()}
@@ -70,7 +70,7 @@ class SessionForm extends React.Component {
               placeholder="Password..."
             />
             <br />
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            <input className="btn-main" type="submit" value={this.props.formType} />
           </div>
         </form>
       </div>
