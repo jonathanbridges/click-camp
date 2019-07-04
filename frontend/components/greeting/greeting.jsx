@@ -9,8 +9,10 @@ const Greeting = ({ currentUser, logout, openModal }) => {
   );
   const personalGreeting = () => (
     <div className="current-user-logout">
-      <h2 className="header-name">Hi, {currentUser.username}!</h2>
-      <button className="logout-button" onClick={logout}>Log Out</button>
+      <p className="header-name">Hi, {currentUser.username}!</p>
+      <div className="navButton">     
+         <button onClick={logout}>Log Out</button>
+      </div>
     </div>
   );
 

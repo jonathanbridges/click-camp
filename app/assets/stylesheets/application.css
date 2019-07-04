@@ -13,6 +13,9 @@
  *= require_tree .
  *= require_self
  */
+
+ /* Default Styles */
+
 * {
 	box-sizing: border-box;
 }
@@ -29,6 +32,8 @@ body {
 	line-height: 1.42;
 	margin: 0 8px;
 }
+
+/* Modal Styles */
 
 .modal-background {
   position: fixed;
@@ -69,17 +74,32 @@ body {
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	height: 70px;
+	/* height: 70px; */
 	min-height: 70px;
 	width: 100%;
 	min-width: 800px;
 	background-color:white;
 }
 
+.left, .right {
+	/* height: 70px; */
+}
+
+/* Form Styles */
+
 .login-form {
 	display: flex;
 	flex-direction: column;
 }
+
+.login-form-box h2 {
+	margin: 0;
+}
+
+.login-form-box p {
+	color: #757575;
+}
+
 
 input.login-input {
 	height: 50px;
@@ -113,7 +133,12 @@ button:hover {
 	border-bottom: 1px solid black;
 }
 
-.current-user-logout {
+.current-user-logout, .login-signup {
 	display: flex;
 	flex-direction: row;
+	/* height: 70px; */
+}
+
+.navButton {
+	margin: auto;
 }
