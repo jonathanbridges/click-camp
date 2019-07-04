@@ -1,0 +1,163 @@
+
+* {
+	box-sizing: border-box;
+}
+	
+body {
+	display: flex;
+	flex-direction: column;
+	font-weight: 400;
+	min-height: 100vh;
+	height: 100%;
+	font-family: Helvetica;
+	-webkit-font-smoothing: antialiased;
+	font-size: 100%;
+	line-height: 1.42;
+	margin: 0 8px;
+}
+
+/* Modal Styles */
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+	z-index: 10;
+	background-color: rgba(255, 255, 255, 0.9);
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+	transform: translate(-50%, -50%);
+	border: 1px solid #ebebeb;
+	box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+	width: 300px;
+}
+
+.modal-content:first-child {
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+	background: white;
+	text-align: center;
+}
+
+.main-nav {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	height: 70px;
+	min-height: 70px;
+	width: 100%;
+	min-width: 800px;
+	background-color:white;
+}
+
+/* Form Styles */
+
+.login-form {
+	display: flex;
+	flex-direction: column;
+}
+
+.login-form-box {
+	display: flex;
+	flex-direction: column;
+}
+
+.login-form-box big {
+	margin-bottom: 10px;
+	font-weight: 700;
+	font-size: 1.5rem;
+}
+
+.login-form-box small {
+	color: #757575;
+	font-weight: 400;
+	font-size: 1rem;
+}
+
+input.login-input {
+	height: 50px;
+	border: 1px solid black;
+	color: black;
+	font-size: 1rem;
+	padding: 15px;
+}
+
+input.btn-main {
+	height: 50px;
+	font-size: 1rem;
+	padding: 15px;
+	font-weight: 700;
+}
+
+input.btn-main:hover {
+	height: 50px;
+	font-size: 1rem;
+	padding: 14px;
+}
+
+.btn-main {
+	background-color: #40d9ac;
+	color: white;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: all 0.25s ease 0s;
+	padding: 15px;
+}
+
+.btn-main:hover {
+	background-color:white;
+	color: #40d9ac;
+	transition: all 0.25s ease 0s;
+	border: 2px solid #40d9ac;
+	font-size: 1rem;
+	padding: 14px;
+}
+
+.demo-btn {
+	background-color: white;
+	color: #40d9ac;
+	font-size: 1rem;
+	transition: all 0.25s ease 0s;
+	border: 1px solid #40d9ac;
+}
+
+.demo-btn:hover {
+	background-color: #40d9ac;
+	color: white;
+	font-size: 1rem;
+	transition: all 0.25s ease 0s;
+	border: 1px solid white;
+}
+
+.nav-btn {
+	font-size: 1.0rem;
+	border: none;
+	margin: 0 14px;
+	text-decoration: none;
+	border-bottom: 1px solid #ebebeb;
+	outline: none;
+	padding: 0;
+	cursor: pointer;
+	transition: all 0.25s ease 0s;
+}
+
+.nav-btn:hover {
+	border-bottom: 1px solid black;
+}
+
+.current-user-logout, .login-signup {
+	display: flex;
+	flex-direction: row;
+}
+
+.logoutButton {
+	margin: auto;
+}
