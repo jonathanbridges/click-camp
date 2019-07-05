@@ -24,4 +24,8 @@ class Listing < ApplicationRecord
     foreign_key: :location_id,
     class_name: :Location
 
+  has_many_attached :photos
+
+  #   Listing.create!(host_id: 9, location_id: 2, name: 'north tent', description: 'amazing in the woods', cost: 100)
+  # d.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/tents-1.jpeg"), filename: "tents-1.jpeg")
 end
