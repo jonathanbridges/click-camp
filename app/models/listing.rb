@@ -13,5 +13,15 @@
 #
 
 class Listing < ApplicationRecord
-  
+
+  validates :host_id, :location_id, :name, :description, :cost, presence: true
+
+  belongs_to :host,
+    foreign_key: :host_id,
+    class_name: :User
+
+  has_many :locations,
+    foreign_key: :location_id,
+    class_name: :Location
+
 end

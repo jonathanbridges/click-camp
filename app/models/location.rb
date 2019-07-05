@@ -11,5 +11,11 @@
 #
 
 class Location < ApplicationRecord
-  
+
+  validates :listing_id, :lat, :long, presence: true
+
+  belongs_to :listing,
+    foreign_key: :listing_id,
+    class_name: :Listing
+
 end
