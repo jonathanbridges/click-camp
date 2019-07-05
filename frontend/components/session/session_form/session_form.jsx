@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import login from '../../../actions/session_actions'
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -10,7 +11,11 @@ class SessionForm extends React.Component {
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleDemoSubmit = this.handleSubmit.bind(this);
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
+  }
+
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
 
   update(field) {
@@ -25,16 +30,14 @@ class SessionForm extends React.Component {
     this.props.processForm(user).then(this.props.closeModal);
   }
 
-  // handleDemoSubmit(e) {
-  //   e.preventDefault();
-  //   this.setState({
-  //     username: 'demouser',
-  //     email: 'demouser@gmail.com',
-  //     password: 'password'
-  //   });
-  //   const user = Object.assign({}, this.state);
-  //   this.props.processForm(user).then(this.props.closeModal);
-  // }
+  handleDemoSubmit(e) {
+    e.preventDefault();
+    this.props.processDemo({
+      username: 'clickCamper',
+      email: 'clickCamper@camp.site',
+      password: 'password'
+    }).then(this.props.closeModal);
+  }
 
   renderErrors() {
     return (
@@ -51,7 +54,7 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
+        <form className="login-form-box">
           {/* <div class="modal-greeting"> */}
           <big>{this.props.formType}</big>
           <small>{this.props.greetingSmall}</small>
@@ -81,10 +84,9 @@ class SessionForm extends React.Component {
               placeholder="Password..."
             />
             <br />
-            <input className="btn-main" type="submit" value={this.props.formType} />
+            <input onClick={this.handleSubmit} className="btn-main" type="submit" value={this.props.formType} />
             <br />
-            <input className="demo-login-btn" type="submit" value="Demo Login" />
-
+            <input onClick={this.handleDemoSubmit} className="demo-login-btn" type="submit" value="Demo Login" />
           </div>
         </form>
       </div>
