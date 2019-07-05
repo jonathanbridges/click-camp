@@ -13,4 +13,5 @@
 #
 
 class Listing < ApplicationRecord
+  
 end
