@@ -7,6 +7,7 @@ import configureStore from './store/store';
 
 //Testing
 import { signup, login, logout } from './actions/session_actions'
+import { fetchListing, fetchListings } from './util/listing_api_util'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -23,11 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
+  //AJAX testing//
+  window.fetchListing = fetchListing
+  window.fetchListings = fetchListings
+
   //Redux Testing
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   //End Testing
-
 
   //Backend Testing
   // window.signup = signup;
