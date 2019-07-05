@@ -4,10 +4,12 @@ const Greeting = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
     <div className="login-signup">
       <button className="nav-btn" onClick={() => openModal('login')}>Login</button>
-      <button className="nav-btn" onClick={() => openModal('signup')}>Signup</button>
       <div>
-        <a className="demo-btn" onClick={() => openModal('signup')}>Demo Login</a>
+        <a className="signup-btn" onClick={() => openModal('signup')}>Signup</a>
       </div>
+      {/* <div>
+        <a className="demo-btn" onClick={() => openModal('signup')}>Demo Login</a>
+      </div> */}
     </div>
   );
   const personalGreeting = () => (

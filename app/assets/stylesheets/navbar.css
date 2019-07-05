@@ -77,56 +77,46 @@ input.login-input {
 	padding: 15px;
 }
 
-input.btn-main {
-	height: 50px;
-	font-size: 1rem;
-	padding: 15px;
-	font-weight: 700;
-}
-
-input.btn-main:hover {
-	height: 50px;
-	font-size: 1rem;
-	padding: 14px;
-}
-
 .btn-main {
 	background-color: #40d9ac;
 	color: white;
 	font-size: 1rem;
 	cursor: pointer;
 	transition: all 0.25s ease 0s;
-  padding: 15px;
+	padding: 14px;
+	border: 1px solid #40d9ac;
+	font-weight: 700;
 }
 
 .btn-main:hover {
 	background-color:white;
 	color: #40d9ac;
 	transition: all 0.25s ease 0s;
-	border: 2px solid #40d9ac;
+	border: 3px solid #40d9ac;
 	font-size: 1rem;
-	padding: 14px;
+	padding: 12px;
+	font-weight: 700;
 }
 
-.demo-btn {
+.signup-btn {
 	background-color: white;
 	color: #40d9ac;
 	font-size: 1rem;
 	transition: all 0.25s ease 0s;
-  padding: 15px;
+  padding: 14px;
   box-shadow: 0px 0px 0px 1px #40d9ac;
 	margin: .5em;
 	outline: solid 10px transparent;
 }
 
-.demo-btn:hover {
+.signup-btn:hover {
 	background-color: #40d9ac;
 	color: white;
 	font-size: 1rem;
 	transition: all 0.25s ease 0s;
-  padding: 15px;
+  padding: 14px;
   cursor: pointer;
-  box-shadow: 0px 0px 0px 5px #40d9ac;
+  box-shadow: 0px 0px 0px 3px #40d9ac;
 }
 
 .nav-btn {
@@ -164,4 +154,26 @@ a.nav-home {
 ul.errors {
 	list-style: none;
 	padding: 0px;
+}
+
+.demo-login-btn {
+	border: none;
+	background-color: white;
+	color: #40d9ac;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: all 0.25s ease 0s;
+	padding: 14px;
+	border: 1px solid #40d9ac;
+	font-weight: 700;
+}
+
+.demo-login-btn:hover {
+	background-color: #40d9ac;
+	color: white;
+	transition: all 0.25s ease 0s;
+	border: 3px solid #40d9ac;
+	font-size: 1rem;
+	padding: 12px;
+	font-weight: 700;
 }

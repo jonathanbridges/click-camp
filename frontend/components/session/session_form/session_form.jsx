@@ -25,16 +25,16 @@ class SessionForm extends React.Component {
     this.props.processForm(user).then(this.props.closeModal);
   }
 
-  handleDemoSubmit(e) {
-    e.preventDefault();
-    this.setState({
-      username: 'demouser',
-      email: 'demouser@gmail.com',
-      password: 'password'
-    });
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(this.props.closeModal);
-  }
+  // handleDemoSubmit(e) {
+  //   e.preventDefault();
+  //   this.setState({
+  //     username: 'demouser',
+  //     email: 'demouser@gmail.com',
+  //     password: 'password'
+  //   });
+  //   const user = Object.assign({}, this.state);
+  //   this.props.processForm(user).then(this.props.closeModal);
+  // }
 
   renderErrors() {
     return (
@@ -82,6 +82,9 @@ class SessionForm extends React.Component {
             />
             <br />
             <input className="btn-main" type="submit" value={this.props.formType} />
+            <br />
+            <input className="demo-login-btn" type="submit" value="Demo Login" />
+
           </div>
         </form>
       </div>
