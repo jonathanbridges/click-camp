@@ -1,6 +1,6 @@
 import * as APIUtil from '../util/listing_api_util';
 
-export const RECEIVE_LISTINGS = 'RECEIVE_LISTINGS'
+export const RECEIVE_LISTINGS = 'RECEIVE_LISTINGS';
 export const RECEIVE_LISTING = 'RECEIVE_LISTING';
 
 export const receiveListings = listings => ({

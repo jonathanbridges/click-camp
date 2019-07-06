@@ -25,8 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //AJAX testing//
-  window.fetchListing = fetchListing
-  window.fetchListings = fetchListings
+  // window.fetchListing = fetchListing
+  // window.fetchListings = fetchListings
   //End Testing
 
   //Redux Testing
