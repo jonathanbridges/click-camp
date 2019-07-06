@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import listing_index_container from './listing_index_container';
 
 const ListingIndexItem = ({ listing }) => {
-  debugger
+  // debugger
   return (
     <li>
-      <p>{listing.id}</p>
-      <p>{listing.name}</p>
-      <p>{listing.description}</p>
+      {/* <p>{listing.id}</p> */}
+      <big>{listing.name}</big>
+      <br/>
+      <small>{listing.description}</small>
+      <img src={listing.photoUrl} />
         {/* <img src={listing.photos[0]} />   */}
       {/* <Link to={`/events/${event.id}`}>{event.description}</Link>
       <Link to={`/events/${event.id}/edit`}>Edit</Link>
