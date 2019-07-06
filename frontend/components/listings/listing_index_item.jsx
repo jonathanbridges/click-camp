@@ -10,7 +10,7 @@ const ListingIndexItem = ({ listing }) => {
       <big>{listing.name}</big>
       <br/>
       <small>{listing.description}</small>
-      <img src={listing.photoUrl} />
+      <img src={listing.photoUrls[0]} />
         {/* <img src={listing.photos[0]} />   */}
       {/* <Link to={`/events/${event.id}`}>{event.description}</Link>
       <Link to={`/events/${event.id}/edit`}>Edit</Link>

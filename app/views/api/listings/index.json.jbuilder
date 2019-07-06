@@ -1,4 +1,4 @@
 json.array! @listings do |listing|
   json.extract! listing, :id, :name, :description
-  json.photoUrl url_for(listing.photos[0])
+  json.photoUrls listing.photos.map { |file| url_for(file) }
 end

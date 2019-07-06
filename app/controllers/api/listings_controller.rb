@@ -18,7 +18,7 @@ class Api::ListingsController < ApplicationController
       :name,
       :description,
       :cost,
-      :photo
+      photos: []
     )
   end
 
