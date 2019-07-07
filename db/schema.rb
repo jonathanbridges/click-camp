@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_05_210328) do
+ActiveRecord::Schema.define(version: 2019_07_06_234856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,17 +44,15 @@ ActiveRecord::Schema.define(version: 2019_07_05_210328) do
     t.integer "cost", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["host_id"], name: "index_listings_on_host_id", unique: true
-    t.index ["location_id"], name: "index_listings_on_location_id", unique: true
+    t.index ["host_id"], name: "index_listings_on_host_id"
+    t.index ["location_id"], name: "index_listings_on_location_id"
   end
 
   create_table "locations", force: :cascade do |t|
-    t.integer "listing_id", null: false
     t.float "lat", null: false
     t.float "long", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["listing_id"], name: "index_locations_on_listing_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
