@@ -17,7 +17,7 @@ const ListingIndexItem = ({ listing }) => {
           <big>{listing.name}</big>
         </div>
         <div className="tile-description">
-          <small>{listing.description}</small>
+          <small className="desc-color">{listing.description}</small>
         </div>
         <div className="tile-info">
           <div className="tile-info-left">

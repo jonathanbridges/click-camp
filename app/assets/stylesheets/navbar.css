@@ -1,6 +1,7 @@
 
 * {
 	box-sizing: border-box;
+	margin: 0;
 }
 	
 /* Modal Styles */
@@ -61,7 +62,7 @@
 }
 
 .login-form-box big {
-	margin-bottom: 10px;
+	margin-bottom: 2rem;
 	font-weight: 700;
 	font-size: 1.5rem;
 }
@@ -70,6 +71,7 @@
 	color: #757575;
 	font-weight: 400;
 	font-size: 1rem;
+	margin-bottom: 1rem;
 }
 
 input.login-input {
@@ -110,7 +112,7 @@ input.login-input {
 	transition: all 0.25s ease 0s;
   padding: 14px;
   box-shadow: 0px 0px 0px 1px #40d9ac;
-	margin: .5em;
+	margin: .7rem;
 	outline: solid 10px transparent;
 }
 
@@ -156,9 +158,9 @@ a.nav-home {
 	font-size: 1.75rem;
 }
 
-.main-nav .right {
+/* .main-nav .right {
 	margin-right: 0.5rem;
-}
+} */
 
 ul.errors {
 	list-style: none;

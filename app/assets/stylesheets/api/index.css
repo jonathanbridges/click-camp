@@ -12,6 +12,10 @@
   align-items: center;
 }
 
+.index-discover-campgrounds {
+  margin-bottom: 2rem;
+}
+
 .home-wrapper {
   width: 66%;
   margin-top: 6rem;
@@ -159,6 +163,7 @@
 
 .tile-description {
   flex-grow: 1;
+  color: #757575;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -166,7 +171,6 @@
 
 .tile-description small {
   font-size: .9rem;
-  color: #757575;
 }
 
 .tile-info {
@@ -182,9 +186,10 @@
 }
 
 .recommend-text {
-  color: #757575
+  color: #757575;
 }
 
 .price {
   font-size: 1.05rem;
 }
+

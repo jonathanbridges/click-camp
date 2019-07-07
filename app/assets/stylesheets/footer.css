@@ -1,0 +1,10 @@
+.main-footer {
+  /* height: 1000px; */
+  background-color: #41305C;
+  background-position: bottom center;
+  background-repeat: repeat-x;
+  background-size: auto 199px;
+  padding-top: 2rem;
+  color: #fff;
+  font-size: 1rem;
+}

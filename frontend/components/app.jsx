@@ -11,18 +11,30 @@ import Modal from './modal/modal';
 
 const App = () => (
   <div>
+    {/* Static NavBar */}
     <nav className="main-nav">
       <Modal />
       <div className="left">
         <Link className="nav-home" to="/">CLICKCAMP</Link>
-
       </div>
       <div className="right">
         <GreetingContainer />
       </div>
     </nav>
+
+    {/* Main Components */}
     <Redirect to="/" />
     <Route exact path="/" component={ListingIndexContainer} />
+
+    {/* Static Footer */}
+    <footer>
+      <section className="main-footer">
+        <div className="footer-content">
+          <div className="footer-left"></div>
+          <div className="footer-right"></div>
+        </div>
+      </section>
+    </footer>
   </div>
 );
 
