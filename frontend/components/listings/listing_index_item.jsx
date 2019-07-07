@@ -3,19 +3,45 @@ import { Link } from 'react-router-dom';
 import listing_index_container from './listing_index_container';
 
 const ListingIndexItem = ({ listing }) => {
-  // debugger
+
+  const imgStyle = {
+    backgroundImage: `url(${listing.photoUrls[0]})`,
+  };
+
   return (
-    <li>
-      {/* <p>{listing.id}</p> */}
-      <big>{listing.name}</big>
-      <br/>
-      <small>{listing.description}</small>
-      <img src={listing.photoUrls[0]} />
-        {/* <img src={listing.photos[0]} />   */}
-      {/* <Link to={`/events/${event.id}`}>{event.description}</Link>
-      <Link to={`/events/${event.id}/edit`}>Edit</Link>
-      <button onClick={deleteEvent(event.id)}>Delete</button> */}
-    </li>
+
+    <div className="campground-tile">
+      <div className="tile-picture" style={imgStyle}></div>
+      <div className="tile-name">
+        <big>{listing.name}</big>
+      </div>
+      <div className="tile-description">
+        <small>{listing.description}</small>
+      </div>
+      <div className="tile-info">
+        <div className="tile-info-left">
+          <div className="tile-recommend"></div>
+          <i>thumbs up</i>
+          <strong>89%</strong>
+          <span> - 99 Reviews</span>
+        </div>
+        <div className="tile-info-right">
+          <div className="price"></div>
+        </div>
+      </div>
+    </div>
+
+
+    // <li>
+    //   {/* <p>{listing.id}</p> */}
+    //   <big>{listing.name}</big>
+    //   <br/>
+    //   <img src={listing.photoUrls[0]} />
+      //   {/* <img src={listing.photos[0]} />   */}
+      // {/* <Link to={`/events/${event.id}`}>{event.description}</Link>
+      // <Link to={`/events/${event.id}/edit`}>Edit</Link>
+      // <button onClick={deleteEvent(event.id)}>Delete</button> */}
+    // </li>
   )
 };
 

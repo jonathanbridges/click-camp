@@ -20,6 +20,8 @@ class ListingIndex extends React.Component {
             <big>campsites, ranches, vineyards, public parks, and more.</big>
           </div>
         </div>
+
+        {/* Search Bar */}
         <div className="search-wrapper">
           <form className="search-main">
             <div className="listing-search-input">
@@ -46,10 +48,19 @@ class ListingIndex extends React.Component {
             <button className= "search-btn" type="submit">Search</button>
           </form>
         </div>
-        <div>
-        <ul>
-          {listings}
-        </ul>
+        <div className="campgrounds-wrapper">
+
+        {/* Campsite Previews  */}
+        <section className="index-discover-campgrounds">
+          <big className="discover-subtext">Discover Camping...</big>
+          <div className="index-dc-row">
+            {listings}
+          </div>
+
+        </section>
+        {/* <ul>
+        
+        </ul> */}
         </div>
       </div>
     );

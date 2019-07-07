@@ -14,6 +14,7 @@
 
 .home-wrapper {
   width: 66%;
+  margin-top: 6rem;
   margin-bottom: 2rem;
 }
 
@@ -26,7 +27,8 @@
   width: 66%;
   height: 100px;
   padding: 17px;
-  box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1)
+  box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
+  margin-bottom: 4rem;
 }
 
 .search-main {
@@ -99,4 +101,34 @@
 
 .input-i-chev {
   padding-left: 0.5rem;
+}
+
+/* Campground Tiles Styles */
+
+.campgrounds-wrapper {
+  width: 66%;
+}
+
+.index-dc-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin-top: 2rem;
+}
+
+.campground-tile {
+  width: 32%;
+  padding-bottom: 1rem;
+}
+
+.tile-picture {
+  height: 200px;
+  background-color: #ebebeb;
+  background-position: center center;
+  border-radius: 4px 4px 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
 }
