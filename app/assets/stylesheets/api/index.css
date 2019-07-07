@@ -1,0 +1,112 @@
+/* @media screen and (min-width: 600px) {
+  .index-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+} */
+
+.index {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-wrapper {
+  width: 66%;
+  margin-bottom: 2rem;
+}
+
+.home-title {
+  font-size: 2.6rem;
+  margin-bottom: 1rem;
+}
+
+.search-wrapper {
+  width: 66%;
+  height: 100px;
+  padding: 17px;
+  box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1)
+}
+
+.search-main {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.listing-search-input {
+  flex-grow: 1;
+  border: 1px solid #ebebeb;
+  box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.1);
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.listing-search-input:focus {
+  outline: none;
+}
+
+#listings {
+  height: 66px;
+  width: 100%;
+  border: none;
+}
+
+.dates-btn, .categories-btn {
+  display: flex;
+  align-items: center;
+  margin-left: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border: 1px solid #ebebeb;
+  box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.1);
+  height: 66px;
+}
+
+.search-btn {
+  width: 110px;
+  margin-left: 1rem;
+  height: 66px;
+  background-color: #40d9ac;
+	color: white;
+	font-size: 1rem;
+	cursor: pointer;
+	transition: all 0.25s ease 0s;
+	border: 1px solid #40d9ac;
+	font-weight: 700;
+}
+
+.search-btn:hover {
+  width: 110px;
+  margin-left: 1rem;
+  height: 66px;
+  background-color:white;
+	color: #40d9ac;
+	transition: all 0.25s ease 0s;
+	border: 3px solid #40d9ac;
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+.signup-btn {
+	background-color: white;
+	color: #40d9ac;
+	font-size: 1rem;
+	transition: all 0.25s ease 0s;
+  padding: 14px;
+  box-shadow: 0px 0px 0px 1px #40d9ac;
+	margin: .5em;
+	outline: solid 10px transparent;
+}
+
+.signup-btn:hover {
+	background-color: #40d9ac;
+	color: white;
+	font-size: 1rem;
+	transition: all 0.25s ease 0s;
+  padding: 14px;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px 3px #40d9ac;
+}
