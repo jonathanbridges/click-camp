@@ -119,16 +119,72 @@
 }
 
 .campground-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 32%;
-  padding-bottom: 1rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  max-height: 320px;
+  cursor: pointer;
+  height: 320px;
+  margin-bottom: 1rem;
+}
+
+.campground-tile:hover {
+  background-color: #f9f9f9;
+	transition: all 0.075s ease 0s;
 }
 
 .tile-picture {
-  height: 200px;
+  min-height: 200px;
   background-color: #ebebeb;
   background-position: center center;
   border-radius: 4px 4px 0 0;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100%;
+}
+
+.tile-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 0.6rem;
+}
+
+.tile-name {
+  font-size: 1rem;
+}
+
+.tile-description {
+  flex-grow: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tile-description small {
+  font-size: .9rem;
+  color: #757575;
+}
+
+.tile-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.tile-recommend {
+  color: #40d9ac;
+  font-size: .9rem;
+}
+
+.recommend-text {
+  color: #757575
+}
+
+.price {
+  font-size: 1.05rem;
 }
