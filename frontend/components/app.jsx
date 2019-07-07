@@ -6,7 +6,7 @@ import { Route } from 'react-router';
 import ListingIndexContainer from './listings/listing_index_container'
 // import LoginFormContainer from '../components/session/session_form/login_form_container'
 // import SignupFormContainer from '../components/session/session_form/signup_form_container'
-// import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal/modal';
 
 const App = () => (
@@ -16,7 +16,6 @@ const App = () => (
       <div className="left">
         <Link className="nav-home" to="/">CLICKCAMP</Link>
 
-        {/* <a className ="nav-home" href="/">CLICKCAMP</a> */}
       </div>
       <div className="right">
         <GreetingContainer />

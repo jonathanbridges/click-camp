@@ -27,6 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'pry-rails'
 gem 'aws-sdk-s3'
+# gem 'font-awesome-rails', github: "bokmann/font-awesome-rails", branch: "master"
 
 
 # Use ActiveStorage variant

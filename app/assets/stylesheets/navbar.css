@@ -78,6 +78,7 @@ input.login-input {
 }
 
 .btn-main {
+	height: 50px;
 	background-color: #40d9ac;
 	color: white;
 	font-size: 1rem;
@@ -89,6 +90,7 @@ input.login-input {
 }
 
 .btn-main:hover {
+	height: 50px;
 	background-color:white;
 	color: #40d9ac;
 	transition: all 0.25s ease 0s;
@@ -157,6 +159,7 @@ ul.errors {
 }
 
 .demo-login-btn {
+	height: 50px;
 	border: none;
 	background-color: white;
 	color: #40d9ac;
@@ -169,6 +172,7 @@ ul.errors {
 }
 
 .demo-login-btn:hover {
+	height: 50px;
 	background-color: #40d9ac;
 	color: white;
 	transition: all 0.25s ease 0s;

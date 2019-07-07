@@ -23,17 +23,25 @@ class ListingIndex extends React.Component {
         <div className="search-wrapper">
           <form className="search-main">
             <div className="listing-search-input">
-              {/* <span className=""></span> */}
-              <input type="search" name="listings" id="listings" autocomplete="off" spellcheck="false" dir="auto" placeholder="San Francisco" />
+              <span className="input-i">
+                <i className="fas fa-search"></i>
+              </span>
+              <input type="search" name="listings" id="listings" autoComplete="off" spellCheck="false" dir="auto" placeholder="San Francisco" />
             </div>
             <div className="dates-btn">
-              <span className="calendar"></span>
+              <span className="input-i">
+                <i className="far fa-calendar"></i>
+              </span>
               <span className="value">Enter Dates </span>
             </div>
             <div className="categories-btn">
-              <span className="tent"></span>
-              <span className="value">All camping </span>
-              <span className="chevron"></span>
+              <span className="input-i">
+                <i className="fas fa-campground"></i>
+              </span>
+              <span className="value">All camping</span>
+              <span className="input-i-chev">
+                <i className="fas fa-chevron-down"></i>   
+              </span>         
             </div>
             <button className= "search-btn" type="submit">Search</button>
           </form>
