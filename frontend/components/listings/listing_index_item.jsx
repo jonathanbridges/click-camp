@@ -36,13 +36,6 @@ const ListingIndexItem = ({ listing }) => {
       </div>
     </div>
 
-
-    // <li>
-    //   {/* <p>{listing.id}</p> */}
-    //   <big>{listing.name}</big>
-    //   <br/>
-    //   <img src={listing.photoUrls[0]} />
-      //   {/* <img src={listing.photos[0]} />   */}
       // {/* <Link to={`/events/${event.id}`}>{event.description}</Link>
       // <Link to={`/events/${event.id}/edit`}>Edit</Link>
       // <button onClick={deleteEvent(event.id)}>Delete</button> */}
