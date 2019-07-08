@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'open-uri'
+
 User.delete_all
 Location.delete_all
 Listing.delete_all
@@ -74,7 +76,8 @@ listing1 = Listing.create!(
   cost: 45
 )
 
-listing1.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-1-1.jpeg"), filename: "site-1-1.jpeg")
+# listing1.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-1-1.jpeg"), filename: "site-1-1.jpeg")
+listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-1.jpeg'), filename: "site-1-1.jpeg")
 
 
 listing2 = Listing.create!(
@@ -85,7 +88,8 @@ listing2 = Listing.create!(
   cost: 25
 )
 
-listing2.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-2-1.jpeg"), filename: "site-2-1.jpeg")
+# listing2.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-2-1.jpeg"), filename: "site-2-1.jpeg")
+listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-1.jpeg'), filename: "site-2-1.jpeg")
 
 
 listing3 = Listing.create!(
@@ -96,7 +100,9 @@ listing3 = Listing.create!(
   cost: 65
 )
 
-listing3.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-3-1.jpeg"), filename: "site-3-1.jpeg")
+# listing3.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-3-1.jpeg"), filename: "site-3-1.jpeg")
+listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-1.jpeg'), filename: "site-3-1.jpeg")
+
 
 listing4 = Listing.create!(
   host_id: host3.id, 
@@ -106,7 +112,9 @@ listing4 = Listing.create!(
   cost: 75
 )
 
-listing4.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-4-1.jpeg"), filename: "site-4-1.jpeg")
+# listing4.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-4-1.jpeg"), filename: "site-4-1.jpeg")
+listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-1.jpeg'), filename: "site-4-1.jpeg")
+
 
 listing5 = Listing.create!(
   host_id: host4.id, 
@@ -116,7 +124,9 @@ listing5 = Listing.create!(
   cost: 45
 )
 
-listing5.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-5-1.jpeg"), filename: "site-5-1.jpeg")
+# listing5.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-5-1.jpeg"), filename: "site-5-1.jpeg")
+listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-1.jpeg'), filename: "site-5-1.jpeg")
+
 
 listing6 = Listing.create!(
   host_id: host4.id, 
@@ -126,4 +136,5 @@ listing6 = Listing.create!(
   cost: 25
 )
 
-listing6.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-6-1.jpeg"), filename: "site-6-1.jpeg")
+# listing6.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-6-1.jpeg"), filename: "site-6-1.jpeg")
+listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-1.jpeg'), filename: "site-6-1.jpeg")

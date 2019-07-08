@@ -6,10 +6,22 @@ class DisoverListingIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchListings()
+
+    const mapOptions = {
+      center: { lat: 37.7758, lng: -122.435 }, // this is SF
+      zoom: 13,
+      mapTypeControl: false,
+      rotateControl: false,
+      fullscreenControl: false,
+      streetViewControl: false,
+      mapTypeId: 'terrain'
+    };
+
+    this.map = new google.maps.Map(this.mapNode, mapOptions);
   }
 
   render() {
-    let listings = this.props.listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} id="test" />)
+    let listings = this.props.listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
 
     return (
       <div className="index">
@@ -44,11 +56,13 @@ class DisoverListingIndex extends React.Component {
           {/* Campgrounds  */}
           <div className="campgrounds-wrapper">
             <section className="index-discover-campgrounds" id="discover-campgrounds">
-              <div className="index-dc-row">
+              <div className="index-dc-row" id="campsites-idx">
                 {listings}
               </div>
             </section>
           </div>
+          {/* Map */}
+          <div ref={map => this.mapNode = map} className="discover-map"></div>
         </div>
       </div>
     );

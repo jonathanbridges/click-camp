@@ -13,9 +13,6 @@ import Footer from './footer/footer'
 
 const App = () => (
   <div>
-    {/* Unknown Wildcard Redirect */}
-    <Redirect to="/" />
-
     {/* Static NavBar */}
     <nav className="main-nav">
       <Modal />
@@ -37,6 +34,8 @@ const App = () => (
 
     {/* Splashpage Footer */}
     <Route exact path="/" component={Footer} />    
+    {/* Unknown Wildcard Redirect */}
+    {/* <Redirect to="/" /> */}
   </div>
 );
 

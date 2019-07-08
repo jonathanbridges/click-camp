@@ -1,6 +1,6 @@
 footer {
   background-color: #41305C;
-  background-image: url('mountain.svg');
+  background-image: url('https://app-name-seeds.s3-us-west-1.amazonaws.com/mountain.svg');
   background-position: bottom center;
   background-repeat: repeat-x;
 }

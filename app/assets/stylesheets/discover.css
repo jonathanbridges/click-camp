@@ -1,6 +1,8 @@
 #discover-search {
   position: fixed;
   top: 70px;
+  background-color: white;
+  min-width: 1280px;
 }
 
 #discover-campgrounds {
@@ -8,5 +10,25 @@
 }
 
 .discover-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: auto;
   width: 66%;
+  min-width: 1280px;
+}
+
+#campsites-idx .campground-tile {
+  width: 49%;
+}
+
+.discover-map {
+  margin-top: 12rem;
+  margin-left: 1rem;
+  position: sticky !important;
+  top: 0;
+  align-self: flex-start;
+  height: 400px;
+  width: 100%;
+  border-radius: .2rem;
 }
