@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Route } from 'react-router';
+import { Route, Switch } from 'react-router';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 import Modal from './modal/modal';
@@ -30,12 +30,13 @@ const App = () => (
     <Route exact path="/" component={SplashListingIndexContainer} />
 
     {/* Dicover page Listings */}
-    <Route exact path="/discover" component={DiscoverListingIndexContainer} />
-
+    <Switch>
+      <Route exact path="/discover" component={DiscoverListingIndexContainer} />
+      <Redirect to="/" />
+    </ Switch>
     {/* Splashpage Footer */}
     <Route exact path="/" component={Footer} />    
     {/* Unknown Wildcard Redirect */}
-    {/* <Redirect to="/" /> */}
   </div>
 );
 
