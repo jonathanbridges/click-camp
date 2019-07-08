@@ -7,6 +7,7 @@ import Modal from './modal/modal';
 import GreetingContainer from './greeting/greeting_container';
 import SplashListingIndexContainer from './listings/splash_listing_index_container'
 import DiscoverListingIndexContainer from './listings/discover_listing_index_container';
+import ListingsShowContainer from './listings/listing_show_container'
 import Footer from './footer/footer'
 
 // import SplashListingIndex from './listings/splash_listing_index';
@@ -26,14 +27,18 @@ const App = () => (
 
     {/* Main Components */}
 
-    {/* Splash page Listings */}
+    {/* Splash Page Listings */}
     <Route exact path="/" component={SplashListingIndexContainer} />
 
-    {/* Dicover page Listings */}
+    {/* Dicover Page Listings */}
     <Switch>
       <Route exact path="/discover" component={DiscoverListingIndexContainer} />
       <Redirect to="/" />
     </ Switch>
+
+    {/* Listing Show Page */}
+    <Route exact path="/discover/:listingId" component={ListingsShowContainer} />
+
     {/* Splashpage Footer */}
     <Route exact path="/" component={Footer} />    
     {/* Unknown Wildcard Redirect */}

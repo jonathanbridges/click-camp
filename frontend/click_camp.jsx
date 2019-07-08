@@ -32,8 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
   //Redux Testing
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.fetchListings = fetchListings
-  window.fetchListing = fetchListing
+  // window.fetchListings = fetchListings
+  // window.fetchListing = fetchListing
 
   //End Testing
 

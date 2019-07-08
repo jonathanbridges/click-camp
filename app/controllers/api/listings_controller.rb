@@ -8,7 +8,8 @@ class Api::ListingsController < ApplicationController
 
   def show
     @listing = Listing.find(params[:id])
-    render json: @listing
+    # render json: @listing
+    render :show
   end
 
   def listing_params
