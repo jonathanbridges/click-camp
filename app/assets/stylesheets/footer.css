@@ -1,6 +1,8 @@
 footer {
   background-color: #41305C;
-  color: white;
+  background-image: url('mountain.svg');
+  background-position: bottom center;
+  background-repeat: repeat-x;
 }
 
 .main-footer {
@@ -43,6 +45,7 @@ footer {
   border-top: 5px solid #fde0ab;
   background-color: #3e7e95;
   color: white;
+  min-height: 2rem;
 }
 
 .footer-secondary-content {
