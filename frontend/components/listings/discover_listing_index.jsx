@@ -24,7 +24,7 @@ class DisoverListingIndex extends React.Component {
     let listings = this.props.listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
 
     return (
-      <div className="index">
+      <div className="index" id="discover-index">
         {/* Search Bar */}
         <div className="search-wrapper" id="discover-search">
           <form className="search-main">
@@ -54,7 +54,7 @@ class DisoverListingIndex extends React.Component {
         </div>
         <div className="discover-content-wrapper">
           {/* Campgrounds  */}
-          <div className="campgrounds-wrapper">
+          <div className="campgrounds-wrapper" id="discover-campgrounds-wrapper">
             <section className="index-discover-campgrounds" id="discover-campgrounds">
               <div className="index-dc-row" id="campsites-idx">
                 {listings}
@@ -62,7 +62,9 @@ class DisoverListingIndex extends React.Component {
             </section>
           </div>
           {/* Map */}
-          <div ref={map => this.mapNode = map} className="discover-map"></div>
+          <div className="map-wrapper">
+            <div ref={map => this.mapNode = map} className="discover-map" ></div>
+          </div>
         </div>
       </div>
     );

@@ -1,3 +1,7 @@
+#discover-index {
+  height: 100vh;
+}
+
 #discover-search {
   position: fixed;
   top: 70px;
@@ -6,7 +10,7 @@
 }
 
 #discover-campgrounds {
-  margin-top: 12rem;
+  margin-top: 10rem;
 }
 
 .discover-content-wrapper {
@@ -23,12 +27,31 @@
 }
 
 .discover-map {
+  position: relative;
+  overflow: hidden;
   margin-top: 12rem;
   margin-left: 1rem;
-  position: sticky !important;
   top: 0;
-  align-self: flex-start;
-  height: 400px;
+  height: 100vh;
   width: 100%;
-  border-radius: .2rem;
+  border-radius: .3rem;
+}
+
+#discover-campgrounds-wrapper {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+.map-wrapper {
+  width: 50%;
+  height: fit-content;
 }
