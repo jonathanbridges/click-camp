@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  overflow: auto;
+  overflow: hidden;
   width: 66%;
   min-width: 1280px;
 }
@@ -27,14 +27,13 @@
 }
 
 .discover-map {
-  position: relative;
+  position: sticky !important;
   overflow: hidden;
   margin-top: 12rem;
   margin-left: 1rem;
   top: 0;
   height: 100vh;
   width: 100%;
-  border-radius: .3rem;
 }
 
 #discover-campgrounds-wrapper {
@@ -54,4 +53,8 @@
 .map-wrapper {
   width: 50%;
   height: fit-content;
+}
+
+.map-bottom-spacer {
+  height: 1rem;
 }

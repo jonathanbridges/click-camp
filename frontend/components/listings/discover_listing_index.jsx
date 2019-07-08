@@ -66,6 +66,7 @@ class DisoverListingIndex extends React.Component {
             <div ref={map => this.mapNode = map} className="discover-map" ></div>
           </div>
         </div>
+        <div className="map-bottom-spacer"></div>
       </div>
     );
   }
