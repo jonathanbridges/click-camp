@@ -72,7 +72,18 @@
   border: 1px solid #ebebeb;
   box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.1);
   height: 66px;
+  cursor: pointer;
+  transition: all 0.2s ease 0s;
 }
+
+.dates-btn:hover, .categories-btn:hover {
+  border-color: #ebebeb;
+  background-color: transparent;
+  box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.1);
+  transition: all 0.2s ease 0s;
+}
+
+
 
 .search-btn {
   width: 110px;
