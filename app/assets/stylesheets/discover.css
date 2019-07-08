@@ -20,6 +20,7 @@
   overflow: hidden;
   width: 66%;
   min-width: 1280px;
+  min-height: 100%
 }
 
 #campsites-idx .campground-tile {
@@ -52,7 +53,8 @@
 
 .map-wrapper {
   width: 50%;
-  height: fit-content;
+  height: 98.3%;
+  overflow: hidden;
 }
 
 .map-bottom-spacer {
