@@ -1,25 +1,30 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
+import ListingShowDetails from './listing_show_details';
 
 class ListingShow extends React.Component {
 
   componentDidMount() {
-    debugger
     this.props.fetchListing(this.props.match.params.listingId)
   }
 
   render() {
 
+    let photos;
+    let details;
+    if (this.props.listing === undefined) {
+      photos = <li>nothing</li>;
+      details = "loading"
+    } else {
+      photos = this.props.listing.photoUrls.map((photo, idx) => <li key={idx}><img src={photo} /></li>)
+      details = < ListingShowDetails listing = { this.props.listing } />
+    }
 
     return (
-      <h2>This is working</h2>
-      
-      // <div>
-      //   <h1>{this.props.listing.name}</h1>
-      //   <h2>{this.props.listing.description}</h2>
-      //   <h2>{this.props.listing.cost}</h2>
-      //   {/* <Link to='/discover'>Index</Link> */}
-      // </div>
+      <div>
+        <div>{photos}</div>
+        <div>{details}</div>
+      </div>
     );
   }
 }

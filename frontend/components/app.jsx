@@ -33,11 +33,11 @@ const App = () => (
     {/* Dicover Page Listings */}
     <Switch>
       <Route exact path="/discover" component={DiscoverListingIndexContainer} />
+      <Route exact path="/discover/:listingId" component={ListingsShowContainer} />
       <Redirect to="/" />
     </ Switch>
 
     {/* Listing Show Page */}
-    <Route exact path="/discover/:listingId" component={ListingsShowContainer} />
 
     {/* Splashpage Footer */}
     <Route exact path="/" component={Footer} />    

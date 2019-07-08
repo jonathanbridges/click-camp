@@ -5,7 +5,6 @@ import ListingShow from './listing_show';
 const mapStateToProps = (state, { match }) => {
   let listingId = parseInt(match.params.listingId);
   let listing = state.entities.listings[listingId];
-  debugger
   return ({listing})
 
   // TODO: Selectors for finding Listing details:
