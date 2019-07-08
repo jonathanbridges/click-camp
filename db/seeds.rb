@@ -78,6 +78,11 @@ listing1 = Listing.create!(
 
 # listing1.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-1-1.jpeg"), filename: "site-1-1.jpeg")
 listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-1.jpeg'), filename: "site-1-1.jpeg")
+listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-2.jpeg'), filename: "site-1-2.jpeg")
+listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-3.jpeg'), filename: "site-1-3.jpeg")
+listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-4.jpeg'), filename: "site-1-4.jpeg")
+listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-5.jpeg'), filename: "site-1-5.jpeg")
+listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-6.jpeg'), filename: "site-1-6.jpeg")
 
 
 listing2 = Listing.create!(
