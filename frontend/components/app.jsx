@@ -30,18 +30,20 @@ const App = () => (
     {/* Splash Page Listings */}
     <Route exact path="/" component={SplashListingIndexContainer} />
 
-    {/* Dicover Page Listings */}
     <Switch>
+      {/* Dicover Page Listings */}
       <Route exact path="/discover" component={DiscoverListingIndexContainer} />
+      {/* Listing Show Page */}
       <Route exact path="/discover/:listingId" component={ListingsShowContainer} />
+      {/* Unknown Wildcard Redirect */}
       <Redirect to="/" />
     </ Switch>
 
-    {/* Listing Show Page */}
+    {/* Listing Show Page Footer */}
+    <Route exact path="/discover/:listingId" component={Footer} />    
 
     {/* Splashpage Footer */}
     <Route exact path="/" component={Footer} />    
-    {/* Unknown Wildcard Redirect */}
   </div>
 );
 
