@@ -1,0 +1,12 @@
+#discover-search {
+  position: fixed;
+  top: 70px;
+}
+
+#discover-campgrounds {
+  margin-top: 12rem;
+}
+
+.discover-content-wrapper {
+  width: 66%;
+}

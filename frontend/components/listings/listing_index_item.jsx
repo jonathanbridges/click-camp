@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import listing_index_container from './listing_index_container';
+import SplashListingIndexContainer from './splash_listing_index_container';
 
 const ListingIndexItem = ({ listing }) => {
 

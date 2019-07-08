@@ -2,11 +2,12 @@ import React from 'react';
 import ListingIndexItem from './listing_index_item';
 import { Link } from 'react-router-dom';
 
-class ListingIndex extends React.Component {
+class SplashListingIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchListings()
   }
+  
   render() {
     let listings = this.props.listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
 
@@ -67,4 +68,4 @@ class ListingIndex extends React.Component {
   }
 }
 
-export default ListingIndex;
+export default SplashListingIndex;
