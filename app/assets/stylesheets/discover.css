@@ -20,7 +20,8 @@
   overflow: hidden;
   width: 66%;
   min-width: 1280px;
-  min-height: 100%
+  min-height: 100%;
+  padding: 0 1rem;
 }
 
 #campsites-idx .campground-tile {

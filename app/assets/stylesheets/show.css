@@ -43,6 +43,9 @@
 }
 
 .show-content-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 40%;
   position: relative;
   top: -2rem;
@@ -50,6 +53,40 @@
   background-color: white;
   border: 1px solid #ebebeb;
   box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+
+.show-dates {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 50px;
+  margin: 1rem;
+}
+
+.price {
+  font-size: 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.show-bold {
+  font-weight: bolder;
+}
+
+#show-book {
+  width: 100%;
+  text-align: center;
+}
+
+.start-date {
+  display: flex;
+  flex-direction: column;
+}
+
+.end-date {
+  display: flex;
+  flex-direction: column;
 }
 
 .show-name {
@@ -81,6 +118,7 @@
 }
 
 .show-description {
+  padding: 1rem 0;
   font-size: 1rem;
 }
 

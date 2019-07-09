@@ -25,7 +25,18 @@ const ListingShowDetails = ({ listing }) => {
       <div className="show-content-right">
         <div className="price">
           <strong>{`$${listing.cost}/night`}</strong>
-        </div>  
+        </div> 
+        <div className="show-dates">
+          <div className="start-date">
+            <div className="show-bold">Check In</div>
+            <span>Select Date</span>
+          </div>
+          <div className="end-date">
+            <div className="show-bold">Check Out</div>
+            <span>Select Date</span>
+          </div>
+        </div>
+        <a class="btn-main" id="show-book">Instant Book</a>
       </div>
     </div>
   )
