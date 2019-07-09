@@ -61,9 +61,6 @@ class SplashListingIndex extends React.Component {
           </div>
 
         </section>
-        {/* <ul>
-        
-        </ul> */}
         </div>
       </div>
     );
