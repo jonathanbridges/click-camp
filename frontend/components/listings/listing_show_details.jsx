@@ -19,7 +19,14 @@ const ListingShowDetails = ({ listing }) => {
           <strong>{` ${Math.floor(Math.random() * (1 + 100 - 85)) + 85}%`}</strong>
           <span className="recommend-text"><strong className="strong-verified"> Recommend</strong>{` - ${Math.floor(Math.random() * (1 + 200 - 12)) + 12} Reviews`}</span>
         </div>
-        <p className="show-description" id="show-small">{listing.description}</p>
+        <div className="show-host-desc">
+          <img className="host-ava" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/host1.jpg" alt=""/>
+          <div className="host-details">
+            <p className="hosted-by">Hosted by</p>
+            <p className="host-name">Myrna H.</p>
+          </div>
+          <p className="show-description" id="show-small">{listing.description}</p>
+        </div>
           
       </div>
       <div className="show-content-right">
