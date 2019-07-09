@@ -20,7 +20,7 @@ class ListingShow extends React.Component {
     let photos;
     let details;
     if (this.props.listing === undefined) {
-      photos = <li></li>;
+      photos = <div className="show-img-container"></div>
       details = ""
     } else {
       photos = this.props.listing.photoUrls.map((photo, idx) => <div className="show-img-container" key={`img-${idx}`}><img src={photo} style={imgStyle} /></div>)

@@ -10,7 +10,7 @@ const ListingShowDetails = ({ listing }) => {
           <div className="show-name">
             <h1>{listing.name}</h1>
             <div className="verified">
-              <i class="fas fa-check"></i>
+              <i className="fas fa-check"></i>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@ const ListingShowDetails = ({ listing }) => {
             <span>Select Date</span>
           </div>
         </div>
-        <a class="btn-main" id="show-book">Instant Book</a>
+        <a className="btn-main" id="show-book">Instant Book</a>
       </div>
     </div>
   )
