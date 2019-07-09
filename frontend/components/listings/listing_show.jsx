@@ -6,7 +6,8 @@ import Carousel from 'nuka-carousel';
 class ListingShow extends React.Component {
 
   componentDidMount() {
-    this.props.fetchListing(this.props.match.params.listingId)
+    window.scrollTo(0, 0);
+    this.props.fetchListing(this.props.match.params.listingId);
   }
 
   render() {

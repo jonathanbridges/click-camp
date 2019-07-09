@@ -76,13 +76,25 @@ listing1 = Listing.create!(
   cost: 45
 )
 
-# listing1.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-1-1.jpeg"), filename: "site-1-1.jpeg")
-listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-1.jpeg'), filename: "site-1-1.jpeg")
-listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-2.jpeg'), filename: "site-1-2.jpeg")
-listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-3.jpeg'), filename: "site-1-3.jpeg")
-listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-4.jpeg'), filename: "site-1-4.jpeg")
-listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-5.jpeg'), filename: "site-1-5.jpeg")
-listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-6.jpeg'), filename: "site-1-6.jpeg")
+photo_1_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-1.jpeg')
+listing1.photos.attach(io: photo_1_1, filename: "site-1-1.jpeg")
+photo_1_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-2.jpeg')
+listing1.photos.attach(io: photo_1_2, filename: "site-1-2.jpeg")
+photo_1_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-3.jpeg')
+listing1.photos.attach(io: photo_1_3, filename: "site-1-3.jpeg")
+photo_1_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-4.jpeg')
+listing1.photos.attach(io: photo_1_4, filename: "site-1-4.jpeg")
+photo_1_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-5.jpeg')
+listing1.photos.attach(io: photo_1_5, filename: "site-1-5.jpeg")
+photo_1_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-6.jpeg')
+listing1.photos.attach(io: photo_1_6, filename: "site-1-6.jpeg")
+
+# listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-1.jpeg'), filename: "site-1-1.jpeg")
+# listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-2.jpeg'), filename: "site-1-2.jpeg")
+# listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-3.jpeg'), filename: "site-1-3.jpeg")
+# listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-4.jpeg'), filename: "site-1-4.jpeg")
+# listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-5.jpeg'), filename: "site-1-5.jpeg")
+# listing1.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-6.jpeg'), filename: "site-1-6.jpeg")
 
 
 listing2 = Listing.create!(
@@ -93,13 +105,25 @@ listing2 = Listing.create!(
   cost: 25
 )
 
-# listing2.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-2-1.jpeg"), filename: "site-2-1.jpeg")
-listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-1.jpeg'), filename: "site-2-1.jpeg")
-listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-2.jpeg'), filename: "site-2-2.jpeg")
-listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-3.jpeg'), filename: "site-2-3.jpeg")
-listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-4.jpeg'), filename: "site-2-4.jpeg")
-listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-5.jpeg'), filename: "site-2-5.jpeg")
-listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-6.jpeg'), filename: "site-2-6.jpeg")
+photo_2_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-1.jpeg')
+listing2.photos.attach(io: photo_2_1, filename: "site-2-1.jpeg")
+photo_2_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-2.jpeg')
+listing2.photos.attach(io: photo_2_2, filename: "site-2-2.jpeg")
+photo_2_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-3.jpeg')
+listing2.photos.attach(io: photo_2_3, filename: "site-2-3.jpeg")
+photo_2_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-4.jpeg')
+listing2.photos.attach(io: photo_2_4, filename: "site-2-4.jpeg")
+photo_2_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-5.jpeg')
+listing2.photos.attach(io: photo_2_5, filename: "site-2-5.jpeg")
+photo_2_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-6.jpeg')
+listing2.photos.attach(io: photo_2_6, filename: "site-2-6.jpeg")
+
+# listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-1.jpeg'), filename: "site-2-1.jpeg")
+# listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-2.jpeg'), filename: "site-2-2.jpeg")
+# listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-3.jpeg'), filename: "site-2-3.jpeg")
+# listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-4.jpeg'), filename: "site-2-4.jpeg")
+# listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-5.jpeg'), filename: "site-2-5.jpeg")
+# listing2.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-6.jpeg'), filename: "site-2-6.jpeg")
 
 
 listing3 = Listing.create!(
@@ -110,14 +134,25 @@ listing3 = Listing.create!(
   cost: 65
 )
 
-# listing3.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-3-1.jpeg"), filename: "site-3-1.jpeg")
-listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-1.jpeg'), filename: "site-3-1.jpeg")
-listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-2.jpeg'), filename: "site-3-2.jpeg")
-listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-3.jpeg'), filename: "site-3-3.jpeg")
-listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-4.jpeg'), filename: "site-3-4.jpeg")
-listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-5.jpeg'), filename: "site-3-5.jpeg")
-listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-6.jpeg'), filename: "site-3-6.jpeg")
+photo_3_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-1.jpeg')
+listing3.photos.attach(io: photo_3_1, filename: "site-3-1.jpeg")
+photo_3_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-2.jpeg')
+listing3.photos.attach(io: photo_3_2, filename: "site-3-2.jpeg")
+photo_3_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-3.jpeg')
+listing3.photos.attach(io: photo_3_3, filename: "site-3-3.jpeg")
+photo_3_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-4.jpeg')
+listing3.photos.attach(io: photo_3_4, filename: "site-3-4.jpeg")
+photo_3_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-5.jpeg')
+listing3.photos.attach(io: photo_3_5, filename: "site-3-5.jpeg")
+photo_3_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-6.jpeg')
+listing3.photos.attach(io: photo_3_6, filename: "site-3-6.jpeg")
 
+# listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-1.jpeg'), filename: "site-3-1.jpeg")
+# listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-2.jpeg'), filename: "site-3-2.jpeg")
+# listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-3.jpeg'), filename: "site-3-3.jpeg")
+# listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-4.jpeg'), filename: "site-3-4.jpeg")
+# listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-5.jpeg'), filename: "site-3-5.jpeg")
+# listing3.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-6.jpeg'), filename: "site-3-6.jpeg")
 
 listing4 = Listing.create!(
   host_id: host3.id, 
@@ -127,13 +162,26 @@ listing4 = Listing.create!(
   cost: 75
 )
 
+photo_4_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-1.jpeg')
+listing4.photos.attach(io: photo_4_1, filename: "site-4-1.jpeg")
+photo_4_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-2.jpeg')
+listing4.photos.attach(io: photo_4_2, filename: "site-4-2.jpeg")
+photo_4_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-3.jpeg')
+listing4.photos.attach(io: photo_4_3, filename: "site-4-3.jpeg")
+photo_4_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-4.jpeg')
+listing4.photos.attach(io: photo_4_4, filename: "site-4-4.jpeg")
+photo_4_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-5.jpeg')
+listing4.photos.attach(io: photo_4_5, filename: "site-4-5.jpeg")
+photo_4_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-6.jpeg')
+listing4.photos.attach(io: photo_4_6, filename: "site-4-6.jpeg")
+
 # listing4.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-4-1.jpeg"), filename: "site-4-1.jpeg")
-listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-1.jpeg'), filename: "site-4-1.jpeg")
-listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-2.jpeg'), filename: "site-4-2.jpeg")
-listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-3.jpeg'), filename: "site-4-3.jpeg")
-listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-4.jpeg'), filename: "site-4-4.jpeg")
-listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-5.jpeg'), filename: "site-4-5.jpeg")
-listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-6.jpeg'), filename: "site-4-6.jpeg")
+# listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-1.jpeg'), filename: "site-4-1.jpeg")
+# listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-2.jpeg'), filename: "site-4-2.jpeg")
+# listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-3.jpeg'), filename: "site-4-3.jpeg")
+# listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-4.jpeg'), filename: "site-4-4.jpeg")
+# listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-5.jpeg'), filename: "site-4-5.jpeg")
+# listing4.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-6.jpeg'), filename: "site-4-6.jpeg")
 
 
 listing5 = Listing.create!(
@@ -144,13 +192,26 @@ listing5 = Listing.create!(
   cost: 45
 )
 
+photo_5_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-1.jpeg')
+listing5.photos.attach(io: photo_5_1, filename: "site-5-1.jpeg")
+photo_5_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-2.jpeg')
+listing5.photos.attach(io: photo_5_2, filename: "site-5-2.jpeg")
+photo_5_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-3.jpeg')
+listing5.photos.attach(io: photo_5_3, filename: "site-5-3.jpeg")
+photo_5_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-4.jpeg')
+listing5.photos.attach(io: photo_5_4, filename: "site-5-4.jpeg")
+photo_5_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-5.jpeg')
+listing5.photos.attach(io: photo_5_5, filename: "site-5-5.jpeg")
+photo_5_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-6.jpeg')
+listing5.photos.attach(io: photo_5_6, filename: "site-5-6.jpeg")
+
 # listing5.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-5-1.jpeg"), filename: "site-5-1.jpeg")
-listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-1.jpeg'), filename: "site-5-1.jpeg")
-listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-2.jpeg'), filename: "site-5-2.jpeg")
-listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-3.jpeg'), filename: "site-5-3.jpeg")
-listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-4.jpeg'), filename: "site-5-4.jpeg")
-listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-5.jpeg'), filename: "site-5-5.jpeg")
-listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-6.jpeg'), filename: "site-5-6.jpeg")
+# listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-1.jpeg'), filename: "site-5-1.jpeg")
+# listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-2.jpeg'), filename: "site-5-2.jpeg")
+# listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-3.jpeg'), filename: "site-5-3.jpeg")
+# listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-4.jpeg'), filename: "site-5-4.jpeg")
+# listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-5.jpeg'), filename: "site-5-5.jpeg")
+# listing5.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-6.jpeg'), filename: "site-5-6.jpeg")
 
 
 listing6 = Listing.create!(
@@ -161,10 +222,23 @@ listing6 = Listing.create!(
   cost: 25
 )
 
+photo_6_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-1.jpeg')
+listing6.photos.attach(io: photo_6_1, filename: "site-6-1.jpeg")
+photo_6_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-2.jpeg')
+listing6.photos.attach(io: photo_6_2, filename: "site-6-2.jpeg")
+photo_6_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-3.jpeg')
+listing6.photos.attach(io: photo_6_3, filename: "site-6-3.jpeg")
+photo_6_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-4.jpeg')
+listing6.photos.attach(io: photo_6_4, filename: "site-6-4.jpeg")
+photo_6_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-5.jpeg')
+listing6.photos.attach(io: photo_6_5, filename: "site-6-5.jpeg")
+photo_6_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-6.jpeg')
+listing6.photos.attach(io: photo_6_6, filename: "site-6-6.jpeg")
+
 # listing6.photos.attach(io: File.open("/Users/jonathan/Desktop/click-camp-photos/site-6-1.jpeg"), filename: "site-6-1.jpeg")
-listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-1.jpeg'), filename: "site-6-1.jpeg")
-listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-2.jpeg'), filename: "site-6-2.jpeg")
-listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-3.jpeg'), filename: "site-6-3.jpeg")
-listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-4.jpeg'), filename: "site-6-4.jpeg")
-listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-5.jpeg'), filename: "site-6-5.jpeg")
-listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-6.jpeg'), filename: "site-6-6.jpeg")
+# listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-1.jpeg'), filename: "site-6-1.jpeg")
+# listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-2.jpeg'), filename: "site-6-2.jpeg")
+# listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-3.jpeg'), filename: "site-6-3.jpeg")
+# listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-4.jpeg'), filename: "site-6-4.jpeg")
+# listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-5.jpeg'), filename: "site-6-5.jpeg")
+# listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-6.jpeg'), filename: "site-6-6.jpeg")
