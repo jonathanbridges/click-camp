@@ -11,6 +11,8 @@ const ListingIndexItem = ({ listing }) => {
   return (
 
     <div className="campground-tile">
+      <Link className="tile-link" to={`/discover/${listing.id}`}>
+
       <div className="tile-picture" style={imgStyle}></div>
       <div className="tile-details">
         <div className="tile-name">
@@ -34,6 +36,8 @@ const ListingIndexItem = ({ listing }) => {
           </div>
         </div>
       </div>
+      </Link>
+
     </div>
 
       // {/* <Link to={`/events/${event.id}`}>{event.description}</Link>

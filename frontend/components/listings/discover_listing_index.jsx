@@ -49,7 +49,9 @@ class DisoverListingIndex extends React.Component {
                 <i className="fas fa-chevron-down"></i>
               </span>
             </div>
-            <button className="search-btn" type="submit">Search</button>
+            <Link to="/discover">
+              <button className="search-btn"type="submit">Search</button>
+            </Link>
           </form>
         </div>
         <div className="discover-content-wrapper">

@@ -7,10 +7,12 @@
   top: 70px;
   background-color: white;
   min-width: 1280px;
+  z-index: 1;
 }
 
 #discover-campgrounds {
   margin-top: 10rem;
+  padding-left: 0 .1rem;
 }
 
 .discover-content-wrapper {

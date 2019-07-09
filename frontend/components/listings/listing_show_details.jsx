@@ -23,7 +23,7 @@ const ListingShowDetails = ({ listing }) => {
           
       </div>
       <div className="show-content-right">
-        <div className="price">
+        <div className="show-price">
           <strong>{`$${listing.cost}/night`}</strong>
         </div> 
         <div className="show-dates">
