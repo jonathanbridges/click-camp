@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 
 const ListingShowDetails = ({ listing }) => {
 
-  debugger
   return (
 
     <div className="campground-tile">
