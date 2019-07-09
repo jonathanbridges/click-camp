@@ -8,9 +8,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  /* align-self: center; */
   overflow: hidden;
 } 
 
+.slider {
+
+}
 .show-img-container {
   display: flex;
   flex-direction: column;

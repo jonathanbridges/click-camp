@@ -31,7 +31,7 @@ class ListingShow extends React.Component {
       <div className="show-content-wrapper">
         <div></div>
         <div className="carousel-wrapper">
-          <Carousel slidesToShow={3} >
+          <Carousel slidesToShow={2} >
             {photos}
           </Carousel>
         </div>

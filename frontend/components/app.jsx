@@ -15,8 +15,8 @@ import Footer from './footer/footer'
 const App = () => (
   <div>
     {/* Static NavBar */}
+    <Modal />
     <nav className="main-nav">
-      <Modal />
       <div className="left">
         <Link className="nav-home" to="/">CLICKCAMP</Link>
       </div>
