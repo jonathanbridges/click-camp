@@ -30,10 +30,77 @@ const ListingShowDetails = ({ listing }) => {
         </div>
         {/* Info Cards */}
         <section className = "show-info-section">
-
-
-
+          <div className="info-wrapper">
+            {/* Card 1 */}
+            <div className="info">
+              <h2 className="show-title">Campsite area</h2>
+              <div className="info-deets">
+                <i class="fas fa-campground"></i>
+                <p>Bring your own tents</p>
+              </div>
+              <div className="info-deets">
+                <i class="fas fa-map-marker-alt"></i>
+                <p>1 site</p>
+              </div>
+              <div className="info-deets">
+                <i class="fas fa-users"></i>
+                <p>8 guests</p>
+              </div>
+              <div className="info-deets">
+                <i class="fas fa-walking"></i>
+                <p>Short walk</p>
+              </div>
+              <div className="info-deets">
+                <i class="fab fa-accessible-icon"></i>
+                <p>ADA access</p>
+              </div>
+            </div>
+            {/* Card 2 */}
+            <div className="info">
+              <h2 className="show-title">Essentials</h2>
+              <div className="info-deets">
+                <i class="fas fa-fire-alt"></i>
+                <p>Campfires allowed</p>
+              </div>
+              <div className="info-deets">
+                <i class="fas fa-dog"></i>
+                <p>Pets allowed</p>
+              </div>
+              <div className="info-deets">
+                <i class="fas fa-toilet-paper"></i>
+                <p>Toilet available</p>
+              </div>
+              <div className="info-deets">
+                <i class="fas fa-shower"></i>
+                <p>Shower available</p>
+              </div>
+            </div>
           
+            {/* Card 3 */}
+            <div className="info">
+              <h2 className="show-title">Activities</h2>
+              <div className="info-deets">
+                <i class="fas fa-biking"></i>
+                <p>Mountain biking</p>
+              </div>
+              <div className="info-deets">
+                <i class="fas fa-swimmer"></i>
+                <p>Swimming</p>
+              </div>
+              <div className="info-deets">
+                <i class="fas fa-hiking"></i>
+                <p>Hiking</p>
+              </div>
+              <div className="info-deets">
+                <i class="fas fa-quidditch"></i>
+                <p>Quidditch</p>
+              </div>
+              <div className="info-deets">
+                <i class="fas fa-volleyball-ball"></i>
+                <p>Volleyball</p>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Details */}

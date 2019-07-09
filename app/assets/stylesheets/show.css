@@ -54,6 +54,7 @@
   background-color: white;
   border: 1px solid #ebebeb;
   box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+  z-index: 2;
 }
 
 .show-dates {
@@ -167,4 +168,37 @@
 
 .show-strong {
   font-weight: bolder;
+}
+
+.info-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.info {
+  color: #757575;
+  min-width: 30%;
+  border: 1px solid #ebebeb;
+  padding: 15px 15px 15px 15px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.info-deets {
+  display: flex;
+  align-items: center;
+  line-height: 2.6;
+}
+
+.info-deets i {
+  min-width: 1.6rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-right: .5rem;
+}
+
+.show-title {
+  font-size: 1.4rem;
+  color: #333333;
 }
