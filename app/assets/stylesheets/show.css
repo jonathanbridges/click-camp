@@ -135,6 +135,7 @@
   width: 100%;
   padding-top: 1.5rem;
   border-top: 1px solid #ebebeb;
+  margin-bottom: 1.5rem;
 }
 
 .host-ava {
@@ -149,4 +150,21 @@
 
 .show-line-break {
   margin-right: 1.5rem;
+}
+
+.details-row {
+  border-top: 1px solid #ebebeb;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.show-ul {
+  list-style: none;
+  /* padding-left: 0; */
+}
+
+.show-strong {
+  font-weight: bolder;
 }

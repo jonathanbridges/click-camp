@@ -19,6 +19,7 @@ const ListingShowDetails = ({ listing }) => {
           <strong>{` ${Math.floor(Math.random() * (1 + 100 - 85)) + 85}%`}</strong>
           <span className="recommend-text"><strong className="strong-verified"> Recommend</strong>{` - ${Math.floor(Math.random() * (1 + 200 - 12)) + 12} Reviews`}</span>
         </div>
+        {/* Host Information */}
         <div className="show-host-desc">
           <img className="host-ava" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/host1.jpg" alt=""/>
           <div className="host-details">
@@ -26,6 +27,35 @@ const ListingShowDetails = ({ listing }) => {
             <p className="host-name">Myrna H.</p>
           </div>
           <p className="show-description" id="show-small">{listing.description}</p>
+        </div>
+        {/* Info Cards */}
+        <section className = "show-info-section">
+
+
+
+          
+        </section>
+
+        {/* Details */}
+        <div className="details-row">
+          <div>
+            <label>Details</label>
+          </div>
+          <div>
+            <ul className="show-ul">
+              <li><strong className="show-strong">Check in:</strong> After 2PM</li>
+              <li><strong className="show-strong">Check out:</strong> Before 12PM</li>
+              <li><strong className="show-strong">Cancellation Policy:</strong> Flexible</li>
+            </ul>
+          </div>
+          <div>
+            <ul className="show-ul">
+              <li><strong className="show-strong">On arrival:</strong> Meet and greet</li>
+              <li><strong className="show-strong">Minimum nights:</strong> 1 night</li>
+              <li><strong className="show-strong">Accepts Bookings:</strong> 12 months out</li>
+            </ul>
+          </div>
+
         </div>
           
       </div>
