@@ -4,30 +4,28 @@ import { Link } from 'react-router-dom';
 const ListingShowDetails = ({ listing }) => {
 
   return (
-
-    <div className="campground-tile">
-      {/* <div className="tile-picture" style={imgStyle}></div> */}
-      <div className="tile-details">
-        <div className="tile-name">
-          <big>{listing.name}</big>
-        </div>
-        <div className="tile-description">
-          <small className="desc-color">{listing.description}</small>
-        </div>
-        <div className="tile-info">
-          <div className="tile-info-left">
-            <div className="tile-recommend">
-              <i className="fas fa-thumbs-up"></i>
-              <strong>{` ${Math.floor(Math.random() * (1 + 100 - 85)) + 85}%`}</strong>
-              <span className="recommend-text">{` - ${Math.floor(Math.random() * (1 + 200 - 12)) + 12} Reviews`}</span>
-            </div>
-          </div>
-          <div className="tile-info-right">
-            <div className="price">
-              <strong>{`$${listing.cost}/night`}</strong>
+    <div className="show-content-bottom">
+      <div className="show-content-left">
+        <div>
+          <div className="show-name">
+            <h1>{listing.name}</h1>
+            <div className="verified">
+              <i class="fas fa-check"></i>
             </div>
           </div>
         </div>
+        <div className="tile-recommend">
+          <i className="fas fa-thumbs-up"></i>
+          <strong>{` ${Math.floor(Math.random() * (1 + 100 - 85)) + 85}%`}</strong>
+          <span className="recommend-text"><strong className="strong-verified"> Recommend</strong>{` - ${Math.floor(Math.random() * (1 + 200 - 12)) + 12} Reviews`}</span>
+        </div>
+        <p className="show-description" id="show-small">{listing.description}</p>
+          
+      </div>
+      <div className="show-content-right">
+        <div className="price">
+          <strong>{`$${listing.cost}/night`}</strong>
+        </div>  
       </div>
     </div>
   )

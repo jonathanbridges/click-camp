@@ -29,14 +29,12 @@ class ListingShow extends React.Component {
 
     return (
       <div className="show-content-wrapper">
-        <div></div>
         <div className="carousel-wrapper">
           <Carousel slidesToShow={2} >
             {photos}
           </Carousel>
         </div>
-        <div></div>
-        {/* <div>{details}</div> */}
+        {details}
       </div>
     );
   }
