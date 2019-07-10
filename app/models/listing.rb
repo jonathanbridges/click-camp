@@ -24,6 +24,8 @@ class Listing < ApplicationRecord
     foreign_key: :location_id,
     class_name: :Location
 
+  has_many :reservations
+
   has_many_attached :photos
 
 end

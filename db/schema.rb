@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_06_234856) do
+ActiveRecord::Schema.define(version: 2019_07_10_003711) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(version: 2019_07_06_234856) do
     t.float "long", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "camper_id", null: false
+    t.integer "listing_id", null: false
+    t.date "check_in", null: false
+    t.date "check_out", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["camper_id"], name: "index_reservations_on_camper_id"
+    t.index ["listing_id"], name: "index_reservations_on_listing_id"
   end
 
   create_table "users", force: :cascade do |t|

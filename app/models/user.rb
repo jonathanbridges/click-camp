@@ -24,6 +24,7 @@ class User < ApplicationRecord
 	# associations
 
 	has_many :listings
+	has_many :reservations
 
 	def self.find_by_credentials(username, password)
 		user = User.find_by(username: username)

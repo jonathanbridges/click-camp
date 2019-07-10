@@ -3,8 +3,8 @@ class CreateReservations < ActiveRecord::Migration[5.2]
     create_table :reservations do |t|
       t.integer :camper_id, null: false
       t.integer :listing_id, null: false
-      check_in :date, null: false
-      check_out :date, null: false
+      t.date :check_in, null: false
+      t.date :check_out, null: false
       t.timestamps
     end
     add_index :reservations, :camper_id
