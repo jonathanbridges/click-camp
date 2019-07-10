@@ -30,8 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   //AJAX testing//
   // window.fetchReservation = fetchReservation
   // window.fetchReservations = fetchReservations
-  //Create Reservation is throwing error on window!
-  window.createReservation = createReservation
+  // window.createReservation = createReservation
   // window.deleteReservation = deleteReservation
   //End Testing
 
