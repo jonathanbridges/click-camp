@@ -1,5 +1,7 @@
 class Api::ReservationsController < ApplicationController
 
+  skip_before_action :verify_authenticity_token
+
   def show
     @reservation = Reservation.find(params[:id])
   end
