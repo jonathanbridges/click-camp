@@ -35,23 +35,23 @@ const ListingShowDetails = ({ listing }) => {
             <div className="info">
               <h2 className="show-title">Campsite area</h2>
               <div className="info-deets">
-                <i class="fas fa-campground"></i>
+                <i className="fas fa-campground"></i>
                 <p>Bring your own tents</p>
               </div>
               <div className="info-deets">
-                <i class="fas fa-map-marker-alt"></i>
+                <i className="fas fa-map-marker-alt"></i>
                 <p>1 site</p>
               </div>
               <div className="info-deets">
-                <i class="fas fa-users"></i>
+                <i className="fas fa-users"></i>
                 <p>8 guests</p>
               </div>
               <div className="info-deets">
-                <i class="fas fa-walking"></i>
+                <i className="fas fa-walking"></i>
                 <p>Short walk</p>
               </div>
               <div className="info-deets">
-                <i class="fab fa-accessible-icon"></i>
+                <i className="fab fa-accessible-icon"></i>
                 <p>ADA access</p>
               </div>
             </div>
@@ -59,19 +59,19 @@ const ListingShowDetails = ({ listing }) => {
             <div className="info">
               <h2 className="show-title">Essentials</h2>
               <div className="info-deets">
-                <i class="fas fa-fire-alt"></i>
+                <i className="fas fa-fire-alt"></i>
                 <p>Campfires allowed</p>
               </div>
               <div className="info-deets">
-                <i class="fas fa-dog"></i>
+                <i className="fas fa-dog"></i>
                 <p>Pets allowed</p>
               </div>
               <div className="info-deets">
-                <i class="fas fa-toilet-paper"></i>
+                <i className="fas fa-toilet-paper"></i>
                 <p>Toilet available</p>
               </div>
               <div className="info-deets">
-                <i class="fas fa-shower"></i>
+                <i className="fas fa-shower"></i>
                 <p>Shower available</p>
               </div>
             </div>
@@ -80,23 +80,23 @@ const ListingShowDetails = ({ listing }) => {
             <div className="info">
               <h2 className="show-title">Activities</h2>
               <div className="info-deets">
-                <i class="fas fa-biking"></i>
+                <i className="fas fa-biking"></i>
                 <p>Mountain biking</p>
               </div>
               <div className="info-deets">
-                <i class="fas fa-swimmer"></i>
+                <i className="fas fa-swimmer"></i>
                 <p>Swimming</p>
               </div>
               <div className="info-deets">
-                <i class="fas fa-hiking"></i>
+                <i className="fas fa-hiking"></i>
                 <p>Hiking</p>
               </div>
               <div className="info-deets">
-                <i class="fas fa-quidditch"></i>
+                <i className="fas fa-quidditch"></i>
                 <p>Quidditch</p>
               </div>
               <div className="info-deets">
-                <i class="fas fa-volleyball-ball"></i>
+                <i className="fas fa-volleyball-ball"></i>
                 <p>Volleyball</p>
               </div>
             </div>
@@ -126,7 +126,7 @@ const ListingShowDetails = ({ listing }) => {
         </div>
           
       </div>
-      <div className="show-content-right">
+      <div className="show-content-right" id="stick-here">
         <div className="show-price">
           <strong>{`$${listing.cost}/night`}</strong>
         </div> 
