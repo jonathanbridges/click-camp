@@ -15,19 +15,12 @@ class Reservation < ApplicationRecord
 
   validates :camper_id, :listing_id, :check_in, :check_out, presence: true
 
-  belongs_to :user
+  belongs_to :camper,
+    foreign_key: :camper_id,
+    class_name: :User
+
   belongs_to :listing
 
-  def overlapping_requests
-    
-  end
-
-  def overlapping_approved_requests
-
-  end
-
-  def does_not_overlap_approved_request
-    
-  end
-
 end
+
+# Reservation.create(camper_id: 1, listing_id: 1, check_in: "2019-07-10", check_out: "2019-07-11")

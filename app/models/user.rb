@@ -21,10 +21,11 @@ class User < ApplicationRecord
 
 	after_initialize :ensure_session_token
 
-	# associations
-
 	has_many :listings
-	has_many :reservations
+	
+	has_many :reservations,
+		foreign_key: :camper_id,
+		class_name: :Reservation
 
 	def self.find_by_credentials(username, password)
 		user = User.find_by(username: username)
