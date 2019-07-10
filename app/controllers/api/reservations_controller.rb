@@ -4,6 +4,12 @@ class Api::ReservationsController < ApplicationController
 
   def show
     @reservation = Reservation.find(params[:id])
+    render json: @reservation
+  end
+
+  def index
+    @reservations = Reservation.all
+    render json: @reservations
   end
 
   def create

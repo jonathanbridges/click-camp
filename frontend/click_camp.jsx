@@ -8,6 +8,8 @@ import configureStore from './store/store';
 //Testing
 import { signup, login, logout } from './actions/session_actions'
 import { fetchListing, fetchListings } from './actions/listing_actions'
+import { fetchReservations, fetchReservation, deleteReservation, createReservation } from './util/reservation_api_util'
+
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -25,8 +27,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   //AJAX testing//
-  // window.fetchListing = fetchListing
-  // window.fetchListings = fetchListings
+  window.fetchReservation = fetchReservation
+  window.fetchReservations = fetchReservations
+  //Create Reservation is throwing error on window!
+  window.createReservation = createReservation
+  window.deleteReservation = deleteReservation
   //End Testing
 
   //Redux Testing
