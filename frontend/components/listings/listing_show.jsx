@@ -34,7 +34,7 @@ class ListingShow extends React.Component {
       details = ""
     } else {
       photos = this.props.listing.photoUrls.map((photo, idx) => <div className="show-img-container" key={`img-${idx}`}><img src={photo} style={imgStyle} /></div>)
-      details = < ListingShowDetails listing = { this.props.listing } />
+      details = < ListingShowDetails listing = { this.props.listing } createReservation={this.props.createReservation} />
     }
 
     return (

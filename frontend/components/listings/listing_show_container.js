@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { fetchListing } from '../../actions/listing_actions';
 import ListingShow from './listing_show';
+import { createReservation } from '../../actions/reservation_actions';
 
 const mapStateToProps = (state, { match }) => {
   let listingId = parseInt(match.params.listingId);
@@ -18,7 +19,8 @@ const mapStateToProps = (state, { match }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchListing: id => dispatch(fetchListing(id))
+  fetchListing: id => dispatch(fetchListing(id)),
+  createReservation: reservation => dispatch(createReservation(reservation))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListingShow);

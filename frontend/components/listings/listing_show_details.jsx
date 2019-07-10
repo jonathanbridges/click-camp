@@ -14,10 +14,24 @@ class ListingShowDetails extends React.Component {
       endDate: null,
       focusedInput: null,
     };
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    debugger
+    e.preventDefault();
+    let reservation = {
+      camper_id: 1,
+      listing_id: this.props.listing.id,
+      check_in: this.state.startDate._d,
+      check_out: this.state.endDate._d,
+    }
+    this.props.createReservation(reservation)
   }
 
   render () {
-
+    console.log(this.state);
     return (
     <div className="show-content-bottom">
       <div className="show-content-left">
@@ -161,7 +175,7 @@ class ListingShowDetails extends React.Component {
             onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
           />
         </div>
-        <a className="btn-main" id="show-book">Instant Book</a>
+        <a onClick={this.handleSubmit} className="btn-main" id="show-book">Instant Book</a>
       </div>
     </div>
     )
