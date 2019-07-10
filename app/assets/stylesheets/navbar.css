@@ -90,8 +90,8 @@ input.login-input {
 	font-size: 1rem;
 	cursor: pointer;
 	transition: all 0.25s ease 0s;
-	padding: 14px;
-	border: 1px solid #40d9ac;
+	padding: 12px;
+	border: 3px solid #40d9ac;
 	font-weight: 700;
 }
 

@@ -1,13 +1,7 @@
 import React from 'react';
 
-// import { Link } from 'react-router-dom';
 import ListingShowDetails from './listing_show_details';
 import Carousel from 'nuka-carousel';
-
-import { DateRangePicker } from 'react-dates';
-import 'react-dates/initialize';
-// import 'react-dates/lib/css/_datepicker.css';
-
 
 class ListingShow extends React.Component {
 
@@ -51,17 +45,6 @@ class ListingShow extends React.Component {
           </Carousel>
         </div>
         {details}
-        <div>
-          <DateRangePicker
-            startDateId="startDate"
-            endDateId="endDate"
-            startDate={this.state.startDate}
-            endDate={this.state.endDate}
-            onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate }) }}
-            focusedInput={this.state.focusedInput}
-            onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
-          />
-        </div>
       </div>
     );
   }

@@ -6,8 +6,8 @@
   height: 100%;
   text-align: center;
   background: 0 0;
-  border: 2px solid #00a699;
-  color: #00a699;
+  border: 2px solid #40d9ac;
+  color: #40d9ac;
   padding: 4px 12px;
   margin-right: 8px;
   font: inherit;
@@ -23,7 +23,7 @@
 }
 .PresetDateRangePicker_button__selected {
   color: #fff;
-  background: #00a699
+  background: #40d9ac
 }
 .SingleDatePickerInput {
   display: inline-block;
@@ -31,7 +31,7 @@
 }
 .SingleDatePickerInput__withBorder {
   border-radius: 2px;
-  border: 1px solid #dbdbdb
+  border: 1px solid #ebebeb
 }
 .SingleDatePickerInput__rtl {
   direction: rtl
@@ -64,7 +64,7 @@
 }
 .SingleDatePickerInput_clearDate__default:focus,
 .SingleDatePickerInput_clearDate__default:hover {
-  background: #dbdbdb;
+  background: #ebebeb;
   border-radius: 50%
 }
 .SingleDatePickerInput_clearDate__small {
@@ -189,7 +189,7 @@
 }
 .DayPickerKeyboardShortcuts_show__bottomRight::before {
   border-top: 26px solid transparent;
-  border-right: 33px solid #00a699;
+  border-right: 33px solid #40d9ac;
   bottom: 0;
   right: 0
 }
@@ -202,7 +202,7 @@
 }
 .DayPickerKeyboardShortcuts_show__topRight::before {
   border-bottom: 26px solid transparent;
-  border-right: 33px solid #00a699;
+  border-right: 33px solid #40d9ac;
   top: 0;
   right: 0
 }
@@ -215,7 +215,7 @@
 }
 .DayPickerKeyboardShortcuts_show__topLeft::before {
   border-bottom: 26px solid transparent;
-  border-left: 33px solid #00a699;
+  border-left: 33px solid #40d9ac;
   top: 0;
   left: 0
 }
@@ -241,7 +241,7 @@
 .DayPickerKeyboardShortcuts_panel {
   overflow: auto;
   background: #fff;
-  border: 1px solid #dbdbdb;
+  border: 1px solid #ebebeb;
   border-radius: 2px;
   position: absolute;
   top: 0;
@@ -337,21 +337,21 @@
   color: #484848
 }
 .CalendarDay__selected_span {
-  background: #66e2da;
+  background: #40d9acb0;
   border: 1px double #33dacd;
   color: #fff
 }
 .CalendarDay__selected_span:active,
 .CalendarDay__selected_span:hover {
-  background: #33dacd;
+  background: #40d9ac;
   border: 1px double #33dacd;
   color: #fff
 }
 .CalendarDay__selected,
 .CalendarDay__selected:active,
 .CalendarDay__selected:hover {
-  background: #00a699;
-  border: 1px double #00a699;
+  background: #40d9ac;
+  border: 1px double #40d9ac;
   color: #fff
 }
 .CalendarDay__hovered_span,
@@ -595,7 +595,7 @@
 .DayPicker_weekHeader__verticalScrollable {
   top: 0;
   display: table-row;
-  border-bottom: 1px solid #dbdbdb;
+  border-bottom: 1px solid #ebebeb;
   background: #fff;
   margin-left: 0;
   left: 0;
@@ -653,22 +653,22 @@
 }
 .DateInput__disabled {
   background: #f2f2f2;
-  color: #dbdbdb
+  color: #ebebeb
 }
 .DateInput_input {
   font-weight: 200;
-  font-size: 19px;
-  line-height: 24px;
-  color: #484848;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  color: #333333;
   background-color: #fff;
   width: 100%;
   padding: 11px 11px 9px;
   border: 0;
   border-top: 0;
   border-right: 0;
-  border-bottom: 2px solid transparent;
+  /* border-bottom: 2px solid transparent; */
   border-left: 0;
-  border-radius: 0
+  border-radius: 0;
 }
 .DateInput_input__small {
   font-size: 15px;
@@ -719,7 +719,7 @@
   fill: #fff
 }
 .DateInput_fangStroke {
-  stroke: #dbdbdb;
+  stroke: #ebebeb;
   fill: transparent
 }
 .DateRangePickerInput {
@@ -731,7 +731,7 @@
 }
 .DateRangePickerInput__withBorder {
   border-radius: 2px;
-  border: 1px solid #dbdbdb
+  border: 1px solid #ebebeb
 }
 .DateRangePickerInput__rtl {
   direction: rtl
@@ -775,7 +775,7 @@
 }
 .DateRangePickerInput_clearDates_default:focus,
 .DateRangePickerInput_clearDates_default:hover {
-  background: #dbdbdb;
+  background: #ebebeb;
   border-radius: 50%
 }
 .DateRangePickerInput_clearDates__hide {
