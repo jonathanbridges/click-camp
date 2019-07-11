@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 
-// const ListingShowDetails = ({ listing }) => {
+import ReservationShow from '../reservations/reservation_show'
+
 class ListingShowDetails extends React.Component {
 
   constructor(props) {
@@ -13,45 +14,39 @@ class ListingShowDetails extends React.Component {
       startDate: null,
       endDate: null,
       focusedInput: null,
+      reservation: null
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.updateCost = this.updateCost.bind(this);
-  }
 
-  // componentDidMount() {
-  //   let totalDays;
-  //   if (this.state.startDate === null) {
-  //     totalDays = null;
-  //   } else {
-  //     totalDays = this.state.endDate._d.getDate() - this.state.startDate._d.getDate()
-  //   }
-  // }
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-    let reservation = {
+    let reservation1;
+    reservation1 = {
       camper_id: 1,
       listing_id: this.props.listing.id,
       check_in: this.state.startDate._d,
       check_out: this.state.endDate._d,
     }
-    // alert(`You're about to book charged for ${this.state.endDate._d.getDate() - this.state.startDate._d.getDate()} days`)
-    this.props.createReservation(reservation)
+
+    alert(`You're about to book charged for ${this.state.endDate._d.getDate() - this.state.startDate._d.getDate()} days`)
+    this.props.createReservation(reservation1).then(this.setState({
+      startDate: null,
+      endDate: null,
+      focusedInput: null,
+      reservation: reservation1
+    }));
+    
+    // debugger
   }
 
-  // updateCost() {
-  //   let totalDays;
-  //   if (this.state.endDate = null) {
-  //     totalDays = 1;
-  //   } else {
-  //     totalDays = this.state.endDate._d.getDate() - this.state.startDate._d.getDate()
-  //   }
-  //   return totalDays;
-  // }
-
   render () {
-    console.log(this.state);
+
+    // debugger
+    // let reservation1 = null;
+
     return (
     <div className="show-content-bottom">
       <div className="show-content-left">
@@ -59,7 +54,7 @@ class ListingShowDetails extends React.Component {
           <div className="show-name">
             <h1>{this.props.listing.name}</h1>
             <div className="verified">
-              <i className="fas fa-check"></i>
+              <i className="fas fa-check"></i>  
             </div>
           </div>
         </div>
@@ -196,6 +191,11 @@ class ListingShowDetails extends React.Component {
           />
         </div>
         <a onClick={this.handleSubmit} className="btn-main" id="show-book">Instant Book</a>
+      </div>
+
+      {/* Reservation after booking */}
+      <div className="reservation-new">
+        <ReservationShow reservation={this.state.reservation} />
       </div>
     </div>
     )
