@@ -16,10 +16,19 @@ class ListingShowDetails extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    // this.updateCost = this.updateCost.bind(this);
   }
 
+  // componentDidMount() {
+  //   let totalDays;
+  //   if (this.state.startDate === null) {
+  //     totalDays = null;
+  //   } else {
+  //     totalDays = this.state.endDate._d.getDate() - this.state.startDate._d.getDate()
+  //   }
+  // }
+
   handleSubmit(e) {
-    debugger
     e.preventDefault();
     let reservation = {
       camper_id: 1,
@@ -27,8 +36,19 @@ class ListingShowDetails extends React.Component {
       check_in: this.state.startDate._d,
       check_out: this.state.endDate._d,
     }
+    // alert(`You're about to book charged for ${this.state.endDate._d.getDate() - this.state.startDate._d.getDate()} days`)
     this.props.createReservation(reservation)
   }
+
+  // updateCost() {
+  //   let totalDays;
+  //   if (this.state.endDate = null) {
+  //     totalDays = 1;
+  //   } else {
+  //     totalDays = this.state.endDate._d.getDate() - this.state.startDate._d.getDate()
+  //   }
+  //   return totalDays;
+  // }
 
   render () {
     console.log(this.state);
@@ -162,7 +182,7 @@ class ListingShowDetails extends React.Component {
       {/* Reservation Section */}
       <div className="show-content-right" id="stick-here">
         <div className="show-price">
-          <strong>{`$${this.props.listing.cost}/night`}</strong>
+          <strong>{`${this.props.listing.cost}/night`}</strong>
         </div> 
         <div className="calendar-wrapper">
           <DateRangePicker
