@@ -13,7 +13,7 @@ export const receiveReservations = reservations => ({
 
 export const receiveReservation = reservation => ({
   type: RECEIVE_RESERVATION,
-  reservation
+  reservation 
 });
 
 export const removeReservation = reservation => ({

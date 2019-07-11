@@ -1,23 +1,47 @@
 import React from 'react';
 
-export const ReservationShow = ({ reservation }) => {
+export const ReservationShow = ({ reservation, listing }) => {
 
-//  debugger
-debugger
+  const placeHolderStyle = {
+    border: `0px`,
+  }
+
   if (!reservation) {
-    return (<h1>No reservation yet</h1>)
+    return (<div style={placeHolderStyle}></div>)
   } else {
+    debugger
+
+    let duration = reservation.check_out.getDate() - reservation.check_in.getDate();
+    let subtotal = (reservation.check_out.getDate() - reservation.check_in.getDate()) * listing.cost;
+    let serviceFee = ((reservation.check_out.getDate() - reservation.check_in.getDate()) * listing.cost) / 10;
+
+    let imgStyle = {
+      backgroundImage: `url(${listing.photoUrls[listing.photoUrls.length - 1]})`,
+    }
+
     return (
-      <div>
-        <h1>A reservation has been made</h1>
+      <div className="reservation-deets-wrapper">
+        {/* <h2>Reservation Made!</h2> */}
+        <div className="reservation-img" style={imgStyle}></div>
+        <div className="reservation-title">Reservation Details:</div>
+        <div className="reservation-show-deets">
+          <ul className="reservation-ul">
+            <li>Length of stay: </li>
+            <li>Subtotal: </li>
+            <li>Service Fee: </li>
+            <li className="res-total">Total: </li>
+          </ul>
+          <ul className="reservation-ul">
+            <li>{`${duration} Nights`}</li>
+            <li>{`$${subtotal} USD`}</li>
+            <li>{`$${serviceFee} USD`}</li>
+            <li className="res-total">{`$${subtotal + serviceFee} USD`}</li>
+          </ul>
+        </div>
       </div>
     );
   }
   
-
-  // return (
-  //   <h1>this is from reservation_show</h1>
-  // )
 }
 
 export default ReservationShow;

@@ -7,6 +7,7 @@ class ListingShow extends React.Component {
 
   constructor(props) {
     super(props);
+    // debugger
     this.state = {
       startDate: null,
       endDate: null,
@@ -26,6 +27,8 @@ class ListingShow extends React.Component {
       width: `100%`,
       objectFit: `cover`
     };
+
+    // if (this.props.currentUser) === 
 
     let photos;
     let details;

@@ -39,6 +39,7 @@
 }
 
 .show-content-left {
+  margin-right: 1rem;
   width: 66%;
 }
 
@@ -57,22 +58,16 @@
   z-index: 2;
 }
 
-#stick-here {
+#pending {
   position: relative;
 }
 
-#stick {
-  position: fixed;
-  top: 0;
+#confirmed {
+  background-color: #40d9ac;
+  border: none;
+  color: white;
+  font-size: 1.3rem;
 }
-
-/* .show-dates {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  height: 50px;
-  margin: 1rem;
-} */
 
 .show-price {
   height: 2rem;
@@ -174,7 +169,6 @@
 
 .show-ul {
   list-style: none;
-  /* padding-left: 0; */
 }
 
 .show-strong {

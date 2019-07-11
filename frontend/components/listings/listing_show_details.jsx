@@ -18,13 +18,11 @@ class ListingShowDetails extends React.Component {
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    let reservation1;
-    reservation1 = {
+    let formattedReservation = {
       camper_id: 1,
       listing_id: this.props.listing.id,
       check_in: this.state.startDate._d,
@@ -32,20 +30,19 @@ class ListingShowDetails extends React.Component {
     }
 
     alert(`You're about to book charged for ${this.state.endDate._d.getDate() - this.state.startDate._d.getDate()} days`)
-    this.props.createReservation(reservation1).then(this.setState({
-      startDate: null,
-      endDate: null,
-      focusedInput: null,
-      reservation: reservation1
-    }));
-    
-    // debugger
+    this.props.createReservation(formattedReservation)
+      .then(this.setState({
+        startDate: null,
+        endDate: null,
+        focusedInput: null,
+        reservation: formattedReservation
+      }))
+      .then(document.getElementById("pending").innerHTML = "You're confirmed!")
+      .then(document.getElementById("pending").setAttribute("id", "confirmed")
+    );
   }
 
   render () {
-
-    // debugger
-    // let reservation1 = null;
 
     return (
     <div className="show-content-bottom">
@@ -175,28 +172,33 @@ class ListingShowDetails extends React.Component {
       </div>
 
       {/* Reservation Section */}
-      <div className="show-content-right" id="stick-here">
-        <div className="show-price">
-          <strong>{`${this.props.listing.cost}/night`}</strong>
-        </div> 
-        <div className="calendar-wrapper">
-          <DateRangePicker
-            startDateId="startDate"
-            endDateId="endDate"
-            startDate={this.state.startDate}
-            endDate={this.state.endDate}
-            onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate }) }}
-            focusedInput={this.state.focusedInput}
-            onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
-          />
+      <div className="listing-reservation-wrapper">
+        <div className="show-content-right" id="pending">
+          <div className="show-price">
+            <strong>{`${this.props.listing.cost}/night`}</strong>
+          </div> 
+          <div className="calendar-wrapper">
+            <DateRangePicker
+              startDateId="startDate"
+              endDateId="endDate"
+              startDate={this.state.startDate}
+              endDate={this.state.endDate}
+              onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate }) }}
+              focusedInput={this.state.focusedInput}
+              onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
+            />
+          </div>
+          <a onClick={this.handleSubmit} className="btn-main" id="show-book">Instant Book</a>
+
         </div>
-        <a onClick={this.handleSubmit} className="btn-main" id="show-book">Instant Book</a>
+        {/* Reservation after booking */}
+        <div className="reservation-new">
+          <ReservationShow reservation={this.state.reservation} listing={this.props.listing} />
+        </div>
       </div>
 
-      {/* Reservation after booking */}
-      <div className="reservation-new">
-        <ReservationShow reservation={this.state.reservation} />
-      </div>
+     
+
     </div>
     )
   };
