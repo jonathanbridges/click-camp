@@ -1,24 +1,60 @@
-# README
+## Overview
+ClickCamp is a single-page web app inspired by [HipCamp](https://www.hipcamp.com/). Current functionality handles user authentication, the ability to view listings, and make reservations.
+Live Site: [ClickCamp](https://click-camp.herokuapp.com/#/)
+The technology stack used utilizes React.js with Redux for frontend, and Rails with PostgreSQL.
+## Contents
+* [Install](#install)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Planned Features](#planned-features)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Install
+To run ClickCamp locally:
+```
+$ git clone https://github.com/jonathanbridges/click-camp
+$ cd click-camp
+$ npm install
+$ bundle install
+```
 
-Things you may want to cover:
+Database creation and initialization:
+```
+$ bundle exec rails db:setup
+```
 
-* Ruby version
+Deployment instructions:
+```
+$ npm start
+$ bundle exec rails server
+$ navigate to http://localhost:3000/#/
+```
+## Technologies Used
+### Backend
+* Framework: Ruby on Rails (v5.2.3)
+* Database: PostgreSQL (v11.4)
+* AWS S3: stores listing photos
+* User Authentication: Created using BCrypt (v3.1.7)
+* External APIs: Google Maps API
 
-* System dependencies
+### Frontend
+* Framework: React/Redux (v16.8.6/4.0.1)
+* React Libraries Used: react-dates (calendar), nuka-carousel (image carousel)
+* Styling: CSS
 
-* Configuration
+## Features
+### Listings
+<img src="https://app-name-seeds.s3-us-west-1.amazonaws.com/Listings.gif" width="100%">
+* The landing and discover pages reveal listings for visitors, have a standard navbar and footer, and a search-bar. The discover page adds Google Maps.
+* When viewing an individual listing visitors are presented with a carousel of photos, amenities, and host information.
+* Listings also allows for reservations to be made.
+---
+### Reservations
+<img src="https://app-name-seeds.s3-us-west-1.amazonaws.com/Reservations.gif" width="100%">
+* Visitors can make a reservation on any listing by selecting dates on the right-hand side of the page.
+* A confirmation is presented to the visitor upon successfully making a reservation.
+## Planned Features
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Search (keyword, category, and Google Maps API) 
+* Reviews (add, update, and delete)
+* User show page (manage reservations)
+* Improved reservations logic (persisting data to frontend, blackouts for listings)
