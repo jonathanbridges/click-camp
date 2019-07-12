@@ -9,7 +9,7 @@ export const ReservationShow = ({ reservation, listing }) => {
   if (!reservation) {
     return (<div style={placeHolderStyle}></div>)
   } else {
-    debugger
+    // debugger
 
     let duration = reservation.check_out.getDate() - reservation.check_in.getDate();
     let subtotal = (reservation.check_out.getDate() - reservation.check_in.getDate()) * listing.cost;

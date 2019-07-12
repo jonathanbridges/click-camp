@@ -7,7 +7,6 @@ class ListingShow extends React.Component {
 
   constructor(props) {
     super(props);
-    // debugger
     this.state = {
       startDate: null,
       endDate: null,
@@ -28,8 +27,6 @@ class ListingShow extends React.Component {
       objectFit: `cover`
     };
 
-    // if (this.props.currentUser) === 
-
     let photos;
     let details;
     if (this.props.listing === undefined) {
@@ -37,7 +34,7 @@ class ListingShow extends React.Component {
       details = ""
     } else {
       photos = this.props.listing.photoUrls.map((photo, idx) => <div className="show-img-container" key={`img-${idx}`}><img src={photo} style={imgStyle} /></div>)
-      details = < ListingShowDetails listing = { this.props.listing } createReservation={this.props.createReservation} />
+      details = < ListingShowDetails listing = { this.props.listing } createReservation={this.props.createReservation} currentUser={this.props.currentUser} />
     }
 
     return (

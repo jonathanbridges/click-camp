@@ -16,8 +16,17 @@ class ListingShowDetails extends React.Component {
       focusedInput: null,
       reservation: null
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    // conditional logic to render different div for instant book button if user is logged in or not
+    // steps into first if not logged in using !this.props.currentUser
+    // if (!this.props.currentUser) {
+    //   document.getElementById("show-book").innerHTML = "Please Login to Book";
+    // } else {
+
+    // }
   }
 
   handleSubmit(e) {
@@ -29,7 +38,7 @@ class ListingShowDetails extends React.Component {
       check_out: this.state.endDate._d,
     }
 
-    alert(`You're about to book charged for ${this.state.endDate._d.getDate() - this.state.startDate._d.getDate()} days`)
+    // alert(`You're about to book ${this.state.endDate._d.getDate() - this.state.startDate._d.getDate()} days!  `)
     this.props.createReservation(formattedReservation)
       .then(this.setState({
         startDate: null,
@@ -43,7 +52,7 @@ class ListingShowDetails extends React.Component {
   }
 
   render () {
-
+  
     return (
     <div className="show-content-bottom">
       <div className="show-content-left">
