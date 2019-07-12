@@ -1,3 +1,8 @@
+## Overview
+ClickCamp is a single-page web app inspired by [HipCamp](https://www.hipcamp.com/). Current functionality handles user authentication, the ability to view listings, and make reservations.
+
+Planned future functionality includes implementing search (by keyword, category, and Google Maps API) and the ability to add, update, and delete reviews for listings.
+
 Live Site: [ClickCamp](https://click-camp.herokuapp.com/#/)
 The technology stack used utilizes React.js with Redux for frontend, and Rails with PostgreSQL.
 ## Contents
