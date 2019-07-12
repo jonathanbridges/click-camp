@@ -1,18 +1,18 @@
 ## Overview
 ClickCamp is a single-page web app inspired by [HipCamp](https://www.hipcamp.com/). Current functionality handles user authentication, the ability to view listings, and make reservations.
-
-Planned future functionality includes implementing search (by keyword, category, and Google Maps API) and the ability to add, update, and delete reviews for listings.
-
 Live Site: [ClickCamp](https://click-camp.herokuapp.com/#/)
 The technology stack used utilizes React.js with Redux for frontend, and Rails with PostgreSQL.
 ## Contents
 * [Install](#install)
 * [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Planned Features](#planned-features)
+
 ## Install
 To run ClickCamp locally:
 ```
 $ git clone https://github.com/jonathanbridges/click-camp
-$ cd hipster_habitat
+$ cd click-camp
 $ npm install
 $ bundle install
 ```
@@ -41,3 +41,20 @@ $ navigate to http://localhost:3000/#/
 * React Libraries Used: react-dates (calendar), nuka-carousel (image carousel)
 * Styling: CSS
 
+## Features
+### Listings
+<img src="https://app-name-seeds.s3-us-west-1.amazonaws.com/Listings.gif" width="100%">
+* The landing and discover pages reveal listings for visitors, have a standard navbar and footer, and a search-bar. The discover page adds Google Maps.
+* When viewing an individual listing visitors are presented with a carousel of photos, amenities, and host information.
+* Listings also allows for reservations to be made.
+---
+### Reservations
+<img src="https://app-name-seeds.s3-us-west-1.amazonaws.com/Reservations.gif" width="100%">
+* Visitors can make a reservation on any listing by selecting dates on the right-hand side of the page.
+* A confirmation is presented to the visitor upon successfully making a reservation.
+## Planned Features
+
+* Search (keyword, category, and Google Maps API) 
+* Reviews (add, update, and delete)
+* User show page (manage reservations)
+* Improved reservations logic (persisting data to frontend, blackouts for listings)
