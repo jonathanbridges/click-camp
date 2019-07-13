@@ -50,7 +50,7 @@ $ navigate to http://localhost:3000/#/
 * Listings also allows for reservations to be made.
 ---
 ### Reservations
-<img src="./app/assets/images/Listings.gif" align="center"/>
+<img src="./app/assets/images/Reservations.gif" align="center"/>
 
 * Visitors can make a reservation on any listing by selecting dates on the right-hand side of the page.
 * A confirmation is presented to the visitor upon successfully making a reservation.
