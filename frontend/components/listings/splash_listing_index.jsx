@@ -14,7 +14,7 @@ class SplashListingIndex extends React.Component {
     return (
       <div className="index">
         <div className="home-wrapper">
-          <h2 className="home-title">Everywhere you want to camp.</h2>
+          <h2 className="home-title">Find yourself outside.</h2>
           <div className="home-subtext">
             <big>Book unique camping experiences on over <strong>300,000</strong></big>
             <br/>
