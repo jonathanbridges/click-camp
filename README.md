@@ -43,13 +43,15 @@ $ navigate to http://localhost:3000/#/
 
 ## Features
 ### Listings
-<img src="https://app-name-seeds.s3-us-west-1.amazonaws.com/Listings.gif" width="100%">
+<img src="./app/assets/images/Listings.gif" align="center"/>
+
 * The landing and discover pages reveal listings for visitors, have a standard navbar and footer, and a search-bar. The discover page adds Google Maps.
 * When viewing an individual listing visitors are presented with a carousel of photos, amenities, and host information.
 * Listings also allows for reservations to be made.
 ---
 ### Reservations
-<img src="https://app-name-seeds.s3-us-west-1.amazonaws.com/Reservations.gif" width="100%">
+<img src="./app/assets/images/Reservations.gif" align="center"/>
+
 * Visitors can make a reservation on any listing by selecting dates on the right-hand side of the page.
 * A confirmation is presented to the visitor upon successfully making a reservation.
 ## Planned Features
