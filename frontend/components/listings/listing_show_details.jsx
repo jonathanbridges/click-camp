@@ -12,11 +12,14 @@ class ListingShowDetails extends React.Component {
     super(props);
 
     this.state = {
+      camper_id: this.props.currentUser === undefined ? null : this.props.currentUser.id,
       startDate: null,
       endDate: null,
       focusedInput: null,
       reservation: null,
     };
+
+    debugger
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -27,7 +30,7 @@ class ListingShowDetails extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     let formattedReservation = {
-      camper_id: 1,
+      camper_id: this.state.camper_id,
       listing_id: this.props.listing.id,
       check_in: this.state.startDate._d,
       check_out: this.state.endDate._d,
@@ -44,6 +47,12 @@ class ListingShowDetails extends React.Component {
       .then(document.getElementById("pending").innerHTML = "You're confirmed!")
       .then(document.getElementById("pending").setAttribute("id", "confirmed")
     );
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.currentUser !== prevProps.currentUser) {
+      this.setState({camper_id: this.props.currentUser.id});
+    }
   }
 
   render () {

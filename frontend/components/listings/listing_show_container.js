@@ -9,8 +9,9 @@ const mapStateToProps = (state, { match }) => {
   let listingId = parseInt(match.params.listingId);
   let listing = state.entities.listings[listingId];
   let currentUser = state.entities.users[state.session.id];
-  let modal = state.ui.modal;
-  return ({listing, currentUser, modal})
+  // let modal = state.ui.modal;
+  // return ({listing, currentUser, modal})
+  return ({listing, currentUser})
 
   // TODO: Selectors for finding Listing details:
   // const listing = selectListing(state.entities, listingId);
