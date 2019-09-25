@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, Redirect } from 'react-router-dom';
 
 const Greeting = ({ currentUser, logout, openModal }) => {
   const sessionLinks = () => (
@@ -16,7 +17,7 @@ const Greeting = ({ currentUser, logout, openModal }) => {
     <div className="current-user-logout">
       <p className="header-name">Hi, {currentUser.username}!</p>
       <div className="logoutButton">     
-        <button className="nav-btn" onClick={logout}>Log Out</button>
+        <Link to="/" className="nav-btn" onClick={logout}>Log Out</Link>
       </div>
     </div>
   );

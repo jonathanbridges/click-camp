@@ -10,23 +10,18 @@ class ListingShowDetails extends React.Component {
 
   constructor(props) {
     super(props);
+
     this.state = {
       startDate: null,
       endDate: null,
       focusedInput: null,
-      reservation: null
+      reservation: null,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    // conditional logic to render different div for instant book button if user is logged in or not
-    // steps into first if not logged in using !this.props.currentUser
-    // if (!this.props.currentUser) {
-    //   document.getElementById("show-book").innerHTML = "Please Login to Book";
-    // } else {
-
-    // }
+    
   }
 
   handleSubmit(e) {
@@ -52,6 +47,40 @@ class ListingShowDetails extends React.Component {
   }
 
   render () {
+
+    let calendar;
+    if (this.props.currentUser === undefined) {
+      calendar = (
+        <div id="login-wrapper btn-main" onClick={() => this.props.openModal('login')}>
+          <h2> Please log in to book</h2>
+          <div className="calendar-wrapper">
+            <DateRangePicker
+              startDateId="startDate"
+              endDateId="endDate"
+              startDate={this.state.startDate}
+              endDate={this.state.endDate}
+              onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate }) }}
+              focusedInput={this.state.focusedInput}
+              onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
+            />
+          </div>
+        </div>
+      )
+    } else {
+      calendar = (
+        <div className="calendar-wrapper">
+          <DateRangePicker
+            startDateId="startDate"
+            endDateId="endDate"
+            startDate={this.state.startDate}
+            endDate={this.state.endDate}
+            onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate }) }}
+            focusedInput={this.state.focusedInput}
+            onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
+          />
+        </div>
+      )
+    }
   
     return (
     <div className="show-content-bottom">
@@ -186,19 +215,8 @@ class ListingShowDetails extends React.Component {
           <div className="show-price">
             <strong>{`${this.props.listing.cost}/night`}</strong>
           </div> 
-          <div className="calendar-wrapper">
-            <DateRangePicker
-              startDateId="startDate"
-              endDateId="endDate"
-              startDate={this.state.startDate}
-              endDate={this.state.endDate}
-              onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate }) }}
-              focusedInput={this.state.focusedInput}
-              onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
-            />
-          </div>
+          {calendar}
           <a onClick={this.handleSubmit} className="btn-main" id="show-book">Instant Book</a>
-
         </div>
         {/* Reservation after booking */}
         <div className="reservation-new">

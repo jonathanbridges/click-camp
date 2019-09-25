@@ -11,6 +11,7 @@ class ListingShow extends React.Component {
       startDate: null,
       endDate: null,
       focusedInput: null,
+      modal: this.props.modal
     };
   }
 
@@ -34,7 +35,7 @@ class ListingShow extends React.Component {
       details = ""
     } else {
       photos = this.props.listing.photoUrls.map((photo, idx) => <div className="show-img-container" key={`img-${idx}`}><img src={photo} style={imgStyle} /></div>)
-      details = < ListingShowDetails listing = { this.props.listing } createReservation={this.props.createReservation} currentUser={this.props.currentUser} />
+      details = < ListingShowDetails listing = { this.props.listing } createReservation={this.props.createReservation} currentUser={this.props.currentUser} openModal={this.props.openModal} modal={this.props.modal} />
     }
 
     return (
