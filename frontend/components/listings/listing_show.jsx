@@ -2,6 +2,8 @@ import React from 'react';
 
 import ListingShowDetails from './listing_show_details';
 import Carousel from 'nuka-carousel';
+import { css } from '@emotion/core';
+import PulseLoaderAnimation from '../loader/pulse_loader';
 
 class ListingShow extends React.Component {
 
@@ -11,8 +13,10 @@ class ListingShow extends React.Component {
       startDate: null,
       endDate: null,
       focusedInput: null,
-      modal: this.props.modal
+      loading: true
     };
+
+    setTimeout(() => this.setState({ loading: false }), 1000);
   }
 
   componentDidMount() {
@@ -22,6 +26,14 @@ class ListingShow extends React.Component {
 
   render() {
 
+    if (this.state.loading) {
+      return (
+        <div className='loader'>
+          <PulseLoaderAnimation loading={this.state.loading} />
+        </div>
+      );
+    }
+
     const imgStyle = {
       height: `480px`,
       width: `100%`,
@@ -30,12 +42,13 @@ class ListingShow extends React.Component {
 
     let photos;
     let details;
+
     if (this.props.listing === undefined) {
       photos = <div className="show-img-container"></div>
       details = ""
     } else {
       photos = this.props.listing.photoUrls.map((photo, idx) => <div className="show-img-container" key={`img-${idx}`}><img src={photo} style={imgStyle} /></div>)
-      details = < ListingShowDetails listing = { this.props.listing } createReservation={this.props.createReservation} currentUser={this.props.currentUser} openModal={this.props.openModal} modal={this.props.modal} />
+      details = < ListingShowDetails listing = { this.props.listing } createReservation={this.props.createReservation} currentUser={this.props.currentUser} openModal={this.props.openModal} />
     }
 
     return (

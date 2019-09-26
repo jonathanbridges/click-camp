@@ -19,7 +19,6 @@ class ListingShowDetails extends React.Component {
       reservation: null,
     };
 
-    debugger
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
