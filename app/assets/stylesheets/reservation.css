@@ -46,3 +46,7 @@
   justify-content: center;
   align-items: center;
 }
+
+.loader-modal {
+  margin: 6px 0 0 0;
+}

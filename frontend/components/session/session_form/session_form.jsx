@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import PulseLoaderAnimation from '../../loader/pulse_loader'
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -7,14 +8,11 @@ class SessionForm extends React.Component {
     this.state = {
       username: '',
       email: '',
-      password: ''
+      password: '',
+      loading: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
-  }
-
-  componentWillUnmount() {
-    this.props.clearErrors();
   }
 
   update(field) {
@@ -26,16 +24,22 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user).then(this.props.closeModal);
+    this.setState({ loading: true });
+    setTimeout(() => this.props.processForm(user)
+      .then(this.props.closeModal)
+      .catch(this.setState({
+        loading: false
+      })), 1000);
   }
 
   handleDemoSubmit(e) {
     e.preventDefault();
-    this.props.processDemo({
+    this.setState({ loading: true });
+    setTimeout(() => this.props.processDemo({
       username: 'clickCamper',
       email: 'clickCamper@camp.site',
       password: 'password'
-    }).then(this.props.closeModal);
+    }).then(this.props.closeModal), 1000);
   }
 
   renderErrors() {
@@ -50,7 +54,21 @@ class SessionForm extends React.Component {
     );
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+    this.setState({ loading: false });
+  }
+
   render() {
+
+    if (this.state.loading) {
+      return (
+        <div className='loader-modal'>
+          <PulseLoaderAnimation loading={this.state.loading} />
+        </div>
+      );
+    }
+    
     return (
       <div className="login-form-container">
         <form className="login-form-box">
