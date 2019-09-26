@@ -63,6 +63,7 @@ class ListingShowDetails extends React.Component {
           <h2> Please log in to book</h2>
           <div className="calendar-wrapper">
             <DateRangePicker
+              numberOfMonths={1}
               startDateId="startDate"
               endDateId="endDate"
               startDate={this.state.startDate}
@@ -79,6 +80,7 @@ class ListingShowDetails extends React.Component {
       calendar = (
         <div className="calendar-wrapper">
           <DateRangePicker
+            numberOfMonths={1}
             startDateId="startDate"
             endDateId="endDate"
             startDate={this.state.startDate}

@@ -1,6 +1,7 @@
 import React from 'react';
 import ListingIndexItem from './listing_index_item';
 import { Link } from 'react-router-dom';
+import Footer from '../footer/footer';
 
 class SplashListingIndex extends React.Component {
 
@@ -62,6 +63,8 @@ class SplashListingIndex extends React.Component {
 
         </section>
         </div>
+
+        <Footer />
       </div>
     );
   }

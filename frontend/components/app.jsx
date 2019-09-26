@@ -40,10 +40,10 @@ const App = () => (
     </ Switch>
 
     {/* Listing Show Page Footer */}
-    <Route exact path="/discover/:listingId" component={Footer} />    
+    {/* <Route exact path="/discover/:listingId" component={Footer} />     */}
 
     {/* Splashpage Footer */}
-    <Route exact path="/" component={Footer} />    
+    {/* <Route exact path="/" component={Footer} />     */}
   </div>
 );
 

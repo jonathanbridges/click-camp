@@ -4,6 +4,11 @@ import ListingShowDetails from './listing_show_details';
 import Carousel from 'nuka-carousel';
 import { css } from '@emotion/core';
 import PulseLoaderAnimation from '../loader/pulse_loader';
+import Footer from '../footer/footer';
+
+document.addEventListener('DOMContentLoaded', () => {
+  window.scrollTo(0, 0);
+});
 
 class ListingShow extends React.Component {
 
@@ -59,6 +64,7 @@ class ListingShow extends React.Component {
           </Carousel>
         </div>
         {details}
+        <Footer />
       </div>
     );
   }
