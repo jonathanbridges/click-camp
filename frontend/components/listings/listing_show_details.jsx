@@ -72,6 +72,7 @@ class ListingShowDetails extends React.Component {
               focusedInput={this.state.focusedInput}
               onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
             />
+          <a onClick={this.handleSubmit} className="btn-main" id="show-book">Instant Book</a>
           </div>
         </div>
       )
@@ -87,6 +88,7 @@ class ListingShowDetails extends React.Component {
             focusedInput={this.state.focusedInput}
             onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
           />
+          <a onClick={this.handleSubmit} className="btn-main" id="show-book">Instant Book</a>
         </div>
       )
     }
@@ -225,7 +227,6 @@ class ListingShowDetails extends React.Component {
             <strong>{`${this.props.listing.cost}/night`}</strong>
           </div> 
           {calendar}
-          <a onClick={this.handleSubmit} className="btn-main" id="show-book">Instant Book</a>
         </div>
         {/* Reservation after booking */}
         <div className="reservation-new">
