@@ -44,18 +44,7 @@
 }
 
 .show-content-right {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  top: -1.9rem;
-  max-height: fit-content;
-  min-width: 320px;
-  padding: 1rem;
-  background-color: white;
-  border: 1px solid #ebebeb;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
-  z-index: 2;
+
 }
 
 #pending {
@@ -69,18 +58,38 @@
   font-size: 1.3rem;
 }
 
-.show-price {
-  height: 2rem;
-  padding-bottom: 1rem;
-  font-size: 1.3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.price-row {
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+.day-rate {
+  font-size: 1.4rem;
+  color: #333333;
+}
+
+.price-deets {
+  font-size: .8rem;
+  color: #757575;
+}
+
+.checkout-btn {
+  height: 50px;
+  margin-top: 1rem;
 }
 
 .calendar-wrapper {
+  position: relative;
+  top: -2rem;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: .6rem 1rem 1rem;
+  min-width: 320px;
+  background-color: white;
+  border: 1px solid #ebebeb;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+  z-index: 2;
 }
 
 .show-bold {

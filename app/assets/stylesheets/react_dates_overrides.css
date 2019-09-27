@@ -656,6 +656,7 @@
   color: #ebebeb
 }
 .DateInput_input {
+  text-align: center;
   font-weight: 200;
   font-size: 1.2rem;
   line-height: 1.4;
@@ -730,8 +731,14 @@
   background: #f2f2f2
 }
 .DateRangePickerInput__withBorder {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  justify-content: baseline;
+  align-items: center;
+  height: 50px;
   border-radius: 2px;
-  border: 1px solid #ebebeb
+  border: 1px solid #ebebeb;
 }
 .DateRangePickerInput__rtl {
   direction: rtl

@@ -50,3 +50,7 @@
 .loader-modal {
   margin: 6px 0 0 0;
 }
+
+.login-wrapper {
+  cursor: pointer;
+}

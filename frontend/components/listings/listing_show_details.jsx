@@ -50,18 +50,24 @@ class ListingShowDetails extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.currentUser !== prevProps.currentUser) {
-      this.setState({camper_id: this.props.currentUser.id});
+      this.setState({
+        camper_id: this.props.currentUser.id
+      });
     }
   }
 
   render () {
 
     let calendar;
+    // render checkout component differently based off login status
     if (this.props.currentUser === undefined) {
       calendar = (
         <div id="login-wrapper btn-main" onClick={() => this.props.openModal('login')}>
-          <h2> Please log in to book</h2>
           <div className="calendar-wrapper">
+            <div className="price-row">
+              <strong className="day-rate">{`$${this.props.listing.cost}`}</strong>
+              <p className="price-deets">per night</p>
+            </div>
             <DateRangePicker
               numberOfMonths={1}
               startDateId="startDate"
@@ -72,24 +78,30 @@ class ListingShowDetails extends React.Component {
               focusedInput={this.state.focusedInput}
               onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
             />
-          <a onClick={this.handleSubmit} className="btn-main" id="show-book">Instant Book</a>
+            <a onClick={this.handleSubmit} className="btn-main checkout-btn" id="show-book">Log in to Book</a>
           </div>
         </div>
       )
     } else {
       calendar = (
-        <div className="calendar-wrapper">
-          <DateRangePicker
-            numberOfMonths={1}
-            startDateId="startDate"
-            endDateId="endDate"
-            startDate={this.state.startDate}
-            endDate={this.state.endDate}
-            onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate }) }}
-            focusedInput={this.state.focusedInput}
-            onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
-          />
-          <a onClick={this.handleSubmit} className="btn-main" id="show-book">Instant Book</a>
+        <div id="login-wrapper">
+          <div className="calendar-wrapper">
+            <div className="price-row">
+              <strong className="day-rate">{`$${this.props.listing.cost}`}</strong>
+              <p className="price-deets">per night</p>
+            </div>
+            <DateRangePicker
+              numberOfMonths={1}
+              startDateId="startDate"
+              endDateId="endDate"
+              startDate={this.state.startDate}
+              endDate={this.state.endDate}
+              onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate }) }}
+              focusedInput={this.state.focusedInput}
+              onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
+            />
+            <a onClick={this.handleSubmit} className="btn-main checkout-btn" id="show-book">Log in to Book</a>
+          </div>
         </div>
       )
     }
@@ -224,9 +236,6 @@ class ListingShowDetails extends React.Component {
       {/* Reservation Section */}
       <div className="listing-reservation-wrapper">
         <div className="show-content-right" id="pending">
-          <div className="show-price">
-            <strong>{`${this.props.listing.cost}/night`}</strong>
-          </div> 
           {calendar}
         </div>
         {/* Reservation after booking */}

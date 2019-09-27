@@ -93,7 +93,6 @@ class SessionForm extends React.Component {
           pwCallback()
         } else {
           this.setState({ loading: true });
-          debugger;
           setTimeout(() => {
             const user = Object.assign({}, this.state);
             this.props.processDemo(user)
