@@ -70,6 +70,9 @@ class ListingShowDetails extends React.Component {
             </div>
             <DateRangePicker
               numberOfMonths={1}
+              showClearDates={true}
+              enableOutsideDays
+              autoFocus
               startDateId="startDate"
               endDateId="endDate"
               startDate={this.state.startDate}
@@ -92,6 +95,9 @@ class ListingShowDetails extends React.Component {
             </div>
             <DateRangePicker
               numberOfMonths={1}
+              showClearDates={true}
+              enableOutsideDays
+              autoFocus
               startDateId="startDate"
               endDateId="endDate"
               startDate={this.state.startDate}
@@ -100,7 +106,7 @@ class ListingShowDetails extends React.Component {
               focusedInput={this.state.focusedInput}
               onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
             />
-            <a onClick={this.handleSubmit} className="btn-main checkout-btn" id="show-book">Log in to Book</a>
+            <a onClick={this.handleSubmit} className="btn-main checkout-btn" id="show-book"><i class="fas fa-bolt"></i>&nbsp;&nbsp;Instant Book</a>
           </div>
         </div>
       )
