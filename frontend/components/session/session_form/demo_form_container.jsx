@@ -1,4 +1,4 @@
-import { connect } from 'react-redux';
+import connect from 'react-redux';
 import React from 'react';
 import { login } from '../../../actions/session_actions';
 import { openModal, closeModal } from '../../../actions/modal_actions';
@@ -8,7 +8,7 @@ const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.session,
     formType: 'Join clickCamp',
-    greetingSmall: 'Discover the best camping near me',
+    greetingSmall: 'Discover the best camping near you',
     demoUser: {
       username: 'demouser',
       password: 'password',

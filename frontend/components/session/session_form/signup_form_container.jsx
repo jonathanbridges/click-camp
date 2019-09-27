@@ -8,7 +8,7 @@ const mapStateToProps = ({ errors }) => {
   return {
     errors: errors.session,
     formType: 'Join clickCamp',
-    greetingSmall: 'Discover the best camping near me'
+    greetingSmall: 'Discover the best camping near you'
   };
 };
 

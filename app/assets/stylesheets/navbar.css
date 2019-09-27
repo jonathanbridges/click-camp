@@ -166,7 +166,14 @@ a.nav-home {
 
 ul.errors {
 	list-style: none;
-	padding: 0px;
+	font-size: .9rem;
+	font-style: italic;
+	color: #f15151;	
+	padding-inline-start: 0;
+}
+
+ul.errors li {
+	padding-bottom: 1rem;
 }
 
 .demo-login-btn {

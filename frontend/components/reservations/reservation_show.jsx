@@ -9,7 +9,6 @@ export const ReservationShow = ({ reservation, listing }) => {
   if (!reservation) {
     return (<div style={placeHolderStyle}></div>)
   } else {
-    // debugger
 
     let duration = reservation.check_out.getDate() - reservation.check_in.getDate();
     let subtotal = (reservation.check_out.getDate() - reservation.check_in.getDate()) * listing.cost;
@@ -21,7 +20,7 @@ export const ReservationShow = ({ reservation, listing }) => {
 
     return (
       <div className="reservation-deets-wrapper">
-        {/* <h2>Reservation Made!</h2> */}
+        <h2 className="btn-main">Reservation Made!</h2>
         <div className="reservation-img" style={imgStyle}></div>
         <div className="reservation-title">Reservation Details:</div>
         <div className="reservation-show-deets">

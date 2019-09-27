@@ -28,6 +28,12 @@ class ListingShowDetails extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+
+    if (this.state.startDate === null || this.state.endDate === null) {
+      alert("Please select a date.")
+      return
+    }
+
     let formattedReservation = {
       camper_id: this.state.camper_id,
       listing_id: this.props.listing.id,
@@ -42,10 +48,11 @@ class ListingShowDetails extends React.Component {
         endDate: null,
         focusedInput: null,
         reservation: formattedReservation
-      }))
-      .then(document.getElementById("pending").innerHTML = "You're confirmed!")
-      .then(document.getElementById("pending").setAttribute("id", "confirmed")
-    );
+      }));
+      document.getElementById('login-wrapper').style.display = 'none';
+//  = "You're confirmed!")
+//       .then(document.getElementById("pending").setAttribute("id", "confirmed")
+    // );
   }
 
   componentDidUpdate(prevProps) {
@@ -71,8 +78,6 @@ class ListingShowDetails extends React.Component {
             <DateRangePicker
               numberOfMonths={1}
               showClearDates={true}
-              enableOutsideDays
-              autoFocus
               startDateId="startDate"
               endDateId="endDate"
               startDate={this.state.startDate}
@@ -96,8 +101,6 @@ class ListingShowDetails extends React.Component {
             <DateRangePicker
               numberOfMonths={1}
               showClearDates={true}
-              enableOutsideDays
-              autoFocus
               startDateId="startDate"
               endDateId="endDate"
               startDate={this.state.startDate}
@@ -106,7 +109,7 @@ class ListingShowDetails extends React.Component {
               focusedInput={this.state.focusedInput}
               onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
             />
-            <a onClick={this.handleSubmit} className="btn-main checkout-btn" id="show-book"><i class="fas fa-bolt"></i>&nbsp;&nbsp;Instant Book</a>
+            <a onClick={this.handleSubmit} className="btn-main checkout-btn" id="show-book"><i className="fas fa-bolt"></i>&nbsp;&nbsp;Instant Book</a>
           </div>
         </div>
       )

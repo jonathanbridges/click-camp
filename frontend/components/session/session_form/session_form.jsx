@@ -1,5 +1,4 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import PulseLoaderAnimation from '../../loader/pulse_loader'
 
 class SessionForm extends React.Component {
@@ -11,7 +10,7 @@ class SessionForm extends React.Component {
       password: '',
       loading: false
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.loginUser = this.loginUser.bind(this);
     this.loginDemoUser = this.loginDemoUser.bind(this);
   }
 
@@ -21,15 +20,17 @@ class SessionForm extends React.Component {
     });
   }
 
-  handleSubmit(e) {
+  loginUser(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.setState({ loading: true });
-    setTimeout(() => this.props.processForm(user)
-      .then(this.props.closeModal)
-      .catch(this.setState({
-        loading: false
-      })), 1000);
+    this.setState({loading: true});
+    setTimeout(() => this.props.processForm(user), 1000);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.errors.length !== this.props.errors.length) {
+      this.setState({ loading: false });
+    }
   }
 
   loginDemoUser(e) {
@@ -108,8 +109,8 @@ class SessionForm extends React.Component {
   renderErrors() {
     return (
       <ul className="errors">
-        {this.props.errors.map((error, i) => (
-          <li key={`error-${i}`}>
+        {this.props.errors.map((error, idx) => (
+          <li key={`error-${idx}`}>
             {error}
           </li>
         ))}
@@ -160,7 +161,7 @@ class SessionForm extends React.Component {
               placeholder="Password..."
             />
             <br />
-            <input onClick={this.handleSubmit} className="btn-main" type="submit" value={this.props.formType} />
+            <input onClick={this.loginUser} className="btn-main" type="submit" value={this.props.formType} />
             <br />
             <input onClick={this.loginDemoUser} className="demo-login-btn" type="submit" value="Demo Login" />
           </div>
@@ -170,4 +171,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default withRouter(SessionForm);
+export default SessionForm;
