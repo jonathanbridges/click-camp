@@ -10,9 +10,12 @@ export const ReservationShow = ({ reservation, listing }) => {
     return (<div style={placeHolderStyle}></div>)
   } else {
 
-    let duration = reservation.check_out.getDate() - reservation.check_in.getDate();
-    let subtotal = (reservation.check_out.getDate() - reservation.check_in.getDate()) * listing.cost;
-    let serviceFee = ((reservation.check_out.getDate() - reservation.check_in.getDate()) * listing.cost) / 10;
+    const checkIn = reservation.check_in.getTime();
+    const checkOut = reservation.check_out.getTime();
+    const duration = (checkOut - checkIn) / (1000 * 3600 * 24)
+
+    let subtotal = duration * listing.cost;
+    let serviceFee = duration * listing.cost / 10;
 
     let imgStyle = {
       backgroundImage: `url(${listing.photoUrls[listing.photoUrls.length - 1]})`,
