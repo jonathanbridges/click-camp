@@ -12,7 +12,7 @@ class SessionForm extends React.Component {
       loading: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
+    this.loginDemoUser = this.loginDemoUser.bind(this);
   }
 
   update(field) {
@@ -32,14 +32,77 @@ class SessionForm extends React.Component {
       })), 1000);
   }
 
-  handleDemoSubmit(e) {
+  loginDemoUser(e) {
     e.preventDefault();
-    this.setState({ loading: true });
-    setTimeout(() => this.props.processDemo({
-      username: 'clickCamper',
-      email: 'clickCamper@camp.site',
-      password: 'password'
-    }).then(this.props.closeModal), 1000);
+
+    // initialize empty state
+    this.setState({
+      username: '',
+      email: '',
+      password: ''
+    });
+
+    // hardcode demo credentials
+    let uN = 'clickCamper';
+    let eM = 'clickCamper@camp.site'
+    let pW = 'password'
+
+    // update state inside of helper functions until all fields are filled
+
+    const usernameCallback = () => {
+      setTimeout(() => {
+        if (uN.length > 0) {
+          this.setState({
+            username: this.state.username.concat(uN[0]),
+            email: this.state.email,
+            password: this.state.password
+          });
+          uN = uN.slice(1);
+          usernameCallback();
+        } else {
+          setTimeout(() => emailCallback(), 150);
+        }
+      }, Math.floor(Math.random() * (1 + 150 - 50)) + 50);
+    }
+
+    const emailCallback = () => {
+      setTimeout(() => {
+        if (eM.length > 0) {
+          this.setState({
+            username: this.state.username,
+            email: this.state.email.concat(eM[0]),
+            password: this.state.password
+          });
+          eM = eM.slice(1);
+          emailCallback()
+        } else {
+          setTimeout(() => pwCallback(), 100);
+        }
+      }, Math.floor(Math.random() * (1 + 100 - 10)) + 10);
+    }
+
+    const pwCallback = () => {
+      setTimeout(() => {
+        if (pW.length > 0) {
+          this.setState({
+            username: this.state.username,
+            email: this.state.email,
+            password: this.state.password.concat(pW[0])
+          });
+          pW = pW.slice(1);
+          pwCallback()
+        } else {
+          this.setState({ loading: true });
+          setTimeout(() => {
+            const user = Object.assign({}, this.state);
+            this.props.processDemo(user)
+              .then(this.props.closeModal);
+          }, 1000);
+        }
+      }, Math.floor(Math.random() * (1 + 100 - 10)) + 10);
+    }
+
+    usernameCallback();
   }
 
   renderErrors() {
@@ -72,13 +135,9 @@ class SessionForm extends React.Component {
     return (
       <div className="login-form-container">
         <form className="login-form-box">
-          {/* <div class="modal-greeting"> */}
           <big>{this.props.formType}</big>
           <small>{this.props.greetingSmall}</small>
-          {/* </div> */}
-          {/* <small>Please {this.props.formType} or {this.props.otherForm}</small> */}
           {this.renderErrors()}
-          {/* <div onClick={this.props.closeModal} className="close-x">X</div> */}
           <div className="login-form">
             <input type="text"
               value={this.state.username}
@@ -103,7 +162,7 @@ class SessionForm extends React.Component {
             <br />
             <input onClick={this.handleSubmit} className="btn-main" type="submit" value={this.props.formType} />
             <br />
-            <input onClick={this.handleDemoSubmit} className="demo-login-btn" type="submit" value="Demo Login" />
+            <input onClick={this.loginDemoUser} className="demo-login-btn" type="submit" value="Demo Login" />
           </div>
         </form>
       </div>
