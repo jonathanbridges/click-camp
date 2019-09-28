@@ -29,7 +29,7 @@ class ListingShowDetails extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    if (this.state.startDate === null || this.state.endDate === null) {
+    if ((this.state.startDate === null || this.state.endDate === null) && this.props.currentUser !== undefined) {
       alert("Please select a date.")
       return
     }
