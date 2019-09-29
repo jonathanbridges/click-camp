@@ -157,7 +157,8 @@ a.nav-home {
 	margin-left: 2rem;
 	text-decoration: none;
 	color: black;
-	font-size: 1.75rem;
+	font-size: 1.7rem;
+	font-weight: bold;
 }
 
 /* .main-nav .right {

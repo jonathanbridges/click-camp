@@ -6,6 +6,10 @@ import 'react-dates/initialize';
 
 import ReservationShow from '../reservations/reservation_show'
 
+let overlay;
+let cal;
+let calOffset;
+
 class ListingShowDetails extends React.Component {
 
   constructor(props) {
@@ -17,13 +21,49 @@ class ListingShowDetails extends React.Component {
       endDate: null,
       focusedInput: null,
       reservation: null,
+      focused: false
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.focusReservation = this.focusReservation.bind(this);
   }
 
   componentDidMount() {
-    
+
+  }
+
+  focusReservation() {
+    // show overlay when user clicks in reservation details
+    if (this.state.focused === false) {
+      overlay = document.querySelector('#listing-overlay');
+      overlay.style.display = 'block';
+
+    // helper function to find position of calendar box
+      const offset = (el) => {
+        var rect = el.getBoundingClientRect(),
+          scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+          scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        return { top: rect.top + scrollTop, left: rect.left + scrollLeft }
+      }
+
+      cal = document.getElementById('login-wrapper');
+      calOffset = offset(cal);
+      
+      // scroll to calendar on focus
+      window.scrollTo({
+        top: calOffset.top - 100,
+        left: 0,
+        behavior: 'smooth'
+      });
+
+      const wrapper = document.getElementById('pending');
+      wrapper.style.position = 'sticky';
+      wrapper.style.top = '100px';
+
+      this.setState({
+        focused: true
+      });
+    }    
   }
 
   handleSubmit(e) {
@@ -71,6 +111,7 @@ class ListingShowDetails extends React.Component {
       calendar = (
         <div id="login-wrapper btn-main" onClick={() => this.props.openModal('login')}>
           <div className="calendar-wrapper">
+            <div id="listing-overlay"></div>
             <div className="price-row">
               <strong className="day-rate">{`$${this.props.listing.cost}`}</strong>
               <p className="price-deets">per night</p>
@@ -92,7 +133,8 @@ class ListingShowDetails extends React.Component {
       )
     } else {
       calendar = (
-        <div id="login-wrapper">
+        <div id="login-wrapper" onClick={this.focusReservation}>
+          <div id="listing-overlay"></div>
           <div className="calendar-wrapper">
             <div className="price-row">
               <strong className="day-rate">{`$${this.props.listing.cost}`}</strong>

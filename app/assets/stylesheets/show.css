@@ -80,7 +80,7 @@
 
 .calendar-wrapper {
   position: relative;
-  top: -2rem;
+  top: -30px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -223,4 +223,15 @@
 .show-title {
   font-size: 1.4rem;
   color: #333333;
+}
+
+#listing-overlay {
+  display: none;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 1;
+  position: fixed;
+  top: 70px;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
