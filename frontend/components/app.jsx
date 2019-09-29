@@ -20,6 +20,7 @@ const App = () => (
       <div className="left">
         <Link className="nav-home" to="/">CLICKCAMP</Link>
       </div>
+      <div className="nav-spacer"></div>
       <div className="right">
         <GreetingContainer />
       </div>

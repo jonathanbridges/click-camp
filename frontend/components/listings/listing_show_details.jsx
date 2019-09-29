@@ -142,6 +142,7 @@ class ListingShowDetails extends React.Component {
             <DateRangePicker
               numberOfMonths={1}
               showClearDates={true}
+              enableOutsideDays={true}
               startDateId="startDate"
               endDateId="endDate"
               startDate={this.state.startDate}
@@ -167,6 +168,7 @@ class ListingShowDetails extends React.Component {
             <DateRangePicker
               numberOfMonths={1}
               showClearDates={true}
+              enableOutsideDays={true}
               startDateId="startDate"
               endDateId="endDate"
               startDate={this.state.startDate}
