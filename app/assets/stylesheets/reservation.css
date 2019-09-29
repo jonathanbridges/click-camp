@@ -68,3 +68,15 @@
   z-index: 20;
 }
 
+#top-of-site-pixel-anchor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  top: 200px;
+  left: 0;
+}
+
+body.cal-not-at-top #pending {
+  position: sticky;
+  top: 100px;
+}

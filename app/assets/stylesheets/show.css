@@ -47,9 +47,9 @@
   min-width: 350px;
 }
 
-#pending {
+/* #pending {
   position: relative;
-}
+} */
 
 #confirmed {
   background-color: #40d9ac;

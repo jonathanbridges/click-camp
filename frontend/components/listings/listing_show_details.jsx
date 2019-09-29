@@ -29,7 +29,30 @@ class ListingShowDetails extends React.Component {
   }
 
   componentDidMount() {
-
+    // Allows calendar to become sticky when scrolled to
+    if (
+      "IntersectionObserver" in window &&
+      "IntersectionObserverEntry" in window &&
+      "intersectionRatio" in window.IntersectionObserverEntry.prototype
+    ) {
+      let observer = new IntersectionObserver(entries => {
+        if (entries[0].boundingClientRect.y < 500) {
+          document.body.classList.add("cal-not-at-top");
+        } else {
+          document.body.classList.remove("cal-not-at-top");
+        }
+      });
+      observer.observe(document.querySelector("#top-of-site-pixel-anchor"));
+    }
+  }
+  
+  componentDidUpdate(prevProps) {
+    // Adds user id to state if user didn't log in until visiting listing page
+    if (this.props.currentUser !== prevProps.currentUser) {
+      this.setState({
+        camper_id: this.props.currentUser.id
+      });
+    }
   }
 
   focusReservation() {
@@ -56,14 +79,20 @@ class ListingShowDetails extends React.Component {
         behavior: 'smooth'
       });
 
-      const wrapper = document.getElementById('pending');
-      wrapper.style.position = 'sticky';
-      wrapper.style.top = '100px';
-
       this.setState({
         focused: true
       });
-    }    
+
+    } else if (this.state.focused === true) {
+      // removes overlay if user clicks out of calendar
+
+      overlay = document.querySelector('#listing-overlay');
+      overlay.style.display = 'none';
+
+      this.setState({
+        focused: false
+      });
+    }
   }
 
   handleSubmit(e) {
@@ -95,13 +124,6 @@ class ListingShowDetails extends React.Component {
     // );
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.currentUser !== prevProps.currentUser) {
-      this.setState({
-        camper_id: this.props.currentUser.id
-      });
-    }
-  }
 
   render () {
 
@@ -110,6 +132,7 @@ class ListingShowDetails extends React.Component {
     if (this.props.currentUser === undefined) {
       calendar = (
         <div id="login-wrapper btn-main" onClick={() => this.props.openModal('login')}>
+          <div id="top-of-site-pixel-anchor"></div>
           <div className="calendar-wrapper">
             <div id="listing-overlay"></div>
             <div className="price-row">
@@ -134,7 +157,8 @@ class ListingShowDetails extends React.Component {
     } else {
       calendar = (
         <div id="login-wrapper" onClick={this.focusReservation}>
-          <div id="listing-overlay"></div>
+          <div id="top-of-site-pixel-anchor"></div>
+          <div id="listing-overlay" onClick={this.focusReservation}></div>
           <div className="calendar-wrapper">
             <div className="price-row">
               <strong className="day-rate">{`$${this.props.listing.cost}`}</strong>
