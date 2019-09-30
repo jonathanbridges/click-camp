@@ -124,6 +124,9 @@ class ListingShowDetails extends React.Component {
     // );
   }
 
+  myFunction() {
+    console.log()
+  }
 
   render () {
 
@@ -158,6 +161,7 @@ class ListingShowDetails extends React.Component {
     } else {
       calendar = (
         <div id="login-wrapper" onClick={this.focusReservation}>
+          {/* 1px anchor for sticky calendar section */}
           <div id="top-of-site-pixel-anchor"></div>
           <div id="listing-overlay" onClick={this.focusReservation}></div>
           <div className="calendar-wrapper">
@@ -173,7 +177,10 @@ class ListingShowDetails extends React.Component {
               endDateId="endDate"
               startDate={this.state.startDate}
               endDate={this.state.endDate}
-              onDatesChange={({ startDate, endDate }) => { this.setState({ startDate, endDate }) }}
+              onDatesChange={({ startDate, endDate }) => { 
+                if (startDate === null) return;
+                this.setState({ startDate, endDate }) 
+              }}
               focusedInput={this.state.focusedInput}
               onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
             />

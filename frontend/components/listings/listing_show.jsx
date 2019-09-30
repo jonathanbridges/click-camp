@@ -2,7 +2,6 @@ import React from 'react';
 
 import ListingShowDetails from './listing_show_details';
 import Carousel from 'nuka-carousel';
-import { css } from '@emotion/core';
 import PulseLoaderAnimation from '../loader/pulse_loader';
 import Footer from '../footer/footer';
 
