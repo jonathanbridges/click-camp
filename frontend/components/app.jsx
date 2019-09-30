@@ -18,7 +18,7 @@ const App = () => (
     <Modal />
     <nav className="main-nav">
       <div className="left">
-        <Link className="nav-home" to="/">CLICKCAMP</Link>
+        <Link className="nav-home" to="/"><img className="clickcamp-text" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/clickcamp-text.png" alt=""/></Link>
       </div>
       <div className="nav-spacer"></div>
       <div className="right">
