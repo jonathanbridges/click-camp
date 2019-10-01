@@ -10,6 +10,7 @@ import { fetchReservationsByUserId } from '../../actions/reservation_actions';
 let overlay;
 let cal;
 let calOffset;
+let reserved;
 
 class ListingShowDetails extends React.Component {
 
@@ -31,11 +32,11 @@ class ListingShowDetails extends React.Component {
   }
 
   componentWillMount() {
- 
+    reserved = false;
   }
 
   componentDidMount() {
-    // retrieves reservations for current user
+       // retrieves reservations for current user
     if (this.state.camper_id !== null) {
       this.props.fetchReservationsByUserId(this.props.currentUser.id);
     }
@@ -62,6 +63,8 @@ class ListingShowDetails extends React.Component {
       this.setState({
         camper_id: this.props.currentUser.id
       });
+      // retrieves reservations for current user
+      this.props.fetchReservationsByUserId(this.props.currentUser.id);
     }
   }
 
@@ -139,10 +142,18 @@ class ListingShowDetails extends React.Component {
   render () {
 
     // determines if the current user already has a reservation scheduled for the listing
+    let futureReservation;
     if ((this.props.reservations.length > 0) && (this.props.currentUser !== undefined)) {
       this.props.reservations.forEach(reservation => {
         if (reservation.listing_id === this.props.listing.id) {
-          console.log('there is a match');
+
+          // if date is in the future and not a past listing
+          let now = new Date();
+          let checkIn = new Date(reservation.check_in);
+          if (checkIn > now) {
+            reserved = true;
+            futureReservation = reservation;
+          }
         }
       });
     }
@@ -178,9 +189,11 @@ class ListingShowDetails extends React.Component {
       promptDiv = (<div></div>)
     }
 
+
     let calendar;
-    // render checkout component differently based off login status
+
     if (this.props.currentUser === undefined) {
+      // render checkout component for logged out users
       calendar = (
         <div id="login-wrapper btn-main" onClick={() => this.props.openModal('login')}>
           <div id="top-of-site-pixel-anchor"></div>
@@ -206,36 +219,49 @@ class ListingShowDetails extends React.Component {
         </div>
       )
     } else {
-      calendar = (
-        <div id="login-wrapper" onClick={this.focusReservation}>
-          {/* 1px anchor for sticky calendar section */}
-          <div id="top-of-site-pixel-anchor"></div>
-          <div id="listing-overlay" onClick={this.unfocusReservation}></div>
-          <div className="calendar-wrapper">
-            <div className="price-row">
-              <strong className="day-rate">{`$${this.props.listing.cost}`}</strong>
-              <p className="price-deets">per night</p>
+      // render checkout component for logged in users
+      if (reserved === true) {
+        calendar = (
+          <div className="login-wrapper">
+            <div id="top-of-site-pixel-anchor"></div>
+            <div className="calendar-wrapper">
+              <h2>You have a reservation planned.</h2>
+              <button>Cancel Reservation</button>
             </div>
-            <DateRangePicker
-              numberOfMonths={1}
-              enableOutsideDays={true}
-              startDateId="startDate"
-              endDateId="endDate"
-              startDate={this.state.startDate}
-              endDate={this.state.endDate}
-              onDatesChange={({ startDate, endDate }) => { 
-                if (startDate === null) return;
-                this.setState({ startDate, endDate }) 
-              }}
-              focusedInput={this.state.focusedInput}
-              onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
-            />
-            {subtotalDiv}
-            <a onClick={this.handleSubmit} className="btn-main checkout-btn" id="show-book"><i className="fas fa-bolt"></i>&nbsp;&nbsp;Instant Book</a>
-            {promptDiv}
           </div>
-        </div>
-      )
+        )
+      } else {
+        calendar = (
+          <div id="login-wrapper" onClick={this.focusReservation}>
+            {/* 1px anchor for sticky calendar section */}
+            <div id="top-of-site-pixel-anchor"></div>
+            <div id="listing-overlay" onClick={this.unfocusReservation}></div>
+            <div className="calendar-wrapper">
+              <div className="price-row">
+                <strong className="day-rate">{`$${this.props.listing.cost}`}</strong>
+                <p className="price-deets">per night</p>
+              </div>
+              <DateRangePicker
+                numberOfMonths={1}
+                enableOutsideDays={true}
+                startDateId="startDate"
+                endDateId="endDate"
+                startDate={this.state.startDate}
+                endDate={this.state.endDate}
+                onDatesChange={({ startDate, endDate }) => { 
+                  if (startDate === null) return;
+                  this.setState({ startDate, endDate }) 
+                }}
+                focusedInput={this.state.focusedInput}
+                onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
+              />
+              {subtotalDiv}
+              <a onClick={this.handleSubmit} className="btn-main checkout-btn" id="show-book"><i className="fas fa-bolt"></i>&nbsp;&nbsp;Instant Book</a>
+              {promptDiv}
+            </div>
+          </div>
+        )
+      }
     }
   
     return (
