@@ -6,21 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+import 'byebug'
+
 require 'open-uri'
 
 User.delete_all
 Location.delete_all
 Listing.delete_all
+Reservation.delete_all
 
-User.create!(
-  username: 'jonathan',
-  email: 'jbridges7@gmail.com',
+user1 = User.create!(
+  username: 'clickCamper',
+  email: 'clickCamper@camp.site',
   password: 'password'
 )
 
-User.create!(
-  username: 'clickCamper',
-  email: 'clickCamper@camp.site',
+user2 = User.create!(
+  username: 'jonathan',
+  email: 'jbridges7@gmail.com',
   password: 'password'
 )
 
@@ -242,3 +245,23 @@ listing6.photos.attach(io: photo_6_6, filename: "site-6-6.jpeg")
 # listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-4.jpeg'), filename: "site-6-4.jpeg")
 # listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-5.jpeg'), filename: "site-6-5.jpeg")
 # listing6.photos.attach(io: open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-6.jpeg'), filename: "site-6-6.jpeg")
+
+res_1_check_in = (Time.now + 1000000)
+res_1_check_out = (Time.now + 1250000)
+
+reservation1 = Reservation.create!(
+  camper_id: user1.id,
+  listing_id: listing3.id,
+  check_in: res_1_check_in,
+  check_out: res_1_check_out,
+)
+
+res_2_check_in = (Time.now - 1500000)
+res_2_check_out = (Time.now - 1000000)
+
+reservation2 = Reservation.create!(
+  camper_id: user1.id,
+  listing_id: listing2.id,
+  check_in: res_2_check_in,
+  check_out: res_2_check_out,
+)

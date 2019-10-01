@@ -13,6 +13,13 @@ export const fetchReservation = id => (
   })
 );
 
+export const fetchReservationsByUserId = userId => {
+  return $.ajax({
+    method: 'GET',
+    url: `/api/reservations?userId=${userId}`
+  })
+}
+
 export const deleteReservation = id => (
   $.ajax({
     method: 'DELETE',

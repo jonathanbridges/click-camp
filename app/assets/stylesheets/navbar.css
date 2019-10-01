@@ -131,13 +131,13 @@ input.login-input {
 	font-size: 1.0rem;
 	color: #333333;
 	border: none;
-	/* margin: 0 14px 0 0; */
 	text-decoration: none;
 	border-bottom: 1px solid #ebebeb;
 	outline: none;
 	padding: 0;
 	cursor: pointer;
 	transition: all 0.25s ease 0s;
+	background: white;
 }
 
 .nav-btn:hover {

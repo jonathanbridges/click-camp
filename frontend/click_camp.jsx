@@ -6,10 +6,10 @@ import Root from './components/root';
 import configureStore from './store/store';
 
 //Testing
-import { signup, login, logout } from './actions/session_actions'
-import { fetchListing, fetchListings } from './actions/listing_actions'
-import { fetchReservations, fetchReservation, deleteReservation, createReservation } from './util/reservation_api_util'
-// import { fetchReservations, fetchReservation, deleteReservation, createReservation } from './actions/reservation_actions'
+// import { signup, login, logout } from './actions/session_actions'
+// import { fetchListing, fetchListings } from './actions/listing_actions'
+// import { fetchReservations, fetchReservation, fetchReservationsByUserId, deleteReservation, createReservation } from './util/reservation_api_util'
+// import { fetchReservations, fetchReservation, fetchReservationsByUserId, deleteReservation, createReservation } from './actions/reservation_actions'
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // window.fetchReservations = fetchReservations
   // window.createReservation = createReservation
   // window.deleteReservation = deleteReservation
+  // window.fetchReservationsByUserId = fetchReservationsByUserId;
   //End Testing
 
   //Redux Testing
@@ -41,6 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // window.fetchListing = fetchListing
   // window.fetchReservations = fetchReservations
   // window.fetchReservation = fetchReservation
+  // window.fetchReservationsByUserId = fetchReservationsByUserId;
   // window.createReservation = createReservation
   // window.deleteReservation = deleteReservation
   

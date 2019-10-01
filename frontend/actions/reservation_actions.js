@@ -2,6 +2,7 @@ import * as APIUtil from '../util/reservation_api_util';
 
 export const RECEIVE_RESERVATIONS = 'RECEIVE_RESERVATIONS';
 export const RECEIVE_RESERVATION = 'RECEIVE_RESERVATION';
+export const RECEIVE_RESERVATIONS_BY_USER_ID = 'RECEIVE_RESERVATIONS_BY_USER_ID';
 export const REMOVE_RESERVATION = 'REMOVE_RESERVATION';
 
 // Action creators
@@ -16,6 +17,13 @@ export const receiveReservation = reservation => ({
   reservation 
 });
 
+const receiveReservationsByUserId = reservations => {
+  return ({
+    type: RECEIVE_RESERVATIONS_BY_USER_ID,
+    reservations
+  });
+} 
+
 export const removeReservation = reservation => ({
   type: REMOVE_RESERVATION,
   reservationId: reservation.id
@@ -28,6 +36,12 @@ export const fetchReservations = () => dispatch => (
 );
 
 // Thunk action creators
+
+export const fetchReservationsByUserId = userId => dispatch => (
+  APIUtil.fetchReservationsByUserId(userId).then(reservations => 
+    dispatch(receiveReservationsByUserId(reservations)
+  ))
+);
 
 export const fetchReservation = id => dispatch => (
   APIUtil.fetchReservation(id).then(payload => (

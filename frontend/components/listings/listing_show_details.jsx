@@ -15,6 +15,8 @@ class ListingShowDetails extends React.Component {
   constructor(props) {
     super(props);
 
+    debugger;
+
     this.state = {
       camper_id: this.props.currentUser === undefined ? null : this.props.currentUser.id,
       startDate: null,
@@ -102,7 +104,7 @@ class ListingShowDetails extends React.Component {
     e.preventDefault();
 
     if ((this.state.startDate === null || this.state.endDate === null) && this.props.currentUser !== undefined) {
-      alert("Please select a date.")
+      alert("Please select valid check in and check out dates.")
       return
     }
 
@@ -125,10 +127,6 @@ class ListingShowDetails extends React.Component {
 //  = "You're confirmed!")
 //       .then(document.getElementById("pending").setAttribute("id", "confirmed")
     // );
-  }
-
-  myFunction() {
-    console.log()
   }
 
   render () {
@@ -178,7 +176,6 @@ class ListingShowDetails extends React.Component {
             </div>
             <DateRangePicker
               numberOfMonths={1}
-              showClearDates={true}
               enableOutsideDays={true}
               startDateId="startDate"
               endDateId="endDate"
@@ -205,7 +202,6 @@ class ListingShowDetails extends React.Component {
             </div>
             <DateRangePicker
               numberOfMonths={1}
-              showClearDates={true}
               enableOutsideDays={true}
               startDateId="startDate"
               endDateId="endDate"

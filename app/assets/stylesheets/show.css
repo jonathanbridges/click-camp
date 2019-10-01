@@ -17,6 +17,7 @@
   flex-direction: column;
   justify-content: center;
   height: 480px;
+  cursor: default;
 }
 
 .carousel-wrapper .slider[style]{
@@ -234,4 +235,14 @@
   bottom: 0;
   left: 0;
   right: 0;
+}
+
+.slider-control-centerleft button {
+  font-weight: 300;
+  border-radius: 0 5px 5px 0;
+}
+
+.slider-control-centerright button {
+  font-weight: 300;
+  border-radius: 5px 0 0 5px;
 }

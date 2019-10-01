@@ -22,5 +22,3 @@ class Reservation < ApplicationRecord
   belongs_to :listing
 
 end
-
-# Reservation.create(camper_id: 1, listing_id: 1, check_in: "2019-07-10", check_out: "2019-07-11")
