@@ -26,6 +26,7 @@ class ListingShowDetails extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.focusReservation = this.focusReservation.bind(this);
+    this.unfocusReservation = this.unfocusReservation.bind(this);
   }
 
   componentDidMount() {
@@ -82,9 +83,12 @@ class ListingShowDetails extends React.Component {
       this.setState({
         focused: true
       });
+    }
+  }
 
-    } else if (this.state.focused === true) {
-      // removes overlay if user clicks out of calendar
+  unfocusReservation() {
+    // removes overlay if user clicks out of calendar
+    if (this.state.focused === true) {
       overlay = document.querySelector('#listing-overlay');
       overlay.style.display = 'none';
 
@@ -92,7 +96,7 @@ class ListingShowDetails extends React.Component {
         focused: false
       });
     }
-  }
+  }  
 
   handleSubmit(e) {
     e.preventDefault();
@@ -193,7 +197,7 @@ class ListingShowDetails extends React.Component {
         <div id="login-wrapper" onClick={this.focusReservation}>
           {/* 1px anchor for sticky calendar section */}
           <div id="top-of-site-pixel-anchor"></div>
-          <div id="listing-overlay" onClick={this.focusReservation}></div>
+          <div id="listing-overlay" onClick={this.unfocusReservation}></div>
           <div className="calendar-wrapper">
             <div className="price-row">
               <strong className="day-rate">{`$${this.props.listing.cost}`}</strong>
