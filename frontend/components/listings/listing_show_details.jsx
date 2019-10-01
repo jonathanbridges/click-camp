@@ -85,7 +85,6 @@ class ListingShowDetails extends React.Component {
 
     } else if (this.state.focused === true) {
       // removes overlay if user clicks out of calendar
-
       overlay = document.querySelector('#listing-overlay');
       overlay.style.display = 'none';
 
@@ -129,6 +128,37 @@ class ListingShowDetails extends React.Component {
   }
 
   render () {
+
+    // Once valid start and end dates have been set, append subtotal and prompt to page
+
+    let subtotalDiv;
+    let promptDiv;
+    let sub;
+
+    if (this.state.endDate && this.state.startDate) {
+      
+      const checkIn = this.state.startDate._d.getTime();
+      const checkOut = this.state.endDate._d.getTime();
+      const duration = (checkOut - checkIn) / (1000 * 3600 * 24);
+
+      sub = duration * this.props.listing.cost;
+
+      subtotalDiv = (
+        <div className="subtotal-wrapper">
+          <p>Subtotal</p>
+          <p>{`$${sub}`}</p>
+        </div>
+      )
+
+      promptDiv = (
+        <div className="prompt">
+          <p>Don't worry, you won't be charged yet.</p>
+        </div>
+      )
+    } else {
+      subtotalDiv = (<div></div>)
+      promptDiv = (<div></div>)
+    }
 
     let calendar;
     // render checkout component differently based off login status
@@ -184,7 +214,9 @@ class ListingShowDetails extends React.Component {
               focusedInput={this.state.focusedInput}
               onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
             />
+            {subtotalDiv}
             <a onClick={this.handleSubmit} className="btn-main checkout-btn" id="show-book"><i className="fas fa-bolt"></i>&nbsp;&nbsp;Instant Book</a>
+            {promptDiv}
           </div>
         </div>
       )

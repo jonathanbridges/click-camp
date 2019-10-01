@@ -8,7 +8,7 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	resolve: {
-		extensions: [".js", ".jsx", "*"]
+		extensions: ['.js', '.jsx', '*']
 	},
 	module: {
 		rules: [
@@ -36,7 +36,7 @@ module.exports = {
       }
 		]
 	},
-	devtool: 'source-map'
+	devtool: 'inline-source-map'
 };
 
 // module.exports = {

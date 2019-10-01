@@ -12,7 +12,7 @@ export const ReservationShow = ({ reservation, listing }) => {
 
     const checkIn = reservation.check_in.getTime();
     const checkOut = reservation.check_out.getTime();
-    const duration = (checkOut - checkIn) / (1000 * 3600 * 24)
+    const duration = (checkOut - checkIn) / (1000 * 3600 * 24);
 
     let subtotal = duration * listing.cost;
     let serviceFee = duration * listing.cost / 10;

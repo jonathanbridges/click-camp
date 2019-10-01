@@ -80,3 +80,25 @@ body.cal-not-at-top #pending {
   position: sticky;
   top: 100px;
 }
+
+.prompt {
+  position: relative;
+  top: 1.8rem;
+  height: 0;
+  font-size: .9rem;
+  font-weight: 300;
+  text-align: center;
+  color: white;
+}
+
+.subtotal-wrapper {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  border: 1px solid #ebebeb;
+  border-radius: 2px;
+  padding: 1rem;
+  font-weight: 600;
+}
