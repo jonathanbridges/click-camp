@@ -5,6 +5,7 @@ import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 
 import ReservationShow from '../reservations/reservation_show'
+import { fetchReservationsByUserId } from '../../actions/reservation_actions';
 
 let overlay;
 let cal;
@@ -14,8 +15,6 @@ class ListingShowDetails extends React.Component {
 
   constructor(props) {
     super(props);
-
-    debugger;
 
     this.state = {
       camper_id: this.props.currentUser === undefined ? null : this.props.currentUser.id,
@@ -31,7 +30,15 @@ class ListingShowDetails extends React.Component {
     this.unfocusReservation = this.unfocusReservation.bind(this);
   }
 
+  componentWillMount() {
+ 
+  }
+
   componentDidMount() {
+    // retrieves reservations for current user
+    if (this.state.camper_id !== null) {
+      this.props.fetchReservationsByUserId(this.props.currentUser.id);
+    }
     // Allows calendar to become sticky when scrolled to
     if (
       "IntersectionObserver" in window &&
@@ -130,6 +137,15 @@ class ListingShowDetails extends React.Component {
   }
 
   render () {
+
+    // determines if the current user already has a reservation scheduled for the listing
+    if ((this.props.reservations.length > 0) && (this.props.currentUser !== undefined)) {
+      this.props.reservations.forEach(reservation => {
+        if (reservation.listing_id === this.props.listing.id) {
+          console.log('there is a match');
+        }
+      });
+    }
 
     // Once valid start and end dates have been set, append subtotal and prompt to page
 

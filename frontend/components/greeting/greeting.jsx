@@ -26,7 +26,7 @@ const Greeting = ({ currentUser, logout, openModal, closeModal }) => {
   );
   
   // Avoids close modal execution when rendering pages where user is logged in
-  if (currentUser != null) {
+  if (currentUser !== null) {
     closeModal();
   }
 
