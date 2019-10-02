@@ -102,3 +102,31 @@ body.cal-not-at-top #pending {
   padding: 1rem;
   font-weight: 600;
 }
+
+.site-row {
+  margin-top: .4rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.reservation-dates {
+  margin-top: 1rem;
+}
+
+.reservation-checkin {
+  display: flex;
+  justify-content: space-between;
+}
+
+.reservation-checkout {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.reservation-photo {
+  margin-top: 1rem;
+  width: 100%;
+  border-radius: 4px;
+}

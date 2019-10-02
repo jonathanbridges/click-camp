@@ -158,17 +158,16 @@ class ListingShowDetails extends React.Component {
       });
     }
 
-    // Once valid start and end dates have been set, append subtotal and prompt to page
-
+    // Once valid start and end dates have been set, appends subtotal and prompt to page
     let subtotalDiv;
     let promptDiv;
     let sub;
 
     if (this.state.endDate && this.state.startDate) {
       
-      const checkIn = this.state.startDate._d.getTime();
-      const checkOut = this.state.endDate._d.getTime();
-      const duration = (checkOut - checkIn) / (1000 * 3600 * 24);
+      let checkIn = this.state.startDate._d.getTime();
+      let checkOut = this.state.endDate._d.getTime();
+      let duration = (checkOut - checkIn) / (1000 * 3600 * 24);
 
       sub = duration * this.props.listing.cost;
 
@@ -187,6 +186,25 @@ class ListingShowDetails extends React.Component {
     } else {
       subtotalDiv = (<div></div>)
       promptDiv = (<div></div>)
+    }
+
+    if (reserved === true) {
+
+      var photo = this.props.listing.photoUrls[this.props.listing.photoUrls.length - 1];
+
+      let checkIn = new Date(futureReservation.check_in);
+      let checkOut = new Date(futureReservation.check_out);
+
+      let duration = (checkOut.getTime() - checkIn.getTime()) / (1000 * 3600 * 24);
+
+      sub = duration * this.props.listing.cost;
+
+      // date formatting
+      const suffix = (n) => { return ["st", "nd", "rd"][((n + 90) % 100 - 10) % 10 - 1] || "th" }
+      const dateFormatting = { weekday: 'long', month: 'long', day: 'numeric' };
+
+      var checkInFormatted = `${checkIn.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkIn.getDate())}`;
+      var checkOutFormatted = `${checkOut.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkOut.getDate())}`;
     }
 
 
@@ -219,18 +237,39 @@ class ListingShowDetails extends React.Component {
         </div>
       )
     } else {
-      // render checkout component for logged in users
+      // render checkout component for logged in users with a future reservation
       if (reserved === true) {
         calendar = (
           <div className="login-wrapper">
             <div id="top-of-site-pixel-anchor"></div>
             <div className="calendar-wrapper">
-              <h2>You have a reservation planned.</h2>
-              <button>Cancel Reservation</button>
+              <div className="site-row">
+                <strong>Your trip to:</strong>
+                <p>{this.props.listing.name}</p>
+              </div>
+              <div>
+                <img className="reservation-photo" src={photo} />
+              </div>
+              <div className="subtotal-wrapper">
+                <p>Total</p>
+                <p>{`$${sub}`}</p>
+              </div>
+              <div className="reservation-dates">
+                <div className="reservation-checkin">
+                  <p>Check In:</p>
+                  <p>{checkInFormatted}</p>
+                </div>
+                <div className="reservation-checkout">
+                  <p>Check Out:</p>
+                  <p>{checkOutFormatted}</p>
+                </div>
+              </div>
+              <button className="btn-main">Manage Reservation</button>
             </div>
           </div>
         )
       } else {
+        // render checkout for logged in users without a reservation
         calendar = (
           <div id="login-wrapper" onClick={this.focusReservation}>
             {/* 1px anchor for sticky calendar section */}
