@@ -2,14 +2,33 @@ import React from 'react';
 import ListingIndexItem from './listing_index_item';
 import { Link } from 'react-router-dom';
 import Footer from '../footer/footer';
+import PulseLoaderAnimation from '../loader/pulse_loader';
 
 class SplashListingIndex extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    }
+
+    setTimeout(() => this.setState({ loading: false }), 500);
+  }
 
   componentDidMount() {
     this.props.fetchListings()
   }
   
   render() {
+
+    if (this.state.loading) {
+      return (
+        <div className='loader'>
+          <PulseLoaderAnimation loading={this.state.loading} />
+        </div>
+      );
+    }
+
     let listings = this.props.listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
 
     return (

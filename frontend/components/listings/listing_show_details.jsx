@@ -242,7 +242,7 @@ class ListingShowDetails extends React.Component {
         calendar = (
           <div className="login-wrapper">
             <div id="top-of-site-pixel-anchor"></div>
-            <div className="calendar-wrapper">
+            <div className="calendar-wrapper no-cursor">
               <div className="site-row">
                 <strong>Your trip to:</strong>
                 <p>{this.props.listing.name}</p>

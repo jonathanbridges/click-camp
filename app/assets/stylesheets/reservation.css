@@ -130,3 +130,7 @@ body.cal-not-at-top #pending {
   width: 100%;
   border-radius: 4px;
 }
+
+.no-cursor {
+  cursor: default;
+}
