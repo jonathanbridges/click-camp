@@ -17,6 +17,7 @@ footer {
 .footer-wrapper {
   display: flex;
   flex-direction: column;
+  width: 100vw;
 }
 
 .footer-content {

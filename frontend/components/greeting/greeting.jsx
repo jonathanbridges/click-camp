@@ -18,8 +18,8 @@ const Greeting = ({ currentUser, logout, openModal, closeModal }) => {
   const personalGreeting = () => (
     <div className="current-user-logout">
       <p className="header-name">Hi, {currentUser.username}!</p>
-      <img className="account-img" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/campicon.png" alt=""/>
-      <div className="logoutButton">     
+      <Link to="/trips"><img className="account-img" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/campicon.png" alt="" /></Link>
+      <div className="logoutButton">
         <Link to="/" className="nav-btn" onClick={logout}>Log Out</Link>
       </div>
     </div>

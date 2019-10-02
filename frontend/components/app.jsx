@@ -5,17 +5,18 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
 import Modal from './modal/modal';
 import GreetingContainer from './greeting/greeting_container';
-import SplashListingIndexContainer from './listings/splash_listing_index_container'
+import SplashListingIndexContainer from './listings/splash_listing_index_container';
 import DiscoverListingIndexContainer from './listings/discover_listing_index_container';
-import ListingsShowContainer from './listings/listing_show_container'
-import Footer from './footer/footer'
+import ListingsShowContainer from './listings/listing_show_container';
+import Trips from './reservations/trips';
+// import Footer from './footer/footer'
 
 // import SplashListingIndex from './listings/splash_listing_index';
 
 const App = () => (
   <div>
-    {/* Static NavBar */}
     <Modal />
+    {/* Static NavBar */}
     <nav className="main-nav">
       <div className="left">
       <Link className="nav-home" to="/"><img className="clickcamp-text" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/clickcamp-text.png" alt=""/></Link>
@@ -36,6 +37,8 @@ const App = () => (
       <Route exact path="/discover" component={DiscoverListingIndexContainer} />
       {/* Listing Show Page */}
       <Route exact path="/discover/:listingId" component={ListingsShowContainer} />
+      {/* Trips Page */}
+      <ProtectedRoute exact path="/trips" component={Trips} />
       {/* Unknown Wildcard Redirect */}
       <Redirect to="/" />
     </ Switch>
