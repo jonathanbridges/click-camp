@@ -30,12 +30,12 @@ class Trips extends React.Component {
           <div className="trips-left-panel">
             <div className="bio-panel">
               <div className="bio-panel-header">
-                <div className="bio-avatar"></div>
+                <img className="bio-img" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/campicon.png" alt=""></img>
                 <div className="bio-username"><h2>clickCamper</h2></div>
               </div>
               <div className="basic-info"><span className="icon icon-heart fa fa-heart"></span> Camping since July 2019</div>
               <div className="basic-info"><span className="icon fa fa-map-marker"></span> San Francisco</div>
-              <div className="basic-info tagline"><span className="gray-text">Intro: </span>The woods are lovely, dark and deep. But I have a fire, here for heat, and smores aplenty! Time to eat.</div>
+              <div className="basic-info tagline"><span className="gray-text">Intro: </span>The woods are lovely, dark and deep. But I have fire, here for heat. And behold smores! It's time to eat.</div>
             </div>
 
             <div className="verified-panel">
