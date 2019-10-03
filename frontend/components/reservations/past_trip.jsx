@@ -17,7 +17,17 @@ class PastTrip extends React.Component {
 
         if (listing.id === this.props.listingId) {
           trip = (
-            <div>{listing.name}</div>
+            <div className="past-trip">
+              <div className="trip-image-wrapper">
+                <img src={listing.photoUrls[4]} />
+                <div>{listing.name}</div>
+              </div>
+              <div className="dates">
+                {this.props.reservation.check_in}
+                {this.props.reservation.check_out}
+              </div>
+              <p>Cost per night: {listing.cost}</p>
+            </div>
           )
         }
       }, this);

@@ -101,13 +101,12 @@ class Trips extends React.Component {
           </div>
 
           <div className="trips-right-panel">
-            <h2>Your Trips:</h2>
-            <p className="gray-text">Upcoming</p>
-            <div>
+            <h2>Your Upcoming Trips:</h2>
+            <div className="future-trips-wrapper">
               {futureReservations}
             </div>
-            <p className="gray-text">Past Trips</p>
-            <div>
+            <h2>Your Past Trips:</h2>
+            <div className="past-trips-wrapper">
               {pastReservations}
             </div>
           </div>

@@ -17,7 +17,23 @@ class FutureTrip extends React.Component {
 
         if (listing.id === this.props.listingId) {
           trip = (
-            <div>{listing.name}</div>
+            <div className="future-trip">
+
+              <div className="trip-image-wrapper">
+                <div className="trip-listing-name">{listing.name}</div>
+                <img className="trip-img" src={listing.photoUrls[3]} />
+              </div>
+
+              <div className="trip-dates">
+                {this.props.reservation.check_in}
+                {this.props.reservation.check_out}
+              </div>
+
+              <div className="trip-cost">
+                <p>Cost per night: {listing.cost}</p>
+              </div>
+
+            </div>
           )
         }
       }, this);
