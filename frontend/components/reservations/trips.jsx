@@ -17,7 +17,7 @@ class Trips extends React.Component {
 
   componentDidMount () {
     this.props.fetchListings();
-    this.props.fetchReservationsByUserId(this.props.currentUser);
+    this.props.fetchReservationsByUserId(this.props.currentUser.id);
   }
 
   render() {
@@ -33,33 +33,34 @@ class Trips extends React.Component {
     let pastReservations = [];
     let futureReservations = [];
 
-    if (this.props.reservations.length > 0) {
+    if (this.props.reservations.length > 0 && this.props.currentUser) {
 
       // loop through reservations and sort them into past and future
       this.props.reservations.forEach(reservation => {
 
-        let now = new Date();
-        let checkIn = new Date(reservation.check_in);
-        if (checkIn < now) {
-          pastReservations.push(
-            <PastTrip
-              listingId={reservation.listing_id}
-              listings={this.props.listings}
-              reservation={reservation}
-              key={reservation.id}
-            />
-          )
-        } else {
-          futureReservations.push(
-            <FutureTrip
-              listingId={reservation.listing_id}
-              listings={this.props.listings}
-              reservation={reservation}
-              key={reservation.id}
-            />
-          )
+        if (reservation.camper_id === this.props.currentUser.id) {
+          let now = new Date();
+          let checkIn = new Date(reservation.check_in);
+          if (checkIn < now) {
+            pastReservations.push(
+              <PastTrip
+                listingId={reservation.listing_id}
+                listings={this.props.listings}
+                reservation={reservation}
+                key={reservation.id}
+              />
+            )
+          } else {
+            futureReservations.push(
+              <FutureTrip
+                listingId={reservation.listing_id}
+                listings={this.props.listings}
+                reservation={reservation}
+                key={reservation.id}
+              />
+            )
+          }
         }
-
       }, this);
     }
 

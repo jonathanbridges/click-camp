@@ -145,7 +145,7 @@ class ListingShowDetails extends React.Component {
     let futureReservation;
     if ((this.props.reservations.length > 0) && (this.props.currentUser !== undefined)) {
       this.props.reservations.forEach(reservation => {
-        if (reservation.listing_id === this.props.listing.id) {
+        if ((reservation.listing_id === this.props.listing.id) && (reservation.camper_id === this.props.currentUser.id)) {
 
           // if date is in the future and not a past listing
           let now = new Date();
