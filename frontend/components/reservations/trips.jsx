@@ -1,7 +1,8 @@
 import React from 'react';
 import Footer from '../footer/footer';
 import PulseLoaderAnimation from '../loader/pulse_loader';
-import TripsIndex from './trips_index';
+import FutureTrip from './future_trip';
+import PastTrip from './past_trip';
 
 class Trips extends React.Component {
   constructor(props) {
@@ -14,6 +15,11 @@ class Trips extends React.Component {
     setTimeout(() => this.setState({ loading: false }), 1000);
   }
 
+  componentDidMount () {
+    this.props.fetchListings();
+    this.props.fetchReservationsByUserId(this.props.currentUser);
+  }
+
   render() {
 
     if (this.state.loading) {
@@ -22,6 +28,39 @@ class Trips extends React.Component {
           <PulseLoaderAnimation loading={this.state.loading} />
         </div>
       );
+    }
+
+    let pastReservations = [];
+    let futureReservations = [];
+
+    if (this.props.reservations.length > 0) {
+
+      // loop through reservations and sort them into past and future
+      this.props.reservations.map(reservation => {
+
+        let now = new Date();
+        let checkIn = new Date(reservation.check_in);
+        if (checkIn < now) {
+          pastReservations.push(
+            <PastTrip
+              listingId={reservation.listing_id}
+              listings={this.props.listings}
+              reservation={reservation}
+              key={reservation.id}
+            />
+          )
+        } else {
+          futureReservations.push(
+            <FutureTrip
+              listingId={reservation.listing_id}
+              listings={this.props.listings}
+              reservation={reservation}
+              key={reservation.id}
+            />
+          )
+        }
+
+      }, this);
     }
 
     return (
@@ -50,11 +89,12 @@ class Trips extends React.Component {
 
           <div className="trips-right-panel">
             <h2>Trips Will Be Mapped Here</h2>
-            <TripsIndex 
-              fetchListings={this.props.fetchListings}
-              fetchReservationsByUserId={this.props.fetchReservationsByUserId}
-              currentUser={this.props.currentUser}
-            />
+            <p>Future</p>
+              {futureReservations}
+            <p>Past</p>
+            <div>
+              {pastReservations}
+            </div>
           </div>
 
         </div>

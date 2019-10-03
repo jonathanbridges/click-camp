@@ -7,11 +7,11 @@ import { receiveCurrentUser } from '../../actions/session_actions';
 
 const mapStateToProps = (state, { match }) => {
   // let listingId = parseInt(match.params.listingId);
-  // let listing = state.entities.listings[listingId];
   let currentUser = state.entities.users[state.session.id];
-  // let reservations = Object.values(state.entities.reservations);
+  let listings = Object.values(state.entities.listings);
+  let reservations = Object.values(state.entities.reservations);
   // return ({ listing, currentUser, reservations })
-  return ({ currentUser });
+  return ({ currentUser, listings, reservations });
 };
 
 const mapDispatchToProps = dispatch => ({
