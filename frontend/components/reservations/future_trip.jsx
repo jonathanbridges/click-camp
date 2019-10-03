@@ -6,9 +6,26 @@ class FutureTrip extends React.Component {
   }
 
   render() {
+    let trip = (
+      <div></div>
+    );
+
+    if (this.props.listings.length > 0) {
+
+      // loop through listings and find the one associated with the reservation
+      this.props.listings.map(listing => {
+
+        if (listing.id === this.props.listingId) {
+          trip = (
+            <div>{listing.name}</div>
+          )
+        }
+      }, this);
+    }
+
     return (
       <div>
-        <h2>Placeholder Content</h2>
+        {trip}
       </div>
     )
   }

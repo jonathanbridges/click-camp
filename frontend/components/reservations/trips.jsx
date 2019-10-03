@@ -36,7 +36,7 @@ class Trips extends React.Component {
     if (this.props.reservations.length > 0) {
 
       // loop through reservations and sort them into past and future
-      this.props.reservations.map(reservation => {
+      this.props.reservations.forEach(reservation => {
 
         let now = new Date();
         let checkIn = new Date(reservation.check_in);
@@ -71,7 +71,7 @@ class Trips extends React.Component {
             <div className="bio-panel">
               <div className="bio-panel-header">
                 <img className="bio-img" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/campicon.png" alt=""></img>
-                <div className="bio-username"><h2>clickCamper</h2></div>
+                <div className="bio-username"><h2>{this.props.currentUser.username}</h2></div>
               </div>
               <div className="basic-info"><span className="icon icon-heart fa fa-heart"></span> Camping since July 2019</div>
               <div className="basic-info"><span className="icon fa fa-map-marker"></span> San Francisco</div>
@@ -88,10 +88,10 @@ class Trips extends React.Component {
           </div>
 
           <div className="trips-right-panel">
-            <h2>Trips Will Be Mapped Here</h2>
-            <p>Future</p>
+            <h2>Your Trips:</h2>
+            <p>Upcoming Trips</p>
               {futureReservations}
-            <p>Past</p>
+            <p>Past Trips</p>
             <div>
               {pastReservations}
             </div>
