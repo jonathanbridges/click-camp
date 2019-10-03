@@ -27,6 +27,8 @@ class User < ApplicationRecord
 		foreign_key: :camper_id,
 		class_name: :Reservation
 
+	has_one_attached :photo
+
 	def self.find_by_credentials(username, password)
 		user = User.find_by(username: username)
 		user && user.is_password?(password) ? user : nil

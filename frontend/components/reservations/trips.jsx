@@ -64,6 +64,18 @@ class Trips extends React.Component {
       }, this);
     }
 
+    if (futureReservations.length === 0) {
+      futureReservations = (
+        <p className="no-trips">No planned trips. Let's get you outside!</p>
+      )
+    }
+
+    if (pastReservations.length === 0) {
+      pastReservations = (
+        <p className="no-trips">No trip history.</p>
+      )
+    }
+
     return (
       <div className="trips-whole-page">
         <div className="trips-container">
@@ -90,9 +102,11 @@ class Trips extends React.Component {
 
           <div className="trips-right-panel">
             <h2>Your Trips:</h2>
-            <p>Upcoming Trips</p>
+            <p className="gray-text">Upcoming</p>
+            <div>
               {futureReservations}
-            <p>Past Trips</p>
+            </div>
+            <p className="gray-text">Past Trips</p>
             <div>
               {pastReservations}
             </div>
