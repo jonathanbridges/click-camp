@@ -264,7 +264,8 @@ class ListingShowDetails extends React.Component {
                   <p>{checkOutFormatted}</p>
                 </div>
               </div>
-              <button className="btn-main">Manage Reservation</button>
+              {/* <button className="btn-main">Manage Reservation</button> */}
+              <Link className="btn-main" to={`/trips`}>Manage Reservation</Link>
             </div>
           </div>
         )

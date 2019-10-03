@@ -8,7 +8,7 @@ import GreetingContainer from './greeting/greeting_container';
 import SplashListingIndexContainer from './listings/splash_listing_index_container';
 import DiscoverListingIndexContainer from './listings/discover_listing_index_container';
 import ListingsShowContainer from './listings/listing_show_container';
-import Trips from './reservations/trips';
+import TripsShowContainer from './reservations/trips_container';
 // import Footer from './footer/footer'
 
 // import SplashListingIndex from './listings/splash_listing_index';
@@ -38,7 +38,7 @@ const App = () => (
       {/* Listing Show Page */}
       <Route exact path="/discover/:listingId" component={ListingsShowContainer} />
       {/* Trips Page */}
-      <ProtectedRoute exact path="/trips" component={Trips} />
+      <ProtectedRoute exact path="/trips" component={TripsShowContainer} />
       {/* Unknown Wildcard Redirect */}
       <Redirect to="/" />
     </ Switch>

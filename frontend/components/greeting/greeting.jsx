@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 
-const Greeting = ({ currentUser, logout, openModal, closeModal }) => {
+const Greeting = ({ currentUser, logout, openModal, closeModal, modal }) => {
 
   // Navbar display for logged out users
   const sessionLinks = () => (

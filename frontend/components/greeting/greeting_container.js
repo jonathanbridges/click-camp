@@ -4,7 +4,9 @@ import { logout } from '../../actions/session_actions';
 import { openModal, closeModal } from '../../actions/modal_actions'
 import Greeting from './greeting';
 
-const mapStateToProps = ({ session, entities: { users } }) => {
+const mapStateToProps = ({ session, entities: { users }, ui: { modal } }) => {
+  // const mapStateToProps = (state, ownProps) => {
+
   return {
     currentUser: users[session.id]
   };

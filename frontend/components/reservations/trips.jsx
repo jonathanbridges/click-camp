@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../footer/footer';
 import PulseLoaderAnimation from '../loader/pulse_loader';
+import TripsIndex from './trips_index';
 
 class Trips extends React.Component {
   constructor(props) {
@@ -49,6 +50,11 @@ class Trips extends React.Component {
 
           <div className="trips-right-panel">
             <h2>Trips Will Be Mapped Here</h2>
+            <TripsIndex 
+              fetchListings={this.props.fetchListings}
+              fetchReservationsByUserId={this.props.fetchReservationsByUserId}
+              currentUser={this.props.currentUser}
+            />
           </div>
 
         </div>
