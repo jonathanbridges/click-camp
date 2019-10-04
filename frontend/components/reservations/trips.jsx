@@ -10,6 +10,7 @@ class Trips extends React.Component {
 
     this.state = {
       loading: true,
+      actionReceived: false,
     }
 
     setTimeout(() => this.setState({ loading: false }), 1000);
@@ -77,6 +78,7 @@ class Trips extends React.Component {
                 listingId={reservation.listing_id}
                 listings={this.props.listings}
                 reservation={reservation}
+                deleteReservation={this.props.deleteReservation}
                 key={reservation.id}
               />
             )

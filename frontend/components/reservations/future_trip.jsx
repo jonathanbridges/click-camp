@@ -3,6 +3,14 @@ import React from 'react';
 class FutureTrip extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleDelete = this.handleDelete.bind(this);
+  }
+
+  handleDelete(e) {
+    e.preventDefault();
+
+    this.props.deleteReservation(this.props.reservation.id);
   }
 
   render() {
@@ -53,8 +61,7 @@ class FutureTrip extends React.Component {
                   </div>
                 </div>
 
-
-                  <button className="btn-main">Cancel Reservation</button>
+                <button onClick={this.handleDelete} className="btn-main">Cancel Reservation</button>
 
               </div>
 
