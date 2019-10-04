@@ -10,10 +10,11 @@ class Trips extends React.Component {
 
     this.state = {
       loading: true,
-      actionReceived: false,
+      actionReceived: null,
     }
 
     setTimeout(() => this.setState({ loading: false }), 1000);
+    this.deleteReservation = this.deleteReservation.bind(this);
   }
 
   componentDidMount () {
@@ -35,6 +36,20 @@ class Trips extends React.Component {
       });
       observer.observe(document.querySelector("#top-of-site-pixel-anchor"));
     }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // renders loader upon reservation cancellation
+    if (this.props !== prevProps) {
+      this.setState({loading: true});
+      setTimeout(() => this.setState({loading: false}), 1000)
+    }
+  }
+
+  deleteReservation(reservationId) {
+    // deletes reservation then fetches reservations to trigger re-render
+    this.props.deleteReservation(reservationId)
+      .then(() => this.props.fetchReservationsByUserId(this.props.currentUser.id));
   }
 
   render() {
@@ -78,7 +93,7 @@ class Trips extends React.Component {
                 listingId={reservation.listing_id}
                 listings={this.props.listings}
                 reservation={reservation}
-                deleteReservation={this.props.deleteReservation}
+                deleteReservation={this.deleteReservation}
                 key={reservation.id}
               />
             )
