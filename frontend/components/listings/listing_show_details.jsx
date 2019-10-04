@@ -40,6 +40,7 @@ class ListingShowDetails extends React.Component {
     if (this.state.camper_id !== null) {
       this.props.fetchReservationsByUserId(this.props.currentUser.id);
     }
+
     // Allows calendar to become sticky when scrolled to
     if (
       "IntersectionObserver" in window &&
@@ -125,7 +126,6 @@ class ListingShowDetails extends React.Component {
       check_out: this.state.endDate._d,
     }
 
-    // alert(`You're about to book ${this.state.endDate._d.getDate() - this.state.startDate._d.getDate()} days!  `)
     this.props.createReservation(formattedReservation)
       .then(this.setState({
         startDate: null,
@@ -133,6 +133,7 @@ class ListingShowDetails extends React.Component {
         focusedInput: null,
         reservation: formattedReservation
       }));
+      
       document.getElementById('login-wrapper').style.display = 'none';
 //  = "You're confirmed!")
 //       .then(document.getElementById("pending").setAttribute("id", "confirmed")

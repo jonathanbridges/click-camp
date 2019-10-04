@@ -5,10 +5,6 @@ import Carousel from 'nuka-carousel';
 import PulseLoaderAnimation from '../loader/pulse_loader';
 import Footer from '../footer/footer';
 
-document.addEventListener('DOMContentLoaded', () => {
-  window.scrollTo(0, 0);
-});
-
 class ListingShow extends React.Component {
 
   constructor(props) {

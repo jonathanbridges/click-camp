@@ -16,6 +16,11 @@
   width: 33%;
 }
 
+body.cal-not-at-top #trip-sticky {
+  position: sticky;
+  top: 70px;
+}
+
 .bio-panel, .verified-panel {
   max-width: 280px;
   padding: 20px;
@@ -97,6 +102,7 @@
   position: relative;
   overflow: hidden;
   height: 300px;
+  margin-bottom: 1rem;
 }
 
 .trip-image-wrapper:hover img {
@@ -121,8 +127,19 @@
     padding: .5rem;
     border-radius: 0 0 10px;
     width: max-content;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-variant: petite-caps;
     z-index: 1;
     color: white;
+}
+
+.trip-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.trip-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

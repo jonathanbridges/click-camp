@@ -63,7 +63,7 @@
 
 .login-form-box big {
 	margin-bottom: 2rem;
-	font-weight: 700;
+	font-weight: 500;
 	font-size: 1.5rem;
 }
 
@@ -91,7 +91,7 @@ input.login-input {
 	transition: all 0.25s ease 0s;
 	padding: 12px;
 	border: 3px solid #40d9ac;
-	font-weight: 700;
+	font-weight: 500;
 	text-decoration: none;
 	text-align: center;
 }
@@ -104,7 +104,7 @@ input.login-input {
 	border: 3px solid #40d9ac;
 	font-size: 1rem;
 	padding: 12px;
-	font-weight: 700;
+	font-weight: 500;
 }
 
 .signup-btn {
@@ -177,15 +177,14 @@ ul.errors li {
 
 .demo-login-btn {
 	height: 50px;
-	border: none;
 	background-color: white;
 	color: #40d9ac;
 	font-size: 1rem;
 	cursor: pointer;
 	transition: all 0.25s ease 0s;
 	padding: 14px;
-	border: 1px solid #40d9ac;
-	font-weight: 700;
+	border: 2px solid #40d9ac;
+	font-weight: 500;
 }
 
 .demo-login-btn:hover {
@@ -193,10 +192,10 @@ ul.errors li {
 	background-color: #40d9ac;
 	color: white;
 	transition: all 0.25s ease 0s;
-	border: 3px solid #40d9ac;
+	border: 2px solid #40d9ac;
 	font-size: 1rem;
 	padding: 12px;
-	font-weight: 700;
+	font-weight: 500;
 }
 
 .account-img {

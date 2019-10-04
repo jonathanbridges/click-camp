@@ -16,17 +16,48 @@ class PastTrip extends React.Component {
       this.props.listings.map(listing => {
 
         if (listing.id === this.props.listingId) {
+          let checkIn = new Date(this.props.reservation.check_in);
+          let checkOut = new Date(this.props.reservation.check_out);
+
+          let duration = (checkOut.getTime() - checkIn.getTime()) / (1000 * 3600 * 24);
+
+          let nights;
+          if (duration < 2) {
+            nights = '1 night'
+          } else {
+            nights = `${duration} nights`
+          }
+
+          // date formatting
+          const suffix = (n) => { return ["st", "nd", "rd"][((n + 90) % 100 - 10) % 10 - 1] || "th" }
+          const dateFormatting = { weekday: 'long', month: 'short', day: 'numeric' };
+
+          let checkInFormatted = `${checkIn.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkIn.getDate())}`;
+          let checkOutFormatted = `${checkOut.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkOut.getDate())}`;
+
           trip = (
             <div className="past-trip">
+
               <div className="trip-image-wrapper">
-                <img src={listing.photoUrls[4]} />
-                <div>{listing.name}</div>
+                <div className="trip-listing-name">{listing.name}</div>
+                <img className="trip-img" src={listing.photoUrls[5]} />
               </div>
-              <div className="dates">
-                {this.props.reservation.check_in}
-                {this.props.reservation.check_out}
+
+              <div className="trip-bottom">
+                <div className="trip-details">
+                  <div className="trip-dates">
+                    <p>{`${checkInFormatted} to ${checkOutFormatted}`}</p>
+                  </div>
+                  <div className="gray-text">
+                    <p>{`${nights} at $${listing.cost}/night`}</p>
+                  </div>
+                </div>
+
+
+                <button className="btn-main">Leave Review</button>
+
               </div>
-              <p>Cost per night: {listing.cost}</p>
+
             </div>
           )
         }

@@ -18,16 +18,37 @@ class Trips extends React.Component {
   componentDidMount () {
     this.props.fetchListings();
     this.props.fetchReservationsByUserId(this.props.currentUser.id);
+  
+    // Allows for sticky left panel
+    if (
+      "IntersectionObserver" in window &&
+      "IntersectionObserverEntry" in window &&
+      "intersectionRatio" in window.IntersectionObserverEntry.prototype
+    ) {
+      let observer = new IntersectionObserver(entries => {
+        if (entries[0].boundingClientRect.y < 500) {
+          document.body.classList.add("cal-not-at-top");
+        } else {
+          document.body.classList.remove("cal-not-at-top");
+        }
+      });
+      observer.observe(document.querySelector("#top-of-site-pixel-anchor"));
+    }
   }
 
   render() {
 
+    let loader;
     if (this.state.loading) {
-      return (
+      loader = (
         <div className='loader'>
           <PulseLoaderAnimation loading={this.state.loading} />
         </div>
       );
+    } else {
+      loader = (
+        <div></div>
+      )
     }
 
     let pastReservations = [];
@@ -35,7 +56,7 @@ class Trips extends React.Component {
 
     if (this.props.reservations.length > 0 && this.props.currentUser) {
 
-      // loop through reservations and sort them into past and future
+      // loop through user's reservations and sort them into past and future
       this.props.reservations.forEach(reservation => {
 
         if (reservation.camper_id === this.props.currentUser.id) {
@@ -78,28 +99,30 @@ class Trips extends React.Component {
 
     return (
       <div className="trips-whole-page">
+        {loader}
         <div className="trips-container">
           
-          <div className="trips-left-panel">
-            <div className="bio-panel">
-              <div className="bio-panel-header">
-                <img className="bio-img" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/campicon.png" alt=""></img>
-                <div className="bio-username"><h2>{this.props.currentUser.username}</h2></div>
+          <div className="trips-left-panel" id="trips-left-panel">
+            <div id="top-of-site-pixel-anchor"></div>
+            <div id="trip-sticky">
+              <div className="bio-panel">
+                <div className="bio-panel-header">
+                  <img className="bio-img" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/campicon.png" alt=""></img>
+                  <div className="bio-username"><h2>{this.props.currentUser.username}</h2></div>
+                </div>
+                <div className="basic-info"><span className="icon icon-heart fa fa-heart"></span> Camping since July 2019</div>
+                <div className="basic-info"><span className="icon fa fa-map-marker"></span> San Francisco</div>
+                <div className="basic-info tagline"><span className="gray-text">Intro: </span>The woods are lovely, dark and deep. But I have fire, here for heat. And behold smores! It's time to eat.</div>
               </div>
-              <div className="basic-info"><span className="icon icon-heart fa fa-heart"></span> Camping since July 2019</div>
-              <div className="basic-info"><span className="icon fa fa-map-marker"></span> San Francisco</div>
-              <div className="basic-info tagline"><span className="gray-text">Intro: </span>The woods are lovely, dark and deep. But I have fire, here for heat. And behold smores! It's time to eat.</div>
-            </div>
-
-            <div className="verified-panel">
-              <div className="verified-panel-text">
-                <p className="gray-text">Trusted Account</p>
-                <p><span className="icon check-icon fa fa-check-circle-o"></span>Email address</p>
-                <p><span className="icon check-icon fa fa-check-circle-o"></span>Facebook</p>
+              <div className="verified-panel">
+                <div className="verified-panel-text">
+                  <p className="gray-text">Trusted Account</p>
+                  <p><span className="icon check-icon fa fa-check-circle-o"></span>Email address</p>
+                  <p><span className="icon check-icon fa fa-check-circle-o"></span>Facebook</p>
+                </div>
               </div>
             </div>
           </div>
-
           <div className="trips-right-panel">
             <h2>Your Upcoming Trips:</h2>
             <div className="future-trips-wrapper">
