@@ -18,6 +18,8 @@ class Trips extends React.Component {
   }
 
   componentDidMount () {
+    window.scrollTo(0, 0);
+
     this.props.fetchListings();
     this.props.fetchReservationsByUserId(this.props.currentUser.id);
   
@@ -39,6 +41,8 @@ class Trips extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    window.scrollTo(0, 0);
+
     // renders loader upon reservation cancellation
     if (this.props !== prevProps) {
       this.setState({loading: true});

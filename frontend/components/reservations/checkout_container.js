@@ -4,7 +4,6 @@ import { closeModal } from '../../actions/modal_actions'
 import Checkout from './checkout';
 
 const mapStateToProps = (state) => {
-  debugger 
   let currentUser = state.entities.users[state.session.id];
   let listing = state.entities.listings[Object.keys(state.entities.listings)];
   let reservationParams = state.checkout[1];
