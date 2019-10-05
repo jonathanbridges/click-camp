@@ -3,6 +3,7 @@ import { fetchListing } from '../../actions/listing_actions';
 import ListingShow from './listing_show';
 import { createReservation, fetchReservationsByUserId } from '../../actions/reservation_actions';
 import { receiveCurrentUser } from '../../actions/session_actions';
+import { receiveCheckoutInfo } from '../../actions/checkout_actions';
 import { openModal } from '../../actions/modal_actions'
 
 const mapStateToProps = (state, { match }) => {
@@ -27,6 +28,7 @@ const mapDispatchToProps = dispatch => ({
   fetchReservationsByUserId: currentUser => dispatch(fetchReservationsByUserId(currentUser)),
   createReservation: reservation => dispatch(createReservation(reservation)),
   receiveCurrentUser: reservation => dispatch(receiveCurrentUser(reservation)),
+  receiveCheckoutInfo: (reservationParams) => dispatch(receiveCheckoutInfo(reservationParams)),
   openModal: (modal) => dispatch(openModal(modal)),
 });
 

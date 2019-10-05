@@ -126,15 +126,19 @@ class ListingShowDetails extends React.Component {
       check_out: this.state.endDate._d,
     }
 
-    this.props.createReservation(formattedReservation)
-      .then(this.setState({
-        startDate: null,
-        endDate: null,
-        focusedInput: null,
-        reservation: formattedReservation
-      }));
+    
+
+    // this.props.createReservation(formattedReservation)
+    //   .then(this.setState({
+    //     startDate: null,
+    //     endDate: null,
+    //     focusedInput: null,
+    //     reservation: formattedReservation
+    //   }));
+    this.props.receiveCheckoutInfo(formattedReservation);
+    this.props.openModal('checkout');
       
-      document.getElementById('login-wrapper').style.display = 'none';
+      // document.getElementById('login-wrapper').style.display = 'none';
 //  = "You're confirmed!")
 //       .then(document.getElementById("pending").setAttribute("id", "confirmed")
     // );
