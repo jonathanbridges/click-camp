@@ -6,7 +6,7 @@
   position: fixed;
   top: 70px;
   background-color: white;
-  min-width: 1280px;
+  width: 100%;
   z-index: 1;
 }
 
@@ -20,8 +20,7 @@
   flex-direction: row;
   justify-content: space-between;
   overflow: hidden;
-  width: 66%;
-  min-width: 1280px;
+  width: 100%;
   min-height: 100%;
   padding: 0 1rem;
 }

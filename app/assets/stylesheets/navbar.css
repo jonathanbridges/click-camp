@@ -148,7 +148,7 @@ input.login-input {
 
 .clickcamp-text {
 	width: 200px;
-	max-height: fit-content;
+	height: 26px;
 }
 
 .current-user-logout, .login-signup {

@@ -58,21 +58,87 @@ class Checkout extends React.Component {
 
     return (
       <div className="checkout-modal-wrapper">
+
         <div className="checkout-header">
           <div className="checkout-header-left">
+            <img class="clickcamp-text-modal" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/clickcamp-text.png" alt=""></img>
             <span className="icon fa fa-lock"></span>
             <p className="gray-text">Secure Checkout</p>
           </div>
           <div className="checkout-header-right">
-            <p>Time left to finish booking</p>
+            <p>Time left to</p>
+            <p>finish booking</p>
             <p className="checkout-timer">05:00</p>
           </div>
         </div>
 
+        <div className="checkout-rulebook">
+          <h1>Rulebook</h1>
+          <ul className="checkout-rulebook-wrapper">
+            <li className="checkout-rulebook-item">
+              <span></span>
+              <div className="checkout-rulebook-text">
+                <p className="checkout-regular-text"></p>
+                <p className="checkout-gray-text"></p>
+              </div>
+            </li>
+            <li className="checkout-rulebook-item">
+              <span></span>
+              <div className="checkout-rulebook-text">
+                <p className="checkout-regular-text"></p>
+                <p className="checkout-gray-text"></p>
+              </div>
+            </li>
+            <li className="checkout-rulebook-item">
+              <span></span>
+              <div className="checkout-rulebook-text">
+                <p className="checkout-regular-text"></p>
+                <p className="checkout-gray-text"></p>
+              </div>
+            </li>
+            <li className="checkout-rulebook-item">
+              <span></span>
+              <div className="checkout-rulebook-text">
+                <p className="checkout-regular-text"></p>
+                <p className="checkout-gray-text"></p>
+              </div>
+            </li>
+            <li className="checkout-rulebook-item">
+              <span></span>
+              <div className="checkout-rulebook-text">
+                <p className="checkout-regular-text"></p>
+                <p className="checkout-gray-text"></p>
+              </div>
+            </li>
+            <li className="checkout-rulebook-item">
+              <span></span>
+              <div className="checkout-rulebook-text">
+                <p className="checkout-regular-text"></p>
+                <p className="checkout-gray-text"></p>
+              </div>
+            </li>
+           
+          </ul>
 
+          <div className="checkout-deets">
+            <div className="checkout-deets-header">
+              <img></img>
+              <p>Your trip to:</p>
+              listing
+              <p>Site: dispersed</p>
+              <p>Dates</p>
+            </div>
+            
+            <div className="checkout-summary">
+              Subtotal
+              Service Fee
+              Occupancy Taxes
+              <div className="checkout-total">Total</div>
+            </div>
 
-
-        <h2>This is the checkout modal</h2>
+            <button className="checkout-submit">Agree and book</button>
+          </div>
+        </div>
       </div>
     )
   }

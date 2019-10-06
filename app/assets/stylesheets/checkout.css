@@ -1,3 +1,42 @@
 .checkout-modal-wrapper {
   width: 66vw;
 }
+
+.checkout-header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: solid 1px #ebebeb;
+}
+
+.checkout-header-left {
+  display: flex;
+  align-items: center;
+  font-size: .9rem;
+  color: #757575;
+  padding: .6rem 0 1.4rem
+}
+
+.clickcamp-text-modal {
+	width: 150px;
+  height: 19px;
+  margin-right: 1rem;
+}
+
+.checkout-header-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  background: white;
+  border: solid 1px #ebebeb;
+  font-weight: 600;
+  font-size: .9rem;
+}
+
+.checkout-timer {
+  font-size: 1.3rem;
+  color: #ec6e67;
+  font-weight: 600;
+}
+

@@ -17,6 +17,8 @@ html {
   line-height: 1.15; /* 1 */
   -webkit-text-size-adjust: 100%; /* 2 */
   scroll-behavior: smooth;
+  height: 100%;
+  width: 100%;
 }
 
 /* Sections
@@ -30,12 +32,12 @@ body {
 	display: flex;
 	flex-direction: column;
 	font-weight: 400;
-	min-height: 100vh;
+	min-height: 100%;
 	height: 100%;
   font-family: 'Lato', sans-serif;
   font-size: 100%;
   color: #333333;
-	line-height: 1.42;
+  line-height: 1.42;
 }
 
 /**
