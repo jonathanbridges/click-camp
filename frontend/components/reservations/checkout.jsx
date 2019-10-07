@@ -25,38 +25,35 @@ class Checkout extends React.Component {
       if (--timer < 0) {
         timer = 0;
         clearInterval(countdown)
-        // document.querySelector(".checkout-timer").innerHTML = "EXPIRED";
+        document.querySelector(".checkout-timer").innerHTML = "EXPIRED";
       }
     }, 1000);
   }
 
   render() {
-    debugger;
 
-    const photo = (
+    let photo = (
       <img src={`${this.props.listing.photoUrls[2]}`} className="summary-photo" />
     )
 
-    // let checkIn = new Date(futureReservation.check_in);
-    // let checkOut = new Date(futureReservation.check_out);
+    // date formatting
 
-    // let duration = (checkOut.getTime() - checkIn.getTime()) / (1000 * 3600 * 24);
+    const suffix = (n) => { return ["st", "nd", "rd"][((n + 90) % 100 - 10) % 10 - 1] || "th" }
+    const dateFormatting = { weekday: 'short', month: 'short', day: 'numeric' };
 
-    // sub = duration * this.props.listing.cost;
+    let checkIn = this.props.reservationParams.check_in;
+    let checkOut = this.props.reservationParams.check_out;
 
-    // // date formatting
-    // const suffix = (n) => { return ["st", "nd", "rd"][((n + 90) % 100 - 10) % 10 - 1] || "th" }
-    // const dateFormatting = { weekday: 'long', month: 'long', day: 'numeric' };
+    let checkInFormatted = `${checkIn.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkIn)}`;
+    let checkOutFormatted = `${checkOut.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkOut)}`;
 
-    // var checkInFormatted = `${checkIn.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkIn.getDate())}`;
-    // var checkOutFormatted = `${checkOut.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkOut.getDate())}`
+    // price getting
+    let duration = (checkOut.getTime() - checkIn.getTime()) / (1000 * 3600 * 24);
 
-    // subtotalDiv = (
-    //   <div className="subtotal-wrapper">
-    //     <p>Subtotal</p>
-    //     <p>{`$${sub}`}</p>
-    //   </div>
-    // )
+    let subtotal = duration * this.props.listing.cost;
+    let serviceFee = (subtotal * .1);
+    let occupancyTaxes = (subtotal * .06);
+    let total = (subtotal + serviceFee + occupancyTaxes).toFixed(2);
 
     return (
       <div className="checkout-modal-wrapper">
@@ -146,32 +143,35 @@ class Checkout extends React.Component {
               <div className="checkout-deets-header-text">
                 <div className="checkout-deets-header-text-left">
                   <p>Your trip to:</p>
-                  <p className="font-variant">Listing</p>
+                  <p className="font-variant">{this.props.listing.name}</p>
                 </div>
                 <div className="checkout-deets-header-text-left">
                   <p>Site:</p>
                   <p>Dispersed</p>
                 </div>
-                <p>Dates</p>
+                <div className="checkout-deets-header-text-left">
+                  <p>{checkInFormatted} to</p>
+                  <p>{checkOutFormatted}</p>
+                </div>
               </div>
             </div>
             
             <div className="checkout-summary">
               <div className="checkout-summary-item">
                 <p>Subtotal</p>
-                <p>123</p>
+                <p>{`$${subtotal.toFixed(2)}`}</p>
               </div>
               <div className="checkout-summary-item">
                 <p>Service fee</p>
-                <p>123</p>
+                <p>{`$${serviceFee.toFixed(2)}`}</p>
               </div>
               <div className="checkout-summary-item">
                 <p>Occupancy taxes</p>
-                <p>123</p>
+                <p>{`$${occupancyTaxes.toFixed(2)}`}</p>
               </div>
-              <div className="checkout-summary-item total">
-                <p>Total</p>
-                <p>123</p>
+              <div className="checkout-summary-item">
+                <p className="total">Total</p>
+                <p className="total">{`$${total}`}</p>
               </div>
 
             </div>

@@ -123,7 +123,7 @@
 
 .checkout-deets-header-text {
   position: absolute;
-  width: 50%;
+  width: fit-content;
   text-align: left;
   background: #40d9ac;
   color: white;
@@ -152,7 +152,15 @@
   font-weight: 300;
 }
 
+.checkout-deets-header-text-left {
+  font-weight: 400;
+}
+
 .total {
   font-weight: 600;
   margin-top: 2rem;
+}
+
+.font-variant {
+  padding-left: 1rem;
 }
