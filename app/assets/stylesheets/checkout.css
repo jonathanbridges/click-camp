@@ -1,5 +1,7 @@
 .checkout-modal-wrapper {
-  width: 66vw;
+  width: 80vw;
+  height: 80vh;
+  overflow-y: auto;
 }
 
 .checkout-header {
@@ -38,5 +40,66 @@
   font-size: 1.3rem;
   color: #ec6e67;
   font-weight: 600;
+}
+
+.checkout-rulebook-wrapper {
+  list-style: none;
+  padding: .5rem 0 0 .5rem;
+}
+
+.checkout-rulebook {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.checkout-rulebook h1 {
+  font-weight: 300;
+}
+
+.checkout-rulebook-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: solid 1px #ebebeb;
+  -webkit-box-shadow: 0 5px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 5px 5px rgba(0,0,0,0.05);
+  padding: 1rem 1rem 1rem 2.5rem;
+  margin: 0 0 2rem .5rem;
+}
+
+.checkout-rulebook-item span {
+  font-size: 1.8rem;
+}
+
+.checkout-badge {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -12.5px;
+  left: -12.5px;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  color: white;
+  background-color: #40d9ac;
+}
+
+.na {
+  background-color: #ec6e67;
+}
+
+.checkout-rulebook-text {
+  margin:  0 3rem;
+  text-align: left;
+}
+
+.checkout-regular-text:first-child {
+  padding-bottom: .5rem;
+}
+
+.checkout-gray-text {
+  color: #757575;
 }
 

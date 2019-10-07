@@ -76,45 +76,63 @@ class Checkout extends React.Component {
           <h1>Rulebook</h1>
           <ul className="checkout-rulebook-wrapper">
             <li className="checkout-rulebook-item">
-              <span></span>
+              <div className="checkout-badge">
+                <i class="fas fa-check"></i>
+              </div>
+              <span><i class="fas fa-fire-alt"></i></span>
               <div className="checkout-rulebook-text">
-                <p className="checkout-regular-text"></p>
-                <p className="checkout-gray-text"></p>
+                <p className="checkout-regular-text">Campfires are allowed at this listing.</p>
+                <p className="checkout-gray-text">We are located in a fire protection class ten area. Fires are allowed inside the fire ring at the site only, and no wood warming fires will be permitted during high fire season.</p>
               </div>
             </li>
             <li className="checkout-rulebook-item">
-              <span></span>
+              <div className="checkout-badge">
+                <i class="fas fa-check"></i>
+              </div>
+              <span><i class="fas fa-cat"></i></span>
               <div className="checkout-rulebook-text">
-                <p className="checkout-regular-text"></p>
-                <p className="checkout-gray-text"></p>
+                <p className="checkout-regular-text">Pets are allowed at this listing. (On leash)</p>
+                <p className="checkout-gray-text">This is a working farm and we have small prey animals and a livestock guardian dog up at the farmhouse here so we require permission to bring any dogs to the site. They must stay by your side at all times, or on a leash if you leave the campsite and pets may not come up to the ranch/farmhouse.</p>
               </div>
             </li>
             <li className="checkout-rulebook-item">
-              <span></span>
+              <div className="checkout-badge na">
+                <i class="fas fa-times"></i>
+              </div>
+              <span><i class="fas fa-tint-slash"></i></span>
               <div className="checkout-rulebook-text">
-                <p className="checkout-regular-text"></p>
-                <p className="checkout-gray-text"></p>
+                <p className="checkout-regular-text">Potable drinking water is not available at this listing. (Bring your own water, Purify from river or stream, Purify from spigot, Purify from pump, Purify from lake or pond)</p>
+                <p className="checkout-gray-text">We don't have a water system in yet so we provide campers with a gallon of bottled water each day for drinking and cooking and you can bring your equipment to boil/purify river water or water from the old fashioned hand pump too.</p>
               </div>
             </li>
             <li className="checkout-rulebook-item">
-              <span></span>
+              <div className="checkout-badge">
+                <i class="fas fa-check"></i>
+              </div>
+              <span><i class="fas fa-trash-alt"></i></span>
               <div className="checkout-rulebook-text">
-                <p className="checkout-regular-text"></p>
-                <p className="checkout-gray-text"></p>
+                <p className="checkout-regular-text">Waste disposal is available at this listing. (Recycling bin, Trash bin)</p>
+                <p className="checkout-gray-text">We are in black bear country. Please keep food items secure. There is a trash can on site. We will check it daily.</p>
               </div>
             </li>
             <li className="checkout-rulebook-item">
-              <span></span>
+              <div className="checkout-badge na">
+                <i class="fas fa-times"></i>
+              </div>
+              <span><i class="fas fa-utensils"></i></span>
               <div className="checkout-rulebook-text">
-                <p className="checkout-regular-text"></p>
-                <p className="checkout-gray-text"></p>
+                <p className="checkout-regular-text">Kitchen and cooking equipment are not available</p>
+                <p className="checkout-gray-text">There is a BBQ with a single burner.</p>
               </div>
             </li>
             <li className="checkout-rulebook-item">
-              <span></span>
+              <div className="checkout-badge">
+                <i class="fas fa-check"></i>
+              </div>
+              <span><i class="fas fa-toilet-paper"></i></span>
               <div className="checkout-rulebook-text">
-                <p className="checkout-regular-text"></p>
-                <p className="checkout-gray-text"></p>
+                <p className="checkout-regular-text">A toilet is available at this listing. (Pit toilet)</p>
+                <p className="checkout-gray-text">New outhouse installed in 2019.</p>
               </div>
             </li>
            
