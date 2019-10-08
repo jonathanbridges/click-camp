@@ -27,6 +27,10 @@ class User < ApplicationRecord
 		foreign_key: :camper_id,
 		class_name: :Reservation
 
+	has_many :reviews,
+		foreign_key: :reviewer_id,
+		class_name: :Review
+
 	has_one_attached :photo
 
 	def self.find_by_credentials(username, password)

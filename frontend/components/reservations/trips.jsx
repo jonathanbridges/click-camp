@@ -19,6 +19,7 @@ class Trips extends React.Component {
   }
 
   componentDidMount () {
+    window.scrollTo(0,0);
 
     this.props.fetchListings();
     this.props.fetchReservationsByUserId(this.props.currentUser.id);
@@ -75,6 +76,7 @@ class Trips extends React.Component {
       this.props.reservations.forEach(reservation => {
 
         if (reservation.camper_id === this.props.currentUser.id) {
+          debugger;
           let now = new Date().getUTCDate();
           let checkIn = new Date(reservation.check_in).getUTCDate();
 
