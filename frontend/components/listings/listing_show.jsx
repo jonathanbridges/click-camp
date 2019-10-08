@@ -16,7 +16,8 @@ class ListingShow extends React.Component {
       loading: true
     };
 
-    setTimeout(() => this.setState({ loading: false }), 1000);
+
+    setTimeout(() => this.setState({ loading: false }), 500);
   }
 
   componentDidMount() {

@@ -6,6 +6,7 @@ import 'react-dates/initialize';
 
 import ReservationShow from '../reservations/reservation_show'
 import { fetchReservationsByUserId } from '../../actions/reservation_actions';
+import PulseLoaderAnimation from '../loader/pulse_loader';
 
 let overlay;
 let cal;
@@ -23,7 +24,7 @@ class ListingShowDetails extends React.Component {
       endDate: null,
       focusedInput: null,
       reservation: null,
-      focused: false
+      focused: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -65,7 +66,7 @@ class ListingShowDetails extends React.Component {
         camper_id: this.props.currentUser.id
       });
       // retrieves reservations for current user
-      this.props.fetchReservationsByUserId(this.props.currentUser.id);
+      this.fetchReservationsByUserId(this.props.currentUser.id);
     }
   }
 
@@ -124,24 +125,13 @@ class ListingShowDetails extends React.Component {
       listing_id: this.props.listing.id,
       check_in: this.state.startDate._d,
       check_out: this.state.endDate._d,
+      listing_photo: this.props.listing.photoUrls[2],
+      listing_cost: this.props.listing.cost,
+      listing_name: this.props.listing.name
     }
 
-    
-
-    // this.props.createReservation(formattedReservation)
-    //   .then(this.setState({
-    //     startDate: null,
-    //     endDate: null,
-    //     focusedInput: null,
-    //     reservation: formattedReservation
-    //   }));
     this.props.receiveCheckoutInfo(formattedReservation);
     this.props.openModal('checkout');
-      
-      // document.getElementById('login-wrapper').style.display = 'none';
-//  = "You're confirmed!")
-//       .then(document.getElementById("pending").setAttribute("id", "confirmed")
-    // );
   }
 
   render () {
@@ -257,7 +247,7 @@ class ListingShowDetails extends React.Component {
               </div>
               <div className="subtotal-wrapper">
                 <p>Total</p>
-                <p>{`$${sub}`}</p>
+                <p>{`$${(sub*1.16).toFixed(2)}`}</p>
               </div>
               <div className="reservation-dates">
                 <div className="reservation-checkin">

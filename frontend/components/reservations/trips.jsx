@@ -4,6 +4,7 @@ import PulseLoaderAnimation from '../loader/pulse_loader';
 import FutureTrip from './future_trip';
 import PastTrip from './past_trip';
 
+
 class Trips extends React.Component {
   constructor(props) {
     super(props);
@@ -13,40 +14,39 @@ class Trips extends React.Component {
       actionReceived: null,
     }
 
-    setTimeout(() => this.setState({ loading: false }), 1000);
+    setTimeout(() => this.setState({ loading: false }), 500);
     this.deleteReservation = this.deleteReservation.bind(this);
   }
 
   componentDidMount () {
-    window.scrollTo(0, 0);
 
     this.props.fetchListings();
     this.props.fetchReservationsByUserId(this.props.currentUser.id);
   
     // Allows for sticky left panel
-    if (
-      "IntersectionObserver" in window &&
-      "IntersectionObserverEntry" in window &&
-      "intersectionRatio" in window.IntersectionObserverEntry.prototype
-    ) {
-      let observer = new IntersectionObserver(entries => {
-        if (entries[0].boundingClientRect.y < 500) {
-          document.body.classList.add("cal-not-at-top");
-        } else {
-          document.body.classList.remove("cal-not-at-top");
-        }
-      });
-      observer.observe(document.querySelector("#top-of-site-pixel-anchor"));
+    if (this.state.loading === false) {
+      if (
+        "IntersectionObserver" in window &&
+        "IntersectionObserverEntry" in window &&
+        "intersectionRatio" in window.IntersectionObserverEntry.prototype
+      ) {
+        let observer = new IntersectionObserver(entries => {
+          if (entries[0].boundingClientRect.y < 500) {
+            document.body.classList.add("cal-not-at-top");
+          } else {
+            document.body.classList.remove("cal-not-at-top");
+          }
+        });
+        observer.observe(document.querySelector("#top-of-site-pixel-anchor"));
+      }
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    window.scrollTo(0, 0);
-
     // renders loader upon reservation cancellation
     if (this.props !== prevProps) {
       this.setState({loading: true});
-      setTimeout(() => this.setState({loading: false}), 1000)
+      setTimeout(() => this.setState({loading: false}), 500)
     }
   }
 
@@ -58,18 +58,13 @@ class Trips extends React.Component {
 
   render() {
 
-    let loader;
-    if (this.state.loading) {
-      loader = (
+    if (this.state.loading === true) {
+      return (
         <div className='loader'>
           <PulseLoaderAnimation loading={this.state.loading} />
         </div>
       );
-    } else {
-      loader = (
-        <div></div>
-      )
-    }
+    } 
 
     let pastReservations = [];
     let futureReservations = [];
@@ -120,7 +115,6 @@ class Trips extends React.Component {
 
     return (
       <div className="trips-whole-page">
-        {loader}
         <div className="trips-container">
           
           <div className="trips-left-panel" id="trips-left-panel">

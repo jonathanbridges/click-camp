@@ -127,7 +127,7 @@ class SessionForm extends React.Component {
 
     if (this.state.loading) {
       return (
-        <div className='loader-modal' style={{background: `transparent`}}>
+        <div className='loader' style={{background: `transparent`}}>
           <PulseLoaderAnimation loading={this.state.loading} />
         </div>
       );

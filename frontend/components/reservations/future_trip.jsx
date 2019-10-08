@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class FutureTrip extends React.Component {
   constructor(props) {
@@ -47,8 +48,10 @@ class FutureTrip extends React.Component {
             <div className="future-trip">
 
               <div className="trip-image-wrapper">
-                <div className="trip-listing-name">{listing.name}</div>
-                <img className="trip-img" src={listing.photoUrls[3]} />
+                <Link to={`/discover/${listing.id}`}>        
+                  <div className="trip-listing-name">{listing.name}</div>
+                  <img className="trip-img" src={listing.photoUrls[3]} />
+                </Link>
               </div>
 
               <div className="trip-bottom">

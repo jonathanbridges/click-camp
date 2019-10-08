@@ -1,14 +1,23 @@
 import React from 'react';
+import PulseLoaderAnimation from '../loader/pulse_loader';
 
 class Checkout extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      loading: false,
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
+    // kick off booking timer after loader resolves
     const fiveMinutes = (5 * 60) - 1;
     const display = document.querySelector('.checkout-timer');
-    this.startTimer(fiveMinutes, display);
+    setTimeout(() => this.setState({ loading: false }), 250);
+    setTimeout(() => this.startTimer(fiveMinutes, display), 275);
   }
 
   startTimer(duration, display) {
@@ -30,14 +39,39 @@ class Checkout extends React.Component {
     }, 1000);
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+
+    let formattedReservation = {
+      camper_id: this.props.reservationParams.camper_id,
+      listing_id: this.props.reservationParams.listing_id,
+      check_in: this.props.reservationParams.check_in,
+      check_out: this.props.reservationParams.check_out
+    }
+    
+    // Start loader, create reservation, close modal, trigger refresh in ListingShowDetails
+    this.setState({loading: true})
+    setTimeout(() => this.props.createReservation(formattedReservation)
+      .then(this.props.closeModal()
+      ), 1000
+    )
+    
+  }
+
   render() {
 
+    if (this.state.loading === true) {
+      return (
+        <div className='loader'>
+          <PulseLoaderAnimation loading={this.state.loading} />
+        </div>
+      );
+    }
+
     let photo = (
-      <img src={`${this.props.listing.photoUrls[2]}`} className="summary-photo" />
+      <img src={`${this.props.reservationParams.listing_photo}`} />
     )
-
     // date formatting
-
     const suffix = (n) => { return ["st", "nd", "rd"][((n + 90) % 100 - 10) % 10 - 1] || "th" }
     const dateFormatting = { weekday: 'short', month: 'short', day: 'numeric' };
 
@@ -50,7 +84,7 @@ class Checkout extends React.Component {
     // price getting
     let duration = (checkOut.getTime() - checkIn.getTime()) / (1000 * 3600 * 24);
 
-    let subtotal = duration * this.props.listing.cost;
+    let subtotal = duration * this.props.reservationParams.listing_cost;
     let serviceFee = (subtotal * .1);
     let occupancyTaxes = (subtotal * .06);
     let total = (subtotal + serviceFee + occupancyTaxes).toFixed(2);
@@ -143,7 +177,7 @@ class Checkout extends React.Component {
               <div className="checkout-deets-header-text">
                 <div className="checkout-deets-header-text-left">
                   <p>Your trip to:</p>
-                  <p className="font-variant">{this.props.listing.name}</p>
+                  <p className="font-variant">{this.props.reservationParams.listing_name}</p>
                 </div>
                 <div className="checkout-deets-header-text-left">
                   <p>Site:</p>
@@ -157,32 +191,33 @@ class Checkout extends React.Component {
             </div>
             
             <div className="checkout-summary">
-              <div className="checkout-summary-item">
-                <p>Subtotal</p>
-                <p>{`$${subtotal.toFixed(2)}`}</p>
-              </div>
-              <div className="checkout-summary-item">
-                <p>Service fee</p>
-                <p>{`$${serviceFee.toFixed(2)}`}</p>
-              </div>
-              <div className="checkout-summary-item">
-                <p>Occupancy taxes</p>
-                <p>{`$${occupancyTaxes.toFixed(2)}`}</p>
+              <div className="checkout-sub">
+                <div className="checkout-summary-item">
+                  <p>Subtotal</p>
+                  <p>{`$${subtotal.toFixed(2)}`}</p>
+                </div>
+                <div className="checkout-summary-item">
+                  <p>Service fee</p>
+                  <p>{`$${serviceFee.toFixed(2)}`}</p>
+                </div>
+                <div className="checkout-summary-item">
+                  <p>Occupancy taxes</p>
+                  <p>{`$${occupancyTaxes.toFixed(2)}`}</p>
+                </div>
               </div>
               <div className="checkout-summary-item">
                 <p className="total">Total</p>
                 <p className="total">{`$${total}`}</p>
               </div>
-
+              <button className="btn-main checkout-submit" onClick={this.handleSubmit}>
+                <p></p>
+                <p>Agree and book</p>
+                <i className="icon fa fa-lock"></i>
+              </button>
             </div>
 
           </div>
 
-          <button className="btn-main checkout-submit">
-            <p></p>
-            <p>Agree and book</p>
-            <i className="icon fa fa-lock"></i>
-          </button>
         </div>
       </div>
     )

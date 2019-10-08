@@ -108,7 +108,7 @@ body.cal-not-at-top #trip-sticky {
 .trip-image-wrapper:hover img {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
-  }
+}
 
 .trip-img {
   position: absolute;
@@ -119,6 +119,10 @@ body.cal-not-at-top #trip-sticky {
   object-fit: cover;
   -webkit-transition: 1s ease;
   transition: 1s ease;
+}
+
+.trip-image-wrapper a {
+  text-decoration: none;
 }
 
 .trip-listing-name {

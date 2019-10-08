@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PastTrip extends React.Component {
   constructor(props) {
@@ -37,27 +38,28 @@ class PastTrip extends React.Component {
 
           trip = (
             <div className="past-trip">
-
-              <div className="trip-image-wrapper">
-                <div className="trip-listing-name">{listing.name}</div>
-                <img className="trip-img" src={listing.photoUrls[5]} />
-              </div>
-
-              <div className="trip-bottom">
-                <div className="trip-details">
-                  <div className="trip-dates">
-                    <p>{`${checkInFormatted} to ${checkOutFormatted}`}</p>
-                  </div>
-                  <div className="gray-text">
-                    <p>{`${nights} at $${listing.cost}/night`}</p>
-                  </div>
+                <div className="trip-image-wrapper">
+                  <Link to={`/discover/${listing.id}`}>        
+                    <div className="trip-listing-name">>{listing.name}</div>
+                    <img className="trip-img" src={listing.photoUrls[5]} />
+                  </Link>
                 </div>
 
+                <div className="trip-bottom">
+                  <div className="trip-details">
+                    <div className="trip-dates">
+                      <p>{`${checkInFormatted} to ${checkOutFormatted}`}</p>
+                    </div>
+                    <div className="gray-text">
+                      <p>{`${nights} at $${listing.cost}/night`}</p>
+                    </div>
+                    
+                  </div>
 
-                <button className="btn-main">Leave Review</button>
+                  {/* Add review button once reviews implemented */}
+                  {/* <button className="btn-main">Leave Review</button> */}
 
-              </div>
-
+                </div>
             </div>
           )
         }

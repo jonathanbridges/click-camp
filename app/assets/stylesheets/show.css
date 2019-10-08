@@ -44,14 +44,6 @@
   width: 66%;
 }
 
-.show-content-right {
-  /* min-width: 350px; */
-}
-
-/* #pending {
-  position: relative;
-} */
-
 #confirmed {
   background-color: #40d9ac;
   border: none;
@@ -82,7 +74,7 @@
 .calendar-wrapper {
   position: relative;
   top: -30px;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: space-between;
   padding: .6rem 1rem 1rem;
