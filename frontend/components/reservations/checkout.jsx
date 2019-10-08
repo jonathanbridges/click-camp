@@ -41,20 +41,23 @@ class Checkout extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    debugger;
 
     let formattedReservation = {
       camper_id: this.props.reservationParams.camper_id,
       listing_id: this.props.reservationParams.listing_id,
       check_in: this.props.reservationParams.check_in,
-      check_out: this.props.reservationParams.check_out
-    }
-    
+      check_out: this.props.reservationParams.check_out,
+    }    
+
     // Start loader, create reservation, close modal, trigger refresh in ListingShowDetails
     this.setState({loading: true})
-    setTimeout(() => this.props.createReservation(formattedReservation)
-      .then(this.props.closeModal()
-      ), 1000
-    )
+    this.props.createReservation(formattedReservation);
+    setTimeout(() => this.props.closeModal(), 1000);
+    // setTimeout(() => this.props.createReservation(formattedReservation)
+    //   .then(this.props.closeModal()
+    //   ), 1000
+    // )
     
   }
 
@@ -74,6 +77,8 @@ class Checkout extends React.Component {
     // date formatting
     const suffix = (n) => { return ["st", "nd", "rd"][((n + 90) % 100 - 10) % 10 - 1] || "th" }
     const dateFormatting = { weekday: 'short', month: 'short', day: 'numeric' };
+
+    debugger;
 
     let checkIn = this.props.reservationParams.check_in;
     let checkOut = this.props.reservationParams.check_out;

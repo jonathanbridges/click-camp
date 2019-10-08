@@ -42,8 +42,9 @@ class SplashListingIndex extends React.Component {
           </div>
         </div>
 
+        {/* Removing Search Bar until Feature is Implemented :/ */}
         {/* Search Bar */}
-        <div className="search-wrapper">
+        {/* <div className="search-wrapper">
           <form className="search-main">
             <div className="listing-search-input">
               <span className="input-i">
@@ -70,7 +71,7 @@ class SplashListingIndex extends React.Component {
               <button className= "search-btn" type="submit">Search</button>
             </Link>
           </form>
-        </div>
+        </div> */}
         <div className="campgrounds-wrapper">
 
         {/* Campsite Previews  */}

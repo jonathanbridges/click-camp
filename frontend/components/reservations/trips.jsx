@@ -75,8 +75,9 @@ class Trips extends React.Component {
       this.props.reservations.forEach(reservation => {
 
         if (reservation.camper_id === this.props.currentUser.id) {
-          let now = new Date();
-          let checkIn = new Date(reservation.check_in);
+          let now = new Date().getUTCDate() - 1;
+          let checkIn = new Date(reservation.check_in).getUTCDate();
+
           if (checkIn < now) {
             pastReservations.push(
               <PastTrip

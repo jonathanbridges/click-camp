@@ -39,7 +39,7 @@ class FutureTrip extends React.Component {
 
           // date formatting
           const suffix = (n) => { return ["st", "nd", "rd"][((n + 90) % 100 - 10) % 10 - 1] || "th" }
-          const dateFormatting = { weekday: 'long', month: 'short', day: 'numeric' };
+          const dateFormatting = { weekday: 'long', month: 'short', day: 'numeric', timeZone: 'UTC'};
 
           let checkInFormatted = `${checkIn.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkIn.getDate())}`;
           let checkOutFormatted = `${checkOut.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkOut.getDate())}`;

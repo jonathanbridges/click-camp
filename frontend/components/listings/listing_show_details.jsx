@@ -130,6 +130,8 @@ class ListingShowDetails extends React.Component {
       listing_name: this.props.listing.name
     }
 
+    debugger;
+
     this.props.receiveCheckoutInfo(formattedReservation);
     this.props.openModal('checkout');
   }
@@ -138,15 +140,17 @@ class ListingShowDetails extends React.Component {
 
     // determines if the current user already has a reservation scheduled for the listing
     let futureReservation;
+ 
     if ((this.props.reservations.length > 0) && (this.props.currentUser !== undefined)) {
       this.props.reservations.forEach(reservation => {
         if ((reservation.listing_id === this.props.listing.id) && (reservation.camper_id === this.props.currentUser.id)) {
 
           // if date is in the future and not a past listing
-          let now = new Date();
-          let checkIn = new Date(reservation.check_in);
-          if (checkIn > now) {
-            reserved = true;
+          let now = new Date().getUTCDate()-1;
+          let checkIn = new Date(reservation.check_in).getUTCDate();
+
+          if (checkIn >= now) {
+             reserved = true;
             futureReservation = reservation;
           }
         }
@@ -183,7 +187,10 @@ class ListingShowDetails extends React.Component {
       promptDiv = (<div></div>)
     }
 
+    let checkInFormatted;
+    let checkOutFormatted;
     if (reserved === true) {
+      debugger;
 
       var photo = this.props.listing.photoUrls[this.props.listing.photoUrls.length - 1];
 
@@ -196,10 +203,10 @@ class ListingShowDetails extends React.Component {
 
       // date formatting
       const suffix = (n) => { return ["st", "nd", "rd"][((n + 90) % 100 - 10) % 10 - 1] || "th" }
-      const dateFormatting = { weekday: 'long', month: 'long', day: 'numeric' };
+      const dateFormatting = { weekday: 'long', month: 'long', day: 'numeric', timeZone: 'UTC'};
 
-      var checkInFormatted = `${checkIn.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkIn.getDate())}`;
-      var checkOutFormatted = `${checkOut.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkOut.getDate())}`;
+      checkInFormatted = `${checkIn.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkIn.getDate())}`;
+      checkOutFormatted = `${checkOut.toLocaleDateString('en-EN', dateFormatting)}${suffix(checkOut.getDate())}`;
     }
 
 
@@ -218,6 +225,7 @@ class ListingShowDetails extends React.Component {
             </div>
             <DateRangePicker
               numberOfMonths={1}
+              minimumNights={2}
               enableOutsideDays={true}
               startDateId="startDate"
               endDateId="endDate"
@@ -278,6 +286,7 @@ class ListingShowDetails extends React.Component {
               </div>
               <DateRangePicker
                 numberOfMonths={1}
+                minimumNights={2}
                 enableOutsideDays={true}
                 startDateId="startDate"
                 endDateId="endDate"
