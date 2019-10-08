@@ -40,7 +40,7 @@ class PastTrip extends React.Component {
             <div className="past-trip">
                 <div className="trip-image-wrapper">
                   <Link to={`/discover/${listing.id}`}>        
-                    <div className="trip-listing-name">>{listing.name}</div>
+                    <div className="trip-listing-name">{listing.name}</div>
                     <img className="trip-img" src={listing.photoUrls[5]} />
                   </Link>
                 </div>
