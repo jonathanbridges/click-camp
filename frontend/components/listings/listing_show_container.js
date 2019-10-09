@@ -27,7 +27,6 @@ const mapDispatchToProps = dispatch => ({
   fetchListing: id => dispatch(fetchListing(id)),
   fetchReservationsByUserId: currentUser => dispatch(fetchReservationsByUserId(currentUser)),
   createReservation: reservation => dispatch(createReservation(reservation)),
-  receiveCurrentUser: reservation => dispatch(receiveCurrentUser(reservation)),
   receiveCheckoutInfo: (reservationParams) => dispatch(receiveCheckoutInfo(reservationParams)),
   openModal: (modal) => dispatch(openModal(modal)),
 });

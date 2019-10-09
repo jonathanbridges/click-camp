@@ -206,7 +206,7 @@
 }
 
 .info-deets i {
-  /* min-width: 1.6rem; */
+  min-width: 1.6rem;
   display: flex;
   align-items: center;
   flex-direction: column;

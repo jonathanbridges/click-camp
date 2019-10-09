@@ -1,9 +1,11 @@
 import React from 'react';
 
 import ListingShowDetails from './listing_show_details';
+import ReviewsIndex from '../reviews/reviews_index';
+import Footer from '../footer/footer';
 import Carousel from 'nuka-carousel';
 import PulseLoaderAnimation from '../loader/pulse_loader';
-import Footer from '../footer/footer';
+import ReviewIndexContainer from '../reviews/review_index_container';
 
 class ListingShow extends React.Component {
 
@@ -41,22 +43,29 @@ class ListingShow extends React.Component {
       objectFit: `cover`
     };
 
-    let photos;
-    let details;
+    let photos, details, reviews;
 
     if (this.props.listing === undefined) {
       photos = <div className="show-img-container"></div>
       details = ""
+      reviews = ""
     } else {
       photos = this.props.listing.photoUrls.map((photo, idx) => <div className="show-img-container" key={`img-${idx}`}><img src={photo} style={imgStyle} /></div>)
       details = < ListingShowDetails 
         listing={this.props.listing}
-        // createReservation={this.props.createReservation}
         receiveCheckoutInfo={this.props.receiveCheckoutInfo}
         currentUser={this.props.currentUser}
         openModal={this.props.openModal}
         fetchReservationsByUserId={this.props.fetchReservationsByUserId} 
         reservations={this.props.reservations}
+      />
+      // reviews = <ReviewsIndex 
+      //   currentUser={this.props.currentUser}
+      //   listing={this.props.listing}
+      // />
+      reviews = <ReviewIndexContainer 
+        listing = {this.props.listing}
+        currentUser = {this.props.currentUser}
       />
     }
 
@@ -68,6 +77,7 @@ class ListingShow extends React.Component {
           </Carousel>
         </div>
         {details}
+        {reviews}
         <Footer />
       </div>
     );
