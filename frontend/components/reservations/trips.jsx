@@ -76,26 +76,32 @@ class Trips extends React.Component {
       this.props.reservations.forEach(reservation => {
 
         if (reservation.camper_id === this.props.currentUser.id) {
-          debugger;
-          let now = new Date().getUTCDate();
-          let checkIn = new Date(reservation.check_in).getUTCDate();
+          let now = new Date()
+          let todayDay = now.getUTCDate();
+          let todayMonth = now.getUTCMonth();
+          let todayYear = now.getUTCFullYear();
 
-          if (checkIn < now) {
-            pastReservations.push(
-              <PastTrip
-                listingId={reservation.listing_id}
-                listings={this.props.listings}
-                reservation={reservation}
-                key={reservation.id}
-              />
-            )
-          } else {
+          let checkIn = new Date(reservation.check_in);
+          let checkInDay = checkIn.getUTCDate();
+          let checkInMonth = checkIn.getUTCMonth();
+          let checkInYear = checkIn.getUTCFullYear();
+
+          if ((checkInDay >= todayDay) && (checkInMonth >= todayMonth) && (checkInYear >= todayYear)) {
             futureReservations.push(
               <FutureTrip
                 listingId={reservation.listing_id}
                 listings={this.props.listings}
                 reservation={reservation}
                 deleteReservation={this.deleteReservation}
+                key={reservation.id}
+              />
+            )
+          } else {
+            pastReservations.push(
+              <PastTrip
+                listingId={reservation.listing_id}
+                listings={this.props.listings}
+                reservation={reservation}
                 key={reservation.id}
               />
             )

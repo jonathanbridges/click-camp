@@ -41,7 +41,6 @@ class Checkout extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    debugger;
 
     let formattedReservation = {
       camper_id: this.props.reservationParams.camper_id,
@@ -77,8 +76,6 @@ class Checkout extends React.Component {
     // date formatting
     const suffix = (n) => { return ["st", "nd", "rd"][((n + 90) % 100 - 10) % 10 - 1] || "th" }
     const dateFormatting = { weekday: 'short', month: 'short', day: 'numeric' };
-
-    debugger;
 
     let checkIn = this.props.reservationParams.check_in;
     let checkOut = this.props.reservationParams.check_out;

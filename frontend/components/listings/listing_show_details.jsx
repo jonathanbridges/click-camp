@@ -130,8 +130,6 @@ class ListingShowDetails extends React.Component {
       listing_name: this.props.listing.name
     }
 
-    debugger;
-
     this.props.receiveCheckoutInfo(formattedReservation);
     this.props.openModal('checkout');
   }
@@ -146,11 +144,18 @@ class ListingShowDetails extends React.Component {
         if ((reservation.listing_id === this.props.listing.id) && (reservation.camper_id === this.props.currentUser.id)) {
 
           // if date is in the future and not a past listing
-          let now = new Date().getUTCDate()-1;
-          let checkIn = new Date(reservation.check_in).getUTCDate();
+          let now = new Date()
+          let todayDay = now.getUTCDate();
+          let todayMonth = now.getUTCMonth();
+          let todayYear = now.getUTCFullYear();
 
-          if (checkIn >= now) {
-             reserved = true;
+          let checkIn = new Date(reservation.check_in);
+          let checkInDay = checkIn.getUTCDate();
+          let checkInMonth = checkIn.getUTCMonth();
+          let checkInYear = checkIn.getUTCFullYear();
+
+          if ((checkInDay >= todayDay) && (checkInMonth >= todayMonth) && (checkInYear >= todayYear)) {
+            reserved = true;
             futureReservation = reservation;
           }
         }
@@ -190,7 +195,6 @@ class ListingShowDetails extends React.Component {
     let checkInFormatted;
     let checkOutFormatted;
     if (reserved === true) {
-      debugger;
 
       var photo = this.props.listing.photoUrls[this.props.listing.photoUrls.length - 1];
 
