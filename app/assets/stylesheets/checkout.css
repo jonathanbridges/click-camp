@@ -69,7 +69,10 @@
 }
 
 .checkout-rulebook-item span {
+  display: flex;
+  justify-content: center;
   font-size: 1.8rem;
+  width: 2rem;
 }
 
 .checkout-badge {

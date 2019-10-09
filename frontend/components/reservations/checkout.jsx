@@ -186,7 +186,7 @@ class Checkout extends React.Component {
                   <p>Dispersed</p>
                 </div>
                 <div className="checkout-deets-header-text-left">
-                  <p>{checkInFormatted} to</p>
+                  <p>{checkInFormatted} to </p>
                   <p>{checkOutFormatted}</p>
                 </div>
               </div>
