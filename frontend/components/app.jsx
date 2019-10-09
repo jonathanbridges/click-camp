@@ -9,9 +9,6 @@ import SplashListingIndexContainer from './listings/splash_listing_index_contain
 import DiscoverListingIndexContainer from './listings/discover_listing_index_container';
 import ListingsShowContainer from './listings/listing_show_container';
 import TripsShowContainer from './reservations/trips_container';
-// import Footer from './footer/footer'
-
-// import SplashListingIndex from './listings/splash_listing_index';
 
 const App = () => (
   <div>

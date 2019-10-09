@@ -10,7 +10,7 @@ import configureStore from './store/store';
 // import { fetchListing, fetchListings } from './actions/listing_actions'
 // import { fetchReservations, fetchReservation, fetchReservationsByUserId, deleteReservation, createReservation } from './util/reservation_api_util'
 // import { fetchReservations, fetchReservation, fetchReservationsByUserId, deleteReservation, createReservation } from './actions/reservation_actions'
-
+import { fetchReviews, fetchReview, createReview, updateReview, deleteReview } from './actions/review_actions'; 
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -33,6 +33,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // window.createReservation = createReservation
   // window.deleteReservation = deleteReservation
   // window.fetchReservationsByUserId = fetchReservationsByUserId;
+  // window.fetchReviews = fetchReviews;
+  // window.fetchReview = fetchReview;
+  // window.createReview = createReview;
+  // window.updateReview = updateReview;
+  // window.deleteReview = deleteReview;
   //End Testing
 
   //Redux Testing
@@ -45,8 +50,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // window.fetchReservationsByUserId = fetchReservationsByUserId;
   // window.createReservation = createReservation
   // window.deleteReservation = deleteReservation
-  
-
+  // window.fetchReviews = fetchReviews;
+  // window.fetchReview = fetchReview;
+  // window.createReview = createReview;
+  // window.updateReview = updateReview;
+  // window.deleteReview = deleteReview;
   //End Testing
 
   //Backend Testing
@@ -60,10 +68,3 @@ document.addEventListener('DOMContentLoaded', () => {
   
   ReactDOM.render(<Root store={store} />, root);
 });
-
-  // let preloadedState = undefined;
-  // if (window.currentUser) {
-  //   preloadedState = {
-  //     session: { currentUser: window.currentUser }
-  //   };
-  // }
