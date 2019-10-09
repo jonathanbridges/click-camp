@@ -66,7 +66,7 @@ class ListingShowDetails extends React.Component {
         camper_id: this.props.currentUser.id
       });
       // retrieves reservations for current user
-      this.fetchReservationsByUserId(this.props.currentUser.id);
+      this.props.fetchReservationsByUserId(this.state.camper_id);
     }
   }
 

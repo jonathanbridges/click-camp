@@ -8,7 +8,7 @@ class Api::ReservationsController < ApplicationController
   end
 
   def index
-    @reservations = Reservation.includes(:listing).where(camper_id: current_user.id).order(check_in: :desc)
+    @reservations = Reservation.includes(:listing).where(camper_id: current_user.id).order(check_in: :asc)
     # @reservations = Reservation.all
     render json: @reservations
   end
