@@ -1,11 +1,12 @@
 import React from 'React'
+import Review from './review';
 
 class ReviewsIndex extends React.Component {
 
   constructor(props) {
     super(props);
 
-    
+
   }
 
   componentDidMount() {
@@ -13,9 +14,27 @@ class ReviewsIndex extends React.Component {
   }
 
   render() {
-    debugger;
+    let reviews = [];
+    if (this.props.reviews.length > 0) {
+      this.props.reviews.forEach(review => {
+        debugger;
+        if (review.listing_id === this.props.listing.id) {
+          reviews.push(
+            <Review
+              reviewerId = {review.reviewer_id}
+              text = {review.text}
+              recommends = {review.recommends}
+              key = {review.id}
+            />
+          )
+        }
+      }, this)
+    }
+
     return (
-      <div>This is the reviews container</div>
+      <div>
+        {reviews}
+      </div>
     )
   }
 }

@@ -5,7 +5,6 @@ import { fetchReviews, fetchReview, createReview, deleteReview, updateReview } f
 
 
 const mapStateToProps = (state, ownProps) => {
-  debugger;
   let currentUser = state.entities.users[state.session.id];
   let listing = ownProps.listing
   let reviews = state.entities.reviews

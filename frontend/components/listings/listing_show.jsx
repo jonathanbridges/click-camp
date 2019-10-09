@@ -51,6 +51,7 @@ class ListingShow extends React.Component {
       reviews = ""
     } else {
       photos = this.props.listing.photoUrls.map((photo, idx) => <div className="show-img-container" key={`img-${idx}`}><img src={photo} style={imgStyle} /></div>)
+      
       details = < ListingShowDetails 
         listing={this.props.listing}
         receiveCheckoutInfo={this.props.receiveCheckoutInfo}
@@ -59,10 +60,7 @@ class ListingShow extends React.Component {
         fetchReservationsByUserId={this.props.fetchReservationsByUserId} 
         reservations={this.props.reservations}
       />
-      // reviews = <ReviewsIndex 
-      //   currentUser={this.props.currentUser}
-      //   listing={this.props.listing}
-      // />
+
       reviews = <ReviewIndexContainer 
         listing = {this.props.listing}
         currentUser = {this.props.currentUser}
