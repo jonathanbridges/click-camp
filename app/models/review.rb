@@ -12,8 +12,9 @@
 #
 
 class Review < ApplicationRecord
-  
+
   validates :reviewer_id, :listing_id, :text, presence: true
+  validates_length_of :text, :within => 6..255, :too_long => "Maximum 255 Characters", :too_short => "Minimum 8 Characters"
 
   belongs_to :reviewer,
     foreign_key: :reviewer_id,

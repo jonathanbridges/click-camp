@@ -14,6 +14,8 @@ class Api::ListingsController < ApplicationController
     render :show
   end
 
+  private
+
   def listing_params
     params.require(:listing).permit(
       :host_id,
