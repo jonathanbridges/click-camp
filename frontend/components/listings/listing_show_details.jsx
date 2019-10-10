@@ -5,6 +5,7 @@ import { DateRangePicker } from 'react-dates';
 import 'react-dates/initialize';
 
 import ReservationShow from '../reservations/reservation_show'
+import ReviewIndexContainer from '../reviews/review_index_container';
 import { fetchReservationsByUserId } from '../../actions/reservation_actions';
 import PulseLoaderAnimation from '../loader/pulse_loader';
 
@@ -37,6 +38,7 @@ class ListingShowDetails extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchReviews();
        // retrieves reservations for current user
     if (this.state.camper_id !== null) {
       this.props.fetchReservationsByUserId(this.props.currentUser.id);
@@ -135,6 +137,16 @@ class ListingShowDetails extends React.Component {
   }
 
   render () {
+
+    let reviews;
+    if (this.props.reviews.length > 0) {
+      reviews = <ReviewIndexContainer
+        listing={this.props.listing}
+        currentUser={this.props.currentUser}
+      />
+    } else {
+      reviews = <div></div>
+    }
 
     // determines if the current user already has a reservation scheduled for the listing
     let futureReservation;
@@ -436,7 +448,7 @@ class ListingShowDetails extends React.Component {
             </ul>
           </div>
         </div>
-          
+        {reviews}
       </div>
 
       {/* Reservation Section */}

@@ -10,7 +10,8 @@ class Api::ReviewsController < ApplicationController
   def index
     # @reviews = Review.includes(:listing).where(camper_id: current_user.id).order(check_in: :desc)
     @reviews = Review.all
-    render json: @reviews
+    # render json: @reviews
+    render :index
   end
 
   def create

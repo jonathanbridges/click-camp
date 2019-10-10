@@ -17,7 +17,6 @@ class ReviewsIndex extends React.Component {
     let reviews = [];
     if (this.props.reviews.length > 0) {
       this.props.reviews.forEach(review => {
-        debugger;
         if (review.listing_id === this.props.listing.id) {
           reviews.push(
             <Review

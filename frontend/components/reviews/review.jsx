@@ -10,6 +10,7 @@ class Review extends React.Component {
   }
 
   render() {
+    debugger;
     if (this.props.text.length < 1) {
       return (
         <div></div>
