@@ -9,10 +9,6 @@ class ReviewsIndex extends React.Component {
 
   }
 
-  componentDidMount() {
-    this.props.fetchReviews();
-  }
-
   render() {
     let reviews = [];
     if (this.props.reviews.length > 0) {

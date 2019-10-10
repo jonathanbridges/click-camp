@@ -19,22 +19,28 @@ class Review extends React.Component {
       let recommends;
       if (this.props.review.recommends === true) {
         recommends = ( 
-          <div className="tile-recommend">
-            <i className="fas fa-thumbs-up" aria-hidden="true"></i>
+          <div>
+            <div className="review-text">
+              <i className="fas fa-thumbs-up tile-recommend" aria-hidden="true"></i>
+              <p><span>{this.props.review.username}</span>recommends this listing.</p>
+            </div>
+            <p>{this.props.review.text}</p>
           </div>
         )
       } else {
         recommends = (
-          <div className="tile-recommend">
-            <i className="fas fa-thumbs-down" aria-hidden="true"></i>
+          <div className="review-text">
+            <div className="tile-recommend">
+              <i className="fas fa-thumbs-down" aria-hidden="true"></i>
+              <p><span>{this.props.review.username}</span>doesn't recommend this listing.</p>
+            </div>
+            <p>{this.props.review.text}</p>
           </div>
         )
       }
       return (
-        <div>
+        <div className="review">
           <img src={`${this.props.review.photoUrl}`}></img>
-          <p>{this.props.review.text}</p>
-          <p>{this.props.review.username}</p>
           {recommends}
         </div>
       )
