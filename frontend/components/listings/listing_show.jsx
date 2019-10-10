@@ -1,7 +1,7 @@
 import React from 'react';
 
 import ListingShowDetails from './listing_show_details';
-import ReviewsIndex from '../reviews/reviews_index';
+// import ReviewsIndex from '../reviews/reviews_index';
 import Footer from '../footer/footer';
 import Carousel from 'nuka-carousel';
 import PulseLoaderAnimation from '../loader/pulse_loader';
