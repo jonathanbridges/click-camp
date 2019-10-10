@@ -10,17 +10,32 @@ class Review extends React.Component {
   }
 
   render() {
-    debugger;
-    if (this.props.text.length < 1) {
+
+    if (this.props.review.text.length < 1) {
       return (
         <div></div>
       )
     } else {
+      let recommends;
+      if (this.props.review.recommends === true) {
+        recommends = ( 
+          <div className="tile-recommend">
+            <i className="fas fa-thumbs-up" aria-hidden="true"></i>
+          </div>
+        )
+      } else {
+        recommends = (
+          <div className="tile-recommend">
+            <i className="fas fa-thumbs-down" aria-hidden="true"></i>
+          </div>
+        )
+      }
       return (
         <div>
-          <h1>This is a single review</h1>
-          <p>{this.props.text}</p>
-          <p>{this.props.recommends}</p>
+          <img src={`${this.props.review.photoUrl}`}></img>
+          <p>{this.props.review.text}</p>
+          <p>{this.props.review.username}</p>
+          {recommends}
         </div>
       )
     }

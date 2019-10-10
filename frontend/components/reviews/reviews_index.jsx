@@ -20,9 +20,7 @@ class ReviewsIndex extends React.Component {
         if (review.listing_id === this.props.listing.id) {
           reviews.push(
             <Review
-              reviewerId = {review.reviewer_id}
-              text = {review.text}
-              recommends = {review.recommends}
+              review = {review}
               key = {review.id}
             />
           )
