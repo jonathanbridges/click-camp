@@ -17,7 +17,7 @@ host1 = User.create!(
 )
 
 host_1_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user12.jpg')
-host_1.photo.attach(io: host_1_avatar, filename: "user12.jpg")
+host1.photo.attach(io: host_1_avatar, filename: "user12.jpg")
 
 
 host2 = User.create!(
@@ -27,7 +27,7 @@ host2 = User.create!(
 )
 
 host_2_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user10.jpg')
-host_2.photo.attach(io: host_2_avatar, filename: "user10.jpg")
+host2.photo.attach(io: host_2_avatar, filename: "user10.jpg")
 
 host3 = User.create!(
   username: 'Judy M.',
@@ -36,7 +36,7 @@ host3 = User.create!(
 )
 
 host_3_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user13.jpg')
-host_3.photo.attach(io: host_3_avatar, filename: "user13.jpg")
+host3.photo.attach(io: host_3_avatar, filename: "user13.jpg")
 
 host4 = User.create!(
   username: 'Jerry P.',
@@ -45,16 +45,16 @@ host4 = User.create!(
 )
 
 host_4_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user14.jpg')
-host_4.photo.attach(io: host_4_avatar, filename: "user14.jpg")
+host4.photo.attach(io: host_4_avatar, filename: "user14.jpg")
 
 host5 = User.create!(
   username: 'Erica S.',
-  email: 'jkasdfal@123.com',
+  email: 'jkasdfal@1asdf23.com',
   password: 'password'
 )
 
 host_5_avatar = open('https://app-name-seeds.s3.us-west-1.amazonaws.com/user18.jpg')
-host_5.photo.attach(io: host_5_avatar, filename: "user18.jpg")
+host5.photo.attach(io: host_5_avatar, filename: "user18.jpg")
 
 host6 = User.create!(
   username: 'Benjamin G.',
@@ -63,7 +63,7 @@ host6 = User.create!(
 )
 
 host_6_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user3.jpg')
-host_6.photo.attach(io: host_6_avatar, filename: "user3.jpg")
+host6.photo.attach(io: host_6_avatar, filename: "user3.jpg")
 
 ### Guess User ###
 
@@ -82,7 +82,7 @@ reviewer1 = User.create!(
 )
 
 reviewer_1_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user1.jpg')
-reviewer_1.photo.attach(io: reviewer_1_avatar, filename: "user1.jpg")
+reviewer1.photo.attach(io: reviewer_1_avatar, filename: "user1.jpg")
 
 reviewer2 = User.create!(
   username: 'Kaydon L.',
@@ -91,16 +91,16 @@ reviewer2 = User.create!(
 )
 
 reviewer_2_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user2.jpg')
-reviewer_2.photo.attach(io: reviewer_2_avatar, filename: "user2.jpg")
+reviewer2.photo.attach(io: reviewer_2_avatar, filename: "user2.jpg")
 
 reviewer3 = User.create!(
   username: 'Mike M.',
-  email: 'jkslasdf@1234.com',
+  email: 'jkslaasdfasdsdf@1234.com',
   password: 'password'
 )
 
 reviewer_3_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user4.jpg')
-reviewer_3.photo.attach(io: reviewer_3_avatar, filename: "user4.jpg")
+reviewer3.photo.attach(io: reviewer_3_avatar, filename: "user4.jpg")
 
 reviewer4 = User.create!(
   username: 'Ryley C.',
@@ -367,7 +367,7 @@ review1 = Review.create!(
 review2 = Review.create!(
   listing_id: listing1.id,
   reviewer_id: reviewer2.id,
-  text: "Utterly fantastic experience from start to finish. The directions provided were accurate and useful (like mentioning cell service dies around 45m south of the location - super glad we knew that in advance), the location was easy to find, and the host super friendly and welcoming.",
+  text: "Utterly fantastic experience from start to finish. The directions provided were accurate and useful, the location was easy to find, and the host super friendly and welcoming.",
   recommends: true
 )
 
@@ -474,8 +474,8 @@ review16 = Review.create!(
 review17 = Review.create!(
   listing_id: listing2.id,
   reviewer_id: reviewer6.id,
-  text: "I was immediately put at ease when I arrived at camp and met the host, Jeff. He is super easy-going, helpful and flexible.",
-  recommends: true
+  text: "I wasn't ready for the cats. I have an allergy and ended up spending most of my time shooing them away with a quidditch stick",
+  recommends: false
 )
 
 review18 = Review.create!(
@@ -733,7 +733,7 @@ review53 = Review.create!(
   listing_id: listing5.id,
   reviewer_id: reviewer3.id,
   text: "We spent 4 days there and loved it! The place and the surroundings are gorgeous. We can't wait to get back! It's primitive but has all you need.",
-  recommends: false
+  recommends: true
 )
 
 review54 = Review.create!(
