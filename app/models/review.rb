@@ -11,8 +11,6 @@
 #  updated_at  :datetime         not null
 #
 
-require 'byebug'
-
 class Review < ApplicationRecord
 
   validates :reviewer_id, :listing_id, :text, presence: true
