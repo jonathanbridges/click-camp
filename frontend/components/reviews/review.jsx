@@ -29,9 +29,9 @@ class Review extends React.Component {
         )
       } else {
         recommends = (
-          <div className="review-text">
-            <div className="tile-recommend">
-              <i className="fas fa-thumbs-down" aria-hidden="true"></i>
+          <div>
+            <div className="review-text">
+              <i className="fas fa-thumbs-down tile-recommend" aria-hidden="true"></i>
               <p><span>{this.props.review.username}</span>doesn't recommend this listing.</p>
             </div>
             <p>{this.props.review.text}</p>

@@ -676,7 +676,7 @@ review44 = Review.create!(
 review45 = Review.create!(
   listing_id: listing5.id,
   reviewer_id: reviewer11.id,
-  text: "It is obvious that Roy takes great pride in his land and cares about the experience for his campers.",
+  text: "It is obvious that the owner takes great pride in their land and cares about the experience for campers.",
   recommends: true
 )
 

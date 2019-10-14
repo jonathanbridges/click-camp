@@ -11,6 +11,8 @@
 #  updated_at  :datetime         not null
 #
 
+require 'byebug'
+
 class Review < ApplicationRecord
 
   validates :reviewer_id, :listing_id, :text, presence: true
@@ -22,8 +24,14 @@ class Review < ApplicationRecord
 
   belongs_to :listing
 
-  def self.get_by_listing_id(listing_id)
-    self.where("listing_id = ?", listing_id)
+  def self.get_number_ratings(listing_id)
+    self.where("listing_id = ?", listing_id).count
+  end
+
+  def self.get_rating(listing_id)
+    reviews = self.where("listing_id = ?", listing_id)
+    likes = reviews.where(recommends: true).count
+    rating = (likes / reviews.length.to_f * 100).to_f.round
   end
 
 end

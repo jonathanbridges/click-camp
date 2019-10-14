@@ -26,6 +26,21 @@
   justify-content: center;
   font-size: .9rem;
   line-height: 1.42;
+  padding-bottom: 1px;
+}
+
+.review-text .fa-thumbs-down {
+  color: white;
+  background: #ec6e67;
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .9rem;
+  line-height: 1.42;
+  padding-top: 2px;
 }
 
 .review-text .tile-recommend {
@@ -35,4 +50,9 @@
 .review-text p span {
   font-weight: 600;
   padding-right: 5px;
+}
+
+.review-index {
+  font-weight: 600;
+  margin-bottom: 1.5rem;
 }

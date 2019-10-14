@@ -26,6 +26,7 @@ class ReviewsIndex extends React.Component {
 
     return (
       <div>
+        <p className="review-index">{`${reviews.length}`} written reviews</p>
         {reviews}
       </div>
     )

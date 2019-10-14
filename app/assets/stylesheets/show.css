@@ -170,7 +170,8 @@
   border-top: 1px solid #ebebeb;
   display: flex;
   justify-content: space-between;
-  padding-top: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #ebebeb;
   margin-bottom: 1.5rem;
 }
 
