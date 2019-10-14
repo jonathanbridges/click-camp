@@ -337,16 +337,16 @@ class ListingShowDetails extends React.Component {
         </div>
         <div className="tile-recommend">
           <i className="fas fa-thumbs-up"></i>
-          <strong>{` ${Math.floor(Math.random() * (1 + 100 - 85)) + 85}%`}</strong>
-          <span className="recommend-text"><strong className="strong-verified"> Recommend</strong>{` - ${Math.floor(Math.random() * (1 + 200 - 12)) + 12} Reviews`}</span>
+          <strong>{` ${this.props.listing.rating}%`}</strong>
+          <span className="recommend-text"><strong className="strong-verified"> Recommend</strong>{` - ${this.props.listing.numberReviews} Reviews`}</span>
         </div>
 
         {/* Host Information */}
         <div className="show-host-desc">
-          <img className="host-ava" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/host1.jpg" alt=""/>
+          <img className="host-ava" src={`${this.props.listing.hostPhotoUrl}`} alt=""/>
           <div className="host-details">
             <p className="hosted-by">Hosted by</p>
-            <p className="host-name">Myrna H.</p>
+            <p className="host-name">{this.props.listing.hostName}</p>
           </div>
           <p className="show-description" id="show-small">{this.props.listing.description}</p>
         </div>

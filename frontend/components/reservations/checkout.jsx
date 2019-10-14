@@ -71,7 +71,7 @@ class Checkout extends React.Component {
     }
 
     let photo = (
-      <img src={`${this.props.reservationParams.listing_photo}`} />
+      <img className="checkout-img" src={`${this.props.reservationParams.listing_photo}`} />
     )
     // date formatting
     const suffix = (n) => { return ["st", "nd", "rd"][((n + 90) % 100 - 10) % 10 - 1] || "th" }

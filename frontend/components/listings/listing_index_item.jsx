@@ -25,8 +25,8 @@ const ListingIndexItem = ({ listing }) => {
           <div className="tile-info-left">
             <div className="tile-recommend">
               <i className="fas fa-thumbs-up"></i>
-              <strong>{` ${Math.floor(Math.random() * (1 + 100 - 85)) + 85}%`}</strong>
-              <span className="recommend-text">{` - ${Math.floor(Math.random() * (1 + 200 - 12)) + 12} Reviews`}</span>
+              <strong>{` ${listing.rating}%`}</strong>
+              <span className="recommend-text">{` - ${listing.numberReviews} Reviews`}</span>
             </div>  
           </div>
           <div className="tile-info-right">
