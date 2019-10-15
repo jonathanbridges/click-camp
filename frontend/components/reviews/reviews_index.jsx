@@ -16,24 +16,43 @@ class ReviewsIndex extends React.Component {
       errors: [],
       reviewed: false,
     }
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.handleRecommendChange = this.handleRecommendChange.bind(this);
+
     this.handleCreate = this.handleCreate.bind(this);
     this.handleUpdate = this.handleUpdate.bind(this);
-    this.handleRecommendChange = this.handleRecommendChange.bind(this);
-    this.validate = this.validate.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
 
+    this.validate = this.validate.bind(this);
   }
 
   componentDidMount() {
     if (this.props.reviews.length > 0) {
       this.props.reviews.forEach(review => {
         if (review.listing_id === this.props.listing.id) {
-          if (review.reviewer_id === this.props.currentUser.id && this.state.reviewed === false) {
+          if ((this.props.currentUser !== undefined) && (review.reviewer_id === this.props.currentUser.id) && (this.state.reviewed === false)) {
             this.setState({
               reviewed: true,
+              reviewId: review.id,
               text: review.text,
               recommends: review.recommends,
+              reviewId: review.id
+            })
+          }
+        }
+      }, this)
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.reviews !== this.props.reviews) {
+      let reviews = Object.values(this.props.reviews);
+      reviews.forEach(review => {
+        if (review.listing_id === this.props.listing.id) {
+          if (this.props.currentUser !== undefined && review.reviewer_id === this.props.currentUser.id) {
+            this.setState({
               reviewId: review.id
             })
           }
@@ -74,14 +93,14 @@ class ReviewsIndex extends React.Component {
     }
 
     this.props.createReview(formatted)
-      .then(this.props.fetchReviews)
-      .then(this.setState({ 
-          formOpen: false, 
-          text: '',
-          recommends: null,
+      .then(() => this.props.fetchReviews())
+      .then(this.setState({
+          reviewed: true,
+          formOpen: false,
           errors: []
         })
-      );
+      )
+    
   }
 
   handleUpdate(e) {
@@ -102,9 +121,25 @@ class ReviewsIndex extends React.Component {
     }
 
     this.props.updateReview(formatted)
-      .then(this.props.fetchReviews)
+      .then(() => this.props.fetchReviews())
       .then(this.setState({
         formOpen: false,
+        errors: []
+      })
+    );
+  }
+
+  handleDelete(e) {
+    e.preventDefault();
+
+    this.props.deleteReview(this.state.reviewId)
+      .then(() => this.props.fetchReviews())
+      .then(this.setState({
+        reviewed: false,
+        formOpen: false,
+        reviewId: null,
+        text: '',
+        recommends: null,
         errors: []
       })
     );
@@ -151,8 +186,16 @@ class ReviewsIndex extends React.Component {
 
     let userReview;
 
+    // Styles Leave a Review Button for Users who are not Signed In
+    if (this.props.currentUser === undefined) {
+      userReview = (
+        <div className="review-index-header">
+          <p className="review-index">{`${reviews.length}`} written reviews</p>
+          <button className="btn-main" onClick={() => this.props.openModal('login')}>Log in to Review</button>
+        </div>
+      )
     // Styles Leave a Review Button for Users with no Review
-    if (this.state.formOpen === false && this.state.reviewed === false) {
+    } else if (this.state.formOpen === false && this.state.reviewed === false) {
       userReview = (
         <div className="review-index-header">
           <p className="review-index">{`${reviews.length}`} written reviews</p>
@@ -181,13 +224,13 @@ class ReviewsIndex extends React.Component {
                 <input type="radio" id="recommend" value="true" 
                   checked={this.state.recommends === 'true'}
                   onChange={this.handleRecommendChange} />
-                <label for="recommend">
+                <label htmlFor="recommend">
                   <i className="fas fa-thumbs-up review-thumbs-up" aria-hidden="true"></i>
                 </label>
                 <input type="radio" id="norecommend" value="false"
                   checked={this.state.recommends === 'false'}
                   onChange={this.handleRecommendChange} />
-                <label for="norecommend">
+                <label htmlFor="norecommend">
                   <i className="fas fa-thumbs-down review-thumbs-down" aria-hidden="true"></i>
                 </label>
               </div>
@@ -199,7 +242,7 @@ class ReviewsIndex extends React.Component {
           </form>
         </div>
       )
-    // Styles Form for Users Updating their Review
+    // Styles Form for Users Updating or Deleting their Review
     } else if(this.state.formOpen === true && this.state.reviewed === true) {
       let errors = this.state.errors;
       userReview = (
@@ -224,6 +267,8 @@ class ReviewsIndex extends React.Component {
                 </label>
               </div>
               <input className="btn-main" type="submit" value="Update Review" />
+              <p>or</p>
+              <button className="btn-main" onClick={this.handleDelete} value="Delete Review" />
             </div>
             {errors.map(error => (
               <p className="review-error" key={error}>{error}</p>
