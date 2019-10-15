@@ -1,8 +1,10 @@
 import React from 'react';
+import { logoutCurrentUser } from '../../actions/session_actions';
 
 class Review extends React.Component {
   constructor(props) {
     super(props)
+
   }
 
   componentDidMount() {
@@ -38,9 +40,21 @@ class Review extends React.Component {
           </div>
         )
       }
+
+      let img;
+      if (this.props.review.photoUrl === undefined) {
+        img = (
+          <img src={`https://app-name-seeds.s3-us-west-1.amazonaws.com/campicon.png`}></img>
+        )
+      } else {
+        img = (
+          <img src={`${this.props.review.photoUrl}`}></img>
+        )
+      }
+
       return (
         <div className="review">
-          <img src={`${this.props.review.photoUrl}`}></img>
+          {img}
           {recommends}
         </div>
       )

@@ -15,7 +15,7 @@ const mapDispatchToProps = (dispatch) => ({
   receiveCurrentUser: reservation => dispatch(receiveCurrentUser(reservation)),
   fetchReviews: () => dispatch(fetchReviews()),
   fetchReview: id => dispatch(fetchReview(id)),
-  creatReview: review => dispatch(createReview(review)),
+  createReview: review => dispatch(createReview(review)),
   updateReview: review => dispatch(updateReview(review)),
   deleteReview: id => dispatch(deleteReview(id)),
 })
