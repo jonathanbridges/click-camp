@@ -139,6 +139,7 @@
 
 .radio input[type="radio"]:checked + label {
   border-color: #333333;
+  transform: scale(1.2);
 }
 
 .review-footer {
