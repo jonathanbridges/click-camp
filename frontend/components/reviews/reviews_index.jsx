@@ -62,7 +62,8 @@ class ReviewsIndex extends React.Component {
       .then(this.setState({ 
           reviewing: false, 
           text: '',
-          recommends: null
+          recommends: null,
+          errors: []
         })
       );
   }
@@ -122,22 +123,24 @@ class ReviewsIndex extends React.Component {
           <form className="review-form" onSubmit={this.handleCreate}>
             <p>Your Review of {this.props.listing.name}:</p>
             <textarea value={this.state.text} onChange={this.handleChange} />
-            <div className="radio">
-              <p>Recommend?</p>
-              <input type="radio" id="recommend" value="true" 
-                checked={this.state.recommends === 'true'}
-                onChange={this.handleRecommendChange} />
-              <label for="recommend">
-                <i className="fas fa-thumbs-up tile-recommend" aria-hidden="true"></i>
-              </label>
-              <input type="radio" id="norecommend" value="true"
-                checked={this.state.recommends === 'true'}
-                onChange={this.handleRecommendChange} />
-              <label for="norecommend">
-                <i className="fas fa-thumbs-down tile-recommend" aria-hidden="true"></i>
-              </label>
+            <div className="review-footer">
+              <div className="radio">
+                <p>Recommend?</p>
+                <input type="radio" id="recommend" value="true" 
+                  checked={this.state.recommends === 'true'}
+                  onChange={this.handleRecommendChange} />
+                <label for="recommend">
+                  <i className="fas fa-thumbs-up review-thumbs-up" aria-hidden="true"></i>
+                </label>
+                <input type="radio" id="norecommend" value="false"
+                  checked={this.state.recommends === 'false'}
+                  onChange={this.handleRecommendChange} />
+                <label for="norecommend">
+                  <i className="fas fa-thumbs-down review-thumbs-down" aria-hidden="true"></i>
+                </label>
+              </div>
+              <input className="btn-main" type="submit" value="Create Review" />
             </div>
-            <input className="btn-main" type="submit" value="Create Review" />
             {errors.map(error => (
               <p className="review-error" key={error}>{error}</p>
             ))}
@@ -145,8 +148,6 @@ class ReviewsIndex extends React.Component {
         </div>
       )
     }
-
-
 
     return (
       <div>
