@@ -266,9 +266,11 @@ class ReviewsIndex extends React.Component {
                   <i className="fas fa-thumbs-down review-thumbs-down" aria-hidden="true"></i>
                 </label>
               </div>
-              <input className="btn-main" type="submit" value="Update Review" />
-              <p>or</p>
-              <button className="btn-main" onClick={this.handleDelete} value="Delete Review" />
+              <div className="review-buttons">
+                <input className="btn-main" type="submit" value="Update Review" />
+                <p>or</p>
+                <button className="btn-main" onClick={this.handleDelete}>Delete Review</button>
+              </div>
             </div>
             {errors.map(error => (
               <p className="review-error" key={error}>{error}</p>
