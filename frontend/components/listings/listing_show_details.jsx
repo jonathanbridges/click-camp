@@ -121,10 +121,10 @@ class ListingShowDetails extends React.Component {
     const errors = [];
 
     if (this.state.startDate === null) {
-      errors.push("Invalid Start Date");
+      errors.push("Select a Start Date");
     }
     if (this.state.endDate === null) {
-      errors.push("Invalid End Date");
+      errors.push("Select an End Date");
     }
     
     return errors;
