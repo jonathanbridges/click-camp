@@ -26,11 +26,14 @@ class ListingShowDetails extends React.Component {
       focusedInput: null,
       reservation: null,
       focused: false,
+      errors: [],
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.focusReservation = this.focusReservation.bind(this);
     this.unfocusReservation = this.unfocusReservation.bind(this);
+
+    this.validate = this.validate.bind(this);
   }
 
   componentWillMount() {
@@ -112,15 +115,35 @@ class ListingShowDetails extends React.Component {
         focused: false
       });
     }
-  }  
+  }
+
+  validate() {
+    const errors = [];
+
+    if (this.state.startDate === null) {
+      errors.push("Invalid Start Date");
+    }
+    if (this.state.endDate === null) {
+      errors.push("Invalid End Date");
+    }
+    
+    return errors;
+  }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    if ((this.state.startDate === null || this.state.endDate === null) && this.props.currentUser !== undefined) {
-      alert("Please select valid check in and check out dates.")
-      return
+    // Populates form with errors if there are any
+    const errors = this.validate();
+    if (errors.length > 0) {
+      this.setState({ errors });
+      return;
     }
+
+    // if ((this.state.startDate === null || this.state.endDate === null) && this.props.currentUser !== undefined) {
+    //   alert("Please select valid check in and check out dates.")
+    //   return
+    // }
 
     let formattedReservation = {
       camper_id: this.state.camper_id,
@@ -158,6 +181,9 @@ class ListingShowDetails extends React.Component {
           // if date is in the future and not a past listing
           let now = new Date()
           let todayDay = now.getUTCDate();
+          if (now.getDate() < todayDay){
+            todayDay = now.getDate();
+          }
           let todayMonth = now.getUTCMonth();
           let todayYear = now.getUTCFullYear();
 
@@ -165,6 +191,8 @@ class ListingShowDetails extends React.Component {
           let checkInDay = checkIn.getUTCDate();
           let checkInMonth = checkIn.getUTCMonth();
           let checkInYear = checkIn.getUTCFullYear();
+
+          debugger;
 
           if ((checkInDay >= todayDay) && (checkInMonth >= todayMonth) && (checkInYear >= todayYear)) {
             reserved = true;
@@ -230,6 +258,7 @@ class ListingShowDetails extends React.Component {
 
     if (this.props.currentUser === undefined) {
       // render checkout component for logged out users
+      let errors = this.state.errors;
       calendar = (
         <div id="login-wrapper btn-main" onClick={() => this.props.openModal('login')}>
           <div id="top-of-site-pixel-anchor"></div>
@@ -257,6 +286,7 @@ class ListingShowDetails extends React.Component {
       )
     } else {
       // render checkout component for logged in users with a future reservation
+      let errors = this.state.errors;
       if (reserved === true) {
         calendar = (
           <div className="login-wrapper">
@@ -283,13 +313,13 @@ class ListingShowDetails extends React.Component {
                   <p>{checkOutFormatted}</p>
                 </div>
               </div>
-              {/* <button className="btn-main">Manage Reservation</button> */}
               <Link className="btn-main" to={`/trips`}>Manage Reservation</Link>
             </div>
           </div>
         )
       } else {
         // render checkout for logged in users without a reservation
+        let errors = this.state.errors;
         calendar = (
           <div id="login-wrapper" onClick={this.focusReservation}>
             {/* 1px anchor for sticky calendar section */}
@@ -310,11 +340,14 @@ class ListingShowDetails extends React.Component {
                 endDate={this.state.endDate}
                 onDatesChange={({ startDate, endDate }) => { 
                   if (startDate === null) return;
-                  this.setState({ startDate, endDate }) 
+                  this.setState({ startDate, endDate, errors: []}) 
                 }}
                 focusedInput={this.state.focusedInput}
                 onFocusChange={(focusedInput) => { this.setState({ focusedInput }) }}
               />
+              {errors.map(error => (
+                <p className="calendar-error" key={error}>{error}</p>
+              ))}
               {subtotalDiv}
               <a onClick={this.handleSubmit} className="btn-main checkout-btn" id="show-book"><i className="fas fa-bolt"></i>&nbsp;&nbsp;Instant Book</a>
               {promptDiv}
@@ -324,7 +357,7 @@ class ListingShowDetails extends React.Component {
       }
     }
   
-    return (
+  return (
     <div className="show-content-bottom">
       <div className="show-content-left">
         <div>

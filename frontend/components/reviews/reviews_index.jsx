@@ -29,6 +29,7 @@ class ReviewsIndex extends React.Component {
   }
 
   componentDidMount() {
+    // populates local state with Review information for the current user, if applicable
     if (this.props.reviews.length > 0) {
       this.props.reviews.forEach(review => {
         if (review.listing_id === this.props.listing.id) {
@@ -47,6 +48,7 @@ class ReviewsIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    // handles local state revidId assignment after createReview action
     if (prevProps.reviews !== this.props.reviews) {
       let reviews = Object.values(this.props.reviews);
       reviews.forEach(review => {
@@ -71,14 +73,30 @@ class ReviewsIndex extends React.Component {
   }
 
   handleRecommendChange(e) {
-    this.setState({
-      recommends: e.target.value
-    });
+    this.setState({ recommends: e.target.value });
+  }
+
+  // Helper function to validate review form errors
+  validate() {
+    const errors = [];
+
+    if (this.state.text.length < 8) {
+      errors.push("Review must be longer than 8 characters");
+    }
+    if (this.state.text.length > 255) {
+      errors.push("Review must be 255 characters or less.");
+    }
+    if (this.state.recommends === null) {
+      errors.push("Select a Recommend Option");
+    }
+
+    return errors;
   }
 
   handleCreate(e) {
     e.preventDefault();
 
+    // Populates form with errors if there are any
     const errors = this.validate();
     if (errors.length > 0) {
       this.setState({ errors });
@@ -92,6 +110,7 @@ class ReviewsIndex extends React.Component {
       reviewer_id: this.props.currentUser.id
     }
 
+    // Creates new Review, reloads Reviews slice of state, and triggers re-render
     this.props.createReview(formatted)
       .then(() => this.props.fetchReviews())
       .then(this.setState({
@@ -144,23 +163,6 @@ class ReviewsIndex extends React.Component {
       })
     );
   }
-
-  validate() {
-    const errors = [];
-
-    if (this.state.text.length < 8) {
-      errors.push("Review must be longer than 8 characters");
-    }
-    if (this.state.text.length > 255) {
-      errors.push("Review must be 255 characters or less.");
-    }
-    if (this.state.recommends === null) {
-      errors.push("Select a Recommend Option");
-    }
-  
-    return errors;
-  }
-
 
   render() {
     if (this.props.reviews.length === undefined) {

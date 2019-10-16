@@ -78,6 +78,9 @@ class Trips extends React.Component {
         if (reservation.camper_id === this.props.currentUser.id) {
           let now = new Date()
           let todayDay = now.getUTCDate();
+          if (now.getDate() < todayDay) {
+            todayDay = now.getDate();
+          }
           let todayMonth = now.getUTCMonth();
           let todayYear = now.getUTCFullYear();
 

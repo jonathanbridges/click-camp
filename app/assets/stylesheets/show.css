@@ -239,3 +239,12 @@
   font-weight: 300;
   border-radius: 5px 0 0 5px;
 }
+
+.calendar-error {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0 0;
+  font-size: .9rem;
+  font-style: italic;
+  color: #f15151;
+}
