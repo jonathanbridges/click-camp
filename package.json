@@ -54,7 +54,6 @@
   "homepage": "https://github.com/jonathanbridges/click-camp#readme",
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.5.0",
-    "@fortawesome/fontawesome-free": "^5.9.0",
     "css-loader": "^3.0.0"
   }
 }
