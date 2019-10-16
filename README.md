@@ -4,7 +4,7 @@ Live Site: [ClickCamp](https://click-camp.herokuapp.com/)
 
 ## Overview
 ClickCamp is a single-page web app inspired by [HipCamp](https://www.hipcamp.com/). Current functionality handles user authentication, the ability to view listings, and make reservations.
-Live Site: [ClickCamp](https://click-camp.herokuapp.com/#/)
+
 The technology stack used utilizes React.js with Redux for frontend, and Rails with PostgreSQL.
 ## Contents
 * [Install](#install)
