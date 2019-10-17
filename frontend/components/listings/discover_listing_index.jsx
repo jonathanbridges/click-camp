@@ -9,21 +9,43 @@ class DiscoverListingIndex extends React.Component {
     super(props);
 
     this.state = {
-      loading: true
+      loading: true,
+      listings: this.props.listings,
+      noResults: false,
     }
+
 
     setTimeout(() => this.setState({loading: false}), 250);
   }
 
   componentDidMount() {
-    // this.props.fetchListings();
+
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // Renders Error Message if no Listings are Found Within Map
+    if (prevProps.listings.length > 0 && this.props.listings.length === 0) {
+      this.setState({ noResults: true });
+    } else if (prevProps.listings.length === 0 && this.props.listings.length > 0) {
+      this.setState({ noResults: false });
+    }
   }
 
   render() {
+
     let { listings, updateSearchCoords } = this.props;
 
     listings = listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
 
+    if (this.state.noResults === true) {
+      return (
+        <div className="index-dc-row" id="discover-listings">
+          <p>Sorry there is some errors boss</p>
+        </div>
+      )
+    }
+
+    
     if (this.state.loading === true) {
       return (
         <div className='loader'>
