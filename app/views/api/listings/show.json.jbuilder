@@ -1,4 +1,4 @@
-json.extract! @listing, :id, :name, :description, :cost, :host_id
+json.extract! @listing, :id, :host_id, :lat, :lng, :name, :description, :cost
 host = User.find(@listing.host_id)
 json.hostName host.username
 json.rating Review.get_rating(@listing.id)
