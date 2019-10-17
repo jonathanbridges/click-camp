@@ -18,7 +18,6 @@ class ListingMap extends React.Component {
     this.renderMap = this.renderMap.bind(this);
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
 
-    debugger;
   }
 
   componentDidMount() {

@@ -31,9 +31,10 @@ class MarkerManager {
       labelOrigin: new google.maps.Point(0, -18),
       fillColor: "white",
       fillOpacity: 1,
-      scale: 1.15,
+      scale: 2,
       strokeColor: "#484848",
-      strokeWeight: 0.3
+      strokeWeight: 0.3,
+      width: "2000px"
     };
 
     if (!this.markers[listing.id]) {
@@ -44,7 +45,7 @@ class MarkerManager {
         title: listing.name,
         icon: mapIcon,
         label: {
-          text: `$${listing.price}`,
+          text: `${listing.name}`,
           fontSize: "13px",
           fontWeight: "bold",
           color: "#484848"

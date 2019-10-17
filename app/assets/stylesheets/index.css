@@ -125,36 +125,35 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 0 .1rem;
-  margin-top: 2rem;
 }
 
 .campground-tile {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 32%;
   min-width: 300px;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  max-height: 320px;
-  cursor: pointer;
+  max-width: 50%;
   height: 320px;
+  max-height: 320px;
+  padding: 0 .5rem;
   margin-bottom: 1rem;
-}
-
-.campground-tile:hover {
-  background-color: #f9f9f9;
-	transition: all 0.075s ease 0s;
+  cursor: pointer;
 }
 
 .tile-link {
+  height: 320px;
   text-decoration: none;
   color: #333333;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 340px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tile-link:hover {
+  background-color: #f9f9f9;
+	transition: all 0.075s ease 0s;
 }
 
 .tile-picture {

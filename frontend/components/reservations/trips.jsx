@@ -4,7 +4,6 @@ import PulseLoaderAnimation from '../loader/pulse_loader';
 import FutureTrip from './future_trip';
 import PastTrip from './past_trip';
 
-
 class Trips extends React.Component {
   constructor(props) {
     super(props);

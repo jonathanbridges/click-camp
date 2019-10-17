@@ -2,17 +2,23 @@ import React from 'react';
 import DiscoverListingIndexContainer from './discover_listing_index_container';
 import ListingMap from './listing_map';
 
+let viewportHeight;
+
 class Search extends React.Component {
 
   constructor(props) {
     super(props)
+
   }
 
   componentDidMount() {
-    // this.props.fetchListings();
+    viewportHeight = $(window).height() - 86;
+
+    document.getElementById("map-wrapper").style.height = `${viewportHeight}px`
   }
 
   render() {
+
     return (
       <div className="discover-wrapper">
         <DiscoverListingIndexContainer
@@ -27,6 +33,7 @@ class Search extends React.Component {
       </div>
     )
   }
+
 
 }
 

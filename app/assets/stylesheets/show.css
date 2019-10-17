@@ -129,9 +129,8 @@
   color: #333333;
 }
 
-.tile-recommend {
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
+.show-content-left .tile-recommend {
+    margin-bottom: 1rem;
 }
 
 .show-description {

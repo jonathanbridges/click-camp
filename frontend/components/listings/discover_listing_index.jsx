@@ -22,21 +22,21 @@ class DiscoverListingIndex extends React.Component {
   render() {
     let { listings, updateSearchCoords } = this.props;
 
+    listings = listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
+
     if (this.state.loading === true) {
       return (
         <div className='loader'>
           <PulseLoaderAnimation loading={this.state.loading} />
         </div>
       )
+    } else {
+      return (
+        <div className="index-dc-row" id="discover-listings">
+          {listings}
+        </div>
+      );
     }
-
-    listings = listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
-
-    return (
-      <div className="index-dc-row" id="discover-listings">
-        {listings}
-      </div>
-    );
   }
 }
 
