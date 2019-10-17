@@ -52,6 +52,10 @@
   padding-right: 5px;
 }
 
+.review-text + p {
+  word-break: break-word;
+}
+
 .review-index {
   font-weight: 600;
   margin-bottom: 1.5rem;
