@@ -2,7 +2,6 @@
 require 'open-uri'
 
 User.delete_all
-Location.delete_all
 Listing.delete_all
 Reservation.delete_all
 Review.delete_all
@@ -175,33 +174,10 @@ reviewer11 = User.create!(
 reviewer_11_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user16.jpg')
 reviewer11.photo.attach(io: reviewer_11_avatar, filename: "user16.jpg")
 
-### Locations ###
-
-location1 = Location.create!(
-  lat: 37.775769,
-  long: -122.434960
-)
-
-location2 = Location.create!(
-  lat: 37.779760,
-  long: -122.413820,
-)
-
-location3 = Location.create!(
-  lat: 37.769996,
-  long: -122.511281
-)
-
-location4 = Location.create!(
-  lat: 37.897000,
-  long: -122.581111
-)
-
 ### Listings ###
 
 listing1 = Listing.create!(
   host_id: host1.id, 
-  location_id: location1.id, 
   name: 'Aurora HOA', 
   description: 'Experience the best camping in northern CA! All campsites have fire pits and unparalled access to star-viewing.',
   cost: 45,
@@ -225,7 +201,6 @@ listing1.photos.attach(io: photo_1_6, filename: "site-1-6.jpeg")
 
 listing2 = Listing.create!(
   host_id: host2.id, 
-  location_id: location2.id, 
   name: 'Marshmellow Marsh', 
   description: 'Free smores are delivered upon your arrival at Marshmellow Marsh! A quick walk to the bog esplanade.',
   cost: 25,
@@ -249,7 +224,6 @@ listing2.photos.attach(io: photo_2_6, filename: "site-2-6.jpeg")
 
 listing3 = Listing.create!(
   host_id: host3.id, 
-  location_id: location3.id, 
   name: 'Hammock Forest', 
   description: 'Relax to the max hanging out between two trees in hammock forest! Sheep are available for petting and Instagram moments.',
   cost: 65,
@@ -273,7 +247,6 @@ listing3.photos.attach(io: photo_3_6, filename: "site-3-6.jpeg")
 
 listing4 = Listing.create!(
   host_id: host4.id, 
-  location_id: location3.id, 
   name: 'Wine Country Wagons', 
   description: 'Rose by day, and hay by night. Drink the finest north bay wines and sleep in our premium wooden wagons.',
   cost: 75,
@@ -297,7 +270,6 @@ listing4.photos.attach(io: photo_4_6, filename: "site-4-6.jpeg")
 
 listing5 = Listing.create!(
   host_id: host5.id, 
-  location_id: location4.id, 
   name: 'Beachside Bungalow', 
   description: 'Whalewatchers delight! Free binoculars, travel guidebooks from the 1980s, and a grand view of the Pacific Ocean.',
   cost: 45,
@@ -321,7 +293,6 @@ listing5.photos.attach(io: photo_5_6, filename: "site-5-6.jpeg")
 
 listing6 = Listing.create!(
   host_id: host6.id, 
-  location_id: location4.id, 
   name: 'Leaning Leanto', 
   description: 'Charming leanto nearly untouched by mankind. Enjoy the sounds of coyotes rummaging through your dry goods for a snack.',
   cost: 25,

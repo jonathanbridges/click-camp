@@ -4,7 +4,6 @@
 #
 #  id          :bigint           not null, primary key
 #  host_id     :integer          not null
-#  location_id :integer          not null
 #  name        :string           not null
 #  description :text             not null
 #  cost        :integer          not null

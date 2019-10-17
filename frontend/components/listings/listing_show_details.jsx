@@ -192,8 +192,6 @@ class ListingShowDetails extends React.Component {
           let checkInMonth = checkIn.getUTCMonth();
           let checkInYear = checkIn.getUTCFullYear();
 
-          debugger;
-
           if ((checkInDay >= todayDay) && (checkInMonth >= todayMonth) && (checkInYear >= todayYear)) {
             reserved = true;
             futureReservation = reservation;
