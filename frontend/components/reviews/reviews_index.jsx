@@ -30,8 +30,8 @@ class ReviewsIndex extends React.Component {
 
   componentDidMount() {
     // populates local state with Review information for the current user, if applicable
-    if (this.props.reviews.length > 0) {
-      this.props.reviews.forEach(review => {
+    if (this.props.reviews[1] !== undefined) {
+      Object.values(this.props.reviews).forEach(review => {
         if (review.listing_id === this.props.listing.id) {
           if ((this.props.currentUser !== undefined) && (review.reviewer_id === this.props.currentUser.id) && (this.state.reviewed === false)) {
             this.setState({
@@ -55,6 +55,23 @@ class ReviewsIndex extends React.Component {
         if (review.listing_id === this.props.listing.id) {
           if (this.props.currentUser !== undefined && review.reviewer_id === this.props.currentUser.id) {
             this.setState({
+              reviewId: review.id,
+            })
+          }
+        }
+      }, this)
+    }
+
+    if (prevProps.currentUser !== this.props.currentUser) {
+      let reviews = Object.values(this.props.reviews);
+      reviews.forEach(review => {
+        if (review.listing_id === this.props.listing.id) {
+          if (this.props.currentUser !== undefined && review.reviewer_id === this.props.currentUser.id) {
+            this.setState({
+              reviewed: true,
+              reviewId: review.id,
+              text: review.text,
+              recommends: review.recommends,
               reviewId: review.id
             })
           }
@@ -111,15 +128,16 @@ class ReviewsIndex extends React.Component {
     }
 
     // Creates new Review, reloads Reviews slice of state, and triggers re-render
-    this.props.createReview(formatted)
+    this.setState({loading: true});
+    setTimeout(() => this.props.createReview(formatted)
       .then(() => this.props.fetchReviews())
-      .then(this.setState({
-          reviewed: true,
-          formOpen: false,
-          errors: []
-        })
-      )
-    
+      .then(() => this.setState({
+        reviewed: true,
+        formOpen: false,
+        errors: [],
+        loading: false
+      })
+    ), 250)
   }
 
   handleUpdate(e) {
@@ -139,49 +157,64 @@ class ReviewsIndex extends React.Component {
       reviewer_id: this.props.currentUser.id
     }
 
-    this.props.updateReview(formatted)
+    this.setState({ loading: true });
+    setTimeout(() => this.props.updateReview(formatted)
       .then(() => this.props.fetchReviews())
-      .then(this.setState({
+      .then(() => this.setState({
         formOpen: false,
-        errors: []
+        errors: [],
+        loading: false
       })
-    );
+    ), 250)
   }
 
   handleDelete(e) {
     e.preventDefault();
 
-    this.props.deleteReview(this.state.reviewId)
+    this.setState({ loading: true });
+    setTimeout(() => this.props.deleteReview(this.state.reviewId)
       .then(() => this.props.fetchReviews())
-      .then(this.setState({
+      .then(() => this.setState({
         reviewed: false,
         formOpen: false,
         reviewId: null,
         text: '',
         recommends: null,
-        errors: []
+        errors: [],
+        loading: false
       })
-    );
+    ), 250)
   }
 
   render() {
-    if (this.props.reviews.length === undefined) {
+
+    if (this.state.loading === true) {
       return (
         <div className="review-loader"><PulseLoaderAnimation /></div>
       )
     }
 
     let reviews = [];
-    if (this.props.reviews.length > 0) {
-      this.props.reviews.forEach(review => {
+    if (this.props.reviews[1] !== undefined) {
+      Object.values(this.props.reviews).forEach(review => {
         if (review.listing_id === this.props.listing.id) {
-          reviews.push(
-            <Review
-              review = {review}
-              key = {review.id}
-              currentUser={this.props.currentUser}
-            />
-          )
+          if (this.props.currentUser === undefined || review.reviewer_id !== this.props.currentUser.id) {
+            reviews.push(
+              <Review
+                review={review}
+                key={review.id}
+                currentUser={this.props.currentUser}
+              />
+            )
+          } else {
+            reviews.unshift(
+              <Review
+                review = {review}
+                key = {review.id}
+                currentUser={this.props.currentUser}
+              />
+            )
+          }
         }
       }, this)
     }
@@ -245,7 +278,7 @@ class ReviewsIndex extends React.Component {
         </div>
       )
     // Styles Form for Users Updating or Deleting their Review
-    } else if(this.state.formOpen === true && this.state.reviewed === true) {
+    } else if (this.state.formOpen === true && this.state.reviewed === true) {
       let errors = this.state.errors;
       userReview = (
         <div className="review-index-header">

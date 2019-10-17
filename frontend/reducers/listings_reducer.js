@@ -1,5 +1,5 @@
 import { RECEIVE_LISTING, RECEIVE_LISTINGS } from '../actions/listing_actions';
-import merge from 'lodash/merge';
+// import merge from 'lodash/merge';
 
 const listingsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -8,7 +8,7 @@ const listingsReducer = (state = {}, action) => {
       return action.listings;
     case RECEIVE_LISTING:
       const newListing = { [action.listing.id]: action.listing };
-      return merge({}, state, newListing);
+      return Object.assign({}, state, newListing);
     default:
       return state;
   }
