@@ -1,51 +1,15 @@
-#discover-index {
-  height: 100vh;
-}
-
-#discover-search {
-  position: fixed;
-  top: 70px;
-  background-color: white;
-  width: 100%;
-  z-index: 1;
-}
-
-#discover-campgrounds {
-  margin-top: 10rem;
-  padding-left: 0 .1rem;
-}
-
-.discover-content-wrapper {
+.discover-wrapper {
+  margin-top: 70px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  overflow: hidden;
-  width: 100%;
-  min-height: 100%;
-  padding: 0 1rem;
 }
 
-#campsites-idx .campground-tile {
-  width: 49%;
+#discover-listings {
+  width: 60%;
+  margin-top: 0;
 }
 
-.discover-map {
-  position: sticky !important;
-  overflow: hidden;
-  margin-top: 12rem;
-  margin-left: 1rem;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-}
-
-#discover-campgrounds-wrapper {
-  display: flex;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  overflow-y: scroll;
-  overflow-x: hidden;
+#discover-listings .campground-tile {
+  width: 50%
 }
 
 ::-webkit-scrollbar {
@@ -53,12 +17,10 @@
   background: transparent;
 }
 
-.map-wrapper {
-  width: 50%;
-  height: 98.3%;
+#map-wrapper {
+  position: sticky !important;
+  top: 70px;
+  width: 40%;
+  height: 90vh;
   overflow: hidden;
-}
-
-.map-bottom-spacer {
-  height: 1rem;
 }

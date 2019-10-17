@@ -6,7 +6,7 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Modal from './modal/modal';
 import GreetingContainer from './greeting/greeting_container';
 import SplashListingIndexContainer from './listings/splash_listing_index_container';
-import DiscoverListingIndexContainer from './listings/discover_listing_index_container';
+import SearchContainer from './listings/search_container';
 import ListingsShowContainer from './listings/listing_show_container';
 import TripsShowContainer from './reservations/trips_container';
 
@@ -31,7 +31,7 @@ const App = () => (
 
     <Switch>
       {/* Dicover Page Listings */}
-      <Route exact path="/discover" component={DiscoverListingIndexContainer} />
+      <Route exact path="/discover" component={SearchContainer} />
       {/* Listing Show Page */}
       <Route exact path="/discover/:listingId" component={ListingsShowContainer} />
       {/* Trips Page */}

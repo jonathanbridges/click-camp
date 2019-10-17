@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { fetchListings } from '../../actions/listing_actions';
-import DiscoverListingIndex from './discover_listing_index';
+import Search from './search';
 
 const mapStateToProps = (state, ownProps) => {
   let listings = Object.values(state.entities.listings)
@@ -11,4 +11,4 @@ const mapDispatchToProps = dispatch => ({
   fetchListings: () => dispatch(fetchListings()),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(DiscoverListingIndex)
+export default connect(mapStateToProps, mapDispatchToProps)(Search)

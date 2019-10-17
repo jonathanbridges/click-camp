@@ -6,8 +6,6 @@ import 'react-dates/initialize';
 
 import ReservationShow from '../reservations/reservation_show'
 import ReviewIndexContainer from '../reviews/review_index_container';
-import { fetchReservationsByUserId } from '../../actions/reservation_actions';
-import PulseLoaderAnimation from '../loader/pulse_loader';
 
 let overlay;
 let cal;
@@ -474,7 +472,7 @@ class ListingShowDetails extends React.Component {
           <div>
             <ul className="show-ul">
               <li><strong className="show-strong">On arrival:</strong> Meet and greet</li>
-              <li><strong className="show-strong">Minimum nights:</strong> 1 night</li>
+              <li><strong className="show-strong">Minimum nights:</strong> 2 nights</li>
               <li><strong className="show-strong">Accepts Bookings:</strong> 12 months out</li>
             </ul>
           </div>
