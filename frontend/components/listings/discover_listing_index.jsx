@@ -3,7 +3,7 @@ import ListingIndexItem from './listing_index_item';
 import PulseLoaderAnimation from '../loader/pulse_loader';
 import { Link } from 'react-router-dom';
 
-class DisoverListingIndex extends React.Component {
+class DiscoverListingIndex extends React.Component {
 
   constructor(props) {
     super(props);
@@ -16,10 +16,12 @@ class DisoverListingIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchListings();
+    // this.props.fetchListings();
   }
 
   render() {
+    let { listings, updateSearchCoords } = this.props;
+
     if (this.state.loading === true) {
       return (
         <div className='loader'>
@@ -28,7 +30,7 @@ class DisoverListingIndex extends React.Component {
       )
     }
 
-    let listings = this.props.listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
+    listings = listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
 
     return (
       <div className="index-dc-row" id="discover-listings">
@@ -38,4 +40,4 @@ class DisoverListingIndex extends React.Component {
   }
 }
 
-export default DisoverListingIndex;
+export default DiscoverListingIndex;

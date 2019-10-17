@@ -27,4 +27,13 @@ class Listing < ApplicationRecord
 
   has_many_attached :photos
 
+  def self.in_bounds(bounds)
+    bounds = JSON.parse(bounds)
+
+    self.where('lat < ?', bounds["northEast"]["lat"].to_f)
+      .where('lat >?', bounds["southWest"]["lat"].to_f)
+      .where('lng < ?', bounds["northEast"]["lng"].to_f)
+      .where('lng > ?', bounds["southWest"]["lng"].to_f)
+  end
+
 end

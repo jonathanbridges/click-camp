@@ -1,5 +1,5 @@
 import React from 'react';
-import DiscoverListingIndex from './discover_listing_index';
+import DiscoverListingIndexContainer from './discover_listing_index_container';
 import ListingMap from './listing_map';
 
 class Search extends React.Component {
@@ -9,18 +9,21 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-
-    
+    // this.props.fetchListings();
   }
 
   render() {
     return (
       <div className="discover-wrapper">
-        <DiscoverListingIndex
+        <DiscoverListingIndexContainer
           listings = {this.props.listings}
           fetchListings = {this.props.fetchListings}
         />
-        <ListingMap />
+        <ListingMap 
+          listings={this.props.listings}
+          updateFilter={this.props.updateFilter}
+          mapSearchCoords={this.props.mapSearchCoords}
+        />
       </div>
     )
   }

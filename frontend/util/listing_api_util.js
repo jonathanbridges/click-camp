@@ -1,10 +1,11 @@
-export const fetchListings = data => (
-  $.ajax({
-    method: 'GET',
-    url: 'api/listings',
-    data
-  })
-);
+export const fetchListings = (filters) => {
+  return (
+    $.ajax({
+      method: 'GET',
+      url: `/api/listings?bounds=${JSON.stringify(filters.bounds)}`
+    })
+  )
+};
 
 export const fetchListing = id => (
   $.ajax({

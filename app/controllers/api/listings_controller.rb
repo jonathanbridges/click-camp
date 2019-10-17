@@ -1,11 +1,17 @@
 class Api::ListingsController < ApplicationController
 
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
 
   def index 
-    @listings = Listing.all
+    # @listings = Listing.all
+    @listings = bounds ? Listing.in_bounds(bounds) : Listing.all
+
     # render json: @listings
-    render :index
+    if @listings
+      render :index
+    else
+      render json: ["Listings not found!"], status: 422
+    end
   end
 
   def show
@@ -26,6 +32,14 @@ class Api::ListingsController < ApplicationController
       :cost,
       photos: []
     )
+  end
+
+  def bounds
+    params[:bounds]
+  end
+
+  def user_id
+    params[:user_id]
   end
 
 end
