@@ -340,11 +340,11 @@ listing2.photos.attach(io: photo_2_6, filename: "site-2-6.jpg")
 
 listing3 = Listing.create!(
   host_id: host3.id, 
-  name: 'Hammock Forest', 
-  description: 'Relax to the max hanging out between two trees in hammock forest! Sheep are available for petting and Instagram moments.',
-  cost: 65,
-  lat: 37.929470, 
-  lng: -122.582165
+  name: 'Wine Country Wagons', 
+  description: 'Rose by day, and hay by night. Drink the finest north bay wines and sleep in our premium wooden wagons.',
+  cost: 75,
+  lat: 38.273978,
+  lng: -122.242194
 )
 
 photo_3_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-1.jpg')
@@ -362,12 +362,12 @@ listing3.photos.attach(io: photo_3_6, filename: "site-3-6.jpg")
 
 
 listing4 = Listing.create!(
-  host_id: host4.id, 
-  name: 'Wine Country Wagons', 
-  description: 'Rose by day, and hay by night. Drink the finest north bay wines and sleep in our premium wooden wagons.',
-  cost: 75,
-  lat: 38.273978,
-  lng: -122.242194
+  host_id: host4.id,
+  name: 'Hammock Forest', 
+  description: 'Relax to the max hanging out between two trees in hammock forest! Sheep are available for petting and Instagram moments.',
+  cost: 65,
+  lat: 37.929470, 
+  lng: -122.582165
 )
 
 
@@ -386,12 +386,12 @@ listing4.photos.attach(io: photo_4_6, filename: "site-4-6.jpg")
 
 
 listing5 = Listing.create!(
-  host_id: host5.id, 
-  name: 'Beachside Bungalow', 
-  description: 'Whalewatchers delight! Free binoculars, travel guidebooks from the 1980s, and a grand view of the Pacific Ocean.',
-  cost: 45,
-  lat: 38.002312, 
-  lng: -123.009124
+  host_id: host5.id,
+  name: 'Sierra Forest Farm', 
+  description: 'Walking distance to public access at the Russian river, and a short 20 minute drive from the coast. Close to the regions best wineries and restaurants.',
+  cost: 40,
+  lat: 37.173290, 
+  lng: -121.909813
 )
 
 photo_5_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-1.jpg')
@@ -409,12 +409,12 @@ listing5.photos.attach(io: photo_5_6, filename: "site-5-6.jpg")
 
 
 listing6 = Listing.create!(
-  host_id: host6.id, 
-  name: 'Leaning Leanto', 
-  description: 'Charming leanto nearly untouched by mankind. Enjoy the sounds of coyotes rummaging through your dry goods for a snack.',
-  cost: 25,
-  lat: 38.188452,
-  lng: -122.364720
+  host_id: host6.id,
+  name: 'Beachside Bungalow', 
+  description: 'Whalewatchers delight! Free binoculars, travel guidebooks from the 1980s, and a grand view of the Pacific Ocean.',
+  cost: 45,
+  lat: 38.002312, 
+  lng: -123.009124
 )
 
 photo_6_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-1.jpg')
@@ -457,8 +457,8 @@ listing8 = Listing.create!(
   name: 'Guerneville Gulch', 
   description: 'Walking distance to public access at the Russian river, and a short 20 minute drive from the coast. Close to the regions best wineries and restaurants.',
   cost: 70,
-  lat: 37.886947, 
-  lng: -122.239774
+  lat: 38.478108,
+  lng: -122.993168
 )
 
 photo_8_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-8-1.jpg')
@@ -476,11 +476,11 @@ listing8.photos.attach(io: photo_8_6, filename: "site-8-6.jpg")
 
 listing9 = Listing.create!(
   host_id: host9.id, 
-  name: 'Sierra Forest Farm', 
-  description: 'Walking distance to public access at the Russian river, and a short 20 minute drive from the coast. Close to the regions best wineries and restaurants.',
-  cost: 40,
-  lat: 37.173290, 
-  lng: -121.909813
+  name: 'Leaning Leanto', 
+  description: 'Charming leanto nearly untouched by mankind. Enjoy the sounds of coyotes rummaging through your dry goods for a snack.',
+  cost: 25,
+  lat: 38.188452,
+  lng: -122.364720
 )
 
 photo_9_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-9-1.jpg')
@@ -545,8 +545,8 @@ listing12 = Listing.create!(
   name: 'Vacaville Village Retreat', 
   description: 'People from all over the world flock to Vacaville for the annual frozen man ice festival every January. There is no better place to stay than here at Vacaville Village Retreat, where you have quick access to all of the festivities, but are also secluded enough to just sit back and let the day pass by',
   cost: 70,
-  lat: 37.318247,
-  lng: -122.154742
+  lat: 38.356072,
+  lng: -122.008822
 )
 
 photo_12_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-12-1.jpg')
@@ -1154,7 +1154,7 @@ review57 = Review.create!(
 review90 = Review.create!(
   listing_id: listing6.id,
   reviewer_id: reviewer18.id,
-  text: "I have stayed at #{listing6.name} a couple of times now, & it is always so great. Adequate privacy, well-kept sites, clean outhouses, potable water, trash service, shady pergolas, picnic tables, & fire rings make camping comfortable. We love staying here!",
+  text: "I have stayed at #{listing6.name} a couple of times now, & it is always so great. Adequate privacy, well-kept sites, picnic tables, & fire rings make camping comfortable. We love staying here!",
   recommends: true
 )
 
@@ -1338,7 +1338,7 @@ review105 = Review.create!(
 review106 = Review.create!(
   listing_id: listing7.id,
   reviewer_id: reviewer11.id,
-  text: "We really enjoyed meeting #{listing7.username.split(" ")[0]} and will be back for sure",
+  text: "We really enjoyed meeting #{host7.username.split(" ")[0]} and will be back for sure",
   recommends: true
 )
 
@@ -1366,7 +1366,7 @@ review109 = Review.create!(
 review110 = Review.create!(
   listing_id: listing7.id,
   reviewer_id: reviewer3.id,
-  text: "#{listing7.username.split(" ")[0]} was a great host - easily accessible but not ever present. The site was exactly as described with great views of the valley below. Would stay again!",
+  text: "#{host7.username.split(" ")[0]} was a great host - easily accessible but not ever present. The site was exactly as described with great views of the valley below. Would stay again!",
   recommends: true
 )
 
@@ -1381,98 +1381,98 @@ review111 = Review.create!(
 
 review111 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer1.id
+  reviewer_id: reviewer1.id,
   text: "#{listing8.name} is an absolute DREAM!! I camped solo with my pup, and had the most amazing time. The garden was beautiful, the hikes were incredible, and the cove is absolutely perfect.",
   recommends: true
 )
 
 review112 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer3.id
+  reviewer_id: reviewer3.id,
   text: "Town isn't too far so if you need to restock marshmallows (like I did), its quick and easy! Thanks for a wonderful stay. I will be back!",
   recommends: true
 )
 
 review113 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer5.id
+  reviewer_id: reviewer5.id,
   text: "Probably one of my favourite farms to camp at so far, #{listing8.name} had everything I needed. A nice campsite, trails to explore and the ocean only a short hike away.",
   recommends: true
 )
 
 review114 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer7.id
+  reviewer_id: reviewer7.id,
   text: "Not only is the farm beautiful itself but where it's located is plenty enough inviting if you're looking for a getaway.",
   recommends: true
 )
 
 review115 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer9.id
+  reviewer_id: reviewer9.id,
   text: "Don't start blabbing to your friends what a great place #{listing8.name} is. You'll ruin it for the rest of us.",
   recommends: true
 )
 
 review116 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer11.id
+  reviewer_id: reviewer11.id,
   text: "The campgrounds were lovely, and right across the street from a gorgeous beach. The Ecological Staircase trail provides a great hike from the campground, and there are many other hikes nearby.",
   recommends: true
 )
 
 review117 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer13.id
+  reviewer_id: reviewer13.id,
   text: "We loved the communal cooking area - so useful to have a sink!",
   recommends: true
 )
 
 review118 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer15.id
+  reviewer_id: reviewer15.id,
   text: "The coastline in this area is stunning! Don't expect luxury camping - there are basic long-drop type toilets and no showers, but if you enjoy plenty of space and seclusion and being close to nature then this is your spot.",
   recommends: true
 )
 
 review119 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer17.id
+  reviewer_id: reviewer17.id,
   text: "This is a wonderful place to camp! It is so close to the beach and other trails to hike on. ",
   recommends: true
 )
 
 review120 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer2.id
+  reviewer_id: reviewer2.id,
   text: "We had a large group of people in several sites (3 and 4) and it worked out great. Great fire pits and sink for cooking.",
   recommends: true
 )
 
 review121 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer4.id
+  reviewer_id: reviewer4.id,
   text: "Laid back atmosphere. Overall quiet. Very friendly owner and staff. Minutes from beach. Lot 5 is the way to go. Would def go back.",
   recommends: true
 )
 
 review122 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer6.id
-  text: " The trail to the beach is pretty nice undercutting a bridge with great scenic views.",
+  reviewer_id: reviewer6.id,
+  text: "The trail to the beach is pretty nice undercutting a bridge with great scenic views.",
   recommends: true
 )
 
 review123 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer8.id
+  reviewer_id: reviewer8.id,
   text: "Incredible spot with a short and beautiful hike to a gorgeous beach <3",
   recommends: true
 )
 
 review124 = Review.create!(
   listing_id: listing8.id,
-  reviewer_id: reviewer10.id
+  reviewer_id: reviewer10.id,
   text: "We spent two very nice, serene nights at #{listing8.name}. The campgrounds are spacious and quiet with plenty of space between sites--although I can imagine when it's at capacity it might get a bit louder.",
   recommends: true
 )
@@ -1481,91 +1481,91 @@ review124 = Review.create!(
 
 review125 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer8.id
+  reviewer_id: reviewer8.id,
   text: "The campsite was great. Walking distance to the beach and to the Ecological Staircase trail up to the pygmy forest.",
   recommends: true
 )
 
 review126 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer9.id
+  reviewer_id: reviewer9.id,
   text: "Nice Eco-Friendly campground. Just make sure to pack your trash accordingly, there's no dumpster or trash bins nearby, so you're going to have to take it with you (watch out for leaks in your bag).",
   recommends: true
 )
 
 review127 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer10.id
+  reviewer_id: reviewer10.id,
   text: "There is a presence of wildlife in the area, so just be mindful and scan the environment, don't want to end up being mountain lion dinner. 🦁",
   recommends: true
 )
 
 review128 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer11.id
+  reviewer_id: reviewer11.id,
   text: "Very nice campsite lots of trails and right by the beach. Loved it, will definitely go back...",
   recommends: true
 )
 
 review129 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer12.id
+  reviewer_id: reviewer12.id,
   text: "Great site--all of the amenities you want without spoiling the feeling of seclusion and ruggedness.",
   recommends: true
 )
 
 review130 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer13.id
+  reviewer_id: reviewer13.id,
   text: "We had a total blast at #{listing9.name}! Despite the weather the campground and services were top notch. #{host9.username.split(" ")[0]} the host was lovely and went above and beyond by helping us out with our dead car battery (thanks Warren!)",
   recommends: true
 )
 
 review131 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer14.id
+  reviewer_id: reviewer14.id,
   text: "The trails were immaculate and the beach was absolutely breathtaking. Can't wait to come back in the Summer!",
   recommends: true
 )
 
 review132 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer15.id
-  text: "",
+  reviewer_id: reviewer15.id,
+  text: "We came on the right weekend, and were invited to participate in their monthly Aztec ceremony in their temazcal (sweat lodge). It was an intense spiritual and physical experience.",
   recommends: true
 )
 
 review133 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer16.id
+  reviewer_id: reviewer16.id,
   text: "Glorious!",
   recommends: true
 )
 
 review134 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer17.id
+  reviewer_id: reviewer17.id,
   text: "Epic Spot! You are right on the coast so bring cozy water resistant gear and you will have a great time.",
   recommends: true
 )
 
 review135 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer18.id
+  reviewer_id: reviewer18.id,
   text: "Had a great time camping here over a rainy Thanksgiving weekend, very friendly hosts and beautiful hiking trails just a short walk away.",
   recommends: true
 )
 
 review136 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer1.id
+  reviewer_id: reviewer1.id,
   text: "Nicer facilities (outhouse and dishwashing area) compared to most campgrounds where I've stayed.",
   recommends: true
 )
 
 review137 = Review.create!(
   listing_id: listing9.id,
-  reviewer_id: reviewer2.id
+  reviewer_id: reviewer2.id,
   text: "A 5-minute walk one way to beaches and cliffs, and 5 minutes the other way to dense forests, it was everything we hoped for. I would love to come back in the summer. 10/10",
   recommends: true
 )
@@ -1574,119 +1574,119 @@ review137 = Review.create!(
 
 review137 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer12.id
+  reviewer_id: reviewer12.id,
   text: "Rolling hills, vineyards all around, and a farm full of animals. What's not to love about #{listing10.name}?",
   recommends: true
 )
 
 review138 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer11.id
+  reviewer_id: reviewer11.id,
   text: "Host #{host10.username.split(" ")[0]} is a great host, showing us around the property and introducing us to the chickens, llama, goats, burro, emus, doves, cats, and dogs.",
   recommends: true
 )
 
 review139 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer10.id
+  reviewer_id: reviewer10.id,
   text: "The tent site, which is large and flat, is in a nicely shaded grove surrounded by tall trees.",
   recommends: true
 )
 
 review140 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer9.id
+  reviewer_id: reviewer9.id,
   text: "The property is so quiet at night that you'll think you're farther away from civilization.",
   recommends: true
 )
 
 review141 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer8.id
+  reviewer_id: reviewer8.id,
   text: "#{listing10.name} was an incredible experience. The hospitality was beyond welcoming - #{host10.username.split(" ")[0]} makes you feel like their farm is your home.",
   recommends: true
 )
 
 review142 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer7.id
+  reviewer_id: reviewer7.id,
   text: "We were really interested in the animals so they let us hunt for eggs in the chicken coop, hold the baby goat, milk the mother goat, and feed the donkey.",
   recommends: true
 )
 
 review143 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer6.id
+  reviewer_id: reviewer6.id,
   text: "The location is perfect, its a few minutes walking from a few wineries, and just a 4 minute drive to the nearest grocery store.",
   recommends: true
 )
 
 review144 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer5.id
+  reviewer_id: reviewer5.id,
   text: "We will be back, and recommend to everyone!",
   recommends: true
 )
 
 review145 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer4.id
+  reviewer_id: reviewer4.id,
   text: "The Farm animals all appeared happy and well cared for and there are lots of chickens and fresh eggs available.",
   recommends: true
 )
 
 review146 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer3.id
+  reviewer_id: reviewer3.id,
   text: "We hope to return to #{listing10.name} and recommend it highly if you are looking for a relaxing get-away in a beautiful setting.",
   recommends: true
 )
 
 review147 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer2.id
+  reviewer_id: reviewer2.id,
   text: "We enjoyed being on the farm and seeing all of the animals, and it’s walking distance to several wineries (10-20 minute walk).",
   recommends: true
 )
 
 review148 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer1.id
+  reviewer_id: reviewer1.id,
   text: "#{host10.username.split(" ")[0]} was a great host - very accommodating and easy to communicate with. The spot was just what we needed before heading up to Henry Coe for a day of hiking.",
   recommends: true
 )
 
 review149 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer18.id
+  reviewer_id: reviewer18.id,
   text: "Hosts were gracious. The kids loved hanging out with the animals. Though, pictures online look to have been taken when things were much more green. And the potty tent was not a great experience.",
   recommends: false
 )
 
 review150 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer17.id
+  reviewer_id: reviewer17.id,
   text: "Very pleasant evening in a real small farm settings.",
   recommends: true
 )
 
 review151 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer16.id
+  reviewer_id: reviewer16.id,
   text: "The kids loved looking for eggs and visits with the cats, dogs, goats, donkey, alpaca, emu and rhea.",
   recommends: true
 )
 
 review152 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer15.id
+  reviewer_id: reviewer15.id,
   text: "Very nice and friendly family. They show you around their farm :)",
   recommends: true
 )
 
 review153 = Review.create!(
   listing_id: listing10.id,
-  reviewer_id: reviewer14.id
+  reviewer_id: reviewer14.id,
   text: "They let us buy some firewood for $5 and there was a fire pit at the site. They just added a popup toilet and tent, which was a great addition.",
   recommends: true
 )
@@ -1695,126 +1695,126 @@ review153 = Review.create!(
 
 review154 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer7.id
+  reviewer_id: reviewer7.id,
   text: "While #{listing11.name} is a bring-your-own-tent type of site, there is a raised platform that could be used to place gear and probably even sleep on if you needed to.",
   recommends: true
 )
 
 review155 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer4.id
+  reviewer_id: reviewer4.id,
   text: "#{listing11.name} campsite provides beauty and views galore, but you should be prepared to bring all of your other equipment.",
   recommends: true
 )
 
 review156 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer1.id
+  reviewer_id: reviewer1.id,
   text: "There is water available on site, but you should plan on bringing something to store the water and possibly even a portable shade for the hot summer months.",
   recommends: true
 )
 
 review157 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer2.id
+  reviewer_id: reviewer2.id,
   text: "This is a walk-in site, so be prepared to pack all of your stuff with you as you make your way out to Coyote View, but don't worry, it's less than 1/4 mile walk.",
   recommends: true
 )
 
 review158 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer5.id
+  reviewer_id: reviewer5.id,
   text: "The #{listing11.name} site is a great place to enjoy some solitude and to relax for a bit, but you are not expected to remain confined to your site while on your stay.",
   recommends: true
 )
 
 review159 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer8.id
+  reviewer_id: reviewer8.id,
   text: "There is a firepit that can be used when the conditions are right. #{host11.username.split(" ")[0]} was kind enough to provide outdoor kitchen essentials at the main house",
   recommends: true
 )
 
 review160 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer3.id
+  reviewer_id: reviewer3.id,
   text: "Not only is this a good location to use a jump-off for the high country, it is a great weekend getaway spot that also offers land stewardship opportunities.",
   recommends: true
 )
 
 review161 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer9.id
+  reviewer_id: reviewer9.id,
   text: "Any way you look at it, this place should be on your list.",
   recommends: true
 )
 
 review162 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer11.id
+  reviewer_id: reviewer11.id,
   text: "The site has two suspending beds, camp chairs, a small table, and large water container (what more can you ask for).",
   recommends: true
 )
 
 review163 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer13.id
+  reviewer_id: reviewer13.id,
   text: "I suggest bringing your own bedding for either of those options (sheets for the full bed and sleeping bags/blankets for the suspended beds).",
   recommends: true
 )
 
 review164 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer15.id
+  reviewer_id: reviewer15.id,
   text: "This was a lovely site on some very lovely land. After days of car camping in crowded NPS campgrounds during the holidays, it was great to switch into backpacker-lite mode and sleep in a quiet field under the stars.",
   recommends: true
 )
 
 review165 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer10.id
+  reviewer_id: reviewer10.id,
   text: "This place.... is soooo great!! #{host11.username.split(" ")[0]} is a great host and the atmosphere around the camp is amazing. I really would come here again. The view is beautiful!",
   recommends: true
 )
 
 review166 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer12.id
+  reviewer_id: reviewer12.id,
   text: "#{host11.username.split(" ")[0]} was amazing! Very welcoming and provided a beautiful spot to camp.",
   recommends: true
 )
 
 review167 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer14.id
+  reviewer_id: reviewer14.id,
   text: "The property is at the very end of private country road and is nestled in a small valley that is surrounded by rolling hills. Amazing views!",
   recommends: true
 )
 
 review168 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer16.id
+  reviewer_id: reviewer16.id,
   text: "The property is a work in progress, but the infrastructure allows all of the amenities that a camper could want.",
   recommends: true
 )
 
 review169 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer18.id
+  reviewer_id: reviewer18.id,
   text: "There are solar showers on site, but since we only stayed for a night, we didn't need to access those at all.",
   recommends: true
 )
 
 review170 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer17.id
+  reviewer_id: reviewer17.id,
   text: "There are many projects that are happening on the land, many of which exhibit the owners' connection and love for mother nature.",
   recommends: true
 )
 
 review171 = Review.create!(
   listing_id: listing11.id,
-  reviewer_id: reviewer6.id
+  reviewer_id: reviewer6.id,
   text: "One of my favorite features is the steam hut that is used for both traditional and recreational purposes and has been said to house nearly 20 people during certain occasions.",
   recommends: true
 )
@@ -1823,91 +1823,91 @@ review171 = Review.create!(
 
 review172 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer8.id
+  reviewer_id: reviewer8.id,
   text: "A great experience, as there is shade, a suspended bed, and a sandy plateau that allows to pitch a medium sized tent.",
   recommends: true
 )
 
 review173 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer11.id
+  reviewer_id: reviewer11.id,
   text: "The site is on the water's edge but has plenty room to spread out and feel comfortable on the land. ",
   recommends: true
 )
 
 review174 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer14.id
+  reviewer_id: reviewer14.id,
   text: "I don't know if I enjoyed the sounds of the running water or the bright, bright stars more, but both together were simply magnificent.",
   recommends: true
 )
 
 review175 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer17.id
+  reviewer_id: reviewer17.id,
   text: "We definitely want to come back to this site and enjoy camping on the river during the summer!",
   recommends: true
 )
 
 review176 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer2.id
+  reviewer_id: reviewer2.id,
   text: "This trip was absolutely amazing! #{host12.username.split(" ")[0]} was an amazing host — super accommodating and helpful not just to me, but all the guests staying on the property",
   recommends: true
 )
 
 review177 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer5.id
+  reviewer_id: reviewer5.id,
   text: "Not only is the property breathtaking, but it sits at the base of the National Forest giving access to pristine water holes and beautiful hikes.",
   recommends: true
 )
 
 review178 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer9.id
+  reviewer_id: reviewer9.id,
   text: "I recommend setting up your tent right by the water. It's cool when things get hot, and you'll find yourself visited by Tule, their dog, for frequent cool down dips in the river. Win win!",
   recommends: true
 )
 
 review179 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer12.id
+  reviewer_id: reviewer12.id,
   text: "Gorgeous property, great views and about an hour drive from the national park!",
   recommends: true
 )
 
 review180 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer15.id
+  reviewer_id: reviewer15.id,
   text: "One of the greatest camping experiences I've had.",
   recommends: true
 )
 
 review181 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer18.id
+  reviewer_id: reviewer18.id,
   text: "It was so incredible to meet people who love and respect nature the way they do, I would go back in a heartbeat.",
   recommends: true
 )
 
 review182 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer3.id
+  reviewer_id: reviewer3.id,
   text: "#{host12.username.split(" ")[0]} was a great host, and Tule the dog took care of us. Access to the river was quick and relatively easy. ",
   recommends: true
 )
 
 review183 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer6.id
+  reviewer_id: reviewer6.id,
   text: "Phenomenal site with awesome hosts! #{host12.username.split(" ")[0]} was awesome, but Tule the dog was by far the best!",
   recommends: true
 )
 
 review184 = Review.create!(
   listing_id: listing12.id,
-  reviewer_id: reviewer9.id
+  reviewer_id: reviewer9.id,
   text: "This camp was the best I've been to so far and our host's are amazing and the river is awesome there's so much peace im definitely going back.",
   recommends: true
 )
