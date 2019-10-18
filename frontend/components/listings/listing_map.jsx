@@ -39,7 +39,7 @@ class ListingMap extends React.Component {
   renderMap() {
     const mapOptions = {
       center: this.props.mapSearchCoords,
-      zoom: 13,
+      zoom: 9,
       gestureHandling: "greedy",
       mapTypeControl: false,
       rotateControl: false,

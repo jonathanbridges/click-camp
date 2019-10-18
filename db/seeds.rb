@@ -63,6 +63,60 @@ host6 = User.create!(
 host_6_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user3.jpg')
 host6.photo.attach(io: host_6_avatar, filename: "user3.jpg")
 
+host7 = User.create!(
+  username: 'Emmanuel T.',
+  email: 'jklasdfaewfzxf@123.com',
+  password: 'password'
+)
+
+host_7_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user19.jpg')
+host7.photo.attach(io: host_7_avatar, filename: "user19.jpg")
+
+host8 = User.create!(
+  username: 'Levi T.',
+  email: 'jklasdasdfadsf1214f@123.com',
+  password: 'password'
+)
+
+host_8_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user20.jpg')
+host8.photo.attach(io: host_8_avatar, filename: "user20.jpg")
+
+host9 = User.create!(
+  username: 'Terry P.',
+  email: 'jklasd123124412f@123.com',
+  password: 'password'
+)
+
+host_9_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user21.jpg')
+host9.photo.attach(io: host_9_avatar, filename: "user21.jpg")
+
+host10 = User.create!(
+  username: 'Lindsay H.',
+  email: 'jklas2141245df@123.com',
+  password: 'password'
+)
+
+host_10_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user22.jpg')
+host10.photo.attach(io: host_10_avatar, filename: "user22.jpg")
+
+host11 = User.create!(
+  username: 'Charlie K.',
+  email: 'jklasdsadffweaxcasd24f@123.com',
+  password: 'password'
+)
+
+host_11_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user23.jpg')
+host11.photo.attach(io: host_11_avatar, filename: "user23.jpg")
+
+host12 = User.create!(
+  username: 'Thatcher B.',
+  email: 'jklasdf1234124125521@123.com',
+  password: 'password'
+)
+
+host_12_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user24.jpg')
+host12.photo.attach(io: host_12_avatar, filename: "user24.jpg")
+
 ### Guess User ###
 
 user1 = User.create!(
@@ -163,7 +217,6 @@ reviewer10 = User.create!(
 
 reviewer_10_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user15.jpg')
 reviewer10.photo.attach(io: reviewer_10_avatar, filename: "user15.jpg")
-### 1, 2, 3, 4, 5, 6, 7, 9, 10, 11, 12, 13, 14, 15, 17, 18 ###
 
 reviewer11 = User.create!(
   username: 'Steve K.',
@@ -174,6 +227,69 @@ reviewer11 = User.create!(
 reviewer_11_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user16.jpg')
 reviewer11.photo.attach(io: reviewer_11_avatar, filename: "user16.jpg")
 
+reviewer12 = User.create!(
+  username: 'Jackson K.',
+  email: 'jaf@12asdfasdf1234.com',
+  password: 'password'
+)
+
+reviewer_12_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user25.jpg')
+reviewer12.photo.attach(io: reviewer_12_avatar, filename: "user25.jpg")
+
+reviewer13 = User.create!(
+  username: 'Cortnee K.',
+  email: 'ja123123f@121234.com',
+  password: 'password'
+)
+
+reviewer_13_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user26.jpg')
+reviewer13.photo.attach(io: reviewer_13_avatar, filename: "user26.jpg")
+
+reviewer14 = User.create!(
+  username: 'Robert D.',
+  email: 'jaf1231234123s21245@121234.com',
+  password: 'password'
+)
+
+reviewer_14_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user27.jpg')
+reviewer14.photo.attach(io: reviewer_14_avatar, filename: "user27.jpg")
+
+reviewer15 = User.create!(
+  username: 'Nami N.',
+  email: 'jaf@1212123521534.com',
+  password: 'password'
+)
+
+reviewer_15_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user28.jpg')
+reviewer15.photo.attach(io: reviewer_15_avatar, filename: "user28.jpg")
+
+reviewer16 = User.create!(
+  username: 'Jack W.',
+  email: 'jaf@121125126126216234.com',
+  password: 'password'
+)
+
+reviewer_16_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user29.jpg')
+reviewer16.photo.attach(io: reviewer_16_avatar, filename: "user29.jpg")
+
+reviewer17 = User.create!(
+  username: 'Olivia K.',
+  email: 'jaf@12123a1251254.com',
+  password: 'password'
+)
+
+reviewer_17_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user30.jpg')
+reviewer17.photo.attach(io: reviewer_17_avatar, filename: "user30.jpg")
+
+reviewer18 = User.create!(
+  username: 'Joshua S.',
+  email: 'jaf@121231241262166124.com',
+  password: 'password'
+)
+
+reviewer_18_avatar = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/user31.jpg')
+reviewer18.photo.attach(io: reviewer_18_avatar, filename: "user31.jpg")
+
 ### Listings ###
 
 listing1 = Listing.create!(
@@ -181,22 +297,22 @@ listing1 = Listing.create!(
   name: 'Aurora HOA', 
   description: 'Experience the best camping in northern CA! All campsites have fire pits and unparalled access to star-viewing.',
   cost: 45,
-  lat: 37.772969,
-  lng: -122.441628
+  lat: 37.480498,
+  lng: -122.317929
 )
 
-photo_1_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-1.jpeg')
-listing1.photos.attach(io: photo_1_1, filename: "site-1-1.jpeg")
-photo_1_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-2.jpeg')
-listing1.photos.attach(io: photo_1_2, filename: "site-1-2.jpeg")
-photo_1_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-3.jpeg')
-listing1.photos.attach(io: photo_1_3, filename: "site-1-3.jpeg")
-photo_1_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-4.jpeg')
-listing1.photos.attach(io: photo_1_4, filename: "site-1-4.jpeg")
-photo_1_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-5.jpeg')
-listing1.photos.attach(io: photo_1_5, filename: "site-1-5.jpeg")
-photo_1_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-6.jpeg')
-listing1.photos.attach(io: photo_1_6, filename: "site-1-6.jpeg")
+photo_1_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-1.jpg')
+listing1.photos.attach(io: photo_1_1, filename: "site-1-1.jpg")
+photo_1_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-2.jpg')
+listing1.photos.attach(io: photo_1_2, filename: "site-1-2.jpg")
+photo_1_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-3.jpg')
+listing1.photos.attach(io: photo_1_3, filename: "site-1-3.jpg")
+photo_1_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-4.jpg')
+listing1.photos.attach(io: photo_1_4, filename: "site-1-4.jpg")
+photo_1_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-5.jpg')
+listing1.photos.attach(io: photo_1_5, filename: "site-1-5.jpg")
+photo_1_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-1-6.jpg')
+listing1.photos.attach(io: photo_1_6, filename: "site-1-6.jpg")
 
 
 listing2 = Listing.create!(
@@ -204,22 +320,22 @@ listing2 = Listing.create!(
   name: 'Marshmellow Marsh', 
   description: 'Free smores are delivered upon your arrival at Marshmellow Marsh! A quick walk to the bog esplanade.',
   cost: 25,
-  lat: 37.759286,
-  lng: -122.427053
+  lat: 38.199076,
+  lng: -122.018342
 )
 
-photo_2_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-1.jpeg')
-listing2.photos.attach(io: photo_2_1, filename: "site-2-1.jpeg")
-photo_2_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-2.jpeg')
-listing2.photos.attach(io: photo_2_2, filename: "site-2-2.jpeg")
-photo_2_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-3.jpeg')
-listing2.photos.attach(io: photo_2_3, filename: "site-2-3.jpeg")
-photo_2_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-4.jpeg')
-listing2.photos.attach(io: photo_2_4, filename: "site-2-4.jpeg")
-photo_2_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-5.jpeg')
-listing2.photos.attach(io: photo_2_5, filename: "site-2-5.jpeg")
-photo_2_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-6.jpeg')
-listing2.photos.attach(io: photo_2_6, filename: "site-2-6.jpeg")
+photo_2_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-1.jpg')
+listing2.photos.attach(io: photo_2_1, filename: "site-2-1.jpg")
+photo_2_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-2.jpg')
+listing2.photos.attach(io: photo_2_2, filename: "site-2-2.jpg")
+photo_2_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-3.jpg')
+listing2.photos.attach(io: photo_2_3, filename: "site-2-3.jpg")
+photo_2_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-4.jpg')
+listing2.photos.attach(io: photo_2_4, filename: "site-2-4.jpg")
+photo_2_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-5.jpg')
+listing2.photos.attach(io: photo_2_5, filename: "site-2-5.jpg")
+photo_2_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-2-6.jpg')
+listing2.photos.attach(io: photo_2_6, filename: "site-2-6.jpg")
 
 
 listing3 = Listing.create!(
@@ -227,22 +343,22 @@ listing3 = Listing.create!(
   name: 'Hammock Forest', 
   description: 'Relax to the max hanging out between two trees in hammock forest! Sheep are available for petting and Instagram moments.',
   cost: 65,
-  lat: 37.807144,
-  lng: -122.446563
+  lat: 37.929470, 
+  lng: -122.582165
 )
 
-photo_3_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-1.jpeg')
-listing3.photos.attach(io: photo_3_1, filename: "site-3-1.jpeg")
-photo_3_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-2.jpeg')
-listing3.photos.attach(io: photo_3_2, filename: "site-3-2.jpeg")
-photo_3_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-3.jpeg')
-listing3.photos.attach(io: photo_3_3, filename: "site-3-3.jpeg")
-photo_3_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-4.jpeg')
-listing3.photos.attach(io: photo_3_4, filename: "site-3-4.jpeg")
-photo_3_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-5.jpeg')
-listing3.photos.attach(io: photo_3_5, filename: "site-3-5.jpeg")
-photo_3_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-6.jpeg')
-listing3.photos.attach(io: photo_3_6, filename: "site-3-6.jpeg")
+photo_3_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-1.jpg')
+listing3.photos.attach(io: photo_3_1, filename: "site-3-1.jpg")
+photo_3_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-2.jpg')
+listing3.photos.attach(io: photo_3_2, filename: "site-3-2.jpg")
+photo_3_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-3.jpg')
+listing3.photos.attach(io: photo_3_3, filename: "site-3-3.jpg")
+photo_3_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-4.jpg')
+listing3.photos.attach(io: photo_3_4, filename: "site-3-4.jpg")
+photo_3_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-5.jpg')
+listing3.photos.attach(io: photo_3_5, filename: "site-3-5.jpg")
+photo_3_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-3-6.jpg')
+listing3.photos.attach(io: photo_3_6, filename: "site-3-6.jpg")
 
 
 listing4 = Listing.create!(
@@ -250,22 +366,23 @@ listing4 = Listing.create!(
   name: 'Wine Country Wagons', 
   description: 'Rose by day, and hay by night. Drink the finest north bay wines and sleep in our premium wooden wagons.',
   cost: 75,
-  lat: 37.768791,
-  lng: -122.385637
+  lat: 38.273978,
+  lng: -122.242194
 )
 
-photo_4_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-1.jpeg')
-listing4.photos.attach(io: photo_4_1, filename: "site-4-1.jpeg")
-photo_4_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-2.jpeg')
-listing4.photos.attach(io: photo_4_2, filename: "site-4-2.jpeg")
-photo_4_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-3.jpeg')
-listing4.photos.attach(io: photo_4_3, filename: "site-4-3.jpeg")
-photo_4_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-4.jpeg')
-listing4.photos.attach(io: photo_4_4, filename: "site-4-4.jpeg")
-photo_4_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-5.jpeg')
-listing4.photos.attach(io: photo_4_5, filename: "site-4-5.jpeg")
-photo_4_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-6.jpeg')
-listing4.photos.attach(io: photo_4_6, filename: "site-4-6.jpeg")
+
+photo_4_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-1.jpg')
+listing4.photos.attach(io: photo_4_1, filename: "site-4-1.jpg")
+photo_4_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-2.jpg')
+listing4.photos.attach(io: photo_4_2, filename: "site-4-2.jpg")
+photo_4_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-3.jpg')
+listing4.photos.attach(io: photo_4_3, filename: "site-4-3.jpg")
+photo_4_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-4.jpg')
+listing4.photos.attach(io: photo_4_4, filename: "site-4-4.jpg")
+photo_4_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-5.jpg')
+listing4.photos.attach(io: photo_4_5, filename: "site-4-5.jpg")
+photo_4_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-4-6.jpg')
+listing4.photos.attach(io: photo_4_6, filename: "site-4-6.jpg")
 
 
 listing5 = Listing.create!(
@@ -273,22 +390,22 @@ listing5 = Listing.create!(
   name: 'Beachside Bungalow', 
   description: 'Whalewatchers delight! Free binoculars, travel guidebooks from the 1980s, and a grand view of the Pacific Ocean.',
   cost: 45,
-  lat: 37.742007,
-  lng: -122.442181
+  lat: 38.002312, 
+  lng: -123.009124
 )
 
-photo_5_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-1.jpeg')
-listing5.photos.attach(io: photo_5_1, filename: "site-5-1.jpeg")
-photo_5_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-2.jpeg')
-listing5.photos.attach(io: photo_5_2, filename: "site-5-2.jpeg")
-photo_5_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-3.jpeg')
-listing5.photos.attach(io: photo_5_3, filename: "site-5-3.jpeg")
-photo_5_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-4.jpeg')
-listing5.photos.attach(io: photo_5_4, filename: "site-5-4.jpeg")
-photo_5_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-5.jpeg')
-listing5.photos.attach(io: photo_5_5, filename: "site-5-5.jpeg")
-photo_5_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-6.jpeg')
-listing5.photos.attach(io: photo_5_6, filename: "site-5-6.jpeg")
+photo_5_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-1.jpg')
+listing5.photos.attach(io: photo_5_1, filename: "site-5-1.jpg")
+photo_5_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-2.jpg')
+listing5.photos.attach(io: photo_5_2, filename: "site-5-2.jpg")
+photo_5_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-3.jpg')
+listing5.photos.attach(io: photo_5_3, filename: "site-5-3.jpg")
+photo_5_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-4.jpg')
+listing5.photos.attach(io: photo_5_4, filename: "site-5-4.jpg")
+photo_5_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-5.jpg')
+listing5.photos.attach(io: photo_5_5, filename: "site-5-5.jpg")
+photo_5_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-5-6.jpg')
+listing5.photos.attach(io: photo_5_6, filename: "site-5-6.jpg")
 
 
 listing6 = Listing.create!(
@@ -296,22 +413,154 @@ listing6 = Listing.create!(
   name: 'Leaning Leanto', 
   description: 'Charming leanto nearly untouched by mankind. Enjoy the sounds of coyotes rummaging through your dry goods for a snack.',
   cost: 25,
-  lat: 37.759636,
-  lng: -122.455432
+  lat: 38.188452,
+  lng: -122.364720
 )
 
-photo_6_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-1.jpeg')
-listing6.photos.attach(io: photo_6_1, filename: "site-6-1.jpeg")
-photo_6_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-2.jpeg')
-listing6.photos.attach(io: photo_6_2, filename: "site-6-2.jpeg")
-photo_6_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-3.jpeg')
-listing6.photos.attach(io: photo_6_3, filename: "site-6-3.jpeg")
-photo_6_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-4.jpeg')
-listing6.photos.attach(io: photo_6_4, filename: "site-6-4.jpeg")
-photo_6_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-5.jpeg')
-listing6.photos.attach(io: photo_6_5, filename: "site-6-5.jpeg")
-photo_6_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-6.jpeg')
-listing6.photos.attach(io: photo_6_6, filename: "site-6-6.jpeg")
+photo_6_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-1.jpg')
+listing6.photos.attach(io: photo_6_1, filename: "site-6-1.jpg")
+photo_6_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-2.jpg')
+listing6.photos.attach(io: photo_6_2, filename: "site-6-2.jpg")
+photo_6_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-3.jpg')
+listing6.photos.attach(io: photo_6_3, filename: "site-6-3.jpg")
+photo_6_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-4.jpg')
+listing6.photos.attach(io: photo_6_4, filename: "site-6-4.jpg")
+photo_6_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-5.jpg')
+listing6.photos.attach(io: photo_6_5, filename: "site-6-5.jpg")
+photo_6_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-6-6.jpg')
+listing6.photos.attach(io: photo_6_6, filename: "site-6-6.jpg")
+
+listing7 = Listing.create!(
+  host_id: host7.id, 
+  name: 'Berkeley Bivouac', 
+  description: 'Who knew camping was so close to the city? Escape the real world Berkeley style, reading a book, climbing the local hills, or simply sitting around the fire and talking about politics.',
+  cost: 65,
+  lat: 37.886947, 
+  lng: -122.239774
+)
+
+photo_7_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-7-1.jpg')
+listing7.photos.attach(io: photo_7_1, filename: "site-7-1.jpg")
+photo_7_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-7-2.jpg')
+listing7.photos.attach(io: photo_7_2, filename: "site-7-2.jpg")
+photo_7_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-7-3.jpg')
+listing7.photos.attach(io: photo_7_3, filename: "site-7-3.jpg")
+photo_7_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-7-4.jpg')
+listing7.photos.attach(io: photo_7_4, filename: "site-7-4.jpg")
+photo_7_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-7-5.jpg')
+listing7.photos.attach(io: photo_7_5, filename: "site-7-5.jpg")
+photo_7_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-7-6.jpg')
+listing7.photos.attach(io: photo_7_6, filename: "site-7-6.jpg")
+
+listing8 = Listing.create!(
+  host_id: host8.id, 
+  name: 'Guerneville Gulch', 
+  description: 'Walking distance to public access at the Russian river, and a short 20 minute drive from the coast. Close to the regions best wineries and restaurants.',
+  cost: 70,
+  lat: 37.886947, 
+  lng: -122.239774
+)
+
+photo_8_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-8-1.jpg')
+listing8.photos.attach(io: photo_8_1, filename: "site-8-1.jpg")
+photo_8_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-8-2.jpg')
+listing8.photos.attach(io: photo_8_2, filename: "site-8-2.jpg")
+photo_8_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-8-3.jpg')
+listing8.photos.attach(io: photo_8_3, filename: "site-8-3.jpg")
+photo_8_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-8-4.jpg')
+listing8.photos.attach(io: photo_8_4, filename: "site-8-4.jpg")
+photo_8_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-8-5.jpg')
+listing8.photos.attach(io: photo_8_5, filename: "site-8-5.jpg")
+photo_8_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-8-6.jpg')
+listing8.photos.attach(io: photo_8_6, filename: "site-8-6.jpg")
+
+listing9 = Listing.create!(
+  host_id: host9.id, 
+  name: 'Sierra Forest Farm', 
+  description: 'Walking distance to public access at the Russian river, and a short 20 minute drive from the coast. Close to the regions best wineries and restaurants.',
+  cost: 40,
+  lat: 37.173290, 
+  lng: -121.909813
+)
+
+photo_9_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-9-1.jpg')
+listing9.photos.attach(io: photo_9_1, filename: "site-9-1.jpg")
+photo_9_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-9-2.jpg')
+listing9.photos.attach(io: photo_9_2, filename: "site-9-2.jpg")
+photo_9_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-9-3.jpg')
+listing9.photos.attach(io: photo_9_3, filename: "site-9-3.jpg")
+photo_9_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-9-4.jpg')
+listing9.photos.attach(io: photo_9_4, filename: "site-9-4.jpg")
+photo_9_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-9-5.jpg')
+listing9.photos.attach(io: photo_9_5, filename: "site-9-5.jpg")
+photo_9_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-9-6.jpg')
+listing9.photos.attach(io: photo_9_6, filename: "site-9-6.jpg")
+
+listing10 = Listing.create!(
+  host_id: host10.id, 
+  name: 'Big Sur Beachfront', 
+  description: 'Nestled among the coastal trees you will find a cozy break from the elements, but sweeping views of the Big Sur coastline. Great hikes all along the beach trails and up into the woods to the East.',
+  cost: 50,
+  lat: 37.261732, 
+  lng: -122.410615
+)
+
+photo_10_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-10-1.jpg')
+listing10.photos.attach(io: photo_10_1, filename: "site-10-1.jpg")
+photo_10_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-10-2.jpg')
+listing10.photos.attach(io: photo_10_2, filename: "site-10-2.jpg")
+photo_10_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-10-3.jpg')
+listing10.photos.attach(io: photo_10_3, filename: "site-10-3.jpg")
+photo_10_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-10-4.jpg')
+listing10.photos.attach(io: photo_10_4, filename: "site-10-4.jpg")
+photo_10_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-10-5.jpg')
+listing10.photos.attach(io: photo_10_5, filename: "site-10-5.jpg")
+photo_10_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-10-6.jpg')
+listing10.photos.attach(io: photo_10_6, filename: "site-10-6.jpg")
+
+listing11 = Listing.create!(
+  host_id: host11.id, 
+  name: 'Monte Bellow Preserve', 
+  description: 'A short drive off skyline drive we have a wonderful spot that we are now sharing with campers. A very rewarding hike nearby is Black Mountain, where you can see back into and over the Bay. Only 1 hour drive from downtown San Francisco',
+  cost: 70,
+  lat: 37.318247,
+  lng: -122.154742
+)
+
+photo_11_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-11-1.jpg')
+listing11.photos.attach(io: photo_11_1, filename: "site-11-1.jpg")
+photo_11_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-11-2.jpg')
+listing11.photos.attach(io: photo_11_2, filename: "site-11-2.jpg")
+photo_11_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-11-3.jpg')
+listing11.photos.attach(io: photo_11_3, filename: "site-11-3.jpg")
+photo_11_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-11-4.jpg')
+listing11.photos.attach(io: photo_11_4, filename: "site-11-4.jpg")
+photo_11_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-11-5.jpg')
+listing11.photos.attach(io: photo_11_5, filename: "site-11-5.jpg")
+photo_11_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-11-6.jpg')
+listing11.photos.attach(io: photo_11_6, filename: "site-11-6.jpg")
+
+listing12 = Listing.create!(
+  host_id: host12.id, 
+  name: 'Vacaville Village Retreat', 
+  description: 'People from all over the world flock to Vacaville for the annual frozen man ice festival every January. There is no better place to stay than here at Vacaville Village Retreat, where you have quick access to all of the festivities, but are also secluded enough to just sit back and let the day pass by',
+  cost: 70,
+  lat: 37.318247,
+  lng: -122.154742
+)
+
+photo_12_1 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-12-1.jpg')
+listing12.photos.attach(io: photo_12_1, filename: "site-12-1.jpg")
+photo_12_2 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-12-2.jpg')
+listing12.photos.attach(io: photo_12_2, filename: "site-12-2.jpg")
+photo_12_3 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-12-3.jpg')
+listing12.photos.attach(io: photo_12_3, filename: "site-12-3.jpg")
+photo_12_4 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-12-4.jpg')
+listing12.photos.attach(io: photo_12_4, filename: "site-12-4.jpg")
+photo_12_5 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-12-5.jpg')
+listing12.photos.attach(io: photo_12_5, filename: "site-12-5.jpg")
+photo_12_6 = open('https://app-name-seeds.s3-us-west-1.amazonaws.com/site-12-6.jpg')
+listing12.photos.attach(io: photo_12_6, filename: "site-12-6.jpg")
 
 ### Reservations ###
 
