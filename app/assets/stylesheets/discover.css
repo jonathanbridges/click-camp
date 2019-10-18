@@ -20,3 +20,15 @@
   border-radius: 4px;
   overflow: hidden;
 }
+
+.alert-no-results {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  background: #fdf0ef;
+  color: #c44841;
+  padding: 1rem;
+  border: 1px solid transparent;
+  border-radius: 1rem;
+}

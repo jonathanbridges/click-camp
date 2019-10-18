@@ -10,16 +10,10 @@ class DiscoverListingIndex extends React.Component {
 
     this.state = {
       loading: true,
-      listings: this.props.listings,
       noResults: false,
     }
 
-
     setTimeout(() => this.setState({loading: false}), 250);
-  }
-
-  componentDidMount() {
-
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -32,33 +26,33 @@ class DiscoverListingIndex extends React.Component {
   }
 
   render() {
-
-    let { listings, updateSearchCoords } = this.props;
-
-    listings = listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
-
-    if (this.state.noResults === true) {
-      return (
-        <div className="index-dc-row" id="discover-listings">
-          <p>Sorry there is some errors boss</p>
-        </div>
-      )
-    }
-
-    
     if (this.state.loading === true) {
       return (
         <div className='loader'>
           <PulseLoaderAnimation loading={this.state.loading} />
         </div>
       )
-    } else {
+    }
+    
+    if (this.state.noResults === true) {
       return (
         <div className="index-dc-row" id="discover-listings">
-          {listings}
+          <div className="alert-no-results">
+            <p>Hmmm, we couldn't find any listings that match your search criteria.</p>
+            <p>Try zooming the map out to search again. 🔍</p>
+          </div>
         </div>
-      );
+      )
     }
+
+    let { listings, updateSearchCoords } = this.props;
+    listings = listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
+    
+    return (
+      <div className="index-dc-row" id="discover-listings">
+        {listings}
+      </div>
+    );
   }
 }
 
