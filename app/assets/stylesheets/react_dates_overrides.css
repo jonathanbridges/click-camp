@@ -514,6 +514,8 @@
 .DayPickerNavigation_button__verticalDefault {
   padding: 5px;
   background: #fff;
+  -moz-box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
+  -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
   box-shadow: 0 0 5px 2px rgba(0,0,0,.1);
   position: relative;
   display: inline-block;
@@ -556,10 +558,14 @@
   visibility: hidden
 }
 .DayPicker__withBorder {
+  -moz-box-shadow: 0 2px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.07);
+  -webkit-box-shadow: 0 2px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.07);
   box-shadow: 0 2px 6px rgba(0,0,0,.05),0 0 0 1px rgba(0,0,0,.07);
   border-radius: 3px
 }
 .DayPicker_portal__horizontal {
+  -moz-box-shadow: none;
+  -webkit-box-shadow: none;
   box-shadow: none;
   position: absolute;
   left: 50%;
@@ -667,7 +673,6 @@
   border: 0;
   border-top: 0;
   border-right: 0;
-  /* border-bottom: 2px solid transparent; */
   border-left: 0;
   border-radius: 0;
 }

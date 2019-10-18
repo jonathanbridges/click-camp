@@ -18,7 +18,11 @@
   top: 70px;
   width: 33.33%;
   border-radius: 4px;
+  margin-right: 1rem;
   overflow: hidden;
+  -moz-box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 12px 0px rgba(0,0,0,0.1);
 }
 
 .alert-no-results {

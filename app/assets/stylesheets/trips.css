@@ -25,6 +25,8 @@ body.cal-not-at-top #trip-sticky {
   max-width: 280px;
   padding: 20px;
   border: 1px solid #ebebeb;
+  -moz-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
   box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
 }
 
@@ -88,13 +90,21 @@ body.cal-not-at-top #trip-sticky {
   max-width: 620px;
   padding: 20px;
   border: 1px solid #ebebeb;
+  -moz-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
   box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
   margin-bottom: 2rem;
+  -moz-transition: .75s ease-in-out;
+  -webkit-transition: .75s ease-in-out;
   transition: .75s ease-in-out;
 }
 
 .future-trip:hover, .past-trip:hover {
+  -moz-transition: .75s ease-in-out;
+  -webkit-transition: .75s ease-in-out;
   transition: .75s ease-in-out;
+  -moz-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
   box-shadow: 1px 4px 10px 4px rgba(0,0,0,0.1);
 }
 
@@ -106,6 +116,7 @@ body.cal-not-at-top #trip-sticky {
 }
 
 .trip-image-wrapper:hover img {
+  -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
 }
@@ -117,6 +128,7 @@ body.cal-not-at-top #trip-sticky {
   width: 100%;
   height: 300px;
   object-fit: cover;
+  -moz-transition: 1s ease;
   -webkit-transition: 1s ease;
   transition: 1s ease;
 }
@@ -126,15 +138,15 @@ body.cal-not-at-top #trip-sticky {
 }
 
 .trip-listing-name {
-    position: relative;
-    background: #40d9ac;
-    padding: .5rem;
-    border-radius: 0 0 10px;
-    width: max-content;
-    font-size: 1.2rem;
-    font-variant: petite-caps;
-    z-index: 1;
-    color: white;
+  position: relative;
+  background: #40d9ac;
+  padding: .5rem;
+  border-radius: 0 0 10px;
+  width: max-content;
+  font-size: 1.2rem;
+  font-variant: petite-caps;
+  z-index: 1;
+  color: white;
 }
 
 .trip-bottom {

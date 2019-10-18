@@ -20,6 +20,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
+	-moz-transform: translate(-50%, -50%);
+	-webkit-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
 	border: 1px solid #ebebeb;
 	box-shadow: 0 5px 15px rgba(0,0,0,0.2);
@@ -116,6 +118,8 @@ input.login-input {
 	font-size: 1rem;
 	transition: all 0.25s ease 0s;
   padding: 14px;
+  -moz-box-shadow: 0px 0px 0px 1px #40d9ac;
+  -webkit-box-shadow: 0px 0px 0px 1px #40d9ac;
   box-shadow: 0px 0px 0px 1px #40d9ac;
 	margin: 0 0 0 2em;
 	outline: solid 10px transparent;
@@ -128,6 +132,8 @@ input.login-input {
 	transition: all 0.25s ease 0s;
   padding: 14px;
   cursor: pointer;
+  -moz-box-shadow: 0px 0px 0px 3px #40d9ac;
+  -webkit-box-shadow: 0px 0px 0px 3px #40d9ac;
   box-shadow: 0px 0px 0px 3px #40d9ac;
 }
 
@@ -140,6 +146,8 @@ input.login-input {
 	outline: none;
 	padding: 0;
 	cursor: pointer;
+	-moz-transition: all 0.25s ease 0s;
+	-webkit-transition: all 0.25s ease 0s;
 	transition: all 0.25s ease 0s;
 	background: white;
 }
@@ -184,6 +192,8 @@ ul.errors li {
 	color: #40d9ac;
 	font-size: 1rem;
 	cursor: pointer;
+	-moz-transition: all 0.25s ease 0s;
+	-webkit-transition: all 0.25s ease 0s;
 	transition: all 0.25s ease 0s;
 	padding: 14px;
 	border: 2px solid #40d9ac;
@@ -194,6 +204,8 @@ ul.errors li {
 	height: 50px;
 	background-color: #40d9ac;
 	color: white;
+	-moz-transition: all 0.25s ease 0s;
+	-webkit-transition: all 0.25s ease 0s;
 	transition: all 0.25s ease 0s;
 	border: 2px solid #40d9ac;
 	font-size: 1rem;

@@ -1,11 +1,3 @@
-/* @media screen and (min-width: 600px) {
-  .index-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-} */
-
 .index {
   display: flex;
   flex-direction: column;
@@ -31,6 +23,8 @@
   width: 75%;
   height: 100px;
   padding: 17px;
+  -moz-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
   box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
   margin-bottom: 4rem;
 }
@@ -48,6 +42,8 @@
   align-items: center;
   flex-grow: 1;
   border: 1px solid #ebebeb;
+  -moz-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
   box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.1);
   padding-left: 1rem;
   padding-right: 1rem;
@@ -70,16 +66,24 @@
   padding-left: 1rem;
   padding-right: 1rem;
   border: 1px solid #ebebeb;
+  -moz-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
   box-shadow: 1px 2px 5px 0px rgba(0,0,0,0.1);
   height: 66px;
   cursor: pointer;
+  -moz-transition: all 0.2s ease 0s;
+  -webkit-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
 }
 
 .dates-btn:hover, .categories-btn:hover {
   border-color: #ebebeb;
   background-color: transparent;
+  -moz-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 1px 2px 5px 2px rgba(0,0,0,0.1);
   box-shadow: 1px 2px 5px 1px rgba(0,0,0,0.1);
+  -moz-transition: all 0.2s ease 0s;
+  -webkit-transition: all 0.2s ease 0s;
   transition: all 0.2s ease 0s;
 }
 
@@ -89,7 +93,9 @@
   height: 66px;
   background-color: #40d9ac;
 	color: white;
-	cursor: pointer;
+  cursor: pointer;
+  -moz-transition: all 0.25s ease 0s;
+  -webkit-transition: all 0.25s ease 0s;
 	transition: all 0.25s ease 0s;
 	border: 1px solid #40d9ac;
 	font-weight: 700;
@@ -101,6 +107,8 @@
   height: 66px;
   background-color:white;
 	color: #40d9ac;
+	-moz-transition: all 0.25s ease 0s;
+	-webkit-transition: all 0.25s ease 0s;
 	transition: all 0.25s ease 0s;
 	border: 3px solid #40d9ac;
 	font-weight: 600;
@@ -148,6 +156,8 @@
   flex-direction: column;
   justify-content: space-between;
   border-radius: 4px;
+  -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
