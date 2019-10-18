@@ -195,7 +195,7 @@ class ReviewsIndex extends React.Component {
     }
 
     let reviews = [];
-    if (this.props.reviews[1] !== undefined) {
+    if (Object.keys(this.props.reviews).length > 0) {
       Object.values(this.props.reviews).forEach(review => {
         if (review.listing_id === this.props.listing.id) {
           if (this.props.currentUser === undefined || review.reviewer_id !== this.props.currentUser.id) {

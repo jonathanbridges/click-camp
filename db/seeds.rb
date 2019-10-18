@@ -543,7 +543,7 @@ listing11.photos.attach(io: photo_11_6, filename: "site-11-6.jpg")
 listing12 = Listing.create!(
   host_id: host12.id, 
   name: 'Vacaville Village Retreat', 
-  description: 'People from all over the world flock to Vacaville for the annual frozen man ice festival every January. There is no better place to stay than here at Vacaville Village Retreat, where you have quick access to all of the festivities, but are also secluded enough to just sit back and let the day pass by',
+  description: 'People from all over the world flock to Vacaville for the annual frozen man ice festival every January. There is no better place to stay than here at Vacaville Village Retreat, where you have quick access to all of the festivities, but are also secluded enough to just sit back and let the day pass by. 😎',
   cost: 70,
   lat: 38.356072,
   lng: -122.008822
