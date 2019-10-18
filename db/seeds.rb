@@ -665,6 +665,55 @@ review11 = Review.create!(
   recommends: true
 )
 
+review67 = Review.create!(
+  listing_id: listing1.id,
+  reviewer_id: reviewer12.id,
+  text: "#{listing1.name} is an incredible oasis of seemingly untouched beauty and vast natural allure. It was everything we desired in a camp site.",
+  recommends: true
+)
+
+review68 = Review.create!(
+  listing_id: listing1.id,
+  reviewer_id: reviewer13.id,
+  text: "We brought our two dogs and I think they may have managed to have more fun than we did. We took them on walks to the surrounding peaks that were lined with trails and we explored the entire property as much as we could.",
+  recommends: true
+)
+
+review69 = Review.create!(
+  listing_id: listing1.id,
+  reviewer_id: reviewer14.id,
+  text: "There was a ton of space at our site and plenty of privacy. #{host1.username} was as helpful of a host as you could hope for.",
+  recommends: true
+)
+
+review70 = Review.create!(
+  listing_id: listing1.id,
+  reviewer_id: reviewer15.id,
+  text: "We visited #{listing1.name} in mid-April and the wildflowers were in fantastic bloom. They were honestly mesmerizing. The only thing that out did the wildflowers were the stars at night.",
+  recommends: true
+)
+
+review71 = Review.create!(
+  listing_id: listing1.id,
+  reviewer_id: reviewer16.id,
+  text: "Whether you are traveling as a family, as a couple, or you are on a solo trip, #{listing1.name} will provide lasting memories of beautiful natural landscapes, incredible star-filled night skies, and a refreshing connection to the outdoors.",
+  recommends: true
+)
+
+review72 = Review.create!(
+  listing_id: listing1.id,
+  reviewer_id: reviewer17.id,
+  text: "This place is a gem and we are already planning a return trip.",
+  recommends: true
+)
+
+review73 = Review.create!(
+  listing_id: listing1.id,
+  reviewer_id: reviewer18.id,
+  text: "There's a toilet just a short walk from the site, two fire rings, a place to stash your trash, and two picnic tables under the patio structure. It feels like you're all alone out in the wilderness.",
+  recommends: true
+)
+
 ### Listing 2 Reviews ###
 
 review12 = Review.create!(
@@ -744,6 +793,27 @@ review22 = Review.create!(
   recommends: true
 )
 
+review74 = Review.create!(
+  listing_id: listing2.id,
+  reviewer_id: reviewer18.id,
+  text: "#{listing2.name} was fantastic, we couldn't have had a better time. #{host2.username} was a pleasure to deal with and hooked us up with plenty of firewood not to mention a 6 foot galvanized tub filled with water and waiting for us. A game changer :)",
+  recommends: true
+)
+
+review75 = Review.create!(
+  listing_id: listing2.id,
+  reviewer_id: reviewer16.id,
+  text: "The tap water has a funny taste, I suggest bringing your own drinking water.",
+  recommends: false
+)
+
+review76 = Review.create!(
+  listing_id: listing2.id,
+  reviewer_id: reviewer14.id,
+  text: "The site was everything that I wanted and more. This was a great way to get outside and do some easy car camping but not be right next to anyone else.",
+  recommends: true
+)
+
 ### Listing 3 Reviews ###
 
 review23 = Review.create!(
@@ -760,10 +830,24 @@ review24 = Review.create!(
   recommends: true
 )
 
+review77 = Review.create!(
+  listing_id: listing3.id,
+  reviewer_id: reviewer17.id,
+  text: "The stars were amazing and I will definitely be coming back.",
+  recommends: true
+)
+
 review25 = Review.create!(
   listing_id: listing3.id,
   reviewer_id: reviewer9.id,
   text: "Excellent experience at this charming spot. Didn't want to leave. A short walk downhill to your own little heaven...",
+  recommends: true
+)
+
+review78 = Review.create!(
+  listing_id: listing3.id,
+  reviewer_id: reviewer18.id,
+  text: "Great spot, very nice host. Stayed after some recent rains so there was some nice short grass on the ground. Make sure to bring an axe and/or enough intermediate kindling because the almond wood the host sells is a little difficult to get going.",
   recommends: true
 )
 
@@ -774,6 +858,13 @@ review26 = Review.create!(
   recommends: true
 )
 
+review79 = Review.create!(
+  listing_id: listing3.id,
+  reviewer_id: reviewer12.id,
+  text: "A quick drive from The Bay, but a world apart. This site sits atop a quiet, expansive mesa with nice views and a lovely sunset. Enough space to park cars away from the tents and firepit ensures a chilled experience.",
+  recommends: true
+)
+
 review27 = Review.create!(
   listing_id: listing3.id,
   reviewer_id: reviewer1.id,
@@ -781,10 +872,24 @@ review27 = Review.create!(
   recommends: false
 )
 
+review80 = Review.create!(
+  listing_id: listing3.id,
+  reviewer_id: reviewer14.id,
+  text: "It was our first time at #{listing3.name} and we had lots of fun! #{host3.username} was very nice and accommodating. Jill the dog was so sweet and played catch with us.",
+  recommends: true
+)
+
 review28 = Review.create!(
   listing_id: listing3.id,
   reviewer_id: reviewer3.id,
   text: "Overall, a great experience and highly recommend!",
+  recommends: true
+)
+
+review81 = Review.create!(
+  listing_id: listing3.id,
+  reviewer_id: reviewer16.id,
+  text: "This place is great! Very private with plenty of space between the sites. We had to cut our stay short for personal reasons but will be back.",
   recommends: true
 )
 
@@ -824,6 +929,55 @@ review33 = Review.create!(
 )
 
 ### Listing 4 Reviews ###
+
+review82 = Review.create!(
+  listing_id: listing4.id,
+  reviewer_id: reviewer11.id,
+  text: "The campgrounds at #{listing4.name} were great! Quiet, clean, beautiful area. ",
+  recommends: true
+)
+
+review83 = Review.create!(
+  listing_id: listing4.id,
+  reviewer_id: reviewer12.id,
+  text: "Amazingly beautiful, easy to find. The lodge looked amazing for a group so we will be back for that!",
+  recommends: true
+)
+
+review84 = Review.create!(
+  listing_id: listing4.id,
+  reviewer_id: reviewer15.id,
+  text: "We loved camping here! The property is beautiful and remote and the campsite had everything we needed. #{host4.username} was very friendly and has created a great spot for people to enjoy solitude and stargazing. Would definitely come back here!",
+  recommends: true
+)
+
+review85 = Review.create!(
+  listing_id: listing4.id,
+  reviewer_id: reviewer14.id,
+  text: "We had an awesome stay at #{listing4.name}. The place was well marked and the road to it was not difficult even for a car with low clearance. The hosts were very nice.",
+  recommends: true
+)
+
+review86 = Review.create!(
+  listing_id: listing4.id,
+  reviewer_id: reviewer13.id,
+  text: "We hiked around a bit but mostly enjoyed the firepits and view of the valley. Great trip!",
+  recommends: true
+)
+
+review87 = Review.create!(
+  listing_id: listing4.id,
+  reviewer_id: reviewer18.id,
+  text: "This place is a gem, perfectly situated, quiet, gorgeous, clean. Its as if each camping spot was set up to protect the experience of each camping group, for the best views.",
+  recommends: true
+)
+
+review88 = Review.create!(
+  listing_id: listing4.id,
+  reviewer_id: reviewer17.id,
+  text: "Its wonderful for a large group, but also smaller groups and even solo travelers like myself looking to get back to the basics.",
+  recommends: true
+)
 
 review34 = Review.create!(
   listing_id: listing4.id,
@@ -997,6 +1151,41 @@ review57 = Review.create!(
   recommends: true
 )
 
+review90 = Review.create!(
+  listing_id: listing6.id,
+  reviewer_id: reviewer18.id,
+  text: "I have stayed at #{listing6.name} a couple of times now, & it is always so great. Adequate privacy, well-kept sites, clean outhouses, potable water, trash service, shady pergolas, picnic tables, & fire rings make camping comfortable. We love staying here!",
+  recommends: true
+)
+
+review91 = Review.create!(
+  listing_id: listing6.id,
+  reviewer_id: reviewer16.id,
+  text: "We are big fans of #{listing6.name} and come back as often as we can! The double fire pit was awesome for the 9 of us camping - nice spacious area and convenient toilets nearby!",
+  recommends: true
+)
+
+review92 = Review.create!(
+  listing_id: listing6.id,
+  reviewer_id: reviewer14.id,
+  text: "Love this place! Views are amazing and hosts are very accommodating. Would definitely recommend this place! Coming back in a couple of weeks!",
+  recommends: true
+)
+
+review93 = Review.create!(
+  listing_id: listing6.id,
+  reviewer_id: reviewer12.id,
+  text: "Love this place! Most beautiful during spring when grass and greenery is plentiful. The views are spectacular, especially when there are a lot of clouds. #{host6.username} has been an excellent host as always and provides firewood if you need to buy some.",
+  recommends: true
+)
+
+review94 = Review.create!(
+  listing_id: listing6.id,
+  reviewer_id: reviewer13.id,
+  text: "#{host6.username} was incredibly helpful going above and beyond to make our stay the best it could be.",
+  recommends: true
+)
+
 review58 = Review.create!(
   listing_id: listing6.id,
   reviewer_id: reviewer10.id,
@@ -1059,3 +1248,4 @@ review66 = Review.create!(
   text: "This property is beautiful and lovingly maintained by owners who have a strong connection to the land. The site is clean and comfortable with a very nice bathroom complete with hot shower.",
   recommends: true
 )
+
