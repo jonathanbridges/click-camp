@@ -141,15 +141,13 @@
   justify-content: space-between;
   min-width: 300px;
   max-width: 50%;
-  height: 320px;
-  max-height: 320px;
   padding: 0 .5rem;
   margin-bottom: 1rem;
   cursor: pointer;
 }
 
 .tile-link {
-  height: 320px;
+  height: 370px;
   text-decoration: none;
   color: #333333;
   display: flex;
@@ -167,7 +165,7 @@
 }
 
 .tile-picture {
-  min-height: 200px;
+  min-height: 250px;
   background-color: #ebebeb;
   background-position: center center;
   border-radius: 4px 4px 0 0;
