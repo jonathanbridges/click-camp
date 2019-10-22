@@ -27,15 +27,9 @@ class MarkerManager {
     };
 
     const mapIcon = {
-      path: "m22,-28.38281l-44,0l0,20l16,0l6,5l6,-5l16,0l0,-20z",
-      labelOrigin: new google.maps.Point(0, -18),
-      fillColor: "white",
-      fillOpacity: 1,
-      scale: 2,
-      strokeColor: "#484848",
-      strokeWeight: 0.3,
-      width: "2000px"
-    };
+      url: "https://app-name-seeds.s3-us-west-1.amazonaws.com/click-camp-map-icon.png",
+      scaledSize: new google.maps.Size(50, 50)
+    }
 
     if (!this.markers[listing.id]) {
       let marker = new google.maps.Marker({
@@ -44,12 +38,12 @@ class MarkerManager {
         map: this.map,
         title: listing.name,
         icon: mapIcon,
-        label: {
-          text: `${listing.name}`,
-          fontSize: "13px",
-          fontWeight: "bold",
-          color: "#484848"
-        }
+        // label: {
+        //   text: `${listing.name}`,
+        //   fontSize: "13px",
+        //   fontWeight: "bold",
+        //   color: "#484848"
+        // }
       });
 
       this.markers[listing.id] = marker;
