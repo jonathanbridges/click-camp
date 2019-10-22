@@ -12,11 +12,16 @@
   width: 75%;
   margin-top: 8rem;
   margin-bottom: 2rem;
+  padding: .5rem;
 }
 
 .home-title {
-  font-size: 2.6rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
+}
+
+.home-subtext h3 {
+  font-weight: 500;
 }
 
 .search-wrapper {
@@ -128,6 +133,13 @@
   width: 75%;
 }
 
+.discover-subtext {
+  padding: .5rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
 .index-dc-row {
   display: flex;
   flex-direction: row;
@@ -140,14 +152,14 @@
   flex-direction: column;
   justify-content: space-between;
   min-width: 300px;
-  max-width: 50%;
+  width: 50%;
   padding: 0 .5rem;
   margin-bottom: 1rem;
   cursor: pointer;
 }
 
 .tile-link {
-  height: 370px;
+  height: 420px;
   text-decoration: none;
   color: #333333;
   display: flex;
@@ -165,7 +177,7 @@
 }
 
 .tile-picture {
-  min-height: 250px;
+  min-height: 300px;
   background-color: #ebebeb;
   background-position: center center;
   border-radius: 4px 4px 0 0;
@@ -183,6 +195,10 @@
 
 .tile-name {
   font-size: 1rem;
+}
+
+.tile-name p {
+  font-size: 1.2rem;
 }
 
 .tile-description {

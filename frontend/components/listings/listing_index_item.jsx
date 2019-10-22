@@ -15,7 +15,7 @@ const ListingIndexItem = ({ listing }) => {
       <div className="tile-picture" style={imgStyle}></div>
       <div className="tile-details">
         <div className="tile-name">
-          <big>{listing.name}</big>
+          <p>{listing.name}</p>
         </div>
         <div className="tile-description">
           <small className="desc-color">{listing.description}</small>

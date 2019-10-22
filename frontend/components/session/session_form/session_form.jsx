@@ -136,7 +136,7 @@ class SessionForm extends React.Component {
     return (
       <div className="login-form-container">
         <form className="login-form-box">
-          <big>{this.props.formType}</big>
+          <h2>{this.props.formType}</h2>
           <small>{this.props.greetingSmall}</small>
           {this.renderErrors()}
           <div className="login-form">

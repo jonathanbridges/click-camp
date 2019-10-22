@@ -65,8 +65,8 @@
 	align-items: center;
 }
 
-.login-form-box big {
-	margin-bottom: 2rem;
+.login-form-box h2 {
+	margin-bottom: 1rem;
 	font-weight: 500;
 	font-size: 1.5rem;
 }

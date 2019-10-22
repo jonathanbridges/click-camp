@@ -36,9 +36,8 @@ class SplashListingIndex extends React.Component {
         <div className="home-wrapper">
           <h2 className="home-title">Find yourself outside.</h2>
           <div className="home-subtext">
-            <big>Book unique camping experiences on over <strong>300,000</strong></big>
-            <br/>
-            <big>campsites, ranches, vineyards, public parks, and more.</big>
+            <h3>Book unique camping experiences on over <strong>300,000</strong></h3>
+            <h3>campsites, ranches, vineyards, public parks, and more.</h3>
           </div>
         </div>
 
@@ -75,13 +74,12 @@ class SplashListingIndex extends React.Component {
         <div className="campgrounds-wrapper">
 
         {/* Campsite Previews  */}
-        <section className="index-discover-campgrounds">
-          <big className="discover-subtext">Discover Camping...</big>
-          <div className="index-dc-row">
-            {listings}
-          </div>
-
-        </section>
+          <h2 className="discover-subtext">Discover Camping...</h2>
+          <section className="index-discover-campgrounds">
+            <div className="index-dc-row">
+              {listings}
+            </div>
+          </section>
         </div>
 
         <Footer />

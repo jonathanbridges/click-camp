@@ -8,7 +8,7 @@ const Footer = () => {
         <section className="main-footer">
           <div className="footer-content">
             <div className="footer-left">
-              <big>ClickCamp is everywhere you want to camp.</big>
+              <h1>ClickCamp is everywhere you want to camp.</h1>
               <p>Discover unique experiences on ranches, nature preserves, farms, vineyards, and public campgrounds across the U.S. Book tent camping, treehouses, cabins, yurts, primitive backcountry sites, car camping, airstreams, tiny houses, RV camping, glamping tents and more.</p>
             </div>
             <div className="footer-right"></div>
