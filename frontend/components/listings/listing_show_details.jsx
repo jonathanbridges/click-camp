@@ -190,9 +190,16 @@ class ListingShowDetails extends React.Component {
           let checkInMonth = checkIn.getUTCMonth();
           let checkInYear = checkIn.getUTCFullYear();
 
-          if ((checkInDay >= todayDay) && (checkInMonth >= todayMonth) && (checkInYear >= todayYear)) {
-            reserved = true;
-            futureReservation = reservation;
+          if (checkInDay >= todayDay) {
+            if (checkInMonth >= todayMonth && checkInYear >= todayYear) {
+              reserved = true;
+              futureReservation = reservation;
+            }
+          } else if (checkInDay < todayDay) {
+            if (checkInMonth > todayMonth && checkInYear >= todayYear) {
+              reserved = true;
+              futureReservation = reservation;
+            }
           }
         }
       });

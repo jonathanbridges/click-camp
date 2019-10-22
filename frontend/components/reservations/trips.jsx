@@ -88,25 +88,48 @@ class Trips extends React.Component {
           let checkInMonth = checkIn.getUTCMonth();
           let checkInYear = checkIn.getUTCFullYear();
 
-          if ((checkInDay >= todayDay) && (checkInMonth >= todayMonth) && (checkInYear >= todayYear)) {
-            futureReservations.push(
-              <FutureTrip
-                listingId={reservation.listing_id}
-                listings={this.props.listings}
-                reservation={reservation}
-                deleteReservation={this.deleteReservation}
-                key={reservation.id}
-              />
-            )
-          } else {
-            pastReservations.push(
-              <PastTrip
-                listingId={reservation.listing_id}
-                listings={this.props.listings}
-                reservation={reservation}
-                key={reservation.id}
-              />
-            )
+          if (checkInDay >= todayDay) {
+            if (checkInMonth >= todayMonth && checkInYear >= todayYear) {
+              futureReservations.push(
+                <FutureTrip
+                  listingId={reservation.listing_id}
+                  listings={this.props.listings}
+                  reservation={reservation}
+                  deleteReservation={this.deleteReservation}
+                  key={reservation.id}
+                />
+              )
+            } else {
+              pastReservations.push(
+                <PastTrip
+                  listingId={reservation.listing_id}
+                  listings={this.props.listings}
+                  reservation={reservation}
+                  key={reservation.id}
+                />
+              )
+            }
+          } else if (checkInDay < todayDay) {
+            if (checkInMonth > todayMonth && checkInYear >= todayYear) {
+              futureReservations.push(
+                <FutureTrip
+                  listingId={reservation.listing_id}
+                  listings={this.props.listings}
+                  reservation={reservation}
+                  deleteReservation={this.deleteReservation}
+                  key={reservation.id}
+                />
+              )
+            } else {
+              pastReservations.push(
+                <PastTrip
+                  listingId={reservation.listing_id}
+                  listings={this.props.listings}
+                  reservation={reservation}
+                  key={reservation.id}
+                />
+              )
+            }
           }
         }
       }, this);
