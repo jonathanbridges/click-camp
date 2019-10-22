@@ -134,9 +134,10 @@
 }
 
 .discover-subtext {
+  width: 75%;
   padding: .5rem;
   margin-bottom: 1rem;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 500;
 }
 
@@ -233,3 +234,35 @@
   font-size: 1.05rem;
 }
 
+.featured-camping {
+  display: flex;
+  width: 75%;
+}
+
+.featured-site {
+  width: 33%;
+  position: relative;
+}
+
+.featured-site div {
+  width: auto;
+}
+
+.featured-span {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: .25rem .5rem;
+  border-radius: 5px 0 0 5px;
+  background: white;
+  -moz-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  -webkit-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  top: .5rem;
+}
+
+.featured-span span, .featured-span i {
+  padding-right: 5px;
+}

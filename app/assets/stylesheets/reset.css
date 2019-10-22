@@ -33,7 +33,8 @@ body {
 	flex-direction: column;
 	font-weight: 400;
 	min-height: 100%;
-	height: 100%;
+  height: 100%;
+  width: 100%;
   font-family: 'Lato', sans-serif;
   font-size: 100%;
   color: #333333;

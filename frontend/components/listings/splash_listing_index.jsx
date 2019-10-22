@@ -38,6 +38,22 @@ class SplashListingIndex extends React.Component {
           <div className="home-subtext">
             <h3>Book unique camping experiences on over <strong>300,000</strong></h3>
             <h3>campsites, ranches, vineyards, public parks, and more.</h3>
+          </div>  
+        </div>
+
+        <h2 className="discover-subtext">Featured Campsites</h2>
+        <div className="featured-camping">
+          <div className="featured-site">
+            {listings[0]}
+            <div className="featured-span"><i className="fas fa-arrow-up"></i>High Demand</div>
+          </div>
+          <div className="featured-site">
+            {listings[5]}
+            <div className="featured-span"><span>🔥</span>Campfire favorite</div>
+          </div>
+          <div className="featured-site">
+            {listings[7]}
+            <div className="featured-span"><i className="fas fa-bolt"></i>Instant Book</div>
           </div>
         </div>
 
@@ -71,16 +87,15 @@ class SplashListingIndex extends React.Component {
             </Link>
           </form>
         </div> */}
-        <div className="campgrounds-wrapper">
+        {/* <div className="campgrounds-wrapper">
 
-        {/* Campsite Previews  */}
           <h2 className="discover-subtext">Discover Camping...</h2>
           <section className="index-discover-campgrounds">
             <div className="index-dc-row">
               {listings}
             </div>
           </section>
-        </div>
+        </div> */}
 
         <Footer />
       </div>
