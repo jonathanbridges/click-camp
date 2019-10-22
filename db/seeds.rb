@@ -1016,7 +1016,7 @@ review38 = Review.create!(
 
 review39 = Review.create!(
   listing_id: listing4.id,
-  reviewer_id: reviewer11.id,
+  reviewer_id: reviewer16.id,
   text: "The location was amazing and tips from the host about things to do in the area led to an amazing and memorable trip!",
   recommends: true
 )
