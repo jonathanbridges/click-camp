@@ -32,6 +32,7 @@ class SplashListingIndex extends React.Component {
     let listings = this.props.listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
 
     return (
+      // Header Section
       <div className="index">
         <div className="home-wrapper">
           <h2 className="home-title">Find yourself outside.</h2>
@@ -41,7 +42,8 @@ class SplashListingIndex extends React.Component {
           </div>  
         </div>
 
-        <h2 className="discover-subtext">Featured Campsites</h2>
+        {/* Featured Sites Section  */}
+        <h2 className="discover-subtext">Featured Campsites:</h2>
         <div className="featured-camping">
           <div className="featured-site">
             {listings[0]}
@@ -56,6 +58,31 @@ class SplashListingIndex extends React.Component {
             <div className="featured-span"><i className="fas fa-bolt"></i>Instant Book</div>
           </div>
         </div>
+
+        <div className="featured-border-wrapper">
+          <div className="featured-border"></div>
+        </div>
+
+        {/* Testimonial Section */}
+        <section className="splash-testimonial">
+          <div className="testimonial-container">
+            <div className="testimonial-content">
+              <figure className="testimonial-image-container">
+                <img alt="Hipcamp host Terry" className="testimonial-image" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/testimonial.jpg" />
+              </figure>
+              <div className="quotes-wrapper">
+                <h1>Terry, ClickCamp Host says:</h1>
+                <blockquote>
+                  “Hipcamp has helped us earn some much needed side income to supplement our working ranch. Hipcamp staff are all very helpful and approachable, and they always respond to our inquiries immediately. We are big fans of this service and we can't recommend it highly enough to other landowners like ourselves!”
+                </blockquote>
+                <Link to="/discover/9" className="testimonial-host-link">Host of Leaning Leanto in California</Link>
+                <div className="testimonial-cta">
+                  <Link to="/discover" className="btn-main testimonial-discover-btn">Discover Camping</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Removing Search Bar until Feature is Implemented :/ */}
         {/* Search Bar */}
