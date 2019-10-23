@@ -29,7 +29,15 @@ class SplashListingIndex extends React.Component {
       );
     }
 
-    let listings = this.props.listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
+    let testimonialListingId;
+    let listings = this.props.listings.map(listing => {
+      if (listing.name === "Leaning Leanto") {
+        testimonialListingId = listing.id;
+      }
+      return (
+        <ListingIndexItem listing={listing} key={listing.id} />
+      )
+    });
 
     return (
       // Header Section
@@ -75,7 +83,7 @@ class SplashListingIndex extends React.Component {
                 <blockquote>
                   “Hipcamp has helped us earn some much needed side income to supplement our working ranch. Hipcamp staff are all very helpful and approachable, and they always respond to our inquiries immediately. We are big fans of this service and we can't recommend it highly enough to other landowners like ourselves!”
                 </blockquote>
-                <Link to="/discover/9" className="testimonial-host-link">Host of Leaning Leanto in California</Link>
+                <Link to={`/discover/${testimonialListingId}`} className="testimonial-host-link">Host of Leaning Leanto in California</Link>
                 <div className="testimonial-cta">
                   <Link to="/discover" className="btn-main testimonial-discover-btn">Discover Camping</Link>
                 </div>

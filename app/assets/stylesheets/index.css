@@ -178,6 +178,7 @@
 }
 
 .tile-picture {
+  height: 300px;
   min-height:  300px;
   background-color: #ebebeb;
   background-position: center center;
@@ -238,6 +239,7 @@
   display: flex;
   justify-content: space-between;
   width: 75%;
+  height: 420px;
 }
 
 .featured-site {
@@ -274,16 +276,11 @@
   margin: 1rem 0 5rem 0;
 }
 
-.splash-testimonial:before {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  pointer-events: none;
-  content: "";
+.splash-testimonial {
+  -moz-box-shadow: 0 7px 10px rgba(0,0,0,0.08);
   -webkit-box-shadow: 0 7px 10px rgba(0,0,0,0.08);
-  box-shadow: 0 7px 10px rgba(0,0,0,0.08)
+  box-shadow: 0 7px 10px rgba(0,0,0,0.08);
+  padding-bottom: 5rem;
 }
 
 .testimonial-container {
@@ -356,5 +353,4 @@ blockquote {
 .testimonial-discover-btn {
   position: absolute;
   bottom: -1.5rem;
-
 }
