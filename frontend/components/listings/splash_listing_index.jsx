@@ -29,17 +29,68 @@ class SplashListingIndex extends React.Component {
       );
     }
 
-    let listings = this.props.listings.map(listing => <ListingIndexItem listing={listing} key={listing.id} />)
+    let testimonialListingId;
+    let listings = this.props.listings.map(listing => {
+      if (listing.name === "Leaning Leanto") {
+        testimonialListingId = listing.id;
+      }
+      return (
+        <ListingIndexItem listing={listing} key={listing.id} />
+      )
+    });
 
     return (
+      // Header Section
       <div className="index">
         <div className="home-wrapper">
           <h2 className="home-title">Find yourself outside.</h2>
           <div className="home-subtext">
             <h3>Book unique camping experiences on over <strong>300,000</strong></h3>
             <h3>campsites, ranches, vineyards, public parks, and more.</h3>
+          </div>  
+        </div>
+
+        {/* Featured Sites Section  */}
+        <h2 className="discover-subtext">Featured Campsites:</h2>
+        <div className="featured-camping">
+          <div className="featured-site">
+            {listings[0]}
+            <div className="featured-span"><i className="fas fa-arrow-up"></i>High Demand</div>
+          </div>
+          <div className="featured-site">
+            {listings[5]}
+            <div className="featured-span"><span>🔥</span>Campfire favorite</div>
+          </div>
+          <div className="featured-site">
+            {listings[7]}
+            <div className="featured-span"><i className="fas fa-bolt"></i>Instant Book</div>
           </div>
         </div>
+
+        <div className="featured-border-wrapper">
+          <div className="featured-border"></div>
+        </div>
+
+        {/* Testimonial Section */}
+        <section className="splash-testimonial">
+          <div className="testimonial-container">
+            <div className="testimonial-content">
+              <figure className="testimonial-image-container">
+                <img alt="Hipcamp host Terry" className="testimonial-image" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/testimonial.jpg" />
+              </figure>
+              <div className="quotes-wrapper">
+                <h1>Terry, ClickCamp Host says:</h1>
+                <blockquote>
+                  “Hipcamp has helped us earn some much needed side income to supplement our working ranch. Hipcamp staff are all very helpful and approachable, and they always respond to our inquiries immediately. We are big fans of this service and we can't recommend it highly enough to other landowners like ourselves!”
+                </blockquote>
+                <Link to={`/discover/${testimonialListingId}`} className="testimonial-host-link">Host of Leaning Leanto in California</Link>
+                <div className="testimonial-cta">
+                  <Link to="/discover" className="btn-main testimonial-discover-btn">Discover Camping</Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Removing Search Bar until Feature is Implemented :/ */}
         {/* Search Bar */}
@@ -71,16 +122,15 @@ class SplashListingIndex extends React.Component {
             </Link>
           </form>
         </div> */}
-        <div className="campgrounds-wrapper">
+        {/* <div className="campgrounds-wrapper">
 
-        {/* Campsite Previews  */}
           <h2 className="discover-subtext">Discover Camping...</h2>
           <section className="index-discover-campgrounds">
             <div className="index-dc-row">
               {listings}
             </div>
           </section>
-        </div>
+        </div> */}
 
         <Footer />
       </div>
