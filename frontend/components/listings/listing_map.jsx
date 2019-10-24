@@ -15,14 +15,15 @@ import { withRouter } from 'react-router-dom';
 class ListingMap extends React.Component {
   constructor(props) {
     super(props);
+
     this.renderMap = this.renderMap.bind(this);
     this.handleMarkerClick = this.handleMarkerClick.bind(this);
-
   }
 
   componentDidMount() {
-   
     this.renderMap();
+
+    debugger;
   }
 
   componentDidUpdate(prevProps) {
