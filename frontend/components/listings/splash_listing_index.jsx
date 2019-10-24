@@ -92,6 +92,24 @@ class SplashListingIndex extends React.Component {
           </div>
         </section>
 
+        {/* About Section */}
+        <section className="what">
+          <div className="what-container">
+            <figure className="what-images-container">
+              <img alt="Empowering Hosts" className="what-image" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/what-tentarms.svg" />
+            </figure>
+            <h2>ClickCamp empowers people to share their land with campers.</h2>
+            <figure className="what-images-container">
+              <img alt="Sustainable" className="what-image" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/what-moneyhands.svg" />
+            </figure>
+            <h2>Creating sustainable revenue and fostering community.</h2>
+            <figure className="what-images-container">
+              <img alt="Unlocking Access" className="what-image what-image-last" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/what-handkey.svg" />
+            </figure>
+            <h2>Unlocking access to incredible new places to camp.</h2>
+          </div>
+        </section>
+
         {/* Removing Search Bar until Feature is Implemented :/ */}
         {/* Search Bar */}
         {/* <div className="search-wrapper">

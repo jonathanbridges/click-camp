@@ -235,6 +235,8 @@
   font-size: 1.05rem;
 }
 
+/* Featured Campsites Section */
+
 .featured-camping {
   display: flex;
   justify-content: space-between;
@@ -271,14 +273,16 @@
   padding-right: 5px;
 }
 
+/* Testimonial Section */
+
 .splash-testimonial {
   display: flex;
   justify-content: center;
   margin: 1rem 0 5rem 0;
-  /* -moz-box-shadow: 0 7px 10px rgba(0,0,0,0.08);
+  -moz-box-shadow: 0 7px 10px rgba(0,0,0,0.08);
   -webkit-box-shadow: 0 7px 10px rgba(0,0,0,0.08);
-  box-shadow: 0 7px 10px rgba(0,0,0,0.08); */
-  padding-bottom: 5rem;
+  box-shadow: 0 7px 10px rgba(0,0,0,0.08);
+  padding-bottom: 12rem;
 }
 
 .testimonial-container {
@@ -351,4 +355,36 @@ blockquote {
 .testimonial-discover-btn {
   position: absolute;
   bottom: -1.5rem;
+}
+
+/* About Section */
+
+.what {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.what-container {
+  width: 75%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.what-container h2 {
+  position: relative;
+  top: -1rem;
+  width: 420px;
+  font-size: 1.7rem;
+  text-align: center;
+}
+
+.what-image {
+  width: 300px;
+}
+
+.what-image-last {
+  padding-left: 20px;
 }
