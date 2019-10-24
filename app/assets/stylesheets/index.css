@@ -240,6 +240,7 @@
   justify-content: space-between;
   width: 75%;
   height: 420px;
+  margin-bottom: 5rem;
 }
 
 .featured-site {
@@ -274,12 +275,9 @@
   display: flex;
   justify-content: center;
   margin: 1rem 0 5rem 0;
-}
-
-.splash-testimonial {
-  -moz-box-shadow: 0 7px 10px rgba(0,0,0,0.08);
+  /* -moz-box-shadow: 0 7px 10px rgba(0,0,0,0.08);
   -webkit-box-shadow: 0 7px 10px rgba(0,0,0,0.08);
-  box-shadow: 0 7px 10px rgba(0,0,0,0.08);
+  box-shadow: 0 7px 10px rgba(0,0,0,0.08); */
   padding-bottom: 5rem;
 }
 
