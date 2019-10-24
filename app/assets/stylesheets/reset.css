@@ -36,6 +36,8 @@ body {
   height: 100%;
   width: 100%;
   font-family: 'Lato', sans-serif;
+  -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
   font-size: 100%;
   color: #333333;
   line-height: 1.42;

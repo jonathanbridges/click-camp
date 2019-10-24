@@ -364,6 +364,8 @@ blockquote {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-bottom: 5rem;
+  border-bottom: 1px solid #ebebeb;
 }
 
 .what-container {
@@ -387,4 +389,45 @@ blockquote {
 
 .what-image-last {
   padding-left: 20px;
+}
+
+/* Trending Sites Section */
+
+.trending-sites {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 3rem;
+}
+
+.trending-container {
+  width: 75%;
+}
+
+.trending-container h2 {
+  font-size: 1.4rem;
+  margin: 1.5rem 0;
+}
+
+.trending-list-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.trending-campgrounds-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.trending-campground-list-item a {
+  font-size: .9rem;
+  text-decoration: none;
+  color: #333333;
+}
+
+.trending-campground-list-item a:hover {
+  border-bottom: 1px solid #333333;
 }

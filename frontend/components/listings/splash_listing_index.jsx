@@ -30,10 +30,16 @@ class SplashListingIndex extends React.Component {
     }
 
     let testimonialListingId;
+    let trendingSites = [];
     let listings = this.props.listings.map(listing => {
       if (listing.name === "Leaning Leanto") {
         testimonialListingId = listing.id;
       }
+      trendingSites.push(
+        <li className="trending-campground-list-item" key={listing.id}>
+          <Link to={`/discover/${listing.id}`}>{listing.name}</Link>
+        </li>
+      )
       return (
         <ListingIndexItem listing={listing} key={listing.id} />
       )
@@ -108,6 +114,27 @@ class SplashListingIndex extends React.Component {
             </figure>
             <h2>Unlocking access to incredible new places to camp.</h2>
           </div>
+        </section>
+
+        {/* Trending Campsites Section */}
+        <section className="trending-sites">
+          <div className="trending-container">
+            <h2>Trending campgrounds</h2>
+            <div className="trending-list-container">
+              <ul className="trending-campgrounds-list">
+                {trendingSites.slice(0,3)}
+              </ul>
+              <ul className="trending-campgrounds-list">
+                {trendingSites.slice(3,6)}
+              </ul>
+              <ul className="trending-campgrounds-list">
+                {trendingSites.slice(6,9)}
+              </ul>
+              <ul className="trending-campgrounds-list">
+                {trendingSites.slice(9)}
+              </ul>
+            </div>
+          </div> 
         </section>
 
         {/* Removing Search Bar until Feature is Implemented :/ */}
