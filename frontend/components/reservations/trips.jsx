@@ -110,7 +110,7 @@ class Trips extends React.Component {
               )
             }
           } else if (checkInDay < todayDay) {
-            if (checkInMonth > todayMonth && checkInYear >= todayYear) {
+            if ((checkInYear > todayYear) || (checkInMonth > todayMonth && checkInYear >= todayYear)) {
               futureReservations.push(
                 <FutureTrip
                   listingId={reservation.listing_id}

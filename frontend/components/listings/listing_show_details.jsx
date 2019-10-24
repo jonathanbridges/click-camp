@@ -196,7 +196,7 @@ class ListingShowDetails extends React.Component {
               futureReservation = reservation;
             }
           } else if (checkInDay < todayDay) {
-            if (checkInMonth > todayMonth && checkInYear >= todayYear) {
+            if ((checkInYear > todayYear) || (checkInMonth > todayMonth && checkInYear >= todayYear)) {
               reserved = true;
               futureReservation = reservation;
             }
