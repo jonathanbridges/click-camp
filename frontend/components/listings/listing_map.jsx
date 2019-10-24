@@ -22,8 +22,6 @@ class ListingMap extends React.Component {
 
   componentDidMount() {
     this.renderMap();
-
-    debugger;
   }
 
   componentDidUpdate(prevProps) {

@@ -57,6 +57,11 @@ class SplashListingIndex extends React.Component {
           </div>  
         </div>
 
+        {/* Search Bar */}
+        <div className="searchbar-section">
+          <SearchBarContainer />
+        </div>
+
         {/* Featured Sites Section  */}
         <h2 className="discover-subtext">Featured Campsites:</h2>
         <div className="featured-camping">
@@ -137,12 +142,6 @@ class SplashListingIndex extends React.Component {
             </div>
           </div> 
         </section>
-
-        {/* Search Bar */}
-        <div className="searchbar-container">
-          <SearchBarContainer />
-        </div>
-
         <Footer />
       </div>
     );

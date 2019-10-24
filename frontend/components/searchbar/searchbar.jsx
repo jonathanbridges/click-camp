@@ -51,18 +51,17 @@ class SearchBar extends React.Component {
         const lng = res[0].geometry.location.lng();
         this.props.updateSearchCoords(lat, lng);
 
-        this.props.history.push(`/discover?lat=${lat}&lng=${lng}`);
-        // this.props.history.push(`/discover`);
+        this.props.history.push(`/discover`);
       } else {
-        this.props.history.push(`/discover?lat=37.7749&lng=122.4194`);
+        this.props.history.push(`/discover`);
       }
     });
   }
 
   render() {
     return (
-
       <div className="search-wrapper">
+        <div className="search-container"></div>
         <form className="search-main" onSubmit={this.handleSubmit}>
           <div>
             <span className="input-i">
@@ -75,9 +74,7 @@ class SearchBar extends React.Component {
               name="listings" 
               id="listings"
               className="listing-search-input"
-              // autoComplete="off" 
-              // spellCheck="false" 
-              // dir="auto" 
+              dir="auto" 
               placeholder="San Francisco" />
             <input 
               type="submit"
