@@ -1,6 +1,7 @@
 import React from 'react';
 import ListingIndexItem from './listing_index_item';
 import PulseLoaderAnimation from '../loader/pulse_loader';
+import SearchBarContainer from '../searchbar/searchbar_container';
 import { Link } from 'react-router-dom';
 
 class DiscoverListingIndex extends React.Component {
@@ -41,6 +42,8 @@ class DiscoverListingIndex extends React.Component {
             <p>Hmmm, we couldn't find any listings that match your search criteria.</p>
             <p>Try zooming the map out to search again. 🔍</p>
           </div>
+          <div className="map-search-bar"></div>
+          <SearchBarContainer />
         </div>
       )
     }

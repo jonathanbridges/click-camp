@@ -71,7 +71,7 @@ class SplashListingIndex extends React.Component {
           </div>
           <div className="featured-site">
             {listings[5]}
-            <div className="featured-span"><span>🔥</span>Campfire favorite</div>
+            <div className="featured-span"><span className="flames">🔥</span>Campfire favorite</div>
           </div>
           <div className="featured-site">
             {listings[7]}

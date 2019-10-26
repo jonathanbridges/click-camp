@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class SearchBar extends React.Component {
+class NavSearchBar extends React.Component {
 
   constructor(props) {
     super(props);
@@ -15,7 +15,7 @@ class SearchBar extends React.Component {
   }
 
   componentDidMount() {
-    const searchInput = document.querySelector(".listing-search-input");
+    const searchInput = document.querySelector(".nav-search-input");
     const autocomplete = new google.maps.places.Autocomplete(searchInput);
 
     google.maps.event.addDomListener(window, "load", autocomplete);
@@ -60,9 +60,9 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className="search-wrapper">
-        <div className="search-container"></div>
-        <form className="search-main" onSubmit={this.handleSubmit}>
+      <div className="nav-search-wrapper">
+        <div className="nav-search-container"></div>
+        <form className="nav-search-main" onSubmit={this.handleSubmit}>
           <div>
             <span className="input-i">
               <i className="fas fa-search"></i>
@@ -72,14 +72,13 @@ class SearchBar extends React.Component {
               value={this.state.query}
               onChange={this.handleInput}
               name="listings" 
-              id="listings"
-              className="listing-search-input"
+              className="nav-search-input"
               dir="auto" 
               placeholder="Try San Francisco..." />
             <input 
               type="submit"
               value="Search"
-              className={"search-btn"} />
+              className={"nav-search-btn"} />
           </div>
           {/* <div className="dates-btn">
             <span className="input-i">
@@ -107,4 +106,4 @@ class SearchBar extends React.Component {
   }
 }
 
-export default withRouter(SearchBar);
+export default withRouter(NavSearchBar);

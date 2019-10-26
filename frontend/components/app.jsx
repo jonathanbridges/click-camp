@@ -9,6 +9,7 @@ import SplashListingIndexContainer from './listings/splash_listing_index_contain
 import SearchContainer from './listings/search_container';
 import ListingsShowContainer from './listings/listing_show_container';
 import TripsShowContainer from './reservations/trips_container';
+import NavSearchBarContainer from './searchbar/navsearchbar_container';
 
 const App = () => (
   <div>
@@ -16,7 +17,8 @@ const App = () => (
     {/* Static NavBar */}
     <nav className="main-nav">
       <div className="left">
-      <Link className="nav-home" to="/"><img className="clickcamp-text" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/clickcamp-text.png" alt=""/></Link>
+        <Link className="nav-home" to="/"><img className="clickcamp-text" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/clickcamp-text.png" alt=""/></Link>
+        <Route path="/discover" component={NavSearchBarContainer} />
       </div>
       <div className="nav-spacer"></div>
       <div className="right">
