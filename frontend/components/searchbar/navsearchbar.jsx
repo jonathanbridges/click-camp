@@ -42,6 +42,8 @@ class NavSearchBar extends React.Component {
   handleSubmit(e) {
     if (e) {
       e.preventDefault();
+    } else {
+      return;
     }
 
     const geocoder = new google.maps.Geocoder();
@@ -51,9 +53,11 @@ class NavSearchBar extends React.Component {
         const lng = res[0].geometry.location.lng();
         this.props.updateSearchCoords(lat, lng);
         this.props.history.push(`/discover?lat=${lat}&lng=${lng}`);
+        this.setState({ query: "" });
       } else {
         this.props.updateSearchCoords(37.7749295, -122.4194155);
         this.props.history.push(`/discover?lat=37.7749295&lng=-122.4194155`);
+        this.setState({ query: "" });
       }
     });
   }

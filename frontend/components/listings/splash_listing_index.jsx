@@ -97,7 +97,7 @@ class SplashListingIndex extends React.Component {
                 </blockquote>
                 <Link to={`/discover/${testimonialListingId}`} className="testimonial-host-link">Host of Leaning Leanto in California</Link>
                 <div className="testimonial-cta">
-                  <Link to="/discover" className="btn-main testimonial-discover-btn">Discover Camping</Link>
+                  <Link to={`/discover?lat=37.7749295&lng=-122.4194155`} className="btn-main testimonial-discover-btn">Discover Camping</Link>
                 </div>
               </div>
             </div>

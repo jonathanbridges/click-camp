@@ -396,3 +396,9 @@ blockquote {
   border-bottom: 1px solid #333333;
 }
 
+.four-oh-four {
+  background-image: url(https://app-name-seeds.s3-us-west-1.amazonaws.com/404.jpg);
+  margin: 0 1rem;
+  border-radius: 4px;
+}
+

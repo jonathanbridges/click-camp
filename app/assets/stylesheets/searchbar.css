@@ -67,22 +67,32 @@
 .pac-container {
   margin-left: 1px;
   font-family: Lato;
-  font-size: .9rem;
 }
 
 .pac-item {
   display: flex;
   align-items: center;
-  padding: 0 0 0 1rem;
+  justify-content: flex-start;
+  padding: 0 1rem;
+  white-space: pre-wrap;
 }
 
 .pac-icon {
   margin: 0;
+  width: 1rem;
+  min-width: 1rem;
+  line-height: 1.6;
 }
 
 .pac-item-query {
+  min-width: 45%;
   padding-left: 1rem;
   font-size: .9rem;
+  flex: 1;
+}
+
+.pac-item span:last-child {
+  text-align: right;
 }
 
 .pac-container:after {
@@ -107,7 +117,7 @@
   padding-left: 3rem;
   flex: 1;
   height: 50px;
-  width: 250px;
+  width: 400px;
   border-radius: 4px;
   box-shadow: none;
   border: 1px solid #ebebeb;
