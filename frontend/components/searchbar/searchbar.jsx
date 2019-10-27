@@ -15,8 +15,13 @@ class SearchBar extends React.Component {
   }
 
   componentDidMount() {
+    const options = {
+      types: ['(cities)'],
+      componentRestrictions: { country: "us" }
+    };
+
     const searchInput = document.querySelector(".listing-search-input");
-    const autocomplete = new google.maps.places.Autocomplete(searchInput);
+    const autocomplete = new google.maps.places.Autocomplete(searchInput, options);
 
     google.maps.event.addDomListener(window, "load", autocomplete);
     let address;
@@ -52,7 +57,7 @@ class SearchBar extends React.Component {
         this.props.updateSearchCoords(lat, lng);
         this.props.history.push(`/discover?lat=${lat}&lng=${lng}`);
       } else {
-        this.props.updateSearchCoords(37.7749295, -122.4194155);
+        this.props.updateSearchCoords(37.7758, -122.435);
         this.props.history.push(`/discover?lat=37.7749295&lng=-122.4194155`);
       }
     });
