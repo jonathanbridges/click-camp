@@ -1,16 +1,14 @@
-//React
 import React from 'react';
 import ReactDOM from 'react-dom';
-//Components
 import Root from './components/root';
 import configureStore from './store/store';
 
-//Testing
+// Testing
 // import { signup, login, logout } from './actions/session_actions'
 // import { fetchListing, fetchListings } from './actions/listing_actions'
 // import { fetchReservations, fetchReservation, fetchReservationsByUserId, deleteReservation, createReservation } from './util/reservation_api_util'
 // import { fetchReservations, fetchReservation, fetchReservationsByUserId, deleteReservation, createReservation } from './actions/reservation_actions'
-import { fetchReviews, fetchReview, createReview, updateReview, deleteReview } from './actions/review_actions'; 
+// import { fetchReviews, fetchReview, createReview, updateReview, deleteReview } from './actions/review_actions'; 
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -41,8 +39,8 @@ document.addEventListener('DOMContentLoaded', () => {
   //End Testing
 
   //Redux Testing
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+  // window.getState = store.getState;
+  // window.dispatch = store.dispatch;
   // window.fetchListings = fetchListings
   // window.fetchListing = fetchListing
   // window.fetchReservations = fetchReservations
@@ -62,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // window.login = login;
   // window.logout = logout;
   //End Testing
-
 
   const root = document.getElementById('root');
   
