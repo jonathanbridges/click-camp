@@ -80,6 +80,7 @@ class SearchBar extends React.Component {
               id="listings"
               className="listing-search-input"
               dir="auto" 
+              autocomplete="off"
               placeholder="Try San Francisco..." />
             <input 
               type="submit"
