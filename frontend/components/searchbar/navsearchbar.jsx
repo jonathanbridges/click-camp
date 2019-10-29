@@ -27,7 +27,7 @@ class NavSearchBar extends React.Component {
     let address;
     autocomplete.addListener("place_changed", () => {
       if (!autocomplete.getPlace().formatted_address) {
-        address = autocomplete.getPlace("San Francisco").name;
+        address = autocomplete.getPlace().name;
         this.setState({ query: address });
         this.handleSubmit();
       } else {
@@ -49,16 +49,16 @@ class NavSearchBar extends React.Component {
       e.preventDefault();
     }
 
+    if (this.state.query === "San" || this.state.query === undefined) {
+      this.setState({ query: "San Francisco" });
+    }
+
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: this.state.query }, (res, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
         const lat = res[0].geometry.location.lat();
         const lng = res[0].geometry.location.lng();
         this.props.updateSearchCoords(lat, lng);
-        this.props.history.push(`/discover?lat=${lat}&lng=${lng}`);
-      } else {
-        this.props.updateSearchCoords(37.7758, -122.435);
-        this.props.history.push(`/discover?lat=37.7749295&lng=-122.4194155`);
       }
     });
   }

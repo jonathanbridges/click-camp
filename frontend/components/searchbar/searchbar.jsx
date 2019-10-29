@@ -27,7 +27,7 @@ class SearchBar extends React.Component {
     let address;
     autocomplete.addListener("place_changed", () => {
       if (!autocomplete.getPlace().formatted_address) {
-        address = autocomplete.getPlace("San Francisco").name;
+        address = autocomplete.getPlace("San Francisco").formatted_address;
         this.setState({ query: address });
         this.handleSubmit();
       } else {
@@ -49,16 +49,20 @@ class SearchBar extends React.Component {
       e.preventDefault();
     }
 
+    if (this.state.query === "San" || this.state.query === undefined) {
+      this.setState({query: "San Francisco"});
+    }
+
     const geocoder = new google.maps.Geocoder();
     geocoder.geocode({ address: this.state.query }, (res, status) => {
       if (status === google.maps.GeocoderStatus.OK) {
         const lat = res[0].geometry.location.lat();
         const lng = res[0].geometry.location.lng();
         this.props.updateSearchCoords(lat, lng);
-        this.props.history.push(`/discover?lat=${lat}&lng=${lng}`);
+        setTimeout(() => this.props.history.push(`/discover`), 500);
       } else {
         this.props.updateSearchCoords(37.7758, -122.435);
-        this.props.history.push(`/discover?lat=37.7749295&lng=-122.4194155`);
+        setTimeout(() => this.props.history.push(`/discover`), 500);
       }
     });
   }
@@ -80,7 +84,6 @@ class SearchBar extends React.Component {
               id="listings"
               className="listing-search-input"
               dir="auto" 
-              autocomplete="off"
               placeholder="Try San Francisco..." />
             <input 
               type="submit"
