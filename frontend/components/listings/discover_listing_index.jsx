@@ -40,7 +40,7 @@ class DiscoverListingIndex extends React.Component {
           <div className="alert-no-results">
             <p>Hmmm, we couldn't find any listings that match your search criteria.</p>
             <br />
-            <p>Try a new search, or zooming the map out to search again. 🔍</p>
+            <p>Try a search for San Francisco, or zoom the map out to search again. 🔍</p>
           </div>
           <div className="map-search-bar"></div>
         </div>
