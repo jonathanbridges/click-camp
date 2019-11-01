@@ -216,7 +216,7 @@ class ListingShowDetails extends React.Component {
       let checkOut = this.state.endDate._d.getTime();
       let duration = (checkOut - checkIn) / (1000 * 3600 * 24);
 
-      sub = duration * this.props.listing.cost;
+      sub = (Math.floor(duration) * this.props.listing.cost).toFixed(2);
 
       subtotalDiv = (
         <div className="subtotal-wrapper">
