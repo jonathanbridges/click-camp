@@ -59,6 +59,7 @@ class NavSearchBar extends React.Component {
         const lat = res[0].geometry.location.lat();
         const lng = res[0].geometry.location.lng();
         this.props.updateSearchCoords(lat, lng);
+        setTimeout(() => this.props.history.push(`/discover`), 500);
       }
     });
   }
