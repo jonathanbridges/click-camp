@@ -996,7 +996,7 @@ review35 = Review.create!(
 review36 = Review.create!(
   listing_id: listing4.id,
   reviewer_id: reviewer10.id,
-  text: "I love everything about this amazing Hipcamp! This was my first time camping by myself and I can't imagine a better experience.",
+  text: "I love everything about this amazing ClickCamp! This was my first time camping by myself and I can't imagine a better experience.",
   recommends: true
 )
 

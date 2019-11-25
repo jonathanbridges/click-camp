@@ -88,12 +88,12 @@ class SplashListingIndex extends React.Component {
           <div className="testimonial-container">
             <div className="testimonial-content">
               <figure className="testimonial-image-container">
-                <img alt="Hipcamp host Terry" className="testimonial-image" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/testimonial.jpg" />
+                <img alt="ClickCamp host Terry" className="testimonial-image" src="https://app-name-seeds.s3-us-west-1.amazonaws.com/testimonial.jpg" />
               </figure>
               <div className="quotes-wrapper">
                 <h1>Terry, ClickCamp Host says:</h1>
                 <blockquote>
-                  “Hipcamp has helped us earn some much needed side income to supplement our working ranch. Hipcamp staff are all very helpful and approachable, and they always respond to our inquiries immediately. We are big fans of this service and we can't recommend it highly enough to other landowners like ourselves!”
+                  “ClickCamp has helped us earn some much needed side income to supplement our working ranch. ClickCamp staff are all very helpful and approachable, and they always respond to our inquiries immediately. We are big fans of this service and we can't recommend it highly enough to other landowners like ourselves!”
                 </blockquote>
                 <Link to={`/discover/${testimonialListingId}`} className="testimonial-host-link">Host of Leaning Leanto in California</Link>
                 <div className="testimonial-cta">
