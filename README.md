@@ -5,7 +5,7 @@ Live Site: [ClickCamp](https://click-camp.herokuapp.com/)
 ## Overview
 ClickCamp is a single-page web app inspired by [HipCamp](https://www.hipcamp.com/). Current functionality handles user authentication, the ability to view listings, and make reservations.
 
-The technology stack used utilizes React.js with Redux for frontend, and Rails with PostgreSQL.
+The technology stack used utilizes React with Redux for the frontend, and Rails with PostgreSQL for the backend.
 ## Contents
 * [Install](#install)
 * [Technologies Used](#technologies-used)
@@ -58,9 +58,12 @@ $ navigate to http://localhost:3000/#/
 
 * Visitors can make a reservation on any listing by selecting dates on the right-hand side of the page.
 * A confirmation is presented to the visitor upon successfully making a reservation.
+---
+### Reviews
+* Visitors can create, view, update, and delete, reviews for campsites.
+---
+### Search
+* Visitors can search for campground listings via the search bar on the homepage, or when viewing a listing, in the navbar.
+---
 ## Planned Features
-
-* Search (keyword, category, and Google Maps API) 
-* Reviews (add, update, and delete)
-* User show page (manage reservations)
-* Improved reservations logic (persisting data to frontend, blackouts for listings)
+* More Search Options (keyword, category) 
