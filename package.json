@@ -9,7 +9,7 @@
     "babel-loader": "^8.1.0",
     "emotion": "^10.0.27",
     "lodash": "^4.17.15",
-    "moment": "^2.26.0",
+    "moment": "^2.29.2",
     "nuka-carousel": "^4.7.0",
     "react": "^16.13.1",
     "react-dates": "^20.3.0",
