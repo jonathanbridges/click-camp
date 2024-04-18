@@ -1,7 +1,5 @@
 ![Logo](https://app-name-seeds.s3-us-west-1.amazonaws.com/clickcamp-text.png)
 
-Live Site: [ClickCamp](https://click-camp.herokuapp.com/)
-
 ## Overview
 ClickCamp is a single-page web app inspired by [HipCamp](https://www.hipcamp.com/). Current functionality handles user authentication, the ability to view listings, and make reservations.
 
