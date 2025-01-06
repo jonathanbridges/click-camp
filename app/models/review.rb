@@ -13,7 +13,7 @@
 
 class Review < ApplicationRecord
   # Associations
-  belongs_to :user
+  belongs_to :reviewer, class_name: 'User'
   belongs_to :listing
   belongs_to :reservation
   

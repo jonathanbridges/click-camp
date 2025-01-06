@@ -16,11 +16,17 @@
 class Listing < ApplicationRecord
   include PgSearch::Model
 
+  # Active Storage
+  has_many_attached :photos do |attachable|
+    attachable.variant :thumb, resize_to_fill: [100, 100]
+    attachable.variant :medium, resize_to_fill: [300, 300]
+    attachable.variant :large, resize_to_fill: [800, 600]
+  end
+
   # Associations
   belongs_to :host, class_name: 'User'
   has_many :reservations, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many_attached :images
 
   # Validations
   validates :title, presence: true, length: { minimum: 5, maximum: 100 }
@@ -79,9 +85,12 @@ class Listing < ApplicationRecord
   # Callbacks
   before_save :update_searchable_content
 
+  # Scopes
+  scope :with_attached_photos, -> { includes(photos_attachments: :blob) }
+
   def image_path
-    return nil unless images.attached?
-    Rails.application.routes.url_helpers.rails_blob_path(images.first, only_path: true)
+    return nil unless photos.attached?
+    Rails.application.routes.url_helpers.rails_blob_path(photos.first, only_path: true)
   end
 
   def average_rating

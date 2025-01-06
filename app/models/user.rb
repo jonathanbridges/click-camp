@@ -15,11 +15,13 @@ class User < ApplicationRecord
 	# Authentication
 	has_secure_password
 	
+	# Active Storage
+	has_one_attached :avatar
+	
 	# Associations
 	has_many :hosted_listings, class_name: 'Listing', foreign_key: :host_id
 	has_many :bookings
 	has_many :reviews
-	has_one_attached :avatar
 	
 	# Validations
 	validates :email, presence: true, 
@@ -29,6 +31,10 @@ class User < ApplicationRecord
 						uniqueness: true,
 						length: { minimum: 3, maximum: 30 }
 	validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:password_digest] }
+	validates :session_token, presence: true, uniqueness: true
+	
+	# Callbacks
+	before_validation :ensure_session_token
 	
 	# Scopes
 	scope :hosts, -> { joins(:hosted_listings).distinct }
@@ -39,5 +45,18 @@ class User < ApplicationRecord
 	
 	def average_host_rating
 		hosted_listings.joins(:reviews).average(:rating)&.round(1)
+	end
+
+	private
+
+	def ensure_session_token
+		self.session_token ||= generate_unique_session_token
+	end
+
+	def generate_unique_session_token
+		loop do
+			token = SecureRandom.urlsafe_base64
+			return token unless User.exists?(session_token: token)
+		end
 	end
 end

@@ -178,6 +178,9 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
+    pg_search (2.3.7)
+      activerecord (>= 6.1)
+      activesupport (>= 6.1)
     propshaft (1.1.0)
       actionpack (>= 7.0.0)
       activesupport (>= 7.0.0)
@@ -331,6 +334,7 @@ DEPENDENCIES
   jbuilder (~> 2.11)
   listen (~> 3.8)
   pg (~> 1.5)
+  pg_search
   propshaft
   pry-rails
   puma (~> 6.4)

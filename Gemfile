@@ -6,6 +6,7 @@ ruby "3.2.2"
 # Core Rails gems
 gem "rails", "~> 7.1.3"
 gem "pg", "~> 1.5"
+gem "pg_search"
 gem "puma", "~> 6.4"
 
 # API and JSON handling
