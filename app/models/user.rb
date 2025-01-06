@@ -12,49 +12,32 @@
 #
 
 class User < ApplicationRecord
-
-	validates :username, :email, :password_digest, :session_token, presence: true
-	validates :username, :email, uniqueness: true
-	validates :password, length: { minimum: 6, allow_nil: true }
+	# Authentication
+	has_secure_password
 	
-	attr_reader :password
-
-	after_initialize :ensure_session_token
-
-	has_many :listings
+	# Associations
+	has_many :hosted_listings, class_name: 'Listing', foreign_key: :host_id
+	has_many :bookings
+	has_many :reviews
+	has_one_attached :avatar
 	
-	has_many :reservations,
-		foreign_key: :camper_id,
-		class_name: :Reservation
-
-	has_many :reviews,
-		foreign_key: :reviewer_id,
-		class_name: :Review
-
-	has_one_attached :photo
-
-	def self.find_by_credentials(username, password)
-		user = User.find_by(username: username)
-		user && user.is_password?(password) ? user : nil
+	# Validations
+	validates :email, presence: true, 
+					 uniqueness: true,
+					 format: { with: URI::MailTo::EMAIL_REGEXP }
+	validates :username, presence: true, 
+						uniqueness: true,
+						length: { minimum: 3, maximum: 30 }
+	validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:password_digest] }
+	
+	# Scopes
+	scope :hosts, -> { joins(:hosted_listings).distinct }
+	
+	def total_bookings
+		hosted_listings.joins(:bookings).count
 	end
-
-	def is_password?(password)
-		BCrypt::Password.new(password_digest).is_password?(password)
+	
+	def average_host_rating
+		hosted_listings.joins(:reviews).average(:rating)&.round(1)
 	end
-
-	def password=(password)
-		@password = password
-		self.password_digest = BCrypt::Password.create(password)
-	end
-
-	def ensure_session_token
-		self.session_token ||= SecureRandom.urlsafe_base64
-	end
-
-	def reset_session_token!
-		self.session_token = SecureRandom.urlsafe_base64
-		self.save
-		self.session_token
-	end
-
 end

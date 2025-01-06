@@ -12,24 +12,33 @@
 #
 
 class Review < ApplicationRecord
-
-  validates :reviewer_id, :listing_id, :text, presence: true
-  validates_length_of :text, :within => 6..255, :too_long => "Maximum 255 Characters", :too_short => "Minimum 8 Characters"
-
-  belongs_to :reviewer,
-    foreign_key: :reviewer_id,
-    class_name: :User
-
+  # Associations
+  belongs_to :user
   belongs_to :listing
-
-  def self.get_number_ratings(listing_id)
-    self.where("listing_id = ?", listing_id).count
+  belongs_to :reservation
+  
+  # Validations
+  validates :rating, presence: true, 
+                    numericality: { 
+                      only_integer: true,
+                      greater_than_or_equal_to: 1,
+                      less_than_or_equal_to: 5
+                    }
+  validates :content, presence: true, length: { minimum: 10, maximum: 1000 }
+  validates :reservation_id, uniqueness: { message: "can only have one review" }
+  validate :reservation_completed
+  
+  # Scopes
+  scope :recent, -> { order(created_at: :desc) }
+  scope :by_rating, ->(rating) { where(rating: rating) }
+  
+  private
+  
+  def reservation_completed
+    return unless reservation
+    
+    unless reservation.check_out < Date.current
+      errors.add(:reservation, "must be completed before leaving a review")
+    end
   end
-
-  def self.get_rating(listing_id)
-    reviews = self.where("listing_id = ?", listing_id)
-    likes = reviews.where(recommends: true).count
-    rating = (likes / reviews.length.to_f * 100).to_f.round
-  end
-
 end

@@ -14,26 +14,89 @@
 #
 
 class Listing < ApplicationRecord
+  include PgSearch::Model
 
-  validates :host_id, :name, :description, :cost, :lat, :lng, presence: true
+  # Associations
+  belongs_to :host, class_name: 'User'
+  has_many :reservations, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many_attached :images
 
-  belongs_to :host,
-    foreign_key: :host_id,
-    class_name: :User
+  # Validations
+  validates :title, presence: true, length: { minimum: 5, maximum: 100 }
+  validates :description, presence: true
+  validates :price_per_night, presence: true, numericality: { greater_than: 0 }
+  validates :lat, :lng, presence: true
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :state, presence: true
 
-  has_many :reservations
+  # Scopes
+  scope :active, -> { where(active: true) }
+  scope :by_price_range, ->(min, max) { where(price_per_night: min..max) }
+  
+  # Scopes for geospatial queries
+  scope :near_coordinates, ->(lat, lng, radius_in_miles = 50) {
+    where(
+      "ST_DWithin(
+        ST_MakePoint(lng, lat)::geography,
+        ST_MakePoint(?, ?)::geography,
+        ? * 1609.34
+      )",
+      lng, lat, radius_in_miles
+    )
+  }
 
-  has_many :reviews
+  # Full-text search
+  pg_search_scope :search_by_location,
+    against: {
+      title: 'A',
+      description: 'B',
+      city: 'A',
+      state: 'A',
+      address: 'B'
+    },
+    using: {
+      tsearch: { 
+        prefix: true,
+        dictionary: 'english',
+        tsvector_column: 'searchable_content'
+      },
+      trigram: {
+        word_similarity: true
+      }
+    }
 
-  has_many_attached :photos
+  # Availability checking
+  scope :available_between, ->(check_in, check_out) {
+    where.not(
+      id: Reservation
+          .where('check_in <= ? AND check_out >= ?', check_out, check_in)
+          .select(:listing_id)
+    )
+  }
 
-  def self.in_bounds(bounds)
-    bounds = JSON.parse(bounds)
+  # Callbacks
+  before_save :update_searchable_content
 
-    self.where('lat < ?', bounds["northEast"]["lat"].to_f)
-      .where('lat >?', bounds["southWest"]["lat"].to_f)
-      .where('lng < ?', bounds["northEast"]["lng"].to_f)
-      .where('lng > ?', bounds["southWest"]["lng"].to_f)
+  def image_path
+    return nil unless images.attached?
+    Rails.application.routes.url_helpers.rails_blob_path(images.first, only_path: true)
   end
 
+  def average_rating
+    reviews.average(:rating)&.round(1)
+  end
+
+  private
+
+  def update_searchable_content
+    self.searchable_content = [
+      title,
+      description,
+      city,
+      state,
+      address
+    ].compact.join(' ')
+  end
 end
