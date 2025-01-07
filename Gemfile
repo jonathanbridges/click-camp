@@ -13,6 +13,7 @@ gem "stringio", "~> 3.1.2"
 
 # API and JSON handling
 gem "jbuilder", "~> 2.11"
+gem 'graphql', '~> 2.2'
 
 # Authentication & Security
 gem "bcrypt", "~> 3.1.7"

@@ -1,0 +1,10 @@
+output_path: 'app/frontend/types'
+models:
+  - User
+  - Listing
+  - Reservation
+  - Review
+options:
+  include_timestamps: true
+  include_relationships: true
+  include_enums: true 
