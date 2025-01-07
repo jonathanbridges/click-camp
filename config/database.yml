@@ -21,6 +21,9 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: <%= ENV.fetch("POSTGRES_HOST") { "localhost" } %>
+  username: <%= ENV.fetch("POSTGRES_USER") { ENV['USER'] } %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD") { "" } %>
+  port: <%= ENV.fetch("POSTGRES_PORT") { 5432 } %>
 
 development:
   <<: *default
@@ -91,8 +94,8 @@ test:
 production:
   <<: *default
   database: click_camp_production
-  username: <%= ENV["POSTGRES_USERNAME"] %>
-  password: <%= ENV["POSTGRES_PASSWORD"] %>
+  username: click_camp
+  password: <%= ENV["CLICK_CAMP_DATABASE_PASSWORD"] %>
   extensions:
     - postgis
     - pg_trgm
