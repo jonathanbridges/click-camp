@@ -346,6 +346,7 @@ DEPENDENCIES
   rubocop-rails
   sidekiq
   sprockets-rails
+  stringio (~> 3.1.2)
   web-console
 
 RUBY VERSION

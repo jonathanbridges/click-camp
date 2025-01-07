@@ -44,4 +44,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # Ensure Active Storage queues are processed inline during tests
+  config.active_job.queue_adapter = :inline
 end

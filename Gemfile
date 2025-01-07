@@ -6,9 +6,10 @@ ruby "3.2.2"
 # Core Rails gems
 gem "rails", "~> 7.1.3"
 gem "pg", "~> 1.5"
-gem "activerecord-postgis-adapter"
+# Using plain PostgreSQL with PostGIS extensions instead of the adapter
 gem "pg_search"
 gem "puma", "~> 6.4"
+gem "stringio", "~> 3.1.2"
 
 # API and JSON handling
 gem "jbuilder", "~> 2.11"
