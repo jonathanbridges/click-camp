@@ -1,11 +1,11 @@
 class ListingBlueprint < Blueprinter::Base
   identifier :id
   fields :title, :description, :price_per_night, :lat, :lng, 
-         :address, :city, :state
+         :address, :city, :state, :host_id
   
-  field :image_urls do |listing|
-    listing.images.map { |image| 
-      Rails.application.routes.url_helpers.url_for(image)
+  field :photo_urls do |listing|
+    listing.photos.map { |photo| 
+      Rails.application.routes.url_helpers.url_for(photo)
     }
   end
 

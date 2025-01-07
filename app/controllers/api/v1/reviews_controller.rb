@@ -2,7 +2,7 @@ module Api
   module V1
     class ReviewsController < BaseController
       def index
-        @reviews = listing.reviews.includes(:user)
+        @reviews = listing.reviews.includes(:reviewer)
         render json: ReviewBlueprint.render(@reviews)
       end
 

@@ -20,8 +20,8 @@ class User < ApplicationRecord
 	
 	# Associations
 	has_many :hosted_listings, class_name: 'Listing', foreign_key: :host_id
-	has_many :bookings
-	has_many :reviews
+	has_many :reservations, foreign_key: :camper_id
+	has_many :reviews, foreign_key: :reviewer_id
 	
 	# Validations
 	validates :email, presence: true, 
@@ -39,12 +39,24 @@ class User < ApplicationRecord
 	# Scopes
 	scope :hosts, -> { joins(:hosted_listings).distinct }
 	
-	def total_bookings
-		hosted_listings.joins(:bookings).count
+	# Returns the total number of reservations made at listings hosted by this user
+	def total_hosted_reservations
+		hosted_listings.joins(:reservations).count
+	end
+	
+	# Returns the total number of reservations this user has made as a camper
+	def total_reservations
+		reservations.count
 	end
 	
 	def average_host_rating
 		hosted_listings.joins(:reviews).average(:rating)&.round(1)
+	end
+
+	def reset_session_token!
+		self.session_token = generate_unique_session_token
+		save!
+		session_token
 	end
 
 	private

@@ -8,3 +8,13 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ActionDispatch::IntegrationTest
+  setup do
+    Rails.application.config.action_dispatch.show_exceptions = :none
+  end
+
+  teardown do
+    Rails.application.config.action_dispatch.show_exceptions = true
+  end
+end

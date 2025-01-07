@@ -19,7 +19,7 @@ module Api
           session[:session_token] = nil
           head :no_content
         else
-          render json: { error: 'Not logged in' }, status: :unauthorized
+          render json: { error: 'You need to sign in before continuing' }, status: :unauthorized
         end
       end
     end

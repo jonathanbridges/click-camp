@@ -2,13 +2,14 @@
 #
 # Table name: reviews
 #
-#  id          :bigint           not null, primary key
-#  reviewer_id :integer          not null
-#  listing_id  :integer          not null
-#  text        :text             not null
-#  recommends  :boolean          default(TRUE), not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
+#  id             :bigint           not null, primary key
+#  reviewer_id    :integer          not null
+#  listing_id     :integer          not null
+#  reservation_id :integer          not null
+#  content        :text             not null
+#  rating         :integer          not null
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
 #
 
 class Review < ApplicationRecord
@@ -29,7 +30,7 @@ class Review < ApplicationRecord
   validate :reservation_completed
   
   # Scopes
-  scope :recent, -> { order(created_at: :desc) }
+  scope :recent, -> { order(created_at: :desc, id: :desc) }
   scope :by_rating, ->(rating) { where(rating: rating) }
   
   private

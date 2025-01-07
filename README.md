@@ -4,6 +4,7 @@
 ClickCamp is a single-page web app inspired by [HipCamp](https://www.hipcamp.com/). Current functionality handles user authentication, the ability to view listings, and make reservations.
 
 The technology stack used utilizes React with Redux for the frontend, and Rails with PostgreSQL for the backend.
+
 ## Contents
 * [Install](#install)
 * [Technologies Used](#technologies-used)
@@ -12,34 +13,53 @@ The technology stack used utilizes React with Redux for the frontend, and Rails 
 
 ## Install
 To run ClickCamp locally:
-```
-$ git clone https://github.com/jonathanbridges/click-camp
-$ cd click-camp
-$ npm install
-$ bundle install
+
+1. Clone and install dependencies:
+```bash
+git clone https://github.com/jonathanbridges/click-camp
+cd click-camp
+npm install
+bundle install
 ```
 
-Database creation and initialization:
-```
-$ bundle exec rails db:setup
+2. System Requirements (for Apple Silicon Macs):
+```bash
+# Install PostgreSQL 14 (LTS version)
+arch -arm64 brew install postgresql@14
+arch -arm64 brew services start postgresql@14
+arch -arm64 brew link postgresql@14 --force
+
+# Install PostGIS for geospatial features
+arch -arm64 brew install postgis
 ```
 
-Deployment instructions:
+For Intel Macs, omit the `arch -arm64` prefix.
+
+3. Database setup:
+```bash
+# Create and seed the database
+rails db:reset
 ```
-$ npm start
-$ bundle exec rails server
-$ navigate to http://localhost:3000/#/
+
+4. Start the servers:
+```bash
+npm start
+bundle exec rails server
 ```
+
+Then navigate to http://localhost:3000/#/
+
 ## Technologies Used
 ### Backend
-* Framework: Ruby on Rails (v5.2.3)
-* Database: PostgreSQL (v11.4)
+* Framework: Ruby on Rails (v7.1.5)
+* Database: PostgreSQL (v14) with PostGIS for geospatial features
 * AWS S3: stores listing photos
-* User Authentication: Created using BCrypt (v3.1.7)
+* User Authentication: Created using BCrypt
 * External APIs: Google Maps API
+* Geospatial: PostGIS for location-based searches
 
 ### Frontend
-* Framework: React/Redux (v16.8.6/4.0.1)
+* Framework: React/Redux
 * React Libraries Used: react-dates (calendar), nuka-carousel (image carousel)
 * Styling: CSS
 

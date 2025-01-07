@@ -2,6 +2,7 @@ module Api
   module V1
     class ReservationsController < BaseController
       before_action :set_reservation, only: [:show, :update, :destroy]
+      rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
       def index
         @reservations = current_user.reservations.includes(:listing)
@@ -49,6 +50,10 @@ module Api
           :check_out,
           :guest_count
         )
+      end
+
+      def handle_not_found
+        render json: { error: 'Reservation not found' }, status: :not_found
       end
     end
   end

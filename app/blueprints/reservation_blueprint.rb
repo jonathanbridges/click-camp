@@ -2,7 +2,7 @@ class ReservationBlueprint < Blueprinter::Base
   identifier :id
   
   # Basic fields
-  fields :check_in, :check_out, :guest_count
+  fields :check_in, :check_out, :guest_count, :camper_id, :listing_id
   
   # Computed fields
   field :duration do |reservation|

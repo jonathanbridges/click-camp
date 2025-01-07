@@ -2,25 +2,42 @@
 #
 # Table name: listings
 #
-#  id          :bigint           not null, primary key
-#  host_id     :integer          not null
-#  name        :string           not null
-#  description :text             not null
-#  cost        :integer          not null
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  lat         :float
-#  lng         :float
+#  id                 :bigint           not null, primary key
+#  host_id            :integer          not null
+#  title              :string           not null
+#  description        :text             not null
+#  price_per_night    :integer          not null
+#  address            :string           not null
+#  city               :string           not null
+#  state              :string           not null
+#  lat                :float
+#  lng                :float
+#  searchable_content :tsvector
+#  active             :boolean          default(TRUE), not null
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+listing_one:
+  host: user_one
+  title: "Cozy Mountain Cabin"
+  description: "A beautiful cabin in the mountains"
+  price_per_night: 100
+  address: "123 Mountain Road"
+  city: "Boulder"
+  state: "CO"
+  lat: 40.0150
+  lng: -105.2705
+  active: true
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+listing_two:
+  host: user_two
+  title: "Beachfront Paradise"
+  description: "Beautiful beachfront property with amazing views"
+  price_per_night: 200
+  address: "456 Ocean Drive"
+  city: "Miami Beach"
+  state: "FL"
+  lat: 25.7907
+  lng: -80.1300
+  active: true

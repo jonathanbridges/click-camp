@@ -19,7 +19,6 @@ module Api
         
         if @listing.save
           ImageProcessingJob.perform_later(@listing.id) if @listing.images.attached?
-          GeocodingJob.perform_later(@listing.id)
           render json: ListingBlueprint.render(@listing), status: :created
         else
           render json: { errors: @listing.errors }, status: :unprocessable_entity

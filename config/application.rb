@@ -30,6 +30,13 @@ module ClickCamp
     # API Configuration
     config.api_only = true
     
+    # Session Configuration
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use ActionDispatch::Session::CookieStore,
+      key: '_click_camp_session',
+      same_site: :strict,
+      secure: Rails.env.production?
+    
     # CORS Configuration
     config.middleware.insert_before 0, Rack::Cors do
       allow do
