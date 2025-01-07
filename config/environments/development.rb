@@ -58,4 +58,30 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # Configure default URL host for development
+  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # Configure default URL options for development
+  config.action_controller.default_url_options = { 
+    host: 'localhost',
+    port: 3000,
+    protocol: 'http'
+  }
+  
+  Rails.application.routes.default_url_options = { 
+    host: 'localhost',
+    port: 3000,
+    protocol: 'http'
+  }
+
+  # Enable more verbose logging
+  config.logger = ActiveSupport::Logger.new(STDOUT)
+  config.logger.formatter = proc { |severity, time, progname, msg|
+    "#{severity}: #{msg}\n"
+  }
+
+  # Set standard Rails development log level
+  config.log_level = :debug
 end

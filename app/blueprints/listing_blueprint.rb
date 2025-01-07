@@ -4,9 +4,23 @@ class ListingBlueprint < Blueprinter::Base
          :address, :city, :state, :host_id
   
   field :photo_urls do |listing|
-    listing.photos.map { |photo| 
-      Rails.application.routes.url_helpers.url_for(photo)
-    }
+    if listing.photos.attached?
+      Rails.logger.debug "Photos are attached: #{listing.photos.count}"
+      listing.photos.map do |photo|
+        begin
+          url = Rails.application.routes.url_helpers.rails_blob_url(photo)
+          Rails.logger.debug "Generated URL: #{url}"
+          url
+        rescue => e
+          Rails.logger.error "Error generating URL for photo: #{e.message}"
+          Rails.logger.error e.backtrace.join("\n")
+          nil
+        end
+      end.compact
+    else
+      Rails.logger.debug "No photos attached for listing #{listing.id}"
+      []
+    end
   end
 
   view :extended do
