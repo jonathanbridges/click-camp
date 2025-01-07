@@ -3,6 +3,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
 
   def frontend_index_html
-    render file: 'public/index.html'
+    render file: Rails.root.join('public', 'index.html')
   end
 end
