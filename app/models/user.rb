@@ -12,49 +12,63 @@
 #
 
 class User < ApplicationRecord
-
-	validates :username, :email, :password_digest, :session_token, presence: true
-	validates :username, :email, uniqueness: true
-	validates :password, length: { minimum: 6, allow_nil: true }
+	# Authentication
+	has_secure_password
 	
-	attr_reader :password
-
-	after_initialize :ensure_session_token
-
-	has_many :listings
+	# Active Storage
+	has_one_attached :avatar
 	
-	has_many :reservations,
-		foreign_key: :camper_id,
-		class_name: :Reservation
-
-	has_many :reviews,
-		foreign_key: :reviewer_id,
-		class_name: :Review
-
-	has_one_attached :photo
-
-	def self.find_by_credentials(username, password)
-		user = User.find_by(username: username)
-		user && user.is_password?(password) ? user : nil
+	# Associations
+	has_many :hosted_listings, class_name: 'Listing', foreign_key: :host_id
+	has_many :reservations, foreign_key: :camper_id
+	has_many :reviews, foreign_key: :reviewer_id
+	
+	# Validations
+	validates :email, presence: true, 
+					 uniqueness: true,
+					 format: { with: URI::MailTo::EMAIL_REGEXP }
+	validates :username, presence: true, 
+						uniqueness: true,
+						length: { minimum: 3, maximum: 30 }
+	validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:password_digest] }
+	validates :session_token, presence: true, uniqueness: true
+	
+	# Callbacks
+	before_validation :ensure_session_token
+	
+	# Scopes
+	scope :hosts, -> { joins(:hosted_listings).distinct }
+	
+	# Returns the total number of reservations made at listings hosted by this user
+	def total_hosted_reservations
+		hosted_listings.joins(:reservations).count
 	end
-
-	def is_password?(password)
-		BCrypt::Password.new(password_digest).is_password?(password)
+	
+	# Returns the total number of reservations this user has made as a camper
+	def total_reservations
+		reservations.count
 	end
-
-	def password=(password)
-		@password = password
-		self.password_digest = BCrypt::Password.create(password)
-	end
-
-	def ensure_session_token
-		self.session_token ||= SecureRandom.urlsafe_base64
+	
+	def average_host_rating
+		hosted_listings.joins(:reviews).average(:rating)&.round(1)
 	end
 
 	def reset_session_token!
-		self.session_token = SecureRandom.urlsafe_base64
-		self.save
-		self.session_token
+		self.session_token = generate_unique_session_token
+		save!
+		session_token
 	end
 
+	private
+
+	def ensure_session_token
+		self.session_token ||= generate_unique_session_token
+	end
+
+	def generate_unique_session_token
+		loop do
+			token = SecureRandom.urlsafe_base64
+			return token unless User.exists?(session_token: token)
+		end
+	end
 end

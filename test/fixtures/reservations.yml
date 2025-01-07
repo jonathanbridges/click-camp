@@ -2,23 +2,26 @@
 #
 # Table name: reservations
 #
-#  id         :bigint           not null, primary key
-#  camper_id  :integer          not null
-#  listing_id :integer          not null
-#  check_in   :date             not null
-#  check_out  :date             not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint           not null, primary key
+#  camper_id   :integer          not null
+#  listing_id  :integer          not null
+#  check_in    :date             not null
+#  check_out   :date             not null
+#  guest_count :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+reservation_one:
+  camper: user_two
+  listing: listing_one
+  check_in: <%= Date.today + 1.week %>
+  check_out: <%= Date.today + 2.weeks %>
+  guest_count: 2
 
-# This model initially had no columns defined. If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-# column: value
+reservation_two:
+  camper: user_one
+  listing: listing_two
+  check_in: <%= Date.today + 3.weeks %>
+  check_out: <%= Date.today + 4.weeks %>
+  guest_count: 3
