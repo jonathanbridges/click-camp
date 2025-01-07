@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgis/postgis:15-3.3
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: click_camp_test
+    ports:
+      - "5432:5432"
+
+  test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    environment:
+      RAILS_ENV: test
+      POSTGRES_HOST: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_PORT: 5432
+    depends_on:
+      - postgres
+    command: sh -c "bundle exec rails db:create db:schema:load && bundle exec rails test" 
