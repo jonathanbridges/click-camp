@@ -59,6 +59,12 @@ class User < ApplicationRecord
 		session_token
 	end
 
+	def self.find_by_credentials(email, password)
+		user = User.find_by(email: email)
+		return nil unless user
+		user.authenticate(password) ? user : nil
+	end
+
 	private
 
 	def ensure_session_token
@@ -66,9 +72,9 @@ class User < ApplicationRecord
 	end
 
 	def generate_unique_session_token
-		loop do
-			token = SecureRandom.urlsafe_base64
-			return token unless User.exists?(session_token: token)
-		end
+			loop do
+				token = SecureRandom.urlsafe_base64
+				return token unless User.exists?(session_token: token)
+			end
 	end
 end

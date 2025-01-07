@@ -1,0 +1,10 @@
+output_path: 'app/frontend/types/models.ts'
+models:
+  - User
+  - Listing
+  - Reservation
+  - Review
+options:
+  timestamps: true
+  optional_attributes: false
+  strict_null_checks: true 
