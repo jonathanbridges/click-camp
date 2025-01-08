@@ -3,7 +3,7 @@ module Api
     class ListingsController < BaseController
       skip_before_action :authenticate_user, only: [:index, :show]
       before_action :set_listing, only: [:show, :update, :destroy]
-
+      
       def index
         listings = Listing.all
         render json: ListingBlueprint.render(listings)
@@ -18,7 +18,7 @@ module Api
         @listing = current_user.hosted_listings.build(listing_params)
         
         if @listing.save
-          ImageProcessingJob.perform_later(@listing.id) if @listing.images.attached?
+          ImageProcessingJob.perform_later(@listing.id) if @listing.photos.attached?
           render json: ListingBlueprint.render(@listing), status: :created
         else
           render json: { errors: @listing.errors }, status: :unprocessable_entity
@@ -35,7 +35,7 @@ module Api
         params.require(:listing).permit(
           :title, :description, :price_per_night,
           :lat, :lng, :address, :city, :state,
-          images: []
+          photos: []
         )
       end
 

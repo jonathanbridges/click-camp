@@ -27,7 +27,7 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Store uploaded files on the local file system (see config/storage.yml for options)
+  # Store uploaded files on S3
   config.active_storage.service = :amazon_dev
 
   # Don't care if the mailer can't send.
@@ -45,23 +45,10 @@ Rails.application.configure do
   config.active_record.verbose_query_logs = true
 
   # Debug mode disables concatenation and preprocessing of assets.
-  # This option may cause significant delays in view rendering with a large
-  # number of complex assets.
   config.assets.debug = true
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-
-  # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
-
-  # Use an evented file watcher to asynchronously detect changes in source code,
-  # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-
-  # Configure default URL host for development
-  Rails.application.routes.default_url_options[:host] = 'localhost:3000'
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Configure default URL options for development
   config.action_controller.default_url_options = { 
@@ -76,12 +63,9 @@ Rails.application.configure do
     protocol: 'http'
   }
 
-  # Enable more verbose logging
-  config.logger = ActiveSupport::Logger.new(STDOUT)
-  config.logger.formatter = proc { |severity, time, progname, msg|
-    "#{severity}: #{msg}\n"
-  }
+  # Allow requests from the Vite dev server in development
+  config.hosts << "localhost"
 
-  # Set standard Rails development log level
-  config.log_level = :debug
+  # Use an evented file watcher to asynchronously detect changes in source code
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 end
