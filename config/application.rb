@@ -24,27 +24,14 @@ module ClickCamp
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    # Use the latest cache format version
-    config.active_support.cache_format_version = 7.1
-
-    # API Configuration
+    # Only loads a smaller set of middleware suitable for API only apps.
     config.api_only = true
-    
-    # Session Configuration
+
+    # Enable sessions for API
     config.middleware.use ActionDispatch::Cookies
-    config.middleware.use ActionDispatch::Session::CookieStore,
-      key: '_click_camp_session',
-      same_site: :strict,
-      secure: Rails.env.production?
-    
-    # CORS Configuration
-    config.middleware.insert_before 0, Rack::Cors do
-      allow do
-        origins '*'  # Configure appropriately for production
-        resource '*',
-          headers: :any,
-          methods: [:get, :post, :put, :patch, :delete, :options, :head]
-      end
-    end
+    config.middleware.use ActionDispatch::Session::CookieStore
+
+    # Allow sessions in API mode
+    config.session_store :cookie_store, key: '_click_camp_session'
   end
 end

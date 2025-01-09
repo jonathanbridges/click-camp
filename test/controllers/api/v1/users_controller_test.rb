@@ -118,4 +118,23 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     }, as: :json
     assert_response :unauthorized
   end
+
+  test "should get me when authenticated" do
+    # Try to access /me endpoint
+    get me_api_v1_users_url, as: :json
+    assert_response :success
+    
+    # Verify the response contains the correct user
+    response_user = JSON.parse(response.body)
+    assert_equal @user.id, response_user['id']
+    assert_equal @user.email, response_user['email']
+  end
+
+  test "should not get me when not authenticated" do
+    # Make sure we're logged out
+    delete api_v1_session_url
+    
+    get me_api_v1_users_url, as: :json
+    assert_response :unauthorized
+  end
 end 

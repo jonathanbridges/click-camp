@@ -9,7 +9,9 @@ Rails.application.routes.draw do
       end
       
       resources :reservations
-      resources :users, only: [:show, :create, :update]
+      resources :users, only: [:show, :create, :update] do
+        get :me, on: :collection
+      end
       
       # Session management
       resource :session, only: [:create, :destroy]
