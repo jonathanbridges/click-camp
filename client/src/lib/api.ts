@@ -109,7 +109,8 @@ export const api = {
         });
       }
 
-      const response = await fetch(`${API_URL}/listings?${searchParams}`, {
+      const url = `${API_URL}/listings${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
+      const response = await fetch(url, {
         headers: defaultHeaders,
         credentials: 'include',
       });

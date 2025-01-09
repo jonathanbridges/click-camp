@@ -3,8 +3,20 @@ require 'open-uri'
 require 'active_storage'
 
 puts "Clearing existing data..."
+# First remove attachments to prevent orphaned blobs
+ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 [Review, Reservation, Listing, User].each(&:delete_all)
-ActiveStorage::Attachment.all.each(&:purge)
+
+def find_or_create_blob(key, url)
+  existing_blob = ActiveStorage::Blob.find_by(key: key)
+  return existing_blob if existing_blob
+
+  ActiveStorage::Blob.create_and_upload!(
+    io: URI.open(url),
+    filename: key,
+    key: key
+  )
+end
 
 puts "Creating hosts..."
 HOSTS = [
@@ -27,9 +39,9 @@ HOSTS = [
     password: 'password'
   )
   
-  blob = ActiveStorage::Blob.create_and_upload!(
-    io: URI.open("https://app-name-seeds.s3-us-west-1.amazonaws.com/#{avatar}"),
-    filename: avatar
+  blob = find_or_create_blob(
+    avatar,
+    "https://app-name-seeds.s3-us-west-1.amazonaws.com/#{avatar}"
   )
   user.avatar.attach(blob)
   user
@@ -62,9 +74,9 @@ REVIEWERS = [
     password: 'password'
   )
   
-  blob = ActiveStorage::Blob.create_and_upload!(
-    io: URI.open("https://app-name-seeds.s3-us-west-1.amazonaws.com/#{avatar}"),
-    filename: avatar
+  blob = find_or_create_blob(
+    avatar,
+    "https://app-name-seeds.s3-us-west-1.amazonaws.com/#{avatar}"
   )
   user.avatar.attach(blob)
   user
@@ -229,9 +241,10 @@ LISTINGS = listings_data.each_with_index.map do |listing_data, index|
   listing = Listing.create!(listing_data.except(:photo_count))
   
   listing_data[:photo_count].times do |i|
-    blob = ActiveStorage::Blob.create_and_upload!(
-      io: URI.open("https://app-name-seeds.s3-us-west-1.amazonaws.com/site-#{index + 1}-#{i+1}.jpg"),
-      filename: "site-#{index + 1}-#{i+1}.jpg"
+    photo_key = "site-#{index + 1}-#{i+1}.jpg"
+    blob = find_or_create_blob(
+      photo_key,
+      "https://app-name-seeds.s3-us-west-1.amazonaws.com/#{photo_key}"
     )
     listing.photos.attach(blob)
   end
@@ -677,5 +690,8 @@ REVIEWS = [
     )
   )
 end
+
+puts "Cleaning up orphaned blobs..."
+ActiveStorage::Blob.unattached.find_each(&:purge)
 
 puts "Seed data created successfully!"

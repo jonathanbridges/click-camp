@@ -4,12 +4,7 @@ class UserBlueprint < Blueprinter::Base
   
   field :avatar_url do |user|
     if user.avatar.attached?
-      begin
-        Rails.application.routes.url_helpers.rails_blob_url(user.avatar, only_path: true)
-      rescue => e
-        Rails.logger.error("Error generating URL for avatar: #{e.message}")
-        nil
-      end
+      Rails.application.routes.url_helpers.rails_storage_proxy_url(user.avatar)
     end
   end
 end 
