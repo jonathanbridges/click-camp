@@ -1,0 +1,250 @@
+{
+  "info": {
+    "name": "ClickCamp API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/session",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "session"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"clickCamper@camp.site\",\n    \"password\": \"password\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/session",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "session"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Listings",
+      "item": [
+        {
+          "name": "Get All Listings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/listings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "listings"],
+              "query": [
+                {
+                  "key": "min_price",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "max_price",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "lat",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "lng",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "radius",
+                  "value": "",
+                  "disabled": true
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Get Single Listing",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/listings/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "listings", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Listing",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/listings",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "listings"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"listing\": {\n        \"title\": \"Test Campsite\",\n        \"description\": \"A beautiful test campsite\",\n        \"price_per_night\": 50,\n        \"lat\": 37.7749,\n        \"lng\": -122.4194,\n        \"address\": \"123 Test St\",\n        \"city\": \"Test City\",\n        \"state\": \"CA\"\n    }\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reservations",
+      "item": [
+        {
+          "name": "Get User Reservations",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/reservations",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "reservations"]
+            }
+          }
+        },
+        {
+          "name": "Get Single Reservation",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/reservations/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "reservations", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Reservation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/reservations",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "reservations"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"reservation\": {\n        \"listing_id\": 1,\n        \"check_in\": \"2024-02-01\",\n        \"check_out\": \"2024-02-05\",\n        \"guest_count\": 2\n    }\n}"
+            }
+          }
+        },
+        {
+          "name": "Update Reservation",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/reservations/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "reservations", "1"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"reservation\": {\n        \"guest_count\": 3\n    }\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete Reservation",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/reservations/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "reservations", "1"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reviews",
+      "item": [
+        {
+          "name": "Get Listing Reviews",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/v1/listings/1/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "listings", "1", "reviews"]
+            }
+          }
+        },
+        {
+          "name": "Create Review",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{base_url}}/api/v1/listings/1/reviews",
+              "host": ["{{base_url}}"],
+              "path": ["api", "v1", "listings", "1", "reviews"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"review\": {\n        \"rating\": 5,\n        \"content\": \"Amazing campsite with beautiful views!\",\n        \"reservation_id\": 1\n    }\n}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000"
+    }
+  ]
+} 

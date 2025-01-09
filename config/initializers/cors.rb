@@ -5,16 +5,13 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'http://localhost:5173'
+    origins ['http://localhost:5173', 'http://127.0.0.1:5173']
 
-    resource '/api/*',
+    resource '/api/v1/*',
       headers: :any,
-      methods: [:get, :post, :put, :patch, :delete, :options, :head]
-
-    # Add specific configuration for Active Storage
-    resource '/rails/active_storage/*',
-      headers: :any,
-      methods: [:get, :options],
-      credentials: false
+      methods: [:get, :post, :put, :patch, :delete, :options, :head],
+      credentials: true,
+      expose: ['Set-Cookie', 'access-token'],
+      max_age: 600
   end
 end 

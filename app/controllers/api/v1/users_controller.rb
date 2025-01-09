@@ -4,6 +4,14 @@ module Api
       skip_before_action :authenticate_user, only: [:create]
       before_action :set_user, only: [:show, :update]
 
+      def me
+        if current_user
+          render json: UserBlueprint.render(current_user)
+        else
+          render json: { error: 'Not authenticated' }, status: :unauthorized
+        end
+      end
+
       def show
         render json: UserBlueprint.render(@user)
       end
