@@ -1,6 +1,6 @@
+import { rootRoute } from '../../routes/__root';
 import { Box, TextField, Typography } from '@mui/material';
-import { useState, useEffect, useCallback, useRef } from 'react';
-import { useAuth } from '../../hooks/useAuth';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 // Define demo credentials outside component to ensure stability
 const DEMO_EMAIL = import.meta.env.VITE_DEMO_EMAIL ?? 'demo@example.com';
@@ -32,7 +32,7 @@ const DemoLoginForm = ({ onComplete }: DemoLoginFormProps) => {
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>();
-  const { demoLogin } = useAuth();
+  const { auth: { demoLogin } } = rootRoute.useRouteContext();
 
   const startPasswordSequence = useCallback(() => {
     setSequence('password');

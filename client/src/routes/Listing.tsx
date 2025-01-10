@@ -1,49 +1,55 @@
-import { Box, Container, Typography, Avatar, Divider, Rating } from '@mui/material';
-import { createRoute } from '@tanstack/react-router';
-import { rootRoute } from './__root';
-import { LoadingSpinner } from '../components/LoadingSpinner';
-import { useParams } from '@tanstack/react-router';
-import type { Listing, Review } from '../types/listing';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
-import { useListing } from '../hooks/useListing';
+import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import { Avatar, Box, Container, Divider, Rating, Typography } from '@mui/material';
+import { createRoute } from '@tanstack/react-router';
 import { format } from 'date-fns';
+import { LoadingSpinner } from '../components/LoadingSpinner';
+import type { Review } from '../types/listing';
+import { rootRoute } from './__root';
+import { QueryKeys } from '../lib/queryKeys';
+import { AppRoutes } from '../lib/routes';
 
 export const listingRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/listing/$listingId',
+  path: AppRoutes.LISTING_DETAILS,
+  loader: async ({ context, params: { listingId } }) => {
+    const listing = await context.queryClient.fetchQuery({
+      queryKey: [QueryKeys.LISTING, listingId],
+      queryFn: () => context.listings.getOne(parseInt(listingId)),
+      staleTime: 1000 * 60,
+    });
+
+    return {
+      listing,
+    };
+  },
+  pendingMs: 1000,
+  pendingComponent: () => (
+    <Container maxWidth="lg">
+      <Box sx={{ mt: 4, mb: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Loading Campsite...
+        </Typography>
+        <LoadingSpinner />
+      </Box>
+    </Container>
+  ),
+  errorComponent: ({ error }) => (
+    <Container maxWidth="lg">
+      <Box sx={{ mt: 4, mb: 4 }}>
+        <Typography variant="h4" component="h1" color="error" gutterBottom>
+          Error Loading Campsite
+        </Typography>
+        <Typography color="error">{error.message}</Typography>
+      </Box>
+    </Container>
+  ),
   component: ListingPage,
 });
 
 function ListingPage() {
-  const { listingId } = useParams({ from: listingRoute.id });
-  const { data: listing, isLoading, error } = useListing(listingId);
+  const { listing } = listingRoute.useLoaderData();
 
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
-
-  if (error) {
-    return (
-      <Container>
-        <Box sx={{ mt: 4 }}>
-          <Typography color="error">Error loading listing: {error instanceof Error ? error.message : 'Unknown error'}</Typography>
-        </Box>
-      </Container>
-    );
-  }
-
-  if (!listing) {
-    return (
-      <Container>
-        <Box sx={{ mt: 4 }}>
-          <Typography>Listing not found</Typography>
-        </Box>
-      </Container>
-    );
-  }
-
-    console.log(listing.host?.avatar_url, 'avatar url');
   return (
     <Container maxWidth="lg">
       <Box sx={{ mt: 4, mb: 4 }}>

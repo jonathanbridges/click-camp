@@ -5,15 +5,13 @@ export type AuthMode = 'login' | 'signup';
 export interface AuthModalProps {
   open: boolean;
   onClose: () => void;
-  initialMode?: AuthMode;
-  isDemoLogin?: boolean;
-  mode: AuthMode;
-  onChangeMode: (mode: AuthMode) => void;
-  onLogin: (data: { email: string; password: string }) => void;
-  onSignup: (data: { email: string; username: string; password: string }) => void;
-  onDemoLogin: () => void;
-  isLoading?: boolean;
+  mode: 'login' | 'signup';
+  onChangeMode: (mode: 'login' | 'signup') => void;
+  onLogin: (data: LoginFormData) => Promise<void>;
+  onSignup: (data: SignupFormData) => Promise<void>;
+  onDemoLogin: () => Promise<void>;
   error?: string;
+  isDemoLogin?: boolean;
 }
 
 export interface AuthModalControllerProps {
@@ -35,18 +33,26 @@ export const signupSchema = z.object({
   password: z.string().min(6, 'Password must be at least 6 characters'),
 });
 
-export type LoginFormData = z.infer<typeof loginSchema>;
-export type SignupFormData = z.infer<typeof signupSchema>;
-
 // Form component props
 export interface LoginFormProps {
-  onSubmit: (data: LoginFormData) => void;
+  onSubmit: (data: LoginFormData) => Promise<void>;
   onSwitchToSignup: () => void;
-  isLoading?: boolean;
+  error?: string;
 }
 
 export interface SignupFormProps {
-  onSubmit: (data: SignupFormData) => void;
+  onSubmit: (data: SignupFormData) => Promise<void>;
   onSwitchToLogin: () => void;
-  isLoading?: boolean;
+  error?: string;
+}
+
+export interface LoginFormData {
+  email: string;
+  password: string;
+}
+
+export interface SignupFormData {
+  username: string;
+  email: string;
+  password: string;
 } 

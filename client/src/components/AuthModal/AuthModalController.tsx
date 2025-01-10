@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { useAuth } from '../../hooks/useAuth';
+import { rootRoute } from '../../routes/__root';
 import AuthModal from './AuthModal';
 import type { LoginFormData, SignupFormData } from './types';
+import { QueryKeys } from '../../lib/queryKeys';
 
 interface AuthModalControllerProps {
   open: boolean;
@@ -16,47 +17,40 @@ const AuthModalController = ({
   initialMode,
   isDemoLogin = false,
 }: AuthModalControllerProps) => {
-  const { login, signup, demoLogin } = useAuth();
+  const { auth: { login, signup, demoLogin }, queryClient } = rootRoute.useRouteContext();
   const [mode, setMode] = useState(initialMode);
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
 
   const handleLogin = async (data: LoginFormData) => {
-    setIsLoading(true);
     setError(null);
     try {
       await login(data.email, data.password);
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.AUTH] });
       onClose();
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Login failed'));
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const handleDemoLogin = async () => {
-    setIsLoading(true);
     setError(null);
     try {
       await demoLogin();
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.AUTH] });
       onClose();
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Demo login failed'));
-    } finally {
-      setIsLoading(false);
     }
   };
 
   const handleSignup = async (data: SignupFormData) => {
-    setIsLoading(true);
     setError(null);
     try {
       await signup(data.username, data.email, data.password);
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.AUTH] });
       onClose();
     } catch (err) {
       setError(err instanceof Error ? err : new Error('Signup failed'));
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -69,7 +63,6 @@ const AuthModalController = ({
       onLogin={handleLogin}
       onSignup={handleSignup}
       onDemoLogin={handleDemoLogin}
-      isLoading={isLoading}
       error={error?.message}
       isDemoLogin={isDemoLogin}
     />
