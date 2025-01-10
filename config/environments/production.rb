@@ -41,6 +41,21 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :amazon_prod
 
+  # Use service URLs for Active Storage in production
+  config.active_storage.resolve_model_to_route = :rails_storage_proxy
+  config.active_storage.service_urls_expire_in = 1.hour
+
+  # Configure default URL options for production
+  config.action_controller.default_url_options = { 
+    host: ENV['APP_HOST'],
+    protocol: 'https'
+  }
+  
+  Rails.application.routes.default_url_options = {
+    host: ENV['APP_HOST'],
+    protocol: 'https'
+  }
+
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
   # config.action_cable.url = 'wss://example.com/cable'

@@ -6,7 +6,7 @@ class ListingBlueprint < Blueprinter::Base
   field :photo_urls do |listing|
     if listing.photos.attached?
       listing.photos.map do |photo|
-        Rails.application.routes.url_helpers.rails_blob_url(photo)
+        Rails.application.routes.url_helpers.rails_storage_proxy_url(photo)
       rescue => e
         Rails.logger.error "Error generating URL for photo: #{e.message}"
         nil

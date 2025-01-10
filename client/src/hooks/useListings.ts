@@ -17,13 +17,13 @@ interface UseListingsReturn {
 }
 
 export function useListings(params?: ListingParams): UseListingsReturn {
-  const { data: listings, isLoading, error } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['listings', params],
     queryFn: () => api.listings.getAll(params),
   });
 
   return {
-    listings,
+    listings: data,
     isLoading,
     error: error as Error | null,
   };

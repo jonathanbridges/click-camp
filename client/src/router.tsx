@@ -4,8 +4,9 @@ import { rootRoute } from './routes/__root';
 import { indexRoute } from './routes/index';
 import { profileRoute } from './routes/Profile';
 import { listingsRoute } from './routes/Listings';
+import { listingRoute } from './routes/Listing';
 
-const routeTree = rootRoute.addChildren([indexRoute, profileRoute, listingsRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, profileRoute, listingsRoute, listingRoute]);
 
 // Create the router instance
 export const createRouterInstance = (queryClient: QueryClient) => {
