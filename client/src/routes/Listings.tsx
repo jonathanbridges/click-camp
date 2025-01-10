@@ -11,7 +11,7 @@ export const listingsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: AppRoutes.LISTINGS,
   loader: async ({ context }) => {
-    const listings = await context.queryClient.fetchQuery({
+    const listings = await context.queryClient.fetchQuery<Listing[]>({
       queryKey: [QueryKeys.LISTINGS],
       queryFn: () => context.listings.getAll(),
       staleTime: 1000 * 60,

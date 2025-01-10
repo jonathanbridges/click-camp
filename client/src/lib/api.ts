@@ -1,4 +1,5 @@
 import type { AuthResponse, LoginCredentials, SignupCredentials, User } from '../types/auth';
+import type { CreateReservationParams } from '../types/reservation';
 
 const API_URL = import.meta.env.VITE_API_URL ?? 'http://localhost:3000/api/v1';
 
@@ -148,6 +149,36 @@ export const api = {
 
       if (!response.ok) {
         throw new Error('Failed to create listing');
+      }
+
+      return response.json();
+    },
+  },
+
+  reservations: {
+    getAll: async () => {
+      const response = await fetch(`${API_URL}/reservations`, {
+        headers: defaultHeaders,
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch reservations');
+      }
+
+      return response.json();
+    },
+
+    create: async (params: CreateReservationParams) => {
+      const response = await fetch(`${API_URL}/reservations`, {
+        method: 'POST',
+        headers: defaultHeaders,
+        credentials: 'include',
+        body: JSON.stringify({ reservation: params }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to create reservation');
       }
 
       return response.json();
