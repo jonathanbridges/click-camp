@@ -1,42 +1,63 @@
 import { Box, Container, Typography } from '@mui/material';
 import { createRoute, redirect } from '@tanstack/react-router';
-import { useAuth } from '../hooks/useAuth';
-import { LoadingSpinner } from '../components/LoadingSpinner';
 import { rootRoute } from './__root';
+import { AppRoutes } from '../lib/routes';
+import { LoadingSpinner } from '../components/LoadingSpinner';
 
 export const profileRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: '/profile',
-  beforeLoad: async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
+  path: AppRoutes.PROFILE,
+  beforeLoad: async ({ context }) => {
+    const isAuthenticated = await context.auth.isAuthenticated();
+    if (!isAuthenticated) {
       throw redirect({
-        to: '/',
-        search: {
-          authModal: 'login',
-        },
+        to: AppRoutes.HOME,
       });
     }
   },
+  loader: async ({ context }) => {
+    const user = await context.queryClient.fetchQuery({
+      queryKey: ['user'],
+      queryFn: () => context.auth.getCurrentUser(),
+      staleTime: 1000 * 60, // 1 minute
+    });
+
+    return { user };
+  },
+  pendingMs: 1000,
+  pendingComponent: () => (
+    <Container maxWidth="lg">
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Loading Profile...
+        </Typography>
+        <LoadingSpinner />
+      </Box>
+    </Container>
+  ),
+  errorComponent: ({ error }) => (
+    <Container maxWidth="lg">
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h4" component="h1" color="error" gutterBottom>
+          Error Loading Profile
+        </Typography>
+        <Typography color="error">{error.message}</Typography>
+      </Box>
+    </Container>
+  ),
   component: Profile,
 });
 
 function Profile() {
-  const { user, isLoading } = useAuth();
-
-  if (isLoading) {
-    return <LoadingSpinner />;
-  }
+  const { user } = profileRoute.useLoaderData();
 
   return (
     <Container maxWidth="lg">
-      <Box sx={{ mt: 8 }}>
-        <Typography variant="h3" component="h1" gutterBottom>
-          Profile
+      <Box sx={{ mt: 4 }}>
+        <Typography variant="h4" component="h1" gutterBottom>
+          Welcome, {user?.username}!
         </Typography>
-        <Typography variant="h5" component="h2" color="text.secondary" gutterBottom>
-          Welcome back, {user?.name ?? 'Camper'}!
-        </Typography>
+        {/* Add more profile content here */}
       </Box>
     </Container>
   );

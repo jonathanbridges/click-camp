@@ -4,7 +4,8 @@ import { useState, useRef } from 'react';
 import { Link } from '@tanstack/react-router';
 import Logo from '../Logo/Logo';
 import AuthModalController from '../AuthModal/AuthModalController';
-import { useAuth } from '../../hooks/useAuth';
+import { rootRoute } from '../../routes/__root';
+import { QueryKeys } from '../../lib/queryKeys';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -13,7 +14,7 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
 }));
 
 export default function Navbar() {
-  const { user, isLoading, logout } = useAuth();
+  const { auth: { user, logout, isLoading }, queryClient } = rootRoute.useRouteContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalMode, setModalMode] = useState<'login' | 'signup'>('login');
   const [isDemoLogin, setIsDemoLogin] = useState(false);
@@ -37,6 +38,7 @@ export default function Navbar() {
   const handleLogout = async () => {
     handleCloseMenu();
     await logout();
+    queryClient.invalidateQueries({ queryKey: [QueryKeys.AUTH] });
   };
 
   return (

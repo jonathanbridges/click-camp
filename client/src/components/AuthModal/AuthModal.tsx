@@ -12,7 +12,6 @@ const AuthModal = ({
   onLogin,
   onSignup,
   onDemoLogin,
-  isLoading,
   error,
   isDemoLogin,
 }: AuthModalProps) => {
@@ -29,7 +28,6 @@ const AuthModal = ({
             <LoginForm
               onSubmit={onLogin}
               onSwitchToSignup={() => onChangeMode('signup')}
-              isLoading={isLoading}
               error={error}
             />
           )
@@ -37,7 +35,6 @@ const AuthModal = ({
           <SignupForm
             onSubmit={onSignup}
             onSwitchToLogin={() => onChangeMode('login')}
-            isLoading={isLoading}
             error={error}
           />
         )}

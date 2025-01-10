@@ -1,3 +1,5 @@
+import { BaseUser } from './user';
+
 export interface LoginCredentials {
   email: string;
   password: string;
@@ -9,11 +11,8 @@ export interface SignupCredentials {
   password: string;
 }
 
-export interface User {
-  id: string;
+export interface User extends BaseUser {
   email: string;
-  username: string;
-  avatar_url?: string | null;
 }
 
 export interface AuthResponse {

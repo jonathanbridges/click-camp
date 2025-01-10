@@ -66,14 +66,17 @@ export const api = {
       return response.json();
     },
 
-    getCurrentUser: async (): Promise<User> => {
+    getCurrentUser: async (): Promise<User | null> => {
       const response = await fetch(`${API_URL}/users/me`, {
         headers: defaultHeaders,
         credentials: 'include',
       });
 
       if (!response.ok) {
-        throw new Error('Not authenticated');
+        if (response.status === 401) {
+          return null;
+        }
+        throw new Error('Failed to fetch current user');
       }
 
       return response.json();
