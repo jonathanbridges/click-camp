@@ -2,6 +2,8 @@ import { QueryClient } from '@tanstack/react-query';
 import { RouterProvider, createRouter, type RouterContext } from '@tanstack/react-router';
 import { api } from './lib/api';
 import type { AuthResponse, LoginCredentials, SignupCredentials, User } from './types/auth';
+import type { Listing } from './types/listing';
+import type { Reservation } from './types/reservation';
 import { rootRoute } from './routes/__root';
 import { indexRoute } from './routes/index';
 import { profileRoute } from './routes/Profile';
@@ -9,7 +11,6 @@ import { listingsRoute } from './routes/Listings';
 import { listingRoute } from './routes/Listing';
 import { useQuery } from '@tanstack/react-query';
 import { QueryKeys } from './lib/queryKeys';
-import { Listing } from './types/listing';
 
 // Register your router
 declare module '@tanstack/react-router' {
@@ -36,25 +37,19 @@ declare module '@tanstack/react-router' {
         check_in: string;
         check_out: string;
         guest_count: number;
-      }) => Promise<any>;
+      }) => Promise<Reservation>;
+      getForListing: (listing_id: number) => Promise<Reservation[]>;
+      delete: (reservation_id: number) => Promise<void>;  
     };
     isLoading: boolean;
+  }
+
+  interface HistoryState {
+    showSuccessAlert?: boolean;
   }
 }
 
 const routeTree = rootRoute.addChildren([indexRoute, profileRoute, listingsRoute, listingRoute]);
-
-// Create the router instance
-export const createRouterInstance = (_: QueryClient, context: RouterContext) => {
-  const router = createRouter({
-    routeTree,
-    context,
-    defaultPreload: 'intent',
-    defaultPreloadDelay: 100,
-  });
-  
-  return router;
-};
 
 interface RouterProviderProps {
   queryClient: QueryClient;
@@ -87,11 +82,19 @@ export const AppRouterProvider = ({ queryClient }: RouterProviderProps) => {
       getAll: api.listings.getAll,
       getOne: api.listings.getOne,
     },
-    reservations: api.reservations,
+    reservations: {
+      getAll: api.reservations.getAll,
+      create: api.reservations.create,
+      getForListing: api.reservations.getForListing,
+      delete: api.reservations.delete,
+    },
     isLoading: false,
   };
 
-  const router = createRouterInstance(queryClient, context);
+  const router = createRouter({
+    routeTree,
+    context,
+  });
 
   return <RouterProvider router={router} />;
 }; 
