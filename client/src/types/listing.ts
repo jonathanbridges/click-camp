@@ -19,13 +19,12 @@ export interface Listing {
   address: string;
   city: string;
   state: string;
-  lat?: number;
-  lng?: number;
-  active: boolean;
-  photo_urls?: string[];
-  host?: Host;
+  lat: number;
+  lng: number;
+  host_id: number;
+  host: Host;
+  photo_urls: string[];
+  average_rating?: string;
   reviews?: Review[];
-  average_rating?: number;
-  created_at: string;
-  updated_at: string;
+  unavailable_dates?: string[];
 } 

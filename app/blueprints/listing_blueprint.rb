@@ -20,5 +20,11 @@ class ListingBlueprint < Blueprinter::Base
     association :host, blueprint: UserBlueprint
     association :reviews, blueprint: ReviewBlueprint
     field :average_rating
+    field :unavailable_dates do |listing|
+      listing.reservations
+        .where('check_out > ?', Date.today)
+        .flat_map { |r| (r.check_in..r.check_out).to_a }
+        .map(&:to_s)
+    end
   end
 end 

@@ -8,6 +8,8 @@ import type { Review } from '../types/listing';
 import { rootRoute } from './__root';
 import { QueryKeys } from '../lib/queryKeys';
 import { AppRoutes } from '../lib/routes';
+import Grid2 from '@mui/material/Grid2';
+import { ReservationCard } from '../components/ReservationCard/ReservationCard';
 
 export const listingRoute = createRoute({
   getParentRoute: () => rootRoute,
@@ -110,95 +112,108 @@ function ListingPage() {
           </Box>
         )}
 
-        {/* Host Section */}
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
-          <Avatar 
-            src={listing.host?.avatar_url || undefined}
-            alt={`${listing.host?.username}'s avatar`}
-            sx={{ 
-              width: 56, 
-              height: 56, 
-              mr: 2,
-              bgcolor: 'primary.main'
-            }}
-          >
-            {listing.host?.username?.charAt(0).toUpperCase()}
-          </Avatar>
-          <Box>
-            <Typography variant="h6">
-              Hosted by {listing.host?.username}
-            </Typography>
-          </Box>
-        </Box>
-
-        {/* Description */}
-        <Typography variant="body1" sx={{ whiteSpace: 'pre-line' }}>
-          {listing.description}
-        </Typography>
-
-        {/* Reviews Section */}
-        <Box sx={{ mt: 6 }}>
-          <Box sx={{ mb: 4 }}>
-            <Typography variant="h4" gutterBottom>
-              {listing.average_rating ? `${Math.round(listing.average_rating * 20)}%` : 'No ratings yet'}
-            </Typography>
-            <Typography variant="body1" color="text.secondary">
-              {listing.reviews?.length || 0} reviews
-            </Typography>
-          </Box>
-
-          {listing.reviews?.map((review: Review) => (
-            <Box key={review.id} sx={{ mb: 4 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Avatar
-                  src={review.reviewer.avatar_url || undefined}
-                  alt={`${review.reviewer.username}'s avatar`}
-                  sx={{ 
-                    width: 40, 
-                    height: 40, 
-                    mr: 2,
-                    bgcolor: 'primary.main'
-                  }}
-                >
-                  {review.reviewer.username.charAt(0).toUpperCase()}
-                </Avatar>
-                <Box>
-                  <Typography variant="subtitle1">
-                    {review.reviewer.username}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {format(new Date(review.created_at), 'MMMM yyyy')}
-                  </Typography>
-                </Box>
+        <Grid2 container spacing={4}>
+          <Grid2 size={{ xs: 12, md: 7 }}>
+            {/* Host Section */}
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
+              <Avatar 
+                src={listing.host?.avatar_url || undefined}
+                alt={`${listing.host?.username}'s avatar`}
+                sx={{ 
+                  width: 56, 
+                  height: 56, 
+                  mr: 2,
+                  bgcolor: 'primary.main'
+                }}
+              >
+                {listing.host?.username?.charAt(0).toUpperCase()}
+              </Avatar>
+              <Box>
+                <Typography variant="h6">
+                  Hosted by {listing.host?.username}
+                </Typography>
               </Box>
+            </Box>
 
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                <Box sx={{ display: 'flex', alignItems: 'center', mr: 1 }}>
-                  {review.rating >= 4 ? (
-                    <ThumbUpIcon sx={{ mr: 1, color: 'success.main' }} />
-                  ) : (
-                    <SentimentNeutralIcon sx={{ mr: 1, color: 'warning.main' }} />
-                  )}
-                </Box>
-                <Rating 
-                  value={review.rating} 
-                  readOnly 
-                  max={5}
-                  sx={{ mr: 1 }}
-                />
-                <Typography variant="body2" color="text.secondary">
-                  {review.rating >= 4 ? 'Recommends' : 'Mixed feelings'}
+            {/* Description */}
+            <Typography variant="body1" paragraph sx={{ whiteSpace: 'pre-line' }}>
+              {listing.description}
+            </Typography>
+
+            {/* Reviews Section */}
+            <Box sx={{ mt: 6 }}>
+              <Box sx={{ mb: 4 }}>
+                <Typography variant="h4" gutterBottom>
+                  {listing.average_rating ? `${Math.round(listing.average_rating * 20)}%` : 'No ratings yet'}
+                </Typography>
+                <Typography variant="body1" color="text.secondary">
+                  {listing.reviews?.length || 0} reviews
                 </Typography>
               </Box>
 
-              <Typography variant="body1">
-                {review.content}
-              </Typography>
+              {listing.reviews?.map((review: Review) => (
+                <Box key={review.id} sx={{ mb: 4 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                    <Avatar
+                      src={review.reviewer.avatar_url || undefined}
+                      alt={`${review.reviewer.username}'s avatar`}
+                      sx={{ 
+                        width: 40, 
+                        height: 40, 
+                        mr: 2,
+                        bgcolor: 'primary.main'
+                      }}
+                    >
+                      {review.reviewer.username.charAt(0).toUpperCase()}
+                    </Avatar>
+                    <Box>
+                      <Typography variant="subtitle1">
+                        {review.reviewer.username}
+                      </Typography>
+                      <Typography variant="body2" color="text.secondary">
+                        {format(new Date(review.created_at), 'MMMM yyyy')}
+                      </Typography>
+                    </Box>
+                  </Box>
 
-              <Divider sx={{ mt: 3 }} />
+                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mr: 1 }}>
+                      {review.rating >= 4 ? (
+                        <ThumbUpIcon sx={{ mr: 1, color: 'success.main' }} />
+                      ) : (
+                        <SentimentNeutralIcon sx={{ mr: 1, color: 'warning.main' }} />
+                      )}
+                    </Box>
+                    <Rating 
+                      value={review.rating} 
+                      readOnly 
+                      max={5}
+                      sx={{ mr: 1 }}
+                    />
+                    <Typography variant="body2" color="text.secondary">
+                      {review.rating >= 4 ? 'Recommends' : 'Mixed feelings'}
+                    </Typography>
+                  </Box>
+
+                  <Typography variant="body1">
+                    {review.content}
+                  </Typography>
+
+                  <Divider sx={{ mt: 3 }} />
+                </Box>
+              ))}
             </Box>
-          ))}
-        </Box>
+          </Grid2>
+
+          <Grid2 size={{ xs: 12, md: 5 }}>
+            <ReservationCard 
+              listingId={listing.id}
+              pricePerNight={listing.price_per_night} 
+              maxGuests={6}
+              unavailableDates={listing.unavailable_dates}
+            />
+          </Grid2>
+        </Grid2>
       </Box>
     </Container>
   );
