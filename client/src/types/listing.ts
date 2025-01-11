@@ -27,4 +27,5 @@ export interface Listing {
   average_rating?: string;
   reviews?: Review[];
   unavailable_dates?: string[];
+  max_guests: number;
 } 

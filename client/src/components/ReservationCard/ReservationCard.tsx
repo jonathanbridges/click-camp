@@ -1,44 +1,39 @@
 import { Box, Button, Card, Popover, Typography } from '@mui/material';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useNavigate } from '@tanstack/react-router';
+import { format } from 'date-fns';
+import { useState } from 'react';
 import { DateRange, Range } from 'react-date-range';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
-import { useState } from 'react';
-import { GuestSelector } from './GuestSelector';
-import { format } from 'date-fns';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { useNavigate } from '@tanstack/react-router';
+import { AlertType } from '../../lib/alerts';
 import { api } from '../../lib/api';
 import { QueryKeys } from '../../lib/queryKeys';
 import { AppRoutes } from '../../lib/routes';
-import type { CreateReservationParams } from '../../types/reservation';
+import { rootRoute } from '../../routes/__root';
+import type { Listing } from '../../types/listing';
+import { GuestSelector } from './GuestSelector';
+import { ReservationConfirmDialog } from './ReservationConfirmDialog';
 
 interface ReservationCardProps {
-  listingId: number;
-  pricePerNight: number;
-  maxGuests: number;
-  unavailableDates?: string[];
+  listing: Listing;
 }
 
-export function ReservationCard({ listingId, pricePerNight, maxGuests, unavailableDates = [] }: ReservationCardProps) {
-  const queryClient = useQueryClient();
-  const navigate = useNavigate();
+export function ReservationCard({ listing }: ReservationCardProps) {
   const [dateRange, setDateRange] = useState<Range>({
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection'
+    startDate: undefined,
+    endDate: undefined,
+    key: 'selection',
   });
-
-  const [guests, setGuests] = useState({
-    adults: 1,
-    children: 0,
-    pets: 0
-  });
-
+  const [guests, setGuests] = useState({ adults: 1, children: 0, pets: 0 });
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
   const [guestSelectorAnchor, setGuestSelectorAnchor] = useState<HTMLElement | null>(null);
+  const navigate = useNavigate({ from: rootRoute.id });
+  const queryClient = useQueryClient();
 
   // Convert unavailable dates strings to Date objects
-  const disabledDates = unavailableDates?.map(date => new Date(date)) || [];
+  const disabledDates = listing.unavailable_dates?.map(date => new Date(date)) || [];
 
   // Function to check if a date should be disabled
   const isDateBlocked = (date: Date) => {
@@ -54,16 +49,33 @@ export function ReservationCard({ listingId, pricePerNight, maxGuests, unavailab
   };
 
   const createReservation = useMutation({
-    mutationFn: () => api.reservations.create({
-      listing_id: listingId,
-      check_in: format(dateRange.startDate!, 'yyyy-MM-dd'),
-      check_out: format(dateRange.endDate!, 'yyyy-MM-dd'),
-      guest_count: guests.adults + guests.children
-    } as CreateReservationParams),
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: [QueryKeys.RESERVATIONS] });
-      navigate({ to: AppRoutes.PROFILE });
-    }
+    mutationFn: async () => {
+      if (!dateRange.startDate || !dateRange.endDate) {
+        throw new Error('Please select dates');
+      }
+
+      const totalGuests = guests.adults + guests.children;
+      if (totalGuests < 1) {
+        throw new Error('Please add at least one guest');
+      }
+
+      // Simulate API latency
+      await new Promise(resolve => setTimeout(resolve, 1500));
+
+      return api.reservations.create({
+        listing_id: listing.id,
+        check_in: format(dateRange.startDate, 'yyyy-MM-dd'),
+        check_out: format(dateRange.endDate, 'yyyy-MM-dd'),
+        guest_count: totalGuests,
+      });
+    },
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({ queryKey: [QueryKeys.RESERVATIONS] });
+      navigate({ 
+        to: AppRoutes.PROFILE,
+        search: () => ({ alert: AlertType.RESERVATION_CREATED })
+      });
+    },
   });
 
   const handleDateClick = (event: React.MouseEvent<HTMLElement>) => {
@@ -82,6 +94,19 @@ export function ReservationCard({ listingId, pricePerNight, maxGuests, unavailab
   };
 
   const handleReserve = () => {
+    if (!dateRange.startDate || !dateRange.endDate) {
+      return;
+    }
+
+    const totalGuests = guests.adults + guests.children;
+    if (totalGuests < 1) {
+      return;
+    }
+
+    setIsDialogOpen(true);
+  };
+
+  const handleConfirmReservation = () => {
     createReservation.mutate();
   };
 
@@ -90,135 +115,150 @@ export function ReservationCard({ listingId, pricePerNight, maxGuests, unavailab
     dateRange.startDate < dateRange.endDate;
 
   return (
-    <Card sx={{ p: 3, position: 'sticky', top: 24 }}>
-      <Typography variant="h5" gutterBottom>
-        ${pricePerNight} <Typography component="span" variant="body1">night</Typography>
-      </Typography>
-
-      <Box sx={{ mb: 2 }}>
-        <Box 
-          onClick={handleDateClick}
-          sx={{ 
-            border: '1px solid',
-            borderColor: 'divider',
-            borderRadius: 1,
-            p: 2,
-            cursor: 'pointer',
-            '&:hover': {
-              borderColor: 'text.primary'
-            }
-          }}
-        >
-          <Typography variant="subtitle2" gutterBottom>
-            Add dates
-          </Typography>
-          <Typography variant="body2">
-            {hasValidDates 
-              ? `${format(dateRange.startDate!, 'MMM d')} - ${format(dateRange.endDate!, 'MMM d')}`
-              : 'Select dates'}
-          </Typography>
-        </Box>
-
-        <Popover
-          open={Boolean(anchorEl)}
-          anchorEl={anchorEl}
-          onClose={() => setAnchorEl(null)}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'left',
-          }}
-        >
-          <DateRange
-            ranges={[dateRange]}
-            onChange={item => setDateRange(item.selection)}
-            minDate={new Date()}
-            months={2}
-            direction="horizontal"
-            disabledDates={disabledDates}
-            disabledDay={isDateBlocked}
-          />
-        </Popover>
-      </Box>
-
-      <Box sx={{ mb: 3 }}>
-        <Box 
-          onClick={handleGuestClick}
-          sx={{ 
-            border: '1px solid',
-            borderColor: 'divider',
-            borderRadius: 1,
-            p: 2,
-            cursor: 'pointer',
-            '&:hover': {
-              borderColor: 'text.primary'
-            }
-          }}
-        >
-          <Typography variant="subtitle2" gutterBottom>
-            Add guests
-          </Typography>
-          <Typography variant="body2">
-            {totalGuests} {totalGuests === 1 ? 'guest' : 'guests'}
-            {guests.pets > 0 && `, ${guests.pets} ${guests.pets === 1 ? 'pet' : 'pets'}`}
-          </Typography>
-        </Box>
-
-        <Popover
-          open={Boolean(guestSelectorAnchor)}
-          anchorEl={guestSelectorAnchor}
-          onClose={() => setGuestSelectorAnchor(null)}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: 'left',
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'left',
-          }}
-        >
-          <GuestSelector
-            adults={guests.adults}
-            children={guests.children}
-            pets={guests.pets}
-            maxGuests={maxGuests}
-            onGuestsChange={handleGuestsChange}
-          />
-        </Popover>
-      </Box>
-
-      <Button
-        variant="contained"
-        fullWidth
-        color="primary"
-        disabled={!hasValidDates || totalGuests === 0 || createReservation.isPending}
-        onClick={handleReserve}
-        sx={{ 
-          bgcolor: 'error.main',
-          '&:hover': {
-            bgcolor: 'error.dark',
-          }
-        }}
-      >
-        {createReservation.isPending ? 'Reserving...' : 'Reserve'}
-      </Button>
-
-      {createReservation.isError && (
-        <Typography color="error" variant="body2" sx={{ mt: 2 }}>
-          {createReservation.error.message}
+    <>
+      <Card sx={{ p: 3, position: 'sticky', top: 24 }}>
+        <Typography variant="h5" gutterBottom>
+          ${listing.price_per_night} <Typography component="span" variant="body1">night</Typography>
         </Typography>
-      )}
 
-      {hasValidDates && !createReservation.isError && (
-        <Box sx={{ mt: 2 }}>
-          <Typography variant="body2" color="text.secondary" align="center">
-            You won't be charged yet
-          </Typography>
+        <Box sx={{ mb: 2 }}>
+          <Box 
+            onClick={handleDateClick}
+            sx={{ 
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: 1,
+              p: 2,
+              cursor: 'pointer',
+              '&:hover': {
+                borderColor: 'text.primary'
+              }
+            }}
+          >
+            <Typography variant="subtitle2" gutterBottom>
+              Add dates
+            </Typography>
+            <Typography variant="body2">
+              {hasValidDates 
+                ? `${format(dateRange.startDate!, 'MMM d')} - ${format(dateRange.endDate!, 'MMM d')}`
+                : 'Select dates'}
+            </Typography>
+          </Box>
+
+          <Popover
+            open={Boolean(anchorEl)}
+            anchorEl={anchorEl}
+            onClose={() => setAnchorEl(null)}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+          >
+            <DateRange
+              ranges={[dateRange]}
+              onChange={item => setDateRange(item.selection)}
+              minDate={new Date()}
+              months={2}
+              direction="horizontal"
+              disabledDates={disabledDates}
+              disabledDay={isDateBlocked}
+            />
+          </Popover>
         </Box>
-      )}
-    </Card>
+
+        <Box sx={{ mb: 3 }}>
+          <Box 
+            onClick={handleGuestClick}
+            sx={{ 
+              border: '1px solid',
+              borderColor: 'divider',
+              borderRadius: 1,
+              p: 2,
+              cursor: 'pointer',
+              '&:hover': {
+                borderColor: 'text.primary'
+              }
+            }}
+          >
+            <Typography variant="subtitle2" gutterBottom>
+              Add guests
+            </Typography>
+            <Typography variant="body2">
+              {totalGuests} {totalGuests === 1 ? 'guest' : 'guests'}
+              {guests.pets > 0 && `, ${guests.pets} ${guests.pets === 1 ? 'pet' : 'pets'}`}
+            </Typography>
+          </Box>
+
+          <Popover
+            open={Boolean(guestSelectorAnchor)}
+            anchorEl={guestSelectorAnchor}
+            onClose={() => setGuestSelectorAnchor(null)}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'left',
+            }}
+          >
+            <GuestSelector
+              adults={guests.adults}
+              children={guests.children}
+              pets={guests.pets}
+              maxGuests={listing.max_guests}
+              onGuestsChange={handleGuestsChange}
+            />
+          </Popover>
+        </Box>
+
+        <Button
+          variant="contained"
+          fullWidth
+          color="primary"
+          disabled={!hasValidDates || totalGuests === 0 || createReservation.isPending}
+          onClick={handleReserve}
+          sx={{ 
+            bgcolor: 'error.main',
+            '&:hover': {
+              bgcolor: 'error.dark',
+            }
+          }}
+        >
+          {createReservation.isPending ? 'Reserving...' : 'Reserve'}
+        </Button>
+
+        {createReservation.isError && (
+          <Typography color="error" variant="body2" sx={{ mt: 2 }}>
+            {(createReservation.error as Error).message}
+          </Typography>
+        )}
+
+        {hasValidDates && !createReservation.isError && (
+          <Box sx={{ mt: 2 }}>
+            <Typography variant="body2" color="text.secondary" align="center">
+              You won't be charged yet
+            </Typography>
+          </Box>
+        )}
+      </Card>
+
+      <ReservationConfirmDialog
+        open={isDialogOpen}
+        onClose={() => setIsDialogOpen(false)}
+        onConfirm={handleConfirmReservation}
+        dateRange={dateRange}
+        guestCount={guests.adults + guests.children}
+        pricePerNight={listing.price_per_night}
+        listingTitle={listing.title}
+        listingImage={listing.photo_urls?.[0]}
+        isPending={createReservation.isPending}
+        error={createReservation.error as Error}
+      />
+    </>
   );
 } 

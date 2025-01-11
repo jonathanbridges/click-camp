@@ -2,7 +2,7 @@ import SentimentNeutralIcon from '@mui/icons-material/SentimentNeutral';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import { Avatar, Box, Container, Divider, Rating, Typography } from '@mui/material';
 import { createRoute } from '@tanstack/react-router';
-import { format } from 'date-fns';
+import { format, isFuture } from 'date-fns';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import type { Review } from '../types/listing';
 import { rootRoute } from './__root';
@@ -10,19 +10,29 @@ import { QueryKeys } from '../lib/queryKeys';
 import { AppRoutes } from '../lib/routes';
 import Grid2 from '@mui/material/Grid2';
 import { ReservationCard } from '../components/ReservationCard/ReservationCard';
+import { ReservationDetails } from '../components/ReservationDetails';
+import type { Reservation } from '../types/reservation';
 
 export const listingRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: AppRoutes.LISTING_DETAILS,
   loader: async ({ context, params: { listingId } }) => {
-    const listing = await context.queryClient.fetchQuery({
-      queryKey: [QueryKeys.LISTING, listingId],
-      queryFn: () => context.listings.getOne(parseInt(listingId)),
-      staleTime: 1000 * 60,
-    });
+    const [listing, reservations] = await Promise.all([
+      context.queryClient.fetchQuery({
+        queryKey: [QueryKeys.LISTING, listingId],
+        queryFn: () => context.listings.getOne(parseInt(listingId)),
+        staleTime: 1000 * 60,
+      }),
+      context.queryClient.fetchQuery({
+        queryKey: [QueryKeys.RESERVATIONS, listingId],
+        queryFn: () => context.reservations.getForListing(parseInt(listingId)),
+        staleTime: 1000 * 60,
+      }),
+    ]);
 
     return {
       listing,
+      reservations,
     };
   },
   pendingMs: 1000,
@@ -50,7 +60,8 @@ export const listingRoute = createRoute({
 });
 
 function ListingPage() {
-  const { listing } = listingRoute.useLoaderData();
+  const { listing, reservations } = listingRoute.useLoaderData();
+  const upcomingReservation = reservations.find((r: Reservation) => isFuture(new Date(r.check_out)));
 
   return (
     <Container maxWidth="lg">
@@ -206,12 +217,16 @@ function ListingPage() {
           </Grid2>
 
           <Grid2 size={{ xs: 12, md: 5 }}>
-            <ReservationCard 
-              listingId={listing.id}
-              pricePerNight={listing.price_per_night} 
-              maxGuests={6}
-              unavailableDates={listing.unavailable_dates}
-            />
+            {upcomingReservation ? (
+              <ReservationDetails 
+                reservation={upcomingReservation}
+                showListingDetails={false}
+              />
+            ) : (
+              <ReservationCard 
+                listing={listing}
+              />
+            )}
           </Grid2>
         </Grid2>
       </Box>

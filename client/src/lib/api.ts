@@ -183,5 +183,30 @@ export const api = {
 
       return response.json();
     },
+
+    delete: async (id: number) => {
+      const response = await fetch(`${API_URL}/reservations/${id}`, {
+        method: 'DELETE',
+        headers: defaultHeaders,
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to cancel reservation');
+      }
+    },
+
+    getForListing: async (listingId: number) => {
+      const response = await fetch(`${API_URL}/reservations?listing_id=${listingId}`, {
+        headers: defaultHeaders,
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch reservations for listing');
+      }
+
+      return response.json();
+    },
   },
 }; 

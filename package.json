@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@tanstack/zod-adapter": "^1.95.3"
+  }
+}
