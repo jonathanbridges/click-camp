@@ -9,9 +9,9 @@ import { ErrorBoundary } from '../components/ErrorBoundary';
 import { GlobalAlert } from '../components/GlobalAlert';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import Navbar from '../components/Navbar/Navbar';
+import { AlertType, getAlertMessage } from '../lib/alerts';
 import type { AuthResponse, LoginCredentials, SignupCredentials, User } from '../types/auth';
 import type { CreateReservationParams, Reservation } from '../types/reservation';
-import { AlertType, getAlertMessage } from '../lib/alerts';
 
 export interface RouterContext {
   queryClient: QueryClient;
@@ -32,6 +32,7 @@ export interface RouterContext {
   reservations: {
     getAll: () => Promise<Reservation[]>;
     create: (params: CreateReservationParams) => Promise<Reservation>;
+    update: (id: number, params: Partial<CreateReservationParams>) => Promise<Reservation>;
     getForListing: (listingId: number) => Promise<Reservation[]>;
     delete: (id: number) => Promise<void>;
   };

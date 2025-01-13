@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_06_000001) do
     t.string "title", null: false
     t.text "description", null: false
     t.integer "price_per_night", null: false
+    t.integer "max_guests", null: false
     t.string "address", null: false
     t.string "city", null: false
     t.string "state", null: false

@@ -1,4 +1,4 @@
-import { Box, Button, Card, Popover, Typography } from '@mui/material';
+import { Box, Button, Card, Popover, Typography, Badge } from '@mui/material';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
 import { format } from 'date-fns';
@@ -20,6 +20,7 @@ interface ReservationCardProps {
 }
 
 export function ReservationCard({ listing }: ReservationCardProps) {
+  const { auth } = rootRoute.useRouteContext();
   const [dateRange, setDateRange] = useState<Range>({
     startDate: undefined,
     endDate: undefined,
@@ -79,10 +80,12 @@ export function ReservationCard({ listing }: ReservationCardProps) {
   });
 
   const handleDateClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (!auth.user) return;
     setAnchorEl(event.currentTarget);
   };
 
   const handleGuestClick = (event: React.MouseEvent<HTMLElement>) => {
+    if (!auth.user) return;
     setGuestSelectorAnchor(event.currentTarget);
   };
 
@@ -116,136 +119,158 @@ export function ReservationCard({ listing }: ReservationCardProps) {
 
   return (
     <>
-      <Card sx={{ p: 3, position: 'sticky', top: 24 }}>
-        <Typography variant="h5" gutterBottom>
-          ${listing.price_per_night} <Typography component="span" variant="body1">night</Typography>
-        </Typography>
-
-        <Box sx={{ mb: 2 }}>
-          <Box 
-            onClick={handleDateClick}
-            sx={{ 
-              border: '1px solid',
-              borderColor: 'divider',
-              borderRadius: 1,
-              p: 2,
-              cursor: 'pointer',
-              '&:hover': {
-                borderColor: 'text.primary'
-              }
+      <Box sx={{ position: 'relative' }}>
+        {!auth.user && (
+          <Box
+            sx={{
+              position: 'absolute',
+              top: -12,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              zIndex: 1,
+              backgroundColor: '#2e7d32',
+              color: 'white',
+              padding: '4px 16px',
+              borderRadius: 24,
+              boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+              whiteSpace: 'nowrap',
+              fontWeight: 500,
             }}
           >
-            <Typography variant="subtitle2" gutterBottom>
-              Add dates
-            </Typography>
-            <Typography variant="body2">
-              {hasValidDates 
-                ? `${format(dateRange.startDate!, 'MMM d')} - ${format(dateRange.endDate!, 'MMM d')}`
-                : 'Select dates'}
-            </Typography>
+            ⭐ Log in to reserve ⭐
           </Box>
-
-          <Popover
-            open={Boolean(anchorEl)}
-            anchorEl={anchorEl}
-            onClose={() => setAnchorEl(null)}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-          >
-            <DateRange
-              ranges={[dateRange]}
-              onChange={item => setDateRange(item.selection)}
-              minDate={new Date()}
-              months={2}
-              direction="horizontal"
-              disabledDates={disabledDates}
-              disabledDay={isDateBlocked}
-            />
-          </Popover>
-        </Box>
-
-        <Box sx={{ mb: 3 }}>
-          <Box 
-            onClick={handleGuestClick}
-            sx={{ 
-              border: '1px solid',
-              borderColor: 'divider',
-              borderRadius: 1,
-              p: 2,
-              cursor: 'pointer',
-              '&:hover': {
-                borderColor: 'text.primary'
-              }
-            }}
-          >
-            <Typography variant="subtitle2" gutterBottom>
-              Add guests
-            </Typography>
-            <Typography variant="body2">
-              {totalGuests} {totalGuests === 1 ? 'guest' : 'guests'}
-              {guests.pets > 0 && `, ${guests.pets} ${guests.pets === 1 ? 'pet' : 'pets'}`}
-            </Typography>
-          </Box>
-
-          <Popover
-            open={Boolean(guestSelectorAnchor)}
-            anchorEl={guestSelectorAnchor}
-            onClose={() => setGuestSelectorAnchor(null)}
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left',
-            }}
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'left',
-            }}
-          >
-            <GuestSelector
-              adults={guests.adults}
-              children={guests.children}
-              pets={guests.pets}
-              maxGuests={listing.max_guests}
-              onGuestsChange={handleGuestsChange}
-            />
-          </Popover>
-        </Box>
-
-        <Button
-          variant="contained"
-          fullWidth
-          color="primary"
-          disabled={!hasValidDates || totalGuests === 0 || createReservation.isPending}
-          onClick={handleReserve}
-          sx={{ 
-            bgcolor: 'error.main',
-            '&:hover': {
-              bgcolor: 'error.dark',
-            }
-          }}
-        >
-          {createReservation.isPending ? 'Reserving...' : 'Reserve'}
-        </Button>
-
-        {createReservation.isError && (
-          <Typography color="error" variant="body2" sx={{ mt: 2 }}>
-            {(createReservation.error as Error).message}
+        )}
+        <Card sx={{ p: 3, position: 'sticky', top: 24 }}>
+          <Typography variant="h5" gutterBottom>
+            ${listing.price_per_night} <Typography component="span" variant="body1">night</Typography>
           </Typography>
-        )}
 
-        {hasValidDates && !createReservation.isError && (
-          <Box sx={{ mt: 2 }}>
-            <Typography variant="body2" color="text.secondary" align="center">
-              You won't be charged yet
-            </Typography>
+          <Box sx={{ mb: 2 }}>
+            <Box 
+              onClick={handleDateClick}
+              sx={{ 
+                border: '1px solid',
+                borderColor: 'divider',
+                borderRadius: 1,
+                p: 2,
+                cursor: auth.user ? 'pointer' : 'not-allowed',
+                '&:hover': auth.user ? {
+                  borderColor: 'text.primary'
+                } : undefined
+              }}
+            >
+              <Typography variant="subtitle2" gutterBottom>
+                Add dates
+              </Typography>
+              <Typography variant="body2">
+                {hasValidDates 
+                  ? `${format(dateRange.startDate!, 'MMM d')} - ${format(dateRange.endDate!, 'MMM d')}`
+                  : 'Select dates'}
+              </Typography>
+            </Box>
+
+            <Popover
+              open={Boolean(anchorEl)}
+              anchorEl={anchorEl}
+              onClose={() => setAnchorEl(null)}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+            >
+              <DateRange
+                ranges={[dateRange]}
+                onChange={item => setDateRange(item.selection)}
+                minDate={new Date()}
+                months={2}
+                direction="horizontal"
+                disabledDates={disabledDates}
+                disabledDay={isDateBlocked}
+              />
+            </Popover>
           </Box>
-        )}
-      </Card>
+
+          <Box sx={{ mb: 3 }}>
+            <Box 
+              onClick={handleGuestClick}
+              sx={{ 
+                border: '1px solid',
+                borderColor: 'divider',
+                borderRadius: 1,
+                p: 2,
+                cursor: auth.user ? 'pointer' : 'not-allowed',
+                '&:hover': auth.user ? {
+                  borderColor: 'text.primary'
+                } : undefined
+              }}
+            >
+              <Typography variant="subtitle2" gutterBottom>
+                Add guests
+              </Typography>
+              <Typography variant="body2">
+                {totalGuests} {totalGuests === 1 ? 'guest' : 'guests'}
+                {guests.pets > 0 && `, ${guests.pets} ${guests.pets === 1 ? 'pet' : 'pets'}`}
+              </Typography>
+            </Box>
+
+            <Popover
+              open={Boolean(guestSelectorAnchor)}
+              anchorEl={guestSelectorAnchor}
+              onClose={() => setGuestSelectorAnchor(null)}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'left',
+              }}
+            >
+              <GuestSelector
+                adults={guests.adults}
+                children={guests.children}
+                pets={guests.pets}
+                maxGuests={listing.max_guests}
+                onGuestsChange={handleGuestsChange}
+              />
+            </Popover>
+          </Box>
+
+          <Button
+            variant="contained"
+            fullWidth
+            color="primary"
+            disabled={!auth.user || !hasValidDates || totalGuests === 0 || createReservation.isPending}
+            onClick={handleReserve}
+            sx={{ 
+              bgcolor: 'error.main',
+              '&:hover': {
+                bgcolor: 'error.dark',
+              }
+            }}
+          >
+            {createReservation.isPending ? 'Reserving...' : 'Reserve'}
+          </Button>
+
+          {createReservation.isError && (
+            <Typography color="error" variant="body2" sx={{ mt: 2 }}>
+              {(createReservation.error as Error).message}
+            </Typography>
+          )}
+
+          {hasValidDates && !createReservation.isError && (
+            <Box sx={{ mt: 2 }}>
+              <Typography variant="body2" color="text.secondary" align="center">
+                You won't be charged yet
+              </Typography>
+            </Box>
+          )}
+        </Card>
+      </Box>
 
       <ReservationConfirmDialog
         open={isDialogOpen}

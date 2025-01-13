@@ -17,18 +17,20 @@ export const listingRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: AppRoutes.LISTING_DETAILS,
   loader: async ({ context, params: { listingId } }) => {
-    const [listing, reservations] = await Promise.all([
-      context.queryClient.fetchQuery({
-        queryKey: [QueryKeys.LISTING, listingId],
-        queryFn: () => context.listings.getOne(parseInt(listingId)),
-        staleTime: 1000 * 60,
-      }),
-      context.queryClient.fetchQuery({
+    const listing = await context.queryClient.fetchQuery({
+      queryKey: [QueryKeys.LISTING, listingId],
+      queryFn: () => context.listings.getOne(parseInt(listingId)),
+      staleTime: 1000 * 60,
+    });
+
+    let reservations: Reservation[] = [];
+    if (context.auth.user) {
+      reservations = await context.queryClient.fetchQuery({
         queryKey: [QueryKeys.RESERVATIONS, listingId],
         queryFn: () => context.reservations.getForListing(parseInt(listingId)),
         staleTime: 1000 * 60,
-      }),
-    ]);
+      });
+    }
 
     return {
       listing,
@@ -82,8 +84,11 @@ function ListingPage() {
           <Typography variant="body1" sx={{ mr: 2 }}>
             · {listing.reviews?.length || 0} reviews
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="body1" sx={{ mr: 2 }}>
             · {listing.city}, {listing.state}
+          </Typography>
+          <Typography variant="body1">
+            · Up to {listing.max_guests} guests
           </Typography>
         </Box>
 
@@ -124,7 +129,7 @@ function ListingPage() {
         )}
 
         <Grid2 container spacing={4}>
-          <Grid2 size={{ xs: 12, md: 7 }}>
+          <Grid2 size={{ xs: 12, md: 7 }} order={{ xs: 2, md: 1 }}>
             {/* Host Section */}
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 4 }}>
               <Avatar 
@@ -216,7 +221,7 @@ function ListingPage() {
             </Box>
           </Grid2>
 
-          <Grid2 size={{ xs: 12, md: 5 }}>
+          <Grid2 size={{ xs: 12, md: 5 }} order={{ xs: 1, md: 2 }}>
             {upcomingReservation ? (
               <ReservationDetails 
                 reservation={upcomingReservation}

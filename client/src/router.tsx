@@ -3,7 +3,7 @@ import { RouterProvider, createRouter, type RouterContext } from '@tanstack/reac
 import { api } from './lib/api';
 import type { AuthResponse, LoginCredentials, SignupCredentials, User } from './types/auth';
 import type { Listing } from './types/listing';
-import type { Reservation } from './types/reservation';
+import type { Reservation, CreateReservationParams } from './types/reservation';
 import { rootRoute } from './routes/__root';
 import { indexRoute } from './routes/index';
 import { profileRoute } from './routes/Profile';
@@ -32,12 +32,8 @@ declare module '@tanstack/react-router' {
     };
     reservations: {
       getAll: () => Promise<any>;
-      create: (params: {
-        listing_id: number;
-        check_in: string;
-        check_out: string;
-        guest_count: number;
-      }) => Promise<Reservation>;
+      create: (params: CreateReservationParams) => Promise<Reservation>;
+      update: (id: number, params: Partial<CreateReservationParams>) => Promise<Reservation>;
       getForListing: (listing_id: number) => Promise<Reservation[]>;
       delete: (reservation_id: number) => Promise<void>;  
     };
@@ -85,6 +81,7 @@ export const AppRouterProvider = ({ queryClient }: RouterProviderProps) => {
     reservations: {
       getAll: api.reservations.getAll,
       create: api.reservations.create,
+      update: api.reservations.update,
       getForListing: api.reservations.getForListing,
       delete: api.reservations.delete,
     },
