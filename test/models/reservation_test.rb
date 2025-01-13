@@ -33,6 +33,7 @@ class ReservationTest < ActiveSupport::TestCase
       title: 'Test Campsite',
       description: 'A beautiful test campsite',
       price_per_night: 50,
+      max_guests: 4,
       address: '123 Test St',
       city: 'Test City',
       state: 'CA',

@@ -184,6 +184,21 @@ export const api = {
       return response.json();
     },
 
+    update: async (id: number, params: Partial<CreateReservationParams>) => {
+      const response = await fetch(`${API_URL}/reservations/${id}`, {
+        method: 'PATCH',
+        headers: defaultHeaders,
+        credentials: 'include',
+        body: JSON.stringify({ reservation: params }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update reservation');
+      }
+
+      return response.json();
+    },
+
     delete: async (id: number) => {
       const response = await fetch(`${API_URL}/reservations/${id}`, {
         method: 'DELETE',

@@ -19,6 +19,7 @@ class Api::V1::ReviewsControllerTest < ActionDispatch::IntegrationTest
       title: 'Test Campsite',
       description: 'A beautiful test campsite',
       price_per_night: 50,
+      max_guests: 4,
       address: '123 Test St',
       city: 'Test City',
       state: 'CA',

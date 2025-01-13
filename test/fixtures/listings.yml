@@ -23,6 +23,7 @@ listing_one:
   title: "Cozy Mountain Cabin"
   description: "A beautiful cabin in the mountains"
   price_per_night: 100
+  max_guests: 4
   address: "123 Mountain Road"
   city: "Boulder"
   state: "CO"
@@ -35,6 +36,7 @@ listing_two:
   title: "Beachfront Paradise"
   description: "Beautiful beachfront property with amazing views"
   price_per_night: 200
+  max_guests: 6
   address: "456 Ocean Drive"
   city: "Miami Beach"
   state: "FL"

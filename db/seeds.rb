@@ -238,7 +238,11 @@ listings_data = [
 ]
 
 LISTINGS = listings_data.each_with_index.map do |listing_data, index|
-  listing = Listing.create!(listing_data.except(:photo_count))
+  listing = Listing.create!(
+    listing_data.except(:photo_count).merge(
+      max_guests: [4, 6, 8, 2, 4, 6, 3, 5, 4][index] || 4  # Default to 4 if index out of bounds
+    )
+  )
   
   listing_data[:photo_count].times do |i|
     photo_key = "site-#{index + 1}-#{i+1}.jpg"

@@ -1,7 +1,7 @@
 class ListingBlueprint < Blueprinter::Base
   identifier :id
   fields :title, :description, :price_per_night, :lat, :lng, 
-         :address, :city, :state, :host_id
+         :address, :city, :state, :host_id, :max_guests
 
   field :photo_urls do |listing|
     if listing.photos.attached?

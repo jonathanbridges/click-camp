@@ -33,7 +33,7 @@ module Api
 
       def listing_params
         params.require(:listing).permit(
-          :title, :description, :price_per_night,
+          :title, :description, :price_per_night, :max_guests,
           :lat, :lng, :address, :city, :state,
           photos: []
         )

@@ -13,6 +13,7 @@ class Api::V1::ListingsControllerTest < ActionDispatch::IntegrationTest
       title: 'Test Campsite',
       description: 'A beautiful test campsite',
       price_per_night: 50,
+      max_guests: 4,
       address: '123 Test St',
       city: 'Test City',
       state: 'CA',
@@ -55,6 +56,7 @@ class Api::V1::ListingsControllerTest < ActionDispatch::IntegrationTest
           title: 'New Campsite',
           description: 'A new test campsite',
           price_per_night: 75,
+          max_guests: 6,
           address: '456 Test St',
           city: 'Test City',
           state: 'CA',
@@ -79,6 +81,7 @@ class Api::V1::ListingsControllerTest < ActionDispatch::IntegrationTest
           title: 'Unauthorized Campsite',
           description: 'Should not be created',
           price_per_night: 50,
+          max_guests: 4,
           address: '789 Test St',
           city: 'Test City',
           state: 'CA',
@@ -98,6 +101,7 @@ class Api::V1::ListingsControllerTest < ActionDispatch::IntegrationTest
           title: '', # Empty title should be invalid
           description: 'Invalid listing',
           price_per_night: -50, # Negative price should be invalid
+          max_guests: 0, # Invalid guest count
           address: '789 Test St',
           city: 'Test City',
           state: 'CA',
