@@ -28,7 +28,11 @@ Rails.application.configure do
   end
 
   # Store uploaded files on S3
-  config.active_storage.service = :amazon_dev
+  config.active_storage.service = :amazon
+
+  # Configure Active Storage URL generation
+  config.active_storage.service_urls_expire_in = 1.week
+  config.active_storage.resolve_model_to_route = :rails_storage_proxy
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false

@@ -8,15 +8,30 @@ ActiveStorage::Attachment.all.each { |attachment| attachment.purge }
 [Review, Reservation, Listing, User].each(&:delete_all)
 
 def find_or_create_blob(key, url)
+  # Try to find by key first
   existing_blob = ActiveStorage::Blob.find_by(key: key)
-  return existing_blob if existing_blob
+  
+  # If not found by key, try to find by filename
+  existing_blob ||= ActiveStorage::Blob.find_by(filename: key)
+  
+  if existing_blob
+    return existing_blob
+  end
 
-  ActiveStorage::Blob.create_and_upload!(
-    io: URI.open(url),
-    filename: key,
-    key: key
-  )
+  begin
+    file = URI.open(url)
+    blob = ActiveStorage::Blob.create_and_upload!(
+      io: file,
+      filename: key
+    )
+    blob
+  rescue => e
+    puts "Error creating blob for #{key}: #{e.message}"
+    raise e
+  end
 end
+
+S3_BUCKET_URL = Rails.application.credentials.dig(:aws, :bucket_url);
 
 puts "Creating hosts..."
 HOSTS = [
@@ -36,13 +51,15 @@ HOSTS = [
   user = User.create!(
     username: name,
     email: "host#{i}@example.com",
-    password: 'password'
+    password: 'password',
+    created_at: rand(6..24).months.ago
   )
   
   blob = find_or_create_blob(
     avatar,
-    "https://app-name-seeds.s3-us-west-1.amazonaws.com/#{avatar}"
+    "#{S3_BUCKET_URL}/#{avatar}"
   )
+  
   user.avatar.attach(blob)
   user
 end
@@ -71,12 +88,14 @@ REVIEWERS = [
   user = User.create!(
     username: name,
     email: "reviewer#{i}@example.com",
-    password: 'password'
+    password: 'password',
+    created_at: rand(6..24).months.ago
   )
   
+  # Use the specified format for user avatars
   blob = find_or_create_blob(
     avatar,
-    "https://app-name-seeds.s3-us-west-1.amazonaws.com/#{avatar}"
+    "#{S3_BUCKET_URL}/#{avatar}"
   )
   user.avatar.attach(blob)
   user
@@ -86,8 +105,15 @@ puts "Creating guest user..."
 guest = User.create!(
   username: 'clickCamper',
   email: 'clickCamper@camp.site',
-  password: 'password'
+  password: 'password',
+  created_at: 12.months.ago
 )
+
+blob = find_or_create_blob(
+  "campicon.png",
+  "https://app-name-seeds.s3.us-west-1.amazonaws.com/campicon.png"
+)
+guest.avatar.attach(blob)
 
 puts "Creating listings..."
 listings_data = [
@@ -248,7 +274,7 @@ LISTINGS = listings_data.each_with_index.map do |listing_data, index|
     photo_key = "site-#{index + 1}-#{i+1}.jpg"
     blob = find_or_create_blob(
       photo_key,
-      "https://app-name-seeds.s3-us-west-1.amazonaws.com/#{photo_key}"
+      "#{S3_BUCKET_URL}/#{photo_key}"
     )
     listing.photos.attach(blob)
   end
@@ -269,6 +295,22 @@ reservation2 = Reservation.create!(
   listing: LISTINGS[1], # Marshmellow Marsh
   check_in: Time.now - 1500000,
   check_out: Time.now - 1000000,
+  guest_count: 2
+)
+
+reservation2 = Reservation.create!(
+  camper: guest,
+  listing: LISTINGS[4], # Sierra Forest Farm
+  check_in: Time.now - 2500000,
+  check_out: Time.now - 2000000,
+  guest_count: 2
+)
+
+reservation2 = Reservation.create!(
+  camper: guest,
+  listing: LISTINGS[5], # Beachside Bungalow
+  check_in: Time.now - 4000000,
+  check_out: Time.now - 3500000,  
   guest_count: 2
 )
 
@@ -390,13 +432,6 @@ REVIEWS = [
     content: "Sleeping to the sounds of the ocean pounding up against the cliffs puts you to sleep like a baby!",
     rating: 5,
     stay_length: 3
-  },
-  {
-    listing: LISTINGS[2],
-    reviewer: REVIEWERS[16],
-    content: "The stars were amazing and I will definitely be coming back.",
-    rating: 5,
-    stay_length: 2
   },
 
   # Reviews for Hammock Forest (LISTINGS[3])
@@ -685,12 +720,13 @@ REVIEWS = [
     guest_count: rand(1..4)
   )
   
-  # Create review a few days after checkout
+  # Create review with a random creation date between 1-6 months ago
+  review_created_at = rand(1..6).months.ago
   Review.create!(
     review_data.merge(
       reservation: reservation,
-      created_at: check_out + 2.days,
-      updated_at: check_out + 2.days
+      created_at: review_created_at,
+      updated_at: review_created_at
     )
   )
 end

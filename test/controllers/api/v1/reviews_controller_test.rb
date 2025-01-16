@@ -83,6 +83,94 @@ class Api::V1::ReviewsControllerTest < ActionDispatch::IntegrationTest
     assert_equal @listing.id, response_body['listing_id']
   end
 
+  test "should update review" do
+    patch api_v1_review_url(@review), params: {
+      review: {
+        content: 'Updated review content',
+        rating: 4
+      }
+    }, as: :json
+
+    assert_response :success
+    @review.reload
+    assert_equal 'Updated review content', @review.content
+    assert_equal 4, @review.rating
+  end
+
+  test "should not update another user's review" do
+    other_reviewer = User.create!(
+      username: 'other_reviewer',
+      email: 'other@example.com',
+      password: 'password123'
+    )
+
+    other_reservation = Reservation.create!(
+      camper: other_reviewer,
+      listing: @listing,
+      check_in: 3.weeks.ago,
+      check_out: 2.weeks.ago,
+      guest_count: 2
+    )
+
+    other_review = Review.create!(
+      reviewer: other_reviewer,
+      listing: @listing,
+      reservation: other_reservation,
+      content: 'Other review',
+      rating: 4
+    )
+
+    patch api_v1_review_url(other_review), params: {
+      review: {
+        content: 'Trying to update someone else\'s review',
+        rating: 1
+      }
+    }, as: :json
+
+    assert_response :not_found
+    other_review.reload
+    assert_equal 'Other review', other_review.content
+    assert_equal 4, other_review.rating
+  end
+
+  test "should destroy review" do
+    assert_difference('Review.count', -1) do
+      delete api_v1_review_url(@review), as: :json
+    end
+
+    assert_response :no_content
+  end
+
+  test "should not destroy another user's review" do
+    other_reviewer = User.create!(
+      username: 'other_reviewer',
+      email: 'other@example.com',
+      password: 'password123'
+    )
+
+    other_reservation = Reservation.create!(
+      camper: other_reviewer,
+      listing: @listing,
+      check_in: 3.weeks.ago,
+      check_out: 2.weeks.ago,
+      guest_count: 2
+    )
+
+    other_review = Review.create!(
+      reviewer: other_reviewer,
+      listing: @listing,
+      reservation: other_reservation,
+      content: 'Other review',
+      rating: 4
+    )
+
+    assert_no_difference('Review.count') do
+      delete api_v1_review_url(other_review), as: :json
+    end
+
+    assert_response :not_found
+  end
+
   test "should not create review without completed reservation" do
     future_reservation = Reservation.create!(
       camper: @reviewer,
@@ -150,5 +238,44 @@ class Api::V1::ReviewsControllerTest < ActionDispatch::IntegrationTest
     
     get api_v1_listing_reviews_url(@listing), as: :json
     assert_response :unauthorized
+  end
+
+  test "should not update review with invalid data" do
+    patch api_v1_review_url(@review), params: {
+      review: {
+        content: 'too short', # Less than 10 characters
+        rating: 6 # Invalid rating
+      }
+    }, as: :json
+
+    assert_response :unprocessable_entity
+    response_body = JSON.parse(response.body)
+    assert response_body['errors'].present?
+    assert response_body['errors'].key?('content')
+    assert response_body['errors'].key?('rating')
+
+    @review.reload
+    assert_not_equal 'too short', @review.content
+  end
+
+  test "should require authentication for update" do
+    delete api_v1_session_url # log out
+    
+    patch api_v1_review_url(@review), params: {
+      review: {
+        content: 'Updated content that should not be saved',
+        rating: 3
+      }
+    }, as: :json
+    
+    assert_response :unauthorized
+  end
+
+  test "should require authentication for destroy" do
+    delete api_v1_session_url # log out
+    
+    delete api_v1_review_url(@review), as: :json
+    assert_response :unauthorized
+    assert Review.exists?(@review.id)
   end
 end 

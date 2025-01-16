@@ -33,17 +33,19 @@ class Listing < ApplicationRecord
   # Associations
   belongs_to :host, class_name: 'User'
   has_many :reservations, dependent: :destroy
-  has_many :reviews, dependent: :destroy
+  has_many :reviews, -> { order(created_at: :desc) }, dependent: :destroy
+  has_many :guests, through: :reservations
 
   # Validations
   validates :title, presence: true, length: { minimum: 5, maximum: 100 }
-  validates :description, presence: true
+  validates :description, presence: true, length: { minimum: 20, maximum: 2000 }
   validates :price_per_night, presence: true, numericality: { greater_than: 0 }
-  validates :max_guests, presence: true, numericality: { greater_than: 0 }
+  validates :max_guests, presence: true, numericality: { greater_than: 0, less_than_or_equal_to: 20 }
   validates :address, presence: true
   validates :city, presence: true
   validates :state, presence: true
-  validates :lat, :lng, presence: true
+  validates :lat, presence: true, numericality: { greater_than_or_equal_to: -90, less_than_or_equal_to: 90 }
+  validates :lng, presence: true, numericality: { greater_than_or_equal_to: -180, less_than_or_equal_to: 180 }
   validates :active, inclusion: { in: [true, false] }
 
   # Scopes

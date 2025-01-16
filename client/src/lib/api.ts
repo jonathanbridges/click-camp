@@ -16,18 +16,59 @@ if (!DEMO_EMAIL || !DEMO_PASSWORD) {
   console.error('Demo credentials not found in environment variables');
 }
 
+async function handleApiError(response: Response): Promise<string> {
+  try {
+    const data = await response.json();
+    if (data.error) {
+      return data.error;
+    }
+    if (data.errors) {
+      return Object.values(data.errors).flat().join(', ');
+    }
+    return `Request failed with status ${response.status}`;
+  } catch (e) {
+    return `Request failed with status ${response.status}`;
+  }
+}
+
+export interface CreateReviewRequest {
+  rating: number;
+  content: string;
+  reservation_id: number;
+}
+
+export interface Review {
+  id: number;
+  content: string;
+  rating: number;
+  reviewer: {
+    id: number;
+    username: string;
+  };
+  created_at: string;
+  listing_id: number;
+}
+
 // Type-safe API functions
 export const api = {
   auth: {
     login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
+      console.log('Login credentials:', credentials, typeof credentials);
       const response = await fetch(`${API_URL}/session`, {
         method: 'POST',
         headers: defaultHeaders,
-        body: JSON.stringify(credentials),
+        body: JSON.stringify({
+          email: credentials.email,
+          password: credentials.password,
+        }),
         credentials: 'include',
       });
 
       if (!response.ok) {
+        const errorData = await response.json();
+        if (errorData.error) {
+          throw new Error(errorData.error);
+        }
         throw new Error('Login failed. Please try again later.');
       }
 
@@ -46,6 +87,10 @@ export const api = {
       });
 
       if (!response.ok) {
+        const errorData = await response.json();
+        if (errorData.error) {
+          throw new Error(errorData.error);
+        }
         throw new Error('Demo login failed. Please try again later.');
       }
 
@@ -61,6 +106,15 @@ export const api = {
       });
 
       if (!response.ok) {
+        const errorData = await response.json();
+        if (errorData.errors) {
+          // Convert API error format to form errors
+          const formErrors: Record<string, string> = {};
+          Object.entries(errorData.errors).forEach(([field, messages]) => {
+            formErrors[field] = Array.isArray(messages) ? messages[0] : messages;
+          });
+          throw new Error(JSON.stringify(formErrors));
+        }
         throw new Error('Signup failed. Please try again later.');
       }
 
@@ -222,6 +276,64 @@ export const api = {
       }
 
       return response.json();
+    },
+  },
+
+  reviews: {
+    create: async (listingId: number, data: CreateReviewRequest): Promise<Review> => {
+      const response = await fetch(`${API_URL}/listings/${listingId}/reviews`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ review: data }),
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error(await handleApiError(response));
+      }
+
+      return response.json();
+    },
+
+    list: async (listingId: number): Promise<Review[]> => {
+      const response = await fetch(`${API_URL}/listings/${listingId}/reviews`, {
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error(await handleApiError(response));
+      }
+
+      return response.json();
+    },
+
+    update: async (reviewId: number, data: Omit<CreateReviewRequest, 'reservation_id'>): Promise<Review> => {
+      const response = await fetch(`${API_URL}/reviews/${reviewId}`, {
+        method: 'PATCH',
+        headers: defaultHeaders,
+        body: JSON.stringify({ review: data }),
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error(await handleApiError(response));
+      }
+
+      return response.json();
+    },
+
+    delete: async (reviewId: number): Promise<void> => {
+      const response = await fetch(`${API_URL}/reviews/${reviewId}`, {
+        method: 'DELETE',
+        headers: defaultHeaders,
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error(await handleApiError(response));
+      }
     },
   },
 }; 

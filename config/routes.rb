@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         resources :reviews, only: [:index, :create]
       end
       
+      resources :reviews, only: [:update, :destroy]
       resources :reservations
       resources :users, only: [:show, :create, :update] do
         get :me, on: :collection

@@ -7,8 +7,14 @@ export interface Review {
   id: number;
   content: string;
   rating: number;
-  reviewer: Reviewer;
+  reviewer: {
+    id: number;
+    username: string;
+    avatar_url?: string;
+    created_at: string;
+  };
   created_at: string;
+  listing_id: number;
 }
 
 export interface Listing {

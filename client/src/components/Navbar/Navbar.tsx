@@ -1,11 +1,12 @@
-import { AppBar, Toolbar, Button, Box, Container, Avatar, Menu, MenuItem } from '@mui/material';
+import { AppBar, Avatar, Box, Button, Container, Menu, MenuItem, Toolbar } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import { useState, useRef } from 'react';
 import { Link } from '@tanstack/react-router';
-import Logo from '../Logo/Logo';
-import AuthModalController from '../AuthModal/AuthModalController';
-import { rootRoute } from '../../routes/__root';
+import { useRef, useState } from 'react';
 import { QueryKeys } from '../../lib/queryKeys';
+import { rootRoute } from '../../routes/__root';
+import AuthModalController from '../AuthModal/AuthModalController';
+import { ModalMode } from '../AuthModal/types';
+import Logo from '../Logo/Logo';
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -14,31 +15,35 @@ const StyledAppBar = styled(AppBar)(({ theme }) => ({
 }));
 
 export default function Navbar() {
-  const { auth: { user, logout, isLoading }, queryClient } = rootRoute.useRouteContext();
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalMode, setModalMode] = useState<'login' | 'signup'>('login');
-  const [isDemoLogin, setIsDemoLogin] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const { auth: { user, logout, isLoading }, queryClient, redirect } = rootRoute.useRouteContext();
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState<boolean>(false);
+  const [modalMode, setModalMode] = useState<ModalMode | null>(null);
   const anchorRef = useRef<HTMLButtonElement>(null);
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
-  const handleOpenModal = (mode: 'login' | 'signup', isDemo = false) => {
+  function toggleUserMenu() {
+    setIsUserMenuOpen((prev) => !prev);
+  }
+
+  const handleLoginButtonClick = (mode: ModalMode | null = null): void => {
+    setFieldErrors({});
     setModalMode(mode);
-    setIsDemoLogin(isDemo);
-    setIsModalOpen(true);
   };
 
-  const handleOpenMenu = () => {
-    setMenuOpen(true);
-  };
-
-  const handleCloseMenu = () => {
-    setMenuOpen(false);
+  const handleCloseModal = () => {
+    setModalMode(null);
   };
 
   const handleLogout = async () => {
-    handleCloseMenu();
+    toggleUserMenu();
     await logout();
+    
     queryClient.invalidateQueries({ queryKey: [QueryKeys.AUTH] });
+    redirect({ to: '/' });
+  };
+
+  const displayFieldErrors = (errors: Record<string, string> = {}): void => {
+    setFieldErrors(errors);
   };
 
   return (
@@ -82,7 +87,7 @@ export default function Navbar() {
                   <>
                     <Button
                       ref={anchorRef}
-                      onClick={handleOpenMenu}
+                      onClick={toggleUserMenu}
                       sx={{ 
                         textTransform: 'none',
                         color: 'text.primary',
@@ -100,8 +105,8 @@ export default function Navbar() {
                     </Button>
                     <Menu
                       anchorEl={anchorRef.current}
-                      open={menuOpen}
-                      onClose={handleCloseMenu}
+                      open={isUserMenuOpen}
+                      onClose={toggleUserMenu}
                       anchorOrigin={{
                         vertical: 'bottom',
                         horizontal: 'right',
@@ -118,7 +123,7 @@ export default function Navbar() {
                 ) : (
                   <>
                     <Button 
-                      onClick={() => handleOpenModal('login')}
+                      onClick={() => handleLoginButtonClick(ModalMode.LOGIN)}
                       sx={{ 
                         color: 'text.primary',
                         '&:hover': {
@@ -130,7 +135,7 @@ export default function Navbar() {
                     </Button>
                     <Button 
                       variant="outlined"
-                      onClick={() => handleOpenModal('login', true)}
+                      onClick={() => handleLoginButtonClick(ModalMode.DEMO_LOGIN)}
                       sx={{ 
                         minWidth: 120,
                         py: 1,
@@ -149,7 +154,7 @@ export default function Navbar() {
                     </Button>
                     <Button 
                       variant="contained"
-                      onClick={() => handleOpenModal('signup')}
+                      onClick={() => handleLoginButtonClick(ModalMode.SIGNUP)}
                       sx={{ 
                         minWidth: 120,
                         py: 1,
@@ -173,10 +178,11 @@ export default function Navbar() {
       </StyledAppBar>
 
       <AuthModalController
-        open={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        initialMode={modalMode}
-        isDemoLogin={isDemoLogin}
+        onClose={handleCloseModal}
+        mode={modalMode}
+        onChangeMode={handleLoginButtonClick}
+        fieldErrors={fieldErrors}
+        displayFieldErrors={displayFieldErrors}
       />
     </>
   );

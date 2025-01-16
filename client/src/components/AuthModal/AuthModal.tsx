@@ -1,11 +1,10 @@
 import { Dialog, DialogContent, DialogTitle } from '@mui/material';
-import type { AuthModalProps } from './types';
+import { ModalMode, type AuthModalProps } from './types';
 import LoginForm from './LoginForm';
 import SignupForm from './SignupForm';
 import DemoLoginForm from './DemoLoginForm';
 
 const AuthModal = ({
-  open,
   onClose,
   mode,
   onChangeMode,
@@ -13,29 +12,34 @@ const AuthModal = ({
   onSignup,
   onDemoLogin,
   error,
-  isDemoLogin,
+  fieldErrors,
+  isPending,
 }: AuthModalProps) => {
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="sm" fullWidth>
+    <Dialog open={mode !== null} onClose={onClose} maxWidth="sm" fullWidth>
       <DialogTitle>
-        {mode === 'login' ? 'Log in to continue' : 'Sign up to continue'}
+        {mode === ModalMode.LOGIN ? 'Log in to continue' : 'Sign up to continue'}
       </DialogTitle>
       <DialogContent>
-        {mode === 'login' ? (
-          isDemoLogin ? (
-            <DemoLoginForm onComplete={onDemoLogin} />
-          ) : (
-            <LoginForm
-              onSubmit={onLogin}
-              onSwitchToSignup={() => onChangeMode('signup')}
-              error={error}
-            />
-          )
-        ) : (
+        {mode === ModalMode.DEMO_LOGIN && (
+          <DemoLoginForm onComplete={onDemoLogin} />
+        )}
+        {mode === ModalMode.LOGIN && (
+          <LoginForm
+            onSubmit={onLogin}
+            onSwitchToSignup={() => onChangeMode(ModalMode.SIGNUP)}
+            error={error}
+            fieldErrors={fieldErrors}
+            isPending={isPending}
+          />
+        )}
+        {mode === ModalMode.SIGNUP && (
           <SignupForm
             onSubmit={onSignup}
-            onSwitchToLogin={() => onChangeMode('login')}
+            onSwitchToLogin={() => onChangeMode(ModalMode.LOGIN)}
             error={error}
+            fieldErrors={fieldErrors}
+            isPending={isPending}
           />
         )}
       </DialogContent>
