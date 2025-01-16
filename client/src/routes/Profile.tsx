@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from '@mui/material';
-import { createRoute } from '@tanstack/react-router';
+import { createRoute, redirect } from '@tanstack/react-router';
 import { isFuture } from 'date-fns';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import { ReservationDetails } from '../components/ReservationDetails';
@@ -10,6 +10,14 @@ import { rootRoute } from './__root';
 export const profileRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/profile',
+  beforeLoad: async ({ context }) => {
+    const user = await context.auth.getCurrentUser();
+    if (!user) {
+      throw redirect({
+        to: '/',
+      });
+    }
+  },
   loader: async ({ context }) => {
     const reservations = await context.queryClient.fetchQuery({
       queryKey: [QueryKeys.RESERVATIONS],
@@ -77,6 +85,7 @@ function ProfilePage() {
               <ReservationDetails 
                 key={reservation.id} 
                 reservation={reservation}
+                showListingDetails
               />
             ))}
           </>

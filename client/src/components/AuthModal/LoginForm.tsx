@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography, CircularProgress } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import type { LoginFormData, LoginFormProps } from './types';
 
@@ -6,6 +6,8 @@ const LoginForm = ({
   onSubmit,
   onSwitchToSignup,
   error,
+  fieldErrors,
+  isPending,
 }: LoginFormProps) => {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
 
@@ -19,6 +21,7 @@ const LoginForm = ({
         margin="normal"
         fullWidth
         label="Email address"
+        disabled={isPending}
         {...register('email', { 
           required: 'Email is required',
           pattern: {
@@ -26,8 +29,8 @@ const LoginForm = ({
             message: 'Invalid email address'
           }
         })}
-        error={!!errors.email}
-        helperText={errors.email?.message}
+        error={!!errors.email || !!fieldErrors.email}
+        helperText={errors.email?.message || fieldErrors.email}
       />
       
       <TextField
@@ -35,6 +38,7 @@ const LoginForm = ({
         fullWidth
         label="Password"
         type="password"
+        disabled={isPending}
         {...register('password', { 
           required: 'Password is required',
           minLength: {
@@ -42,8 +46,8 @@ const LoginForm = ({
             message: 'Password must be at least 6 characters'
           }
         })}
-        error={!!errors.password}
-        helperText={errors.password?.message}
+        error={!!errors.password || !!fieldErrors.password}
+        helperText={errors.password?.message || fieldErrors.password}
       />
 
       {error && (
@@ -56,14 +60,16 @@ const LoginForm = ({
         type="submit"
         fullWidth
         variant="contained"
+        disabled={isPending}
+        startIcon={isPending ? <CircularProgress size={20} color="inherit" /> : null}
         sx={{ mt: 3, mb: 2 }}
       >
-        Log In
+        {isPending ? 'Logging in...' : 'Log In'}
       </Button>
 
       <Typography variant="body2" align="center">
         Don't have an account?{' '}
-        <Button onClick={onSwitchToSignup} sx={{ textTransform: 'none' }}>
+        <Button onClick={onSwitchToSignup} disabled={isPending} sx={{ textTransform: 'none' }}>
           Sign up
         </Button>
       </Typography>

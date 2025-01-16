@@ -17,6 +17,7 @@ module Api
       end
 
       def create
+        Rails.logger.info "Received parameters: #{params.inspect}"
         @user = User.new(user_params)
 
         if @user.save

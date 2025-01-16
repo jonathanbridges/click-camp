@@ -9,7 +9,7 @@ import { ErrorBoundary } from '../components/ErrorBoundary';
 import { GlobalAlert } from '../components/GlobalAlert';
 import { LoadingSpinner } from '../components/LoadingSpinner';
 import Navbar from '../components/Navbar/Navbar';
-import { AlertType, getAlertMessage } from '../lib/alerts';
+import { getAlertMessage, AlertType } from '../lib/alerts';
 import type { AuthResponse, LoginCredentials, SignupCredentials, User } from '../types/auth';
 import type { CreateReservationParams, Reservation } from '../types/reservation';
 

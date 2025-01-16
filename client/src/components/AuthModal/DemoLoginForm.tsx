@@ -127,9 +127,11 @@ const DemoLoginForm = ({ onComplete }: DemoLoginFormProps) => {
         label="Email address"
         value={emailText}
         autoComplete="email"
-        InputProps={{
-          readOnly: true,
-          endAdornment: sequence === 'email' ? '|' : undefined
+        slotProps={{
+          input: {
+            readOnly: true,
+            endAdornment: sequence === 'email' ? '|' : undefined
+          }
         }}
       />
       
@@ -140,9 +142,11 @@ const DemoLoginForm = ({ onComplete }: DemoLoginFormProps) => {
         type="password"
         value={passwordText}
         autoComplete="current-password"
-        InputProps={{
-          readOnly: true,
-          endAdornment: sequence === 'password' ? '|' : undefined
+        slotProps={{
+          input: {
+            readOnly: true,
+            endAdornment: sequence === 'password' ? '|' : undefined
+          }
         }}
       />
 

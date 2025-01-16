@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from '@mui/material';
+import { Box, Button, TextField, Typography, CircularProgress } from '@mui/material';
 import { useForm } from 'react-hook-form';
 import type { SignupFormData, SignupFormProps } from './types';
 
@@ -6,6 +6,8 @@ const SignupForm = ({
   onSubmit,
   onSwitchToLogin,
   error,
+  fieldErrors,
+  isPending,
 }: SignupFormProps) => {
   const { register, handleSubmit, formState: { errors } } = useForm<SignupFormData>();
 
@@ -19,6 +21,7 @@ const SignupForm = ({
         margin="normal"
         fullWidth
         label="Username"
+        disabled={isPending}
         {...register('username', { 
           required: 'Username is required',
           minLength: {
@@ -26,14 +29,15 @@ const SignupForm = ({
             message: 'Username must be at least 3 characters'
           }
         })}
-        error={!!errors.username}
-        helperText={errors.username?.message}
+        error={!!errors.username || !!fieldErrors.username}
+        helperText={errors.username?.message || fieldErrors.username}
       />
 
       <TextField
         margin="normal"
         fullWidth
         label="Email address"
+        disabled={isPending}
         {...register('email', { 
           required: 'Email is required',
           pattern: {
@@ -41,8 +45,8 @@ const SignupForm = ({
             message: 'Invalid email address'
           }
         })}
-        error={!!errors.email}
-        helperText={errors.email?.message}
+        error={!!errors.email || !!fieldErrors.email}
+        helperText={errors.email?.message || fieldErrors.email}
       />
       
       <TextField
@@ -50,6 +54,7 @@ const SignupForm = ({
         fullWidth
         label="Password"
         type="password"
+        disabled={isPending}
         {...register('password', { 
           required: 'Password is required',
           minLength: {
@@ -57,8 +62,8 @@ const SignupForm = ({
             message: 'Password must be at least 6 characters'
           }
         })}
-        error={!!errors.password}
-        helperText={errors.password?.message}
+        error={!!errors.password || !!fieldErrors.password}
+        helperText={errors.password?.message || fieldErrors.password}
       />
 
       {error && (
@@ -71,14 +76,16 @@ const SignupForm = ({
         type="submit"
         fullWidth
         variant="contained"
+        disabled={isPending}
+        startIcon={isPending ? <CircularProgress size={20} color="inherit" /> : null}
         sx={{ mt: 3, mb: 2 }}
       >
-        Sign Up
+        {isPending ? 'Signing up...' : 'Sign Up'}
       </Button>
 
       <Typography variant="body2" align="center">
         Already have an account?{' '}
-        <Button onClick={onSwitchToLogin} sx={{ textTransform: 'none' }}>
+        <Button onClick={onSwitchToLogin} disabled={isPending} sx={{ textTransform: 'none' }}>
           Log in
         </Button>
       </Typography>

@@ -1,24 +1,30 @@
+import { AuthResponse } from '@/types/auth';
 import { z } from 'zod';
 
-export type AuthMode = 'login' | 'signup';
+export enum ModalMode {
+  LOGIN = 'login',
+  SIGNUP = 'signup',
+  DEMO_LOGIN = 'demo_login',
+}
 
 export interface AuthModalProps {
-  open: boolean;
   onClose: () => void;
-  mode: 'login' | 'signup';
-  onChangeMode: (mode: 'login' | 'signup') => void;
+  mode: ModalMode | null;
+  onChangeMode: (mode: ModalMode | null) => void;
   onLogin: (data: LoginFormData) => Promise<void>;
   onSignup: (data: SignupFormData) => Promise<void>;
   onDemoLogin: () => Promise<void>;
   error?: string;
-  isDemoLogin?: boolean;
+  fieldErrors: Record<string, string>;
+  isPending: boolean;
 }
 
 export interface AuthModalControllerProps {
-  open: boolean;
   onClose: () => void;
-  initialMode?: AuthMode;
-  isDemoLogin?: boolean;
+  onChangeMode: (mode: ModalMode | null) => void;
+  mode: ModalMode | null;
+  fieldErrors: Record<string, string>;
+  displayFieldErrors: (errors: Record<string, string>) => void;
 }
 
 // Form schemas
@@ -38,12 +44,16 @@ export interface LoginFormProps {
   onSubmit: (data: LoginFormData) => Promise<void>;
   onSwitchToSignup: () => void;
   error?: string;
+  fieldErrors: Record<string, string>;
+  isPending: boolean;
 }
 
 export interface SignupFormProps {
   onSubmit: (data: SignupFormData) => Promise<void>;
   onSwitchToLogin: () => void;
   error?: string;
+  fieldErrors: Record<string, string>;
+  isPending: boolean;
 }
 
 export interface LoginFormData {

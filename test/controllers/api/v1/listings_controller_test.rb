@@ -54,7 +54,7 @@ class Api::V1::ListingsControllerTest < ActionDispatch::IntegrationTest
       post api_v1_listings_url, params: {
         listing: {
           title: 'New Campsite',
-          description: 'A new test campsite',
+          description: 'A beautiful new test campsite with amazing views and great amenities.',
           price_per_night: 75,
           max_guests: 6,
           address: '456 Test St',

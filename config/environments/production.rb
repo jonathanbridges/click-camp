@@ -38,12 +38,15 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
-  # Store uploaded files on the local file system (see config/storage.yml for options)
-  config.active_storage.service = :amazon_prod
+  # Store uploaded files on S3
+  config.active_storage.service = :amazon
 
-  # Use service URLs for Active Storage in production
+  # Configure Active Storage URL generation
   config.active_storage.resolve_model_to_route = :rails_storage_proxy
-  config.active_storage.service_urls_expire_in = 1.hour
+  config.active_storage.service_urls_expire_in = 1.hour  # Adjust as needed
+  
+  # Use CDN if available
+  # config.asset_host = "https://your-cdn.com"
 
   # Configure default URL options for production
   config.action_controller.default_url_options = { 
@@ -106,4 +109,11 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Configure host for URL generation
+  Rails.application.routes.default_url_options[:host] = ENV['RAILS_HOST'] || 'example.com'
+  config.action_mailer.default_url_options = { host: ENV['RAILS_HOST'] || 'example.com' }
+
+  # Store uploaded files on Amazon S3
+  config.active_storage.service = :amazon
 end
