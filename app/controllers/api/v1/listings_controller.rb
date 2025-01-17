@@ -6,6 +6,27 @@ module Api
       
       def index
         listings = Listing.all
+        Rails.logger.info "Total listings before filtering: #{listings.count}"
+
+        if params[:neLat].present? && params[:neLng].present? && params[:swLat].present? && params[:swLng].present?
+          # Use exact bounds if provided
+          listings = listings.within_bounds(
+            params[:neLat].to_f,  # north
+            params[:swLat].to_f,  # south
+            params[:neLng].to_f,  # east
+            params[:swLng].to_f   # west
+          )
+          Rails.logger.info "Found #{listings.count} listings within bounds"
+        elsif params[:originLat].present? && params[:originLng].present?
+          # Fall back to radius search if only center coordinates provided
+          lat = params[:originLat].to_f
+          lng = params[:originLng].to_f
+          radius = params[:radius].present? ? params[:radius].to_i : 50
+          
+          listings = listings.near_coordinates(lat, lng, radius)
+          Rails.logger.info "Found #{listings.count} listings within #{radius} miles of [#{lat}, #{lng}]"
+        end
+
         render json: ListingBlueprint.render(listings)
       end
 

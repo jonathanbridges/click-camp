@@ -64,6 +64,13 @@ class Listing < ApplicationRecord
     )
   }
 
+  scope :within_bounds, ->(north, south, east, west) {
+    where(
+      "lat BETWEEN ? AND ? AND lng BETWEEN ? AND ?",
+      south, north, west, east
+    )
+  }
+
   def average_rating
     reviews.average(:rating) || 0
   end
