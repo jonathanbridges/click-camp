@@ -1,17 +1,16 @@
-import { QueryClient } from '@tanstack/react-query';
+import { QueryClient, useQuery } from '@tanstack/react-query';
 import { RouterProvider, createRouter, type RouterContext } from '@tanstack/react-router';
 import { api } from './lib/api';
-import type { AuthResponse, LoginCredentials, SignupCredentials, User } from './types/auth';
-import type { Listing } from './types/listing';
-import type { Reservation, CreateReservationParams } from './types/reservation';
+import { QueryKeys } from './lib/queryKeys';
 import { rootRoute } from './routes/__root';
 import { indexRoute } from './routes/index';
-import { profileRoute } from './routes/Profile';
-import { listingsRoute } from './routes/Listings';
 import { listingRoute } from './routes/Listing';
-import { useQuery } from '@tanstack/react-query';
-import { QueryKeys } from './lib/queryKeys';
-
+import { listingsRoute } from './routes/Listings';
+import { notFoundRoute } from './routes/NotFound';
+import { profileRoute } from './routes/Profile';
+import type { AuthResponse, LoginCredentials, SignupCredentials, User } from './types/auth';
+import type { Listing } from './types/listing';
+import type { CreateReservationParams, Reservation } from './types/reservation';
 // Register your router
 declare module '@tanstack/react-router' {
   interface RouterContext {
@@ -27,7 +26,14 @@ declare module '@tanstack/react-router' {
       isLoading: boolean;
     };
     listings: {
-      getAll: () => Promise<Listing[]>;
+      getAll: (params?: {
+        originLat?: number;
+        originLng?: number;
+        neLat?: number;
+        neLng?: number;
+        swLat?: number;
+        swLng?: number;
+      }) => Promise<Listing[]>;
       getOne: (id: number) => Promise<Listing>;
     };
     reservations: {
@@ -45,7 +51,7 @@ declare module '@tanstack/react-router' {
   }
 }
 
-const routeTree = rootRoute.addChildren([indexRoute, profileRoute, listingsRoute, listingRoute]);
+const routeTree = rootRoute.addChildren([indexRoute, profileRoute, listingsRoute, listingRoute, notFoundRoute]);
 
 interface RouterProviderProps {
   queryClient: QueryClient;

@@ -30,7 +30,8 @@ export interface Listing {
   host_id: number;
   host: Host;
   photo_urls: string[];
-  average_rating?: string;
+  average_rating: number;
+  review_count: number;
   reviews?: Review[];
   unavailable_dates?: string[];
   max_guests: number;
