@@ -3,6 +3,14 @@ class ListingBlueprint < Blueprinter::Base
   fields :title, :description, :price_per_night, :lat, :lng, 
          :address, :city, :state, :host_id, :max_guests
 
+  field :average_rating do |listing|
+    listing.average_rating.to_f
+  end
+
+  field :review_count do |listing|
+    listing.reviews.size
+  end
+
   field :photo_urls do |listing|
     if listing.photos.attached?
       listing.photos.map do |photo|
@@ -19,7 +27,6 @@ class ListingBlueprint < Blueprinter::Base
   view :extended do
     association :host, blueprint: UserBlueprint
     association :reviews, blueprint: ReviewBlueprint
-    field :average_rating
     field :unavailable_dates do |listing|
       listing.reservations
         .where('check_out > ?', Date.today)

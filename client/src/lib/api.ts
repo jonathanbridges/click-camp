@@ -49,6 +49,15 @@ export interface Review {
   listing_id: number;
 }
 
+export interface ListingsSearchParams {
+  originLat?: number;
+  originLng?: number;
+  neLat?: number;
+  neLng?: number;
+  swLat?: number;
+  swLng?: number;
+}
+
 // Type-safe API functions
 export const api = {
   auth: {
@@ -151,13 +160,7 @@ export const api = {
   },
 
   listings: {
-    getAll: async (params?: {
-      min_price?: number;
-      max_price?: number;
-      lat?: number;
-      lng?: number;
-      radius?: number;
-    }) => {
+    getAll: async (params?: ListingsSearchParams) => {
       const searchParams = new URLSearchParams();
       if (params) {
         Object.entries(params).forEach(([key, value]) => {
@@ -166,17 +169,13 @@ export const api = {
           }
         });
       }
-
       const url = `${API_URL}/listings${searchParams.toString() ? `?${searchParams.toString()}` : ''}`;
       const response = await fetch(url, {
-        headers: defaultHeaders,
         credentials: 'include',
       });
-
       if (!response.ok) {
-        throw new Error('Failed to fetch listings');
+        throw new Error(await handleApiError(response));
       }
-
       return response.json();
     },
 

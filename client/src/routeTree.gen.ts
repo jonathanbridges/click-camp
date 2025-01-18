@@ -12,6 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as ProfileImport } from './routes/Profile'
+import { Route as NotFoundImport } from './routes/NotFound'
 import { Route as ListingsImport } from './routes/Listings'
 import { Route as ListingImport } from './routes/Listing'
 import { Route as IndexImport } from './routes/index'
@@ -21,6 +22,12 @@ import { Route as IndexImport } from './routes/index'
 const ProfileRoute = ProfileImport.update({
   id: '/Profile',
   path: '/Profile',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const NotFoundRoute = NotFoundImport.update({
+  id: '/NotFound',
+  path: '/NotFound',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -67,6 +74,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ListingsImport
       parentRoute: typeof rootRoute
     }
+    '/NotFound': {
+      id: '/NotFound'
+      path: '/NotFound'
+      fullPath: '/NotFound'
+      preLoaderRoute: typeof NotFoundImport
+      parentRoute: typeof rootRoute
+    }
     '/Profile': {
       id: '/Profile'
       path: '/Profile'
@@ -83,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/Listing': typeof ListingRoute
   '/Listings': typeof ListingsRoute
+  '/NotFound': typeof NotFoundRoute
   '/Profile': typeof ProfileRoute
 }
 
@@ -90,6 +105,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/Listing': typeof ListingRoute
   '/Listings': typeof ListingsRoute
+  '/NotFound': typeof NotFoundRoute
   '/Profile': typeof ProfileRoute
 }
 
@@ -98,15 +114,16 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/Listing': typeof ListingRoute
   '/Listings': typeof ListingsRoute
+  '/NotFound': typeof NotFoundRoute
   '/Profile': typeof ProfileRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/Listing' | '/Listings' | '/Profile'
+  fullPaths: '/' | '/Listing' | '/Listings' | '/NotFound' | '/Profile'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/Listing' | '/Listings' | '/Profile'
-  id: '__root__' | '/' | '/Listing' | '/Listings' | '/Profile'
+  to: '/' | '/Listing' | '/Listings' | '/NotFound' | '/Profile'
+  id: '__root__' | '/' | '/Listing' | '/Listings' | '/NotFound' | '/Profile'
   fileRoutesById: FileRoutesById
 }
 
@@ -114,6 +131,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ListingRoute: typeof ListingRoute
   ListingsRoute: typeof ListingsRoute
+  NotFoundRoute: typeof NotFoundRoute
   ProfileRoute: typeof ProfileRoute
 }
 
@@ -121,6 +139,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ListingRoute: ListingRoute,
   ListingsRoute: ListingsRoute,
+  NotFoundRoute: NotFoundRoute,
   ProfileRoute: ProfileRoute,
 }
 
@@ -137,6 +156,7 @@ export const routeTree = rootRoute
         "/",
         "/Listing",
         "/Listings",
+        "/NotFound",
         "/Profile"
       ]
     },
@@ -148,6 +168,9 @@ export const routeTree = rootRoute
     },
     "/Listings": {
       "filePath": "Listings.tsx"
+    },
+    "/NotFound": {
+      "filePath": "NotFound.tsx"
     },
     "/Profile": {
       "filePath": "Profile.tsx"

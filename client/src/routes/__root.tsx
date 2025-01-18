@@ -26,7 +26,14 @@ export interface RouterContext {
     isLoading: boolean;
   };
   listings: {
-    getAll: () => Promise<Listing[]>;
+    getAll: (params?: {
+      originLat?: number;
+      originLng?: number;
+      neLat?: number;
+      neLng?: number;
+      swLat?: number;
+      swLng?: number;
+    }) => Promise<Listing[]>;
     getOne: (id: number) => Promise<Listing>;
   };
   reservations: {
@@ -42,6 +49,13 @@ export interface RouterContext {
 export const rootRoute = createRootRouteWithContext<RouterContext>()({
   validateSearch: z.object({
     alert: z.nativeEnum(AlertType).optional(),
+    originLat: z.string().optional(),
+    originLng: z.string().optional(),
+    neLat: z.string().optional(),
+    neLng: z.string().optional(),
+    swLat: z.string().optional(),
+    swLng: z.string().optional(),
+    mapZoomLevel: z.string().optional(),
   }),
   loaderDeps: ({ search: { alert } }) => ({ alert }),
   loader: ({ deps: { alert } }) => {

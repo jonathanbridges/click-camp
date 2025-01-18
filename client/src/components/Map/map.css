@@ -1,0 +1,29 @@
+.listing-popup .leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+}
+
+.listing-popup .leaflet-popup-content-wrapper {
+  padding: 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.listing-popup .leaflet-popup-tip-container {
+  margin-top: -1px;
+}
+
+/* Ensure popups appear above controls */
+.leaflet-popup {
+  z-index: 1000 !important;
+}
+
+/* Adjust control z-index to be below popups but above markers */
+.leaflet-control {
+  z-index: 800;
+}
+
+/* Ensure markers don't overlap popups */
+.leaflet-marker-pane {
+  z-index: 600;
+} 
