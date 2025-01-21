@@ -19,7 +19,7 @@ services:
   - type: web
     name: click-camp-web
     env: static
-    buildCommand: cd client && npm install -g pnpm && pnpm install && pnpm run build
+    buildCommand: cd client && npm install -g pnpm && pnpm install --no-frozen-lockfile && pnpm run build
     staticPublishPath: ./client/dist
     envVars:
       - key: VITE_API_URL
