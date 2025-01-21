@@ -1,0 +1,37 @@
+services:
+  - type: web
+    name: click-camp-api
+    env: ruby
+    buildCommand: bundle install && bundle exec rake db:migrate && bundle exec rake db:seed
+    startCommand: bundle exec rails s
+    envVars:
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: click-camp-db
+          property: connectionString
+      - key: RAILS_ENV
+        value: production
+      - key: RACK_ENV
+        value: production
+
+  - type: web
+    name: click-camp-web
+    env: static
+    buildCommand: cd client && pnpm install && pnpm build
+    staticPublishPath: ./client/dist
+    envVars:
+      - key: VITE_API_URL
+        value: https://click-camp-api.onrender.com/api/v1
+
+databases:
+  - name: click-camp-db
+    databaseName: click_camp_production
+    ipAllowList: []
+    plan: free
+    postgresMajorVersion: 15
+    extensions:
+      - postgis
+      - pg_trgm
+      - hstore 

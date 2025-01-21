@@ -88,7 +88,7 @@ function ListingPage() {
   const pastReservationsWithoutReviews = auth.user ? reservations
     .filter((r: Reservation) => 
       r.listing_id === listing.id && 
-      r.guest_id === auth.user?.id && 
+      r.camper_id === auth.user?.id && 
       !isFuture(new Date(r.check_out)) &&
       !listing.reviews?.some((review: Review) => review.reviewer.id === auth.user?.id)
     ) : [];
