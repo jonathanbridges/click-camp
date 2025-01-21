@@ -30,8 +30,4 @@ databases:
     databaseName: click_camp_production
     ipAllowList: []
     plan: free
-    postgresMajorVersion: 15
-    extensions:
-      - postgis
-      - pg_trgm
-      - hstore 
+    postgresMajorVersion: 15 
