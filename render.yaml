@@ -19,11 +19,13 @@ services:
   - type: web
     name: click-camp-web
     env: static
-    buildCommand: cd client && npm install -g pnpm && pnpm install && cd .. && cd client && pnpm run build
+    buildCommand: cd client && npm install -g pnpm && pnpm install && pnpm run build
     staticPublishPath: ./client/dist
     envVars:
       - key: VITE_API_URL
         value: https://click-camp-api.onrender.com/api/v1
+    runtime: node
+    nodeVersion: 22.11.0
 
 databases:
   - name: click-camp-db
