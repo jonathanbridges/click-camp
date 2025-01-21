@@ -2,6 +2,7 @@ services:
   - type: web
     name: click-camp-api
     env: ruby
+    plan: free
     buildCommand: bundle install && bundle exec rake db:migrate && bundle exec rake db:seed
     startCommand: bundle exec rails s
     envVars:
@@ -15,6 +16,20 @@ services:
         value: production
       - key: RACK_ENV
         value: production
+      - key: APP_HOST
+        value: click-camp-api.onrender.com
+      - key: AWS_ACCESS_KEY_ID
+        sync: false
+      - key: AWS_SECRET_ACCESS_KEY
+        sync: false
+      - key: AWS_REGION
+        sync: false
+      - key: AWS_BUCKET
+        sync: false
+      - key: AWS_BUCKET_URL
+        sync: false
+      - key: RAILS_LOG_TO_STDOUT
+        value: enabled
 
   - type: web
     name: click-camp-web
