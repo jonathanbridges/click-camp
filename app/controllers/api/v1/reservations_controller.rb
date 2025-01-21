@@ -5,8 +5,8 @@ module Api
       rescue_from ActiveRecord::RecordNotFound, with: :handle_not_found
 
       def index
-        @reservations = current_user.reservations.includes(:listing)
-        render json: ReservationBlueprint.render(@reservations)
+        @reservations = current_user.reservations.includes(listing: :reviews)
+        render json: ReservationBlueprint.render(@reservations, view: :extended)
       end
 
       def show

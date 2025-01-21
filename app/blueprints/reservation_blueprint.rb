@@ -14,7 +14,7 @@ class ReservationBlueprint < Blueprinter::Base
   end
 
   # Associations
-  association :listing, blueprint: ListingBlueprint
+  association :listing, blueprint: ListingBlueprint, view: :extended
   association :camper, blueprint: UserBlueprint, name: :user
   
   # Extended view with review

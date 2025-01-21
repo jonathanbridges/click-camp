@@ -16,6 +16,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { api } from '../lib/api';
 import { AlertType } from '../lib/alerts';
 import type { Listing } from '../types/listing';
+import { QueryKeys } from '../lib/queryKeys';
 
 interface ReviewDialogProps {
   open: boolean;
@@ -49,7 +50,8 @@ export function ReviewDialog({
       });
     },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['listing', listing.id] });
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.LISTING, listing.id] });
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.RESERVATIONS] });
       handleClose();
       navigate({
         to: `/listing/${listing.id}`,

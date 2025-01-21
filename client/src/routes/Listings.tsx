@@ -171,12 +171,27 @@ export const listingsRoute = createRoute({
   path: AppRoutes.LISTINGS,
   validateSearch: searchSchema,
   pendingComponent: ListingsPending,
-  loader: ({ context, location }) => {
+  loader: async ({ context, location }) => {
     const { originLat, originLng, neLat, neLng, swLat, swLng } = location.search as z.infer<typeof searchSchema>;
+
+    let locationName = '';
+    let lat = originLat ? parseFloat(originLat) : DEFAULT_LAT;
+    let lng = originLng ? parseFloat(originLng) : DEFAULT_LNG;
+
+    try {
+      const response = await fetch(
+        `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}&zoom=10`
+      );
+      const data = await response.json();
+      locationName = data.address?.city || data.address?.town || data.address?.county || 'San Francisco Bay Area';
+    } catch (error) {
+      console.error('Error fetching location name:', error);
+      locationName = 'San Francisco Bay Area';
+    }
 
     // If no parameters are provided, use defaults that show the SF Bay Area
     if (!originLat && !originLng) {
-      return context.listings.getAll({
+      const listings = await context.listings.getAll({
         originLat: DEFAULT_LAT,
         originLng: DEFAULT_LNG,
         neLat: DEFAULT_LAT + 0.8, // Roughly covers the Bay Area
@@ -184,23 +199,25 @@ export const listingsRoute = createRoute({
         swLat: DEFAULT_LAT - 0.8,
         swLng: DEFAULT_LNG - 1.0,
       });
+      return { listings, locationName: 'San Francisco Bay Area' };
     }
 
-    return context.listings.getAll({
-      originLat: originLat ? parseFloat(originLat) : undefined,
-      originLng: originLng ? parseFloat(originLng) : undefined,
+    const listings = await context.listings.getAll({
+      originLat: lat,
+      originLng: lng,
       neLat: neLat ? parseFloat(neLat) : undefined,
       neLng: neLng ? parseFloat(neLng) : undefined,
       swLat: swLat ? parseFloat(swLat) : undefined,
       swLng: swLng ? parseFloat(swLng) : undefined,
     });
+    return { listings, locationName };
   },
   pendingMs: 250,
   component: Listings,
 });
 
 function ListingsContent() {
-  const listings = listingsRoute.useLoaderData();
+  const { listings, locationName } = listingsRoute.useLoaderData();
   const navigate = useNavigate();
   const isFetching = useIsFetching({ queryKey: [QueryKeys.LISTINGS] });
 
@@ -226,11 +243,29 @@ function ListingsContent() {
         {/* Listings Section */}
         <Grid size={{ xs: 12, md: 6 }} sx={{ height: '100%', overflowY: 'auto' }}>
           <Box sx={{ mb: 3 }}>
-            <Typography variant="h4" component="h1">
+            <Typography 
+              variant="h5" 
+              component="h1" 
+              sx={{ 
+                fontWeight: 500,
+                color: 'text.primary',
+              }}
+            >
               {isFetching ? (
-                <Skeleton width={200} />
+                <Skeleton width={180} />
               ) : (
-                `${listings.length} campsites`
+                `${listings.length} campsite${listings.length === 1 ? '' : 's'} near ${locationName ?? "..."}`
+              )}
+            </Typography>
+            <Typography 
+              variant="body2" 
+              color="text.secondary"
+              sx={{ mt: 0.5 }}
+            >
+              {isFetching ? (
+                <Skeleton width={120} />
+              ) : (
+                'Search updates as you move the map'
               )}
             </Typography>
           </Box>

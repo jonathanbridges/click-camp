@@ -25,11 +25,12 @@ export function ReservationDetails({ reservation, showListingDetails = true }: R
   const [isUpdateReviewDialogOpen, setIsUpdateReviewDialogOpen] = useState(false);
   const [isDeleteReviewDialogOpen, setIsDeleteReviewDialogOpen] = useState(false);
   const isPast = !isFuture(new Date(reservation.check_out));
+
   const hasReview = reservation.listing.reviews?.some(
-    review => review.reviewer.id === reservation.guest_id
+    review => review.reviewer.id === reservation.camper_id
   );
   const userReview = reservation.listing.reviews?.find(
-    review => review.reviewer.id === reservation.guest_id
+    review => review.reviewer.id === reservation.camper_id
   );
 
   return (

@@ -62,7 +62,6 @@ export interface ListingsSearchParams {
 export const api = {
   auth: {
     login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
-      console.log('Login credentials:', credentials, typeof credentials);
       const response = await fetch(`${API_URL}/session`, {
         method: 'POST',
         headers: defaultHeaders,

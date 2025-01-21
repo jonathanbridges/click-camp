@@ -24,15 +24,13 @@ interface UpdateReviewDialogProps {
   onClose: () => void;
   review: Review;
   listing: Listing;
-  useRedirect?: boolean;
 }
 
 export function UpdateReviewDialog({ 
   open, 
   onClose,
   review,
-  listing,
-  useRedirect = true,
+  listing
 }: UpdateReviewDialogProps) {
   const [rating, setRating] = useState(review.rating);
   const [content, setContent] = useState(review.content);
@@ -51,10 +49,11 @@ export function UpdateReviewDialog({
     },
     onSuccess: async () => {
       queryClient.invalidateQueries({ queryKey: [QueryKeys.LISTING, listing.id] });
-        await navigate({
-          to: `/listing/${listing.id}`,
-          search: { alert: AlertType.REVIEW_UPDATED }
-        });
+      queryClient.invalidateQueries({ queryKey: [QueryKeys.RESERVATIONS] });
+      await navigate({
+        to: `/listing/${listing.id}`,
+        search: { alert: AlertType.REVIEW_UPDATED }
+      });
       onClose();
     },
   });
