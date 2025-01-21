@@ -24,6 +24,10 @@ services:
     envVars:
       - key: VITE_API_URL
         value: https://click-camp-api.onrender.com/api/v1
+      - key: VITE_DEMO_EMAIL
+        value: clickCamper@camp.site
+      - key: VITE_DEMO_PASSWORD
+        value: password
     runtime: node
     nodeVersion: 22.11.0
 
