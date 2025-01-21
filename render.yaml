@@ -19,8 +19,18 @@ services:
   - type: web
     name: click-camp-web
     env: static
+    runtime: node
+    nodeVersion: 22.11.0
     buildCommand: cd client && npm install -g pnpm && pnpm install --no-frozen-lockfile && pnpm run build
     staticPublishPath: ./client/dist
+    headers:
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache, no-store, must-revalidate
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
     envVars:
       - key: VITE_API_URL
         value: https://click-camp-api.onrender.com/api/v1
@@ -28,8 +38,6 @@ services:
         value: clickCamper@camp.site
       - key: VITE_DEMO_PASSWORD
         value: password
-    runtime: node
-    nodeVersion: 22.11.0
 
 databases:
   - name: click-camp-db
