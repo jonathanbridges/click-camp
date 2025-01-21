@@ -4,7 +4,7 @@ import type { User } from './auth';
 export interface Reservation {
   id: number;
   listing_id: number;
-  guest_id: number;
+  camper_id: number;
   check_in: string;
   check_out: string;
   guest_count: number;

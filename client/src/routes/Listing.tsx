@@ -56,13 +56,6 @@ export const listingRoute = createRoute({
 const getMonthsBetween = (createdAt: string) => {
   const now = new Date();
   const createdDate = parseISO(createdAt);
-  
-  console.log('Date calculation:', {
-    createdAt,
-    createdDate,
-    now,
-    isFuture: createdDate > now
-  });
 
   // For demo data with future dates, use January 2024 as the account creation date
   if (createdDate > now) {
@@ -70,7 +63,6 @@ const getMonthsBetween = (createdAt: string) => {
   }
 
   const months = Math.max(0, differenceInMonths(now, createdDate));
-  console.log('Calculated months:', months);
   
   if (months >= 12) {
     const years = Math.floor(months / 12);
@@ -91,13 +83,6 @@ function ListingPage() {
   const [isUpdateReviewDialogOpen, setIsUpdateReviewDialogOpen] = useState(false);
   const [isDeleteReviewDialogOpen, setIsDeleteReviewDialogOpen] = useState(false);
   const [selectedReview, setSelectedReview] = useState<Review | null>(null);
-
-  // Add debugging for reviews data
-  console.log('Reviews data:', listing.reviews?.map((review: Review) => ({
-    reviewer: review.reviewer.username,
-    created_at: review.reviewer.created_at,
-    months: getMonthsBetween(review.reviewer.created_at)
-  })));
 
   // Find past reservations for the current user that don't have reviews
   const pastReservationsWithoutReviews = auth.user ? reservations
@@ -317,7 +302,6 @@ function ListingPage() {
             }}
             review={selectedReview}
             listing={listing}
-            useRedirect={false}
           />
 
           <DeleteReviewDialog
