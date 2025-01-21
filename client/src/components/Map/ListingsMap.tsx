@@ -1,19 +1,19 @@
 import { Box, CircularProgress, Typography } from '@mui/material';
-import 'leaflet/dist/leaflet.css';
-import { useEffect, useState } from 'react';
-import { MapContainer, Marker, Popup, TileLayer, useMap, useMapEvents } from 'react-leaflet';
-import { QueryKeys } from '../../lib/queryKeys';
-import type { Listing } from '../../types/listing';
-import ListingPopup from './ListingPopup';
-import CustomPopup from './CustomPopup';
-import { latLng } from 'leaflet';
-import { createPriceMarker } from './PriceMarker';
-import './map.css';
-import { listingsRoute } from '../../routes/Listings';
 import { useIsFetching } from '@tanstack/react-query';
 import { useNavigate } from '@tanstack/react-router';
-import { AppRoutes } from '../../lib/routes';
+import { latLng } from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+import { useEffect, useState } from 'react';
+import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import { DEFAULT_LAT, DEFAULT_LNG } from '../../lib/constants';
+import { QueryKeys } from '../../lib/queryKeys';
+import { AppRoutes } from '../../lib/routes';
+import { listingsRoute } from '../../routes/Listings';
+import type { Listing } from '../../types/listing';
+import CustomPopup from './CustomPopup';
+import ListingPopup from './ListingPopup';
+import { createPriceMarker } from './PriceMarker';
+import './map.css';
 
 interface ListingsMapProps {
   listings: Listing[];

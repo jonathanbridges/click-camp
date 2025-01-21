@@ -1,4 +1,3 @@
-import { AuthResponse } from '@/types/auth';
 import { z } from 'zod';
 
 export enum ModalMode {

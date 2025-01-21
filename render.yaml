@@ -19,7 +19,7 @@ services:
   - type: web
     name: click-camp-web
     env: static
-    buildCommand: cd client && pnpm install && pnpm build
+    buildCommand: cd client && npm install -g pnpm && pnpm install && cd .. && cd client && pnpm run build
     staticPublishPath: ./client/dist
     envVars:
       - key: VITE_API_URL
@@ -30,4 +30,6 @@ databases:
     databaseName: click_camp_production
     ipAllowList: []
     plan: free
-    postgresMajorVersion: 15 
+    postgresMajorVersion: 15
+    user: click_camp
+    region: oregon 
