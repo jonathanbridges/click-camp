@@ -4,6 +4,9 @@ services:
     env: ruby
     plan: free
     domain: click-camp-api.onrender.com
+    rootDirectory: .
+    buildCommand: bundle install
+    startCommand: bundle exec rails s
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -35,8 +38,9 @@ services:
     env: static
     runtime: node
     nodeVersion: 22.11.0
-    buildCommand: cd client && npm install -g pnpm && pnpm install --no-frozen-lockfile && pnpm run build
-    staticPublishPath: ./client/dist
+    rootDirectory: client
+    buildCommand: npm install -g pnpm && pnpm install --no-frozen-lockfile && pnpm run build
+    staticPublishPath: dist
     headers:
       - path: /index.html
         name: Cache-Control
