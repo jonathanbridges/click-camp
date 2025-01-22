@@ -57,8 +57,8 @@ services:
 databases:
   - name: click-camp-db
     databaseName: click_camp_production
+    user: click_camp_production_user
     ipAllowList: []
     plan: free
     postgresMajorVersion: 15
-    user: click_camp
     region: oregon 

@@ -93,9 +93,7 @@ test:
 #
 production:
   <<: *default
-  database: click_camp_production
-  username: click_camp
-  password: <%= ENV["CLICK_CAMP_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>
   extensions:
     - postgis
     - pg_trgm
