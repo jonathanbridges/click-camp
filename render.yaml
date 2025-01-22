@@ -5,6 +5,9 @@ services:
     plan: free
     buildCommand: bundle install && bundle exec rake db:migrate && bundle exec rake db:seed
     startCommand: bundle exec rails s
+    secretFiles:
+      - filePath: .env
+        mountPath: /etc/secrets/.env
     envVars:
       - key: DATABASE_URL
         fromDatabase:
