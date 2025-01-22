@@ -5,9 +5,6 @@ services:
     plan: free
     buildCommand: bundle install && bundle exec rake db:migrate && bundle exec rake db:seed
     startCommand: bundle exec rails s
-    secretFiles:
-      - filePath: .env
-        mountPath: /etc/secrets/.env
     envVars:
       - key: DATABASE_URL
         fromDatabase:
@@ -27,6 +24,12 @@ services:
         value: https://click-camp-dev.s3.us-west-1.amazonaws.com
       - key: RAILS_LOG_TO_STDOUT
         value: enabled
+      - key: PORT
+        value: 3000
+      - key: RAILS_SERVE_STATIC_FILES
+        value: true
+      - key: WEB_CONCURRENCY
+        value: 2
 
   - type: web
     name: click-camp-web
