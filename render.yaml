@@ -56,7 +56,9 @@ databases:
   - name: click-camp-db
     databaseName: click_camp_production
     user: click_camp_production_user
-    ipAllowList: []
+    ipAllowList:
+      - ip: "157.131.98.125"
+        comment: "My local development machine"
     plan: free
     postgresMajorVersion: 15
     region: oregon 
