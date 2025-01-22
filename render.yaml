@@ -3,6 +3,7 @@ services:
     name: click-camp-api
     env: ruby
     plan: free
+    domain: click-camp-api.onrender.com
     envVars:
       - key: DATABASE_URL
         fromDatabase:
