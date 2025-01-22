@@ -3,8 +3,6 @@ services:
     name: click-camp-api
     env: ruby
     plan: free
-    buildCommand: bundle install
-    startCommand: bundle exec rake db:schema:load && bundle exec rake db:seed && bundle exec rails s
     envVars:
       - key: DATABASE_URL
         fromDatabase:
