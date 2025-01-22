@@ -113,7 +113,4 @@ Rails.application.configure do
   # Configure host for URL generation
   Rails.application.routes.default_url_options[:host] = ENV['RAILS_HOST'] || 'example.com'
   config.action_mailer.default_url_options = { host: ENV['RAILS_HOST'] || 'example.com' }
-
-  # Store uploaded files on Amazon S3
-  config.active_storage.service = :amazon
 end

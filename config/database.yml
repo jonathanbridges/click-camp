@@ -94,7 +94,8 @@ test:
 production:
   <<: *default
   url: <%= ENV['DATABASE_URL'] %>
-  extensions:
-    - postgis
-    - pg_trgm
-    - hstore
+  pool: 5
+  connect_timeout: 2
+  checkout_timeout: 5
+  variables:
+    statement_timeout: 5000

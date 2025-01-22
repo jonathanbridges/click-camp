@@ -10,6 +10,18 @@ export default defineConfig({
     build: {
         outDir: 'dist',
         sourcemap: true,
+        chunkSizeWarningLimit: 800,
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    'mui': ['@mui/material', '@mui/icons-material'],
+                    'react-vendor': ['react', 'react-dom'],
+                    'map': ['leaflet', 'react-leaflet'],
+                    'tanstack': ['@tanstack/react-query', '@tanstack/react-router'],
+                    'date': ['date-fns', 'react-date-range'],
+                }
+            }
+        }
     },
     server: {
         port: 5173,

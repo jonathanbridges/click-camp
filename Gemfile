@@ -52,3 +52,5 @@ group :development do
   gem "brakeman", require: false
   gem "listen", "~> 3.8"
 end
+
+gem "dockerfile-rails", ">= 1.7", :group => :development
